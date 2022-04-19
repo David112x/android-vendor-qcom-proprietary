@@ -1,0 +1,64 @@
+/*********************************************************************
+ Copyright (c) 2019 Qualcomm Technologies, Inc.
+ All Rights Reserved.
+ Confidential and Proprietary - Qualcomm Technologies, Inc.
+**********************************************************************/
+
+
+package com.qualcomm.qti.uceservice@2.1;
+
+import IPresenceService;
+import IPresenceListener;
+import IOptionsService;
+import IOptionsListener;
+import @2.0::IUceService;
+import @2.0::UceStatus;
+
+interface IUceService extends @2.0::IUceService {
+
+  /**
+   * Places a request to create Presence Service.
+   * upon successful, the application should expect to receive
+   * IPresenceListener.OnPresenceCreated() callback
+   *
+   * Note: Customer needs to create unique listener for each subscription/Iccid
+   *
+   * @param listener        @2.1::IPresenceListener object
+   * @param clientHandle    a token from the client
+   * @param iccid           ICCID of the subscription to work on.
+   * @return status
+   */
+  createPresenceService_2_1(IPresenceListener listener, int64_t clientHandle,
+      string iccid) generates (UceStatus status);
+
+  /**
+   * Get the Presence Service Instance
+   *
+   * @param serviceHandle    received in IPresenceListener.OnPresenceCreated()
+   * @return service         Instance of @2.1::PresenceService
+   */
+  getPresenceService_2_1(int64_t serviceHandle) generates (IPresenceService service);
+
+  /**
+   * Places a request to create Options Service.
+   * upon successful, the application should expect to receive
+   * IOptionsListener.OnOptionsCreated() callback
+   *
+   * Note: Customer needs to create unique listener for each subscription/iccid
+   *
+   * @param listener        @2.1::IOptionsListener object
+   * @param clientHandle    a token from the client
+   * @param iccid           ICCID of the subscription to work on.
+   * @return status
+   */
+  createOptionsService_2_1(IOptionsListener listener, int64_t clientHandle,
+      string iccid) generates (UceStatus status);
+
+  /**
+   * Get the Options Service Instance
+   * @param serviceHandle    received in IOptionsListener.OnOptionsCreated()
+   * @return service         Instance of @2.1::IOptionsService
+   */
+  getOptionsService_2_1(int64_t serviceHandle) generates (IOptionsService service);
+
+};

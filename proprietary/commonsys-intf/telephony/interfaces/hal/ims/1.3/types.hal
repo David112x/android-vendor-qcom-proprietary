@@ -1,0 +1,140 @@
+/*
+ * Copyright (c) 2018 Qualcomm Technologies, Inc.
+ * All Rights Reserved.
+ * Confidential and Proprietary - Qualcomm Technologies, Inc.
+ *
+ */
+
+package vendor.qti.hardware.radio.ims@1.3;
+
+import @1.0::CallDetails;
+import @1.0::CallState;
+import @1.0::CallType;
+import @1.0::SipErrorInfo;
+import @1.2::CallFailCause;
+import @1.0::CbNumInfo;
+import @1.0::CbNumListInfo;
+import @1.0::FacilityType;
+import @1.0::IpPresentation;
+import @1.0::ServiceClassStatus;
+import @1.2::VerificationStatus;
+
+enum ServiceClassProvisionStatus : int32_t {
+    NOT_PROVISIONED,
+    PROVISIONED,
+    INVALID,
+};
+
+struct SuppServiceStatus {
+    ServiceClassStatus status;
+    ServiceClassProvisionStatus provisionStatus;
+    FacilityType facilityType; /* values are of type enum FacilityType */
+    string failureCause; /* Deprecated. Please use errorDetails field */
+    vec<CbNumListInfo> cbNumListInfo; /* used by FACILITY_BS_MT for query operation */
+    bool hasErrorDetails;
+    SipErrorInfo errorDetails; /* SIP error details on failure */
+};
+
+struct ColrInfo {
+    ServiceClassStatus status;
+    ServiceClassProvisionStatus provisionStatus;
+    IpPresentation presentation;
+    bool hasErrorDetails;
+    SipErrorInfo errorDetails; /* SIP error details on failure */
+};
+
+enum CallFailCause : @1.2::CallFailCause {
+    CALL_FAIL_SRV_NOT_REGISTERED,
+    CALL_FAIL_CALL_TYPE_NOT_ALLOWED,
+    CALL_FAIL_EMRG_CALL_ONGOING,
+    CALL_FAIL_CALL_SETUP_ONGOING,
+    CALL_FAIL_MAX_CALL_LIMIT_REACHED,
+    CALL_FAIL_UNSUPPORTED_SIP_HDRS,
+    CALL_FAIL_CALL_TRANSFER_ONGOING,
+    CALL_FAIL_PRACK_TIMEOUT,
+    CALL_FAIL_QOS_FAILURE,
+    CALL_FAIL_ONGOING_HANDOVER,
+    CALL_FAIL_VT_WITH_TTY_NOT_ALLOWED,
+    CALL_FAIL_CALL_UPGRADE_ONGOING,
+    CALL_FAIL_CONFERENCE_WITH_TTY_NOT_ALLOWED,
+    CALL_FAIL_CALL_CONFERENCE_ONGOING,
+    CALL_FAIL_VT_WITH_AVPF_NOT_ALLOWED,
+    CALL_FAIL_ENCRYPTION_CALL_ONGOING,
+    CALL_FAIL_CALL_ONGOING_CW_DISABLED,
+    CALL_FAIL_CALL_ON_OTHER_SUB,
+    CALL_FAIL_1X_COLLISION,
+    CALL_FAIL_UI_NOT_READY,
+    CALL_FAIL_CS_CALL_ONGOING,
+    CALL_FAIL_SIP_USER_MARKED_UNWANTED,
+};
+
+struct CallFailCauseResponse {
+    CallFailCause failCause;
+    vec<uint8_t> errorinfo;
+    string networkErrorString;
+    bool hasErrorDetails;
+    SipErrorInfo errorDetails;
+};
+
+struct HangupRequestInfo {
+    int32_t connIndex;
+    bool hasMultiParty;
+    bool multiParty;
+    string connUri;
+    uint32_t conf_id;
+    bool hasFailCauseResponse;
+    CallFailCauseResponse failCauseResponse;
+};
+
+struct CallInfo {
+    CallState state;
+    uint32_t index;
+    uint32_t toa;
+    bool hasIsMpty;
+    bool isMpty;
+    bool hasIsMT;
+    bool isMT;
+    uint32_t als;
+    bool hasIsVoice;
+    bool isVoice;
+    bool hasIsVoicePrivacy;
+    bool isVoicePrivacy;
+    string number;
+    uint32_t numberPresentation;
+    string name;
+    uint32_t namePresentation;
+    bool hasCallDetails;
+    CallDetails callDetails;
+    bool hasFailCause;
+    CallFailCauseResponse failCause;
+    bool hasIsEncrypted;
+    bool isEncrypted;
+    bool hasIsCalledPartyRinging;
+    bool isCalledPartyRinging;
+    string historyInfo;
+    bool hasIsVideoConfSupported;
+    bool isVideoConfSupported;
+    VerstatInfo verstatInfo;
+};
+
+struct AutoCallRejectionInfo{
+    /**Mandatory */
+    CallType callType;
+    CallFailCause autoRejectionCause;
+    uint16_t sipErrorCode;
+    /**Optional */
+    string number;
+};
+
+enum VoiceInfo : int32_t {
+    /** Voice Info silent is sent when remote party is silent on a RTT call */
+    VOICE_INFO_SILENT,
+     /** Voice Info speech is sent when remote party starts speaking on a RTT call */
+    VOICE_INFO_SPEECH,
+    VOICE_INFO_UNKNOWN,
+};
+
+struct VerstatInfo {
+    bool canMarkUnwantedCall;
+    VerificationStatus verificationStatus;
+};

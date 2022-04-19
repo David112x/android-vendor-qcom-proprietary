@@ -1,0 +1,68 @@
+README
+
+FTM Flows Library provides an API to control 11ad/11ay chip operation on production line environment.
+
+I. File list
+-------------
+Android.mk                                  Android makefile to build all components
+libwigig_ftm_flows/Android.mk               Android makefile for the shared library
+libwigig_ftm_flows/BuildInfoAndroid.mk      Part of the library makefile
+libwigig_ftm_flows/BuildInfoCommon.mk       Part of the library makefile
+libwigig_ftm_flows/NOTICE                   Notices of software components included
+libwigig_ftm_flows/README                   Notices for wpa_supplicant and hostapd
+libwigig_ftm_flows/VersionInfo.h            Library version information
+libwigig_ftm_flows/wigig_ftm_flows_api.h    Library header file that defines all exposed APIs
+libwigig_ftm_flows/wigig_ftm_flows_api.c    Library implementation
+libwigig_ftm_flows/wigig_ftm_flows_impl.c   Library implementation
+libwigig_ftm_flows/wigig_ftm_flows_impl.h   Library implementation
+libwigig_ftm_flows/nl80211_copy.h           Library implementation
+libwigig_ftm_flows/nl_services.c            Library implementation
+libwigig_ftm_flows/nl_services.h            Library implementation
+libwigig_ftm_flows/wmi.h                    Library implementation
+libwigig_ftm_flows/wmiUT.h                  Library implementation
+ftm_flows_test/Android.mk                   Android makefile to build the test utility
+ftm_flows_test/main.c                       Test utility implementation
+
+II. Compilation and Linkage on Android Platform
+------------------------------------------------
+Test utility application makefile may be used for reference - ftm_flows_test/Android.mk
+Shared library name is "libwigig_ftm_flows"
+No additional dependencies are needed
+All exposed APIs are defined in a single header file - wigig_ftm_flows_impl.h
+
+III. Android Platform Installation Instructions
+------------------------------------------------
+Shared library is expected to be installed in /vendor/lib64 folder, i.e. /vendor/lib64/libwigig_ftm_flows.so
+If needed, the test utility is expected to be installed in /vendor/bin folder, i.e. /vendor/bin/ftm_flows_test
+
+IV. Operating Instructions
+---------------------------
+1. Connection shall be established prior to first flow activation.
+2. The connection should be released as part of a graceful shutdown.
+3. This library is not reentrant and is intended to work simultaneously with a single WIGIG interface.
+4. All flow APIs return zero on success or a negative error code.
+   Textual description of the last error can be retrieved with 'wigig_ftm_flows_get_last_error' API.
+5. When running test utility provide '-h' option to see a list of all supported operations and parameters,
+   i.e. 'ftm_flows_test -h'
+
+See test utility for reference code.
+
+Note: Test utility is a CLI tool and so it initializes and releases the connection for each flow it runs.
+      Real application should initialize connection only once before calling the first flow API and release
+      it once after calling last flow API.
+
+V. Logging
+-----------
+1. Library output is sent by default to the Syslog and can be redirected to the standard output with
+   'wigig_ftm_flows_configure_output_sink' API. Supported output options are 'SYSLOG' and 'STDOUT'.
+2. Only errors are reported by default to the selected output option.
+   Verbose logging can be enabled with 'wigig_ftm_flows_configure_log_verbosity' API.
+   'LOG_ALL' will allow warning, info and debug information be logged in addition to the errors.
+
+Note: relevant Syslog content can be retrieved with 'logcat | grep _process_name_' command,
+      where '_process_name_' is the name of process using (linked with) FTM Flows Library.
+
+VI. Versioning
+---------------
+Library version can be retrieved with 'wigig_ftm_flows_get_version' API.
+Version format is Major.Minor.Maintenance.Build

@@ -1,0 +1,25 @@
+cc_test {
+    name: "qcril-cmas-test",
+    vendor: true,
+    owner: "qti",
+    proprietary: true,
+    host_supported: true,
+    native_coverage: true,
+    gtest: true,
+    cflags: [
+        "-g",
+        "-O0",
+    ],
+    cppflags: ["-std=c++17"],
+    header_libs: [
+        "libqcril-qc-hal-cmas-headers",
+    ],
+    static_libs: [
+        "libqcril-qc-hal-cmas",
+    ],
+    shared_libs: [
+        "liblog",
+        "libbase",
+    ],
+    srcs: ["src/*.cpp"],
+}

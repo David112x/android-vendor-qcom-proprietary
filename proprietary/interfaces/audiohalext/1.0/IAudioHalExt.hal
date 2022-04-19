@@ -1,0 +1,16 @@
+/***************************************************************************
+* Copyright (c) 2019 Qualcomm Technologies, Inc.
+* All Rights Reserved.
+* Confidential and Proprietary - Qualcomm Technologies, Inc.
+***************************************************************************/
+
+package vendor.qti.hardware.audiohalext@1.0;
+
+/*
+ * Audio HAL Extension interfaces.
+ */
+
+interface IAudioHalExt {
+    getApmConfigs() generates(ApmConfigs value);
+    getAVConfigs() generates(AVConfigs value);
+};

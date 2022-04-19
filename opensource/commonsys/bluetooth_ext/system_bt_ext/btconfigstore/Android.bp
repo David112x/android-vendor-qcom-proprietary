@@ -1,0 +1,44 @@
+
+// btconfigstore shared library
+// ========================================================
+cc_library_shared {
+    name: "libbtconfigstore",
+    defaults: ["fluoride_defaults_qti"],
+    header_libs: ["libbluetooth_headers"],
+    export_header_lib_headers: ["libbluetooth_headers"],
+    srcs: [
+        "bt_configstore.cc"
+    ],
+    include_dirs: [
+        "vendor/qcom/opensource/commonsys/system/bt",
+        "vendor/qcom/opensource/commonsys/bluetooth_ext/system_bt_ext",
+        "vendor/qcom/opensource/commonsys-intf/bluetooth/include",
+        "vendor/qcom/opensource/commonsys/system/bt/stack/include",
+    ],
+    shared_libs: [
+         "libdl",
+         "libcutils",
+         "libbase",
+         "libhidlbase",
+         "libhidltransport",
+         "libhwbinder",
+         "libutils",
+         "liblog",
+         "android.hidl.base@1.0",
+         "vendor.qti.hardware.btconfigstore@1.0"
+    ],
+    whole_static_libs: [
+        "libosi_qti",
+    ],
+    required: [
+        "bt_configstore.conf",
+    ],
+
+    arch: {
+        arm: {
+            cflags: [
+                "-DARCH_ARM_32"
+            ],
+        },
+    },
+}

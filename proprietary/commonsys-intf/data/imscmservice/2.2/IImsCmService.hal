@@ -1,0 +1,57 @@
+/*
+ * Copyright (c) 2019 Qualcomm Technologies, Inc.
+ * All Rights Reserved.
+ * Confidential and Proprietary - Qualcomm Technologies, Inc.
+ *
+ */
+
+package com.qualcomm.qti.imscmservice@2.2;
+
+import IImsCmServiceListener;
+import @2.1::IImsCmService;
+import @2.0::IMSCM_SERVICE_HANDLE;
+
+interface IImsCmService extends @2.1::IImsCmService {
+    /**
+     * Initialize Service to work with. This returns a status code.
+     * Onsuccessful initialize, OnServiceReady() is triggered with a
+     * Service handle.
+     * Clients should fallback to v2.1 APIs if InitializeService_2_2
+     * returns Unsupported.
+     *
+     * @param[in] iccId       iccId of the subscription the service is requested.
+     * @param[in] cmListener  @2.2::IImsCmServiceListener object for the service
+     * @param[in] userData    user data/request ID.
+     *
+     * @return
+     *   status               code. See #StatusCode.
+     *   listenerId           unique id for cmListener.
+     *
+     * @dependencies
+     *   None.
+     */
+    InitializeService_2_2(string iccId,
+                          IImsCmServiceListener cmListener,
+                          uint32_t userData) generates (uint32_t status,
+                                                        uint64_t listenerId);
+
+    /**
+     * Adds a listener containing the list of
+     * function pointers to be invoked to notify clients of the
+     * various events from the connection manager.
+     *
+     * @param[in] connectionManager    Handle Received in OnServiceReady()
+     * @param[in] cmListener           Structure with the list of callbacks.
+     *
+     * @return
+     *   status                        code. See #StatusCode.
+     *   listenerId                    unique id for cmListener.
+     *
+     * @dependencies
+     *   None.
+     */
+    addListener_2_2 (IMSCM_SERVICE_HANDLE connectionManager,
+                     IImsCmServiceListener cmListener) generates (uint32_t status,
+                                                                  uint64_t listenerId);
+
+};

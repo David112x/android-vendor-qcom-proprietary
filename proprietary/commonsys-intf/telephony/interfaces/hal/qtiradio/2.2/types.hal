@@ -1,0 +1,16 @@
+/*
+ * Copyright (c) 2019 Qualcomm Technologies, Inc.
+ * All Rights Reserved.
+ * Confidential and Proprietary - Qualcomm Technologies, Inc.
+ *
+ */
+
+package vendor.qti.hardware.radio.qtiradio@2.2;
+
+enum NrIconType : int32_t {
+    INVALID           = -1,
+    TYPE_NONE         = 0,
+    TYPE_5G_BASIC     = 1,
+    TYPE_5G_UWB       = 2,
+};
+

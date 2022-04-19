@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!--
+Copyright (c) 2018 Qualcomm Technologies, Inc.
+All Rights Reserved.
+Confidential and Proprietary - Qualcomm Technologies, Inc.
+ -->
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal"
+    android:layout_marginBottom="5dp">
+
+    <TextView
+        android:id="@+id/tv_keyphrase_or_user_flag"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/tv_keyphrase_or_user"
+        android:layout_width="160dp"
+        android:layout_height="wrap_content"
+        android:layout_toEndOf="@id/tv_keyphrase_or_user_flag"
+        android:text="@string/keyphrase" />
+
+    <TextView
+        android:id="@+id/tv_confidence_level"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:text="@string/zero" />
+
+    <TextView
+        android:id="@+id/tv_confidence_level_flag"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toStartOf="@id/tv_confidence_level"
+        android:textStyle="bold"
+        android:text="@string/confidence_level_txt" />
+
+    <TextView
+        android:id="@+id/tv_detected_count"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toStartOf="@+id/tv_confidence_level_flag"
+        android:layout_marginRight="45dp"
+        android:text="@string/zero" />
+
+    <TextView
+        android:id="@+id/tv_detected_count_flag"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toStartOf="@id/tv_detected_count"
+        android:textStyle="bold"
+        android:text="@string/detected_count_txt" />
+</RelativeLayout>

@@ -1,0 +1,44 @@
+/*
+ * Copyright (c) 2018 Qualcomm Technologies, Inc.
+ * All Rights Reserved.
+ * Confidential and Proprietary - Qualcomm Technologies, Inc.
+ */
+
+package vendor.qti.hardware.data.iwlan@1.0;
+
+import android.hardware.radio@1.4::SetupDataCallResult;
+
+/**
+ * Interface declaring response functions for data service.
+ */
+interface IIWlanIndication {
+  /**
+   * Indicates that modem does not supports iWlan feature
+   */
+  oneway modemSupportNotPresent();
+
+  /**
+   * Setup a packet data connection response.
+   *
+   * @param dcList array of SetupDataCallResult identical to that
+   *        returned by IRadio.getDataCallList(). It is the complete list
+   *        of current data contexts including new contexts that have been
+   *        activated. A data call is only removed from this list when the
+   *        framework sends a IRadio.deactivateDataCall() or the radio
+   *        is powered off/on
+   */
+  oneway dataCallListChangeIndication(vec<SetupDataCallResult> dcResponse);
+
+   /**
+   * Indicates that the data registration state parameters have changed.
+   *
+   */
+  oneway dataRegistrationStateChangeIndication();
+
+  /**
+   * Indicates that there is a change in the qualified networks
+   * @param qualifiedNetworksList array of QualifiedNetworks. Identical to
+   *        that returned by IRadio.getAllQualifiedNetworks
+   */
+  oneway qualifiedNetworksChangeIndication(vec<QualifiedNetworks> qualifiedNetworksList);
+};

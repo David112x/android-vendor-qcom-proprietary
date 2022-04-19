@@ -1,0 +1,66 @@
+/*********************************************************************
+Copyright (c) 2019 Qualcomm Technologies, Inc.
+All Rights Reserved.
+Confidential and Proprietary - Qualcomm Technologies, Inc.
+**********************************************************************/
+
+package vendor.qti.ims.rcsconfig@1.1;
+import @1.0::ISetConfigCb;
+import @1.0::IRcsConfig;
+import IGetSettingsCb;
+import ISettingsChangeCb;
+
+/**
+ * This is the interface returned when loading an implementation of RcsConfigService.
+ * The SettingsData contains two fields:one integer and one struct. The integer
+ * field is used to identify the type of SettingsId being set and the struct contains a
+ * vector of key value pair, where key is the SettingsKeys and value is the SettingsValues.
+ *
+ */
+interface IRcsConfig extends @1.0::IRcsConfig {
+    /**
+     * Sends RCS settings data to modem
+     *
+     * @param   settingsData       struct containing type of SettingsId and key value pair
+     *                             for specifying individual SettingsKeys and their values.
+     * @param   cb                 callback to notify the result of setSettingsValue request.
+     */
+    oneway setSettingsValue(SettingsData settingsData, ISetConfigCb cb);
+
+    /**
+     * Queries the modem to retrieve value of all the properties set on modem
+     * of a particular type.
+     *
+     * @param   settingsId         integer value representing the type of SettingsId
+     *                             to query
+     *
+     * @param   cb                 callback to notify the result of getSettingsValue request.
+     */
+    oneway getSettingsValue(SettingsId settingsId, IGetSettingsCb cb);
+
+    /**
+     * Registers for callback with modem to listen for any settings value update on
+     * modem corresponding to the SettingsId parameter
+     *
+     * @param   settingsId         integer value representing the type of SettingsId
+     *                             to query
+     *
+     * @param   cb                 Unsolicited indication received from modem to 
+     *                             notify if value corresponding to given settingsId 
+     *                             has been updated on modem.
+     *
+     * @return  status             status of the register request as per RequestStatus
+     */
+    registerForSettingsChange(SettingsId settingsId, ISettingsChangeCb cb) generates (uint32_t status);
+
+    /**
+     * Deregisters for callback with modem for any settings value update on modem
+     * previously registered for, corresponding to the SettingsId parameter.
+     *
+     * @param   settingsId         integer value representing the type of SettingsId
+     *                             to deregister with
+     *
+     * @return  status             status returned as per RequestStatus
+     */
+    deregisterForSettingsChange(SettingsId settingsId) generates (uint32_t status);
+};

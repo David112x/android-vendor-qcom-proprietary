@@ -1,0 +1,37 @@
+// Bluetooth Audio library for target
+// ========================================================
+cc_library_static {
+    name: "libbt-audio-hal-interface-qti",
+    defaults: ["fluoride_defaults_qti"],
+    include_dirs: [
+        "vendor/qcom/opensource/commonsys/system/bt",
+        "vendor/qcom/opensource/commonsys/system/bt/bta/include",
+        "vendor/qcom/opensource/commonsys/system/bt/bta/sys",
+        "vendor/qcom/opensource/commonsys/bluetooth_ext/vhal/include/",
+        "vendor/qcom/opensource/commonsys/system/bt/btif/include",
+        "vendor/qcom/opensource/commonsys/system/bt/stack/include",
+        "system/bt/audio_hearing_aid_hw/include",
+        "vendor/qcom/opensource/commonsys/bluetooth_ext/system_bt_ext/btif/include",
+        "vendor/qcom/opensource/commonsys/system/bt/btcore/include",
+        "vendor/qcom/opensource/commonsys/system/bt/hci/include",
+        "vendor/qcom/opensource/commonsys-intf/bluetooth/include",
+        "vendor/qcom/opensource/commonsys/system/bt/device/include"
+    ],
+    srcs: [
+        "a2dp_encoding.cc",
+        "client_interface.cc",
+        "hearing_aid_software_encoding.cc",
+    ],
+    shared_libs: [
+        "vendor.qti.hardware.bluetooth_audio@2.0",
+        "libfmq",
+        "libhidlbase",
+        "libhidltransport",
+    ],
+    static_libs: [
+        "libosi_qti",
+    ],
+    cflags: [
+        "-DBUILDCFG",
+    ],
+}

@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!--
+        Copyright (c) 2019 Qualcomm Technologies, Inc.
+        All Rights Reserved.
+        Confidential and Proprietary - Qualcomm Technologies, Inc.
+-->
+
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <Preference android:key="manual_select_sw_mbn_key"
+        android:title="@string/manual_select_sw_mbn"
+        android:summary="@string/manual_select_sw_mbn_summary"/>
+    <Preference android:key="auto_select_sw_mbn_key"
+        android:title="@string/auto_select_sw_mbn"
+        android:summary="@string/auto_select_sw_mbn_summary"/>
+    <Preference android:key="auto_select_ct_sw_mbn_key"
+        android:title="@string/auto_select_ct_sw_mbn"
+        android:summary="@string/auto_select_ct_sw_mbn_summary"/>
+</PreferenceScreen>

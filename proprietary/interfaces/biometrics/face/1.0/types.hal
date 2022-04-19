@@ -1,0 +1,42 @@
+/*!
+ *
+ * Copyright (c) 2018 Qualcomm Technologies, Inc.
+ * All Rights Reserved.
+ * Confidential and Proprietary - Qualcomm Technologies, Inc.
+ *
+ */
+
+package vendor.qti.hardware.biometrics.face@1.0;
+
+typedef int32_t Status;
+
+enum RequestStatus : int32_t {
+  FAIL = -1,
+  UNKNOWN = 0,
+  SUCCESS = 1,
+  ERROR = 2,
+};
+
+enum FaceError : int32_t {
+  ERROR_0 = 0,
+  ERROR_1 = 1,
+  ERROR_2 = 2,
+  ERROR_3 = 3,
+};
+
+enum FrameType : int32_t {
+  FRAME_NIR = 0,
+  FRAME_DEPTH = 1
+};
+
+struct PoseInfo {
+ int32_t poseIdx;
+ bool enrolled;//false is not enrolled, true is enrolled
+};
+
+
+struct ImageHandler {
+  handle mImgHandle;
+  FrameType mFrameType;
+};
+

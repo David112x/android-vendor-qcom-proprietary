@@ -1,0 +1,19 @@
+/*
+ * Copyright (c) 2018 Qualcomm Technologies, Inc.
+ * All Rights Reserved.
+ * Confidential and Proprietary - Qualcomm Technologies, Inc.
+ */
+package vendor.qti.hardware.data.dynamicdds@1.0;
+
+/**
+ * Callback providing result of setAppPreferences
+ */
+interface ISetAppPreferencesCallback{
+    /**
+     * Called when setAppPreferences has result
+     * @param   status       OK if application preferences are got succcessfully,
+     *                       other StatusCode otherwise
+     * @param   reason       detailed reason if failed.
+     */
+    oneway onResult(StatusCode status, string reason);
+};

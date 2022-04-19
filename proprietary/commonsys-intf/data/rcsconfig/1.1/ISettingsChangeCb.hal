@@ -1,0 +1,21 @@
+/*********************************************************************
+Copyright (c) 2019 Qualcomm Technologies, Inc.
+All Rights Reserved.
+Confidential and Proprietary - Qualcomm Technologies, Inc.
+**********************************************************************/
+
+package vendor.qti.ims.rcsconfig@1.1;
+
+
+interface ISettingsChangeCb {
+    /**
+     * Unsolicited indication received from modem to notify HAL client if value of
+     * SettingsId has been updated on modem by registerForSettingsChange()
+     *
+     *
+     * @param   cbdata    struct containing the SettingsId for which callback is registered
+     *                    and the corresponding values from modem as key-value
+     *                    pair vector.
+     */
+    oneway onGetUpdatedSettings(SettingsData cbdata);
+};

@@ -1,0 +1,38 @@
+/*!
+ *
+ * Copyright (c) 2018 Qualcomm Technologies, Inc.
+ * All Rights Reserved.
+ * Confidential and Proprietary - Qualcomm Technologies, Inc.
+ *
+ */
+package vendor.qti.hardware.cvp@1.0;
+
+interface ICvpPyramid_Callbacks{
+//------------------------------------------------------------------------------
+/// @brief
+///    The pyramid has been processed by the CVP system, and the
+///    output is ready to be consumed. This callback is used to notify the
+///    application. The application sends the image using the
+///    cvpPyramid_Async call.
+///
+/// @param eStatus
+///    CVP status for the current process.
+/// @param pOutput
+///    Pointer to the pyramid output structure.
+/// @param hPyramid
+///    Handle for the pyramid that was passed in the cvpPyramid_Async function.
+/// @param pSessionUserData
+///    User-data that was set in the cvpInitPyramid structure.
+/// @param pTaskUserData
+///    User-data that was passed in the cvpPyramid_Async function
+///    which corresponds to this callback.
+///
+/// @ingroup cvp_image_transform, cvp_feature_detection
+//------------------------------------------------------------------------------
+oneway cvpHalPyramidCb (cvpHalStatus             eStatus,
+                        cvpHalPyramidOutput      pOutput,
+                        cvpHalHandle             hPyramid,
+                        uint64_t                 pSessionUserData,
+                        uint64_t                 pTaskUserData);
+
+};

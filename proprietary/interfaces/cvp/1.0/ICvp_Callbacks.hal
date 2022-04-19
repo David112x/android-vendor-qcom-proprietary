@@ -1,0 +1,29 @@
+/*!
+ *
+ * Copyright (c) 2018 Qualcomm Technologies, Inc.
+ * All Rights Reserved.
+ * Confidential and Proprietary - Qualcomm Technologies, Inc.
+ *
+ */
+package vendor.qti.hardware.cvp@1.0;
+
+interface ICvp_Callbacks{
+
+//------------------------------------------------------------------------------
+/// @brief
+///    CVP Hardware has encountered an irrecoverable error
+///    CVP Session must be terminated. This callback is used to notify the
+///    application.
+/// @param hSession
+///    CVP session handle.
+/// @param eEvent
+///    Error Event Generated.
+/// @param pSessionUserData
+///    User-data that was set in the cvpCreateSession call.
+///
+/// @ingroup cvp_types
+//------------------------------------------------------------------------------
+oneway cvpHalEventHandlerCb(cvpHalSession  hSession,
+                            cvpHalEvent    eEvent,
+                            uint64_t       pSessionUserData);
+};

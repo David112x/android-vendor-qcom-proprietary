@@ -1,0 +1,15 @@
+/*********************************************************************
+Copyright (c) 2018 Qualcomm Technologies, Inc.
+All Rights Reserved.
+Confidential and Proprietary - Qualcomm Technologies, Inc.
+**********************************************************************/
+
+package vendor.qti.ims.rcsconfig@1.0;
+
+interface IRcsConfigListener {
+    /**
+    * Callback triggered due to service error so reconfiguration is required from the client.
+    * On getting this event the client needs to invoke the setConfig API again.
+    */
+    oneway onReconfigNeeded();
+};

@@ -1,0 +1,34 @@
+/*
+ * Copyright (c) 2018 Qualcomm Technologies, Inc.
+ * All Rights Reserved.
+ * Confidential and Proprietary - Qualcomm Technologies, Inc.
+ */
+
+package vendor.qti.hardware.wifi.wifilearner@1.0;
+
+import vendor.qti.hardware.wifi.wifilearner@1.0::types;
+
+interface IWifiStats {
+
+ /*
+ * Function     : getPeerStats
+ * Description  : gets peer stats on given interface.
+ * Input params : interface name, peer mac address.
+ * Out params   : IfaceStats
+ * Return       : WifiLearnerStatus
+ *
+ */
+  getPeerStats(string ifaceName, MacAddress peerMac) generates (WifiLearnerStatus status, IfaceStats stats);
+
+
+ /*
+ * Function     : getSurveyDumpResults
+ * Description  : gets survey dump results.
+ * Input params : interface name.
+ * Out params   : ChannelSurveyInfo list
+ * Return       : WifiLearnerStatus
+ *
+ */
+  getSurveyDumpResults(string ifaceName) generates (WifiLearnerStatus status, vec<ChannelSurveyInfo> surveyResults);
+};
+

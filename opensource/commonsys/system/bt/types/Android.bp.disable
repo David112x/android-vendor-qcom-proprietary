@@ -1,0 +1,28 @@
+// Bluetooth types
+cc_library_static {
+    name: "libbluetooth-types_qti",
+    vendor_available: true,
+    defaults: ["fluoride_types_defaults_qti"],
+    cflags: [
+        /* we export all classes, so change default visibility, instead of having EXPORT_SYMBOL on each class*/
+        "-fvisibility=default",
+    ],
+    host_supported: true,
+    srcs: [
+        "raw_address.cc",
+        "bluetooth/uuid.cc",
+    ],
+    export_include_dirs: ["./"],
+}
+
+// ========================================================
+cc_test {
+    name: "net_test_types_qti",
+    test_suites: ["device-tests"],
+    defaults: ["fluoride_defaults"],
+    host_supported: true,
+    srcs: [
+        "test/raw_address_unittest.cc",
+        "test/bluetooth/uuid_unittest.cc",
+    ],
+}

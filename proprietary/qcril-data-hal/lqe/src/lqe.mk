@@ -1,0 +1,24 @@
+LQE_SRC_PATH := $(call my-dir)
+
+LOCAL_SRC_FILES += $(call all-c-files-under, $(LQE_SRC_PATH))
+
+LOCAL_CFLAGS += -DFEATURE_DATA_LOG_QXDM
+LOCAL_CFLAGS += -DFEATURE_QDP_LINUX_ANDROID
+
+LOCAL_SHARED_LIBRARIES += libqmi
+LOCAL_SHARED_LIBRARIES += libdiag
+LOCAL_SHARED_LIBRARIES += libdsutils
+LOCAL_SHARED_LIBRARIES += libcutils
+LOCAL_SHARED_LIBRARIES += libqmiservices
+LOCAL_SHARED_LIBRARIES += qtimutex
+
+LOCAL_HEADER_LIBRARIES += qtimutex-headers
+
+LOCAL_C_INCLUDES += $(TARGET_OUT_HEADERS)/diag/include
+LOCAL_C_INCLUDES += $(LQE_SRC_PATH)/../inc
+LOCAL_C_INCLUDES += $(LQE_SRC_PATH)/../../../data/dsutils/inc
+LOCAL_C_INCLUDES += $(TARGET_OUT_HEADERS)/common/inc
+LOCAL_C_INCLUDES += $(TARGET_OUT_HEADERS)/qmi-framework/inc
+LOCAL_C_INCLUDES += $(TARGET_OUT_HEADERS)/qmi/inc
+
+$(info Included lqe.mk...)

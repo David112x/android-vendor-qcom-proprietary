@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    Copyright (c) 2019 Qualcomm Technologies, Inc.
+    All Rights Reserved.
+    Confidential and Proprietary - Qualcomm Technologies, Inc.
+-->
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <string name="app_name">SIM卡联系人</string>
+
+    <string name="sim_card_empty_message">无SIM卡</string>
+
+    <string name="sim_cards_selection_title">选择SIM卡</string>
+
+    <!-- Label to select all contacts in multiple picker -->
+    <string name="menu_select_all">全选</string>
+
+    <!-- Label to select multiple contacts in multiple picker -->
+    <string name="select_multiple_contacts_confirmation_text">选择</string>
+
+    <string name="import_from_device_confirmation_text">导入</string>
+
+    <!-- Label to import contacts from device -->
+    <string name="menu_import">从手机导入</string>
+
+    <!-- Label to select all contacts in multiple picker -->
+    <string name="menu_export">导出</string>
+
+    <!-- Menu item used to delete a specific contact -->
+    <string name="menu_deleteContact">删除</string>
+
+    <string name="hint_addContacts">添加联系人</string>
+
+    <!-- Positive button text of confirmation dialog contents -->
+    <string name="delete_positive_button_Confirmation">删除</string>
+
+    <!-- Confirmation dialog. Shown after user selects to delete one writable contact [CHAR LIMIT=NONE]  -->
+    <string name="delete_single_contact_confirmation">要删除此联系人吗？</string>
+
+    <!-- Confirmation dialog. Shown after user selects to delete multimple writable contacts. [CHAR LIMIT=NONE]  -->
+    <string name="delete_multiple_contacts_confirmation">要删除所选联系人吗？</string>
+
+    <string name="delete_contacts_title">删除联系人</string>
+
+    <!-- Query hint displayed inside the search field [CHAR LIMIT=64] -->
+    <string name="hint_findContacts">搜索联系人</string>
+
+    <string name="contacts_selected">已选中%d个</string>
+
+    <!-- Label to clear all selection in multiple picker -->
+    <string name="menu_deselect_all">取消全选</string>
+
+    <!-- import contacts from device -->
+    <string name="importing">"正在导入"</string>
+
+    <string name="import_contacts_title">"从手机导入"</string>
+
+    <string name="import_device_contact_failed">导入失败, 名字: <xliff:g id="name">%1$s</xliff:g>, 号码: <xliff:g id="number">%2$s</xliff:g>, 邮箱: <xliff:g id="email">%3$s</xliff:g></string>
+
+    <string name="sim_card_full">"SIM卡已满，<xliff:g id="insertCount">%d</xliff:g>条成功导入"</string>
+
+    <string name="import_finished">"导入结束"</string>
+
+    <string name="contact_no_phone_or_email">导入失败, <xliff:g id="name">%s</xliff:g>没有电话号码或者邮箱地址</string>
+
+    <!-- export sim contacts to device-->
+    <string name="exporting">"正在导出"</string>
+
+    <string name="export_positive_button_Confirmation">"导出"</string>
+
+    <string name="export_single_contact_confirmation">要导出此联系人吗？</string>
+
+    <string name="export_multiple_contacts_confirmation">要导出所选联系人吗？</string>
+
+    <string name="export_contacts_title">导出到手机</string>
+
+    <plurals name="sim_export_success_toast_fmt">
+        <item quantity="other">已导出 <xliff:g id="COUNT">%d</xliff:g> 位 SIM 卡联系人</item>
+        <item quantity="one">已导出 1 位 SIM 卡联系人</item>
+    </plurals>
+
+    <string name="sim_export_failed_toast">无法导出SIM联系人</string>
+
+    <string name="create_new_contact_title">创建新联系人</string>
+
+    <string name="edit_existing_contact_title">修改联系人</string>
+
+    <string name="menu_save">保存</string>
+
+    <string name="editor_name_entry_hint">名字</string>
+    <string name="editor_email_entry_hint">电子邮件</string>
+    <string name="editor_phone_entry_hint">电话</string>
+
+    <string name="editor_saving_to">保存到</string>
+
+    <string name="create_new_or_edit_failure_message">无法保存对联系人的更改</string>
+
+    <string name="add_phone_number">添加电话号码</string>
+    <string name="add_email">添加电子邮件地址</string>
+
+    <string name="copy_to_phone">复制到手机</string>
+    <string name="copy_to_sim">复制到</string>
+    <string name="copy_done">复制成功！</string>
+    <string name="copy_failure">复制失败！</string>
+
+    <!--######################################################################################-->
+    <!-- Content description for the fake action menu up button as used
+     inside edit or select. [CHAR LIMIT=NONE] -->
+    <string name="action_menu_back_from_edit_select">关闭</string>
+
+    <!-- The user doesn't have all permissions required to use the current screen. So
+     close the current screen and show the user this message. -->
+    <string name="missing_required_permission">您已停用一项必需权限。</string>
+
+    <string name="cancel_confirmation_dialog_message">"要舍弃更改吗？"</string>
+    <string name="cancel_confirmation_dialog_cancel_editing_button">"舍弃"</string>
+    <string name="menu_editContact">"修改"</string>
+</resources>

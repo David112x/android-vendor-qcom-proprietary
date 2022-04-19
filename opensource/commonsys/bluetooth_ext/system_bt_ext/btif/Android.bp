@@ -1,0 +1,56 @@
+// libbtif_ext static library for target
+// ========================================================
+cc_library_static {
+    name: "libbtif_ext",
+    defaults: ["fluoride_defaults_qti"],
+    include_dirs: [
+        "vendor/qcom/opensource/commonsys/system/bt",
+        "vendor/qcom/opensource/commonsys/system/bt/btcore/include",
+        "vendor/qcom/opensource/commonsys/system/bt/hci/include",
+        "vendor/qcom/opensource/commonsys/system/bt/internal_include",
+        "vendor/qcom/opensource/commonsys/system/bt/stack/include",
+        "vendor/qcom/opensource/commonsys/system/bt/btif/include",
+        "vendor/qcom/opensource/commonsys/system/bt/bta/include/",
+        "vendor/qcom/opensource/commonsys/system/bt/bta/sys/",
+        "vendor/qcom/opensource/commonsys/system/bt/bta/ag/",
+        "vendor/qcom/opensource/commonsys/system/bt/utils/include/",
+        "vendor/qcom/opensource/commonsys/system/bt/stack/l2cap/",
+        "vendor/qcom/opensource/commonsys/bluetooth_ext/system_bt_ext/include/",
+        "vendor/qcom/opensource/commonsys/bluetooth_ext/system_bt_ext/device/include/",
+        "vendor/qcom/opensource/commonsys/bluetooth_ext/system_bt_ext/btif/include/",
+        "vendor/qcom/opensource/commonsys/bluetooth_ext/system_bt_ext/bta/include/",
+        "vendor/qcom/opensource/commonsys/bluetooth_ext/vhal/include/",
+        "vendor/qcom/opensource/commonsys-intf/bluetooth/include",
+    ],
+    srcs: [
+        "src/btif_l2cap.cc",
+        "src/btif_rfcomm.cc",
+        "src/btif_vendor.cc",
+        "src/btif_vendor_socket.cc",
+        "src/btif_gap.cc",
+        "src/btif_gatt_qual.cc",
+        "src/btif_smp.cc",
+        "src/btif_tws_plus.cc",
+        "src/btif_ba.cc",
+        "src/btif_twsp_hf.cc",
+        "src/btif_iot_config.cc",
+        "src/btif_vendor_hf.cc",
+    ],
+    shared_libs: [
+        "libcutils",
+        "libchrome",
+        "libbase",
+        "libutils",
+        "libhardware",
+    ],
+    static_libs: [
+        "libosi_qti",
+        "libbt-utils_qti",
+        "libbluetooth-types",
+    ],
+    cflags: [
+        "-DBUILDCFG",
+        "-DHAS_NO_BDROID_BUILDCFG",
+    ],
+
+}

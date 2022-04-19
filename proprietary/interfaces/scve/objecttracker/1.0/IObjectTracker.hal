@@ -1,0 +1,43 @@
+/*!
+ *
+ * Copyright (c) 2018 Qualcomm Technologies, Inc.
+ * All Rights Reserved.
+ * Confidential and Proprietary - Qualcomm Technologies, Inc.
+ *
+ */
+package vendor.qti.hardware.scve.objecttracker@1.0;
+
+import IObjectTracker_Callbacks;
+
+interface IObjectTracker{
+
+    createInstance(OperationMode opMode, ImageDimension_hal sDimension, ColorFormat eColorFormat,
+                IObjectTracker_Callbacks objCB, ObjectTracker_Precision ePrecision,
+                handle fd_pSessionUserData, int64_t size_pSessionUserData) generates (Status status,int64_t instanceId);
+
+    destroyInstance(int64_t instanceId) generates (Status status);
+
+    registerObject_sync(Image_hal pImage, Rect_hal sROI, uint32_t eFlags) generates (uint64_t pIndex, Status status);
+
+    registerObjectByPoint_sync(Image_hal pImage, Point_hal sPoint, uint32_t eFlags) generates (uint64_t pIndex, Status status);
+
+    trackObjects_sync(Image_hal pImage, uint32_t nSize) generates (vec<ObjectTrackerResult_hal> pResult, Status status);
+
+    trackObjectsExt_sync(Image_hal pImage, vec<uint64_t> pIndices, uint32_t nNumIndices, uint32_t nSize) generates (vec<ObjectTrackerResult_hal> pResult, Status status);
+
+    registerObject_async(Image_hal pImage, Rect_hal sROI, uint32_t bBufferBlocked,
+                       uint32_t eFlags, handle fd_pTaskUserData, int64_t len_pTaskUserData)
+                       generates (Status status);
+
+    registerObjectByPoint_async(Image_hal pImage, Point_hal sPoint, uint32_t bBufferBlocked,
+                       uint32_t eFlags, handle fd_pTaskUserData, int64_t len_pTaskUserData)
+                       generates (Status status);
+
+    trackObjects_async(Image_hal pImage, uint32_t nSize, uint32_t bBufferBlocked, handle fd_pTaskUserData, int64_t len_pTaskUserData) generates (vec<ObjectTrackerResult_hal> pResult, Status status);
+
+    trackObjectsExt_async(Image_hal pImage, uint32_t nSize, uint32_t bBufferBlocked, handle fd_pTaskUserData, int64_t len_pTaskUserData,vec<uint64_t> pIndices, uint32_t nNumIndices)
+                          generates (vec<ObjectTrackerResult_hal> pResult, Status status);
+
+    unRegisterObject(uint64_t pIndex) generates (Status status);
+
+};

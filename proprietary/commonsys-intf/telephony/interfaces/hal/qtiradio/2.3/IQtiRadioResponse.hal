@@ -1,0 +1,35 @@
+/*
+ * Copyright (c) 2019 Qualcomm Technologies, Inc.
+ * All Rights Reserved.
+ * Confidential and Proprietary - Qualcomm Technologies, Inc.
+ *
+ */
+
+package vendor.qti.hardware.radio.qtiradio@2.3;
+
+import @2.2::IQtiRadioResponse;
+import @2.0::Status;
+/*
+ * Interface declaring responses to solicited qtiradio requests
+ *
+ */
+interface IQtiRadioResponse extends @2.2::IQtiRadioResponse {
+
+     /**
+     * Response to IQtiRadio.enableEndc
+     *
+     * @param serial to match request/response. Response must inclue same serial as request.
+     * @param errorCode - errorCode as per types.hal returned from RIL.
+     * @param status SUCCESS/FAILURE of the request.
+     */
+    oneway onEnableEndcResponse(int32_t serial, uint32_t errorCode, Status status);
+
+     /**
+     * Response to IQtiRadio.queryEndcStatus
+     *
+     * @param serial to match request/response. Response must inclue same serial as request.
+     * @param errorCode - errorCode as per types.hal returned from RIL.
+     * @param endcStatus values as per types.hal to indicate ENDC is enabled/disabled.
+     */
+    oneway onEndcStatusResponse(int32_t serial, uint32_t errorCode, EndcStatus endcStatus);
+};

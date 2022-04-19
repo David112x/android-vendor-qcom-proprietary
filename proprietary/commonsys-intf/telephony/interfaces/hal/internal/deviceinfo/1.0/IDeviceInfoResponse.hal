@@ -1,0 +1,38 @@
+/*
+ * Copyright (c) 2019 Qualcomm Technologies, Inc.
+ * All Rights Reserved.
+ * Confidential and Proprietary - Qualcomm Technologies, Inc.
+ *
+ */
+
+package vendor.qti.hardware.radio.internal.deviceinfo@1.0;
+
+interface IDeviceInfoResponse {
+    /**
+     * Response to the sendFeaturesSupported Request
+     *
+     * @param serial - Serial number of request.
+     *
+     * @param errorCode - Error code returned from RIL
+     */
+    sendFeaturesSupportedResponse(int32_t serial, uint32_t errorCode);
+
+    /**
+     * Response to the sendDevicePowerInfo Request
+     *
+     * @param serial - Serial number of request.
+     *
+     * @param errorCode - Error code returned from RIL
+     */
+    sendDevicePowerInfoResponse(int32_t serial, uint32_t errorCode);
+
+    /**
+     * Response to the sendDeviceInteractiveInfo Request
+     *
+     * @param serial - Serial number of request.
+     *
+     * @param errorCode - Error code returned from RIL
+     */
+    sendDeviceInteractiveInfoResponse(int32_t serial, uint32_t errorCode);
+};
+

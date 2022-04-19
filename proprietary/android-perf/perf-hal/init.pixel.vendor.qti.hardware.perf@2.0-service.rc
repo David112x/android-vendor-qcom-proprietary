@@ -1,0 +1,15 @@
+#  @file    init.pixel.vendor.qti.hardware.perf@2.0-service.rc
+#  @brief   Defination to disable perf service
+#
+#  DESCRIPTION
+#  ---------------------------------------------------------------------------
+#       Copyright (c) 2019 Qualcomm Technologies, Inc.
+#       All Rights Reserved.
+#       Confidential and Proprietary - Qualcomm Technologies, Inc.
+#  ---------------------------------------------------------------------------
+service perf-hal-2-0 /vendor/bin/hw/vendor.qti.hardware.perf@2.0-service
+    override
+    class hal
+    user root
+    disabled
+    group root readproc

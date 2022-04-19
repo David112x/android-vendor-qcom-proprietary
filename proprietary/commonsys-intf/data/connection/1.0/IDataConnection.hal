@@ -1,0 +1,48 @@
+/*
+ * Copyright (c) 2018 Qualcomm Technologies, Inc.
+ * All Rights Reserved.
+ * Confidential and Proprietary - Qualcomm Technologies, Inc.
+ */
+
+package vendor.qti.hardware.data.connection@1.0;
+
+import IDataConnectionResponse;
+import IDataConnectionIndication;
+
+interface IDataConnection {
+    /**
+     * Queries for allocated bearers on the specified data call. Data
+     * connection must be established. The caller will receive the response
+     * through IDataConnectionResponse.onBearerAllocationResponse()
+     *
+     * @param cid The call id to request bearer information for
+     * @param response Object which contains the response function
+     * @return status OK or NOT_SUPPORTED
+     */
+    getBearerAllocation(int32_t cid, IDataConnectionResponse response)
+             generates (StatusCode status);
+
+    /**
+     * Queries for allocated bearers on all established data calls.
+     * The caller will receive the response through
+     * IDataConnectionResponse.onAllBearerAllocationsResponse()
+     *
+     * @param response Object which contains the response function
+     * @return status OK or NOT_SUPPORTED
+     */
+    getAllBearerAllocations(IDataConnectionResponse response)
+                 generates (StatusCode status);
+
+    /**
+     * Begin listening for bearer allocation changes on all established data
+     * calls. This indication will be invoked whenever UL or DL bearer type
+     * changes. When a call is disconnected, it will be removed from the list.
+     * The caller will be notified through
+     * IDataConnectionIndication.onBearerAllocationUpdate()
+     *
+     * @param indication Object which will be notified of changes
+     * @return status OK or NOT_SUPPORTED
+     */
+    registerForAllBearerAllocationUpdates(IDataConnectionIndication indication)
+                               generates (StatusCode status);
+};

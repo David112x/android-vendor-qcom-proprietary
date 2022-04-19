@@ -1,0 +1,57 @@
+/*
+ * Copyright (c) 2019 Qualcomm Technologies, Inc.
+ * All Rights Reserved.
+ * Confidential and Proprietary - Qualcomm Technologies, Inc.
+ */
+
+package vendor.qti.hardware.trustedui@1.0;
+
+/**
+ * Response code
+ */
+enum Response : int32_t {
+    TUI_SUCCESS                   =  0,
+    TUI_FAILURE                   = -1,
+    TUI_LISTENER_ERROR            = -2,
+    TUI_ALREADY_RUNNING           = -3,
+    TUI_IS_NOT_RUNNING            = -4,
+};
+
+struct TUICreateParams {
+    /**
+     * String identifier for the trusted app running on the selected execute engine, can be app_name
+     */
+    string trustedEE;
+    /**
+     * Unique display identifier for display index, on which the session is requested.
+     * @note  A vector of display ids can be obtained by invoking getPhysicalDisplayIds() API
+     * from SurfaceControl (Java) or ISurfaceComposer (JNI).
+     */
+    int32_t dpyIdx;
+    /**
+     * This is an _optional_ parameter to request minimum size required for the shared memory
+     * buffer in bytes. HAL may override this size with a larger size if the requested size
+     * is inadequate.
+     * @note The shared buffer should be able to hold both command and response data. Client may
+     * set minSharedMemSize = 0 if it does not want to recommend any size.
+     */
+    uint32_t minSharedMemSize;
+};
+
+struct TUIConfig {
+    /**
+     * Enable/Disable use of Secure Indicator.
+     */
+    bool useSecureIndicator;
+    /**
+     * String identifier for the layout to be displayed on the screen.
+     */
+    string layoutId;
+    /**
+     * Optionally enable periodic authentication of Secure content displayed on the screen. This
+     * can be enabled if the screen content is not refreshed at display refresh rate.
+     * @caution The use of this feature can cause some performance impact.
+     */
+    bool enableFrameAuth;
+};
+

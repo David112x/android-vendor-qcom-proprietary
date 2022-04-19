@@ -1,0 +1,19 @@
+cc_library_static {
+    name: "libudrv-uipc_qti",
+    defaults: ["fluoride_defaults_qti"],
+    srcs: [
+        "ulinux/uipc.cc",
+    ],
+    include_dirs: [
+      "vendor/qcom/opensource/commonsys/system/bt",
+      "vendor/qcom/opensource/commonsys/system/bt/internal_include",
+      "vendor/qcom/opensource/commonsys/system/bt/utils/include",
+      "vendor/qcom/opensource/commonsys/system/bt/stack/include",
+    ],
+    local_include_dirs: [
+      "include",
+    ],
+    shared_libs: [
+      "liblog",
+    ],
+}

@@ -1,0 +1,37 @@
+subdirs = [
+    "*/*",
+    "*/*/*",
+]
+
+hidl_package_root {
+    name: "com.qualcomm.qti.uceservice",
+    path: "vendor/qcom/proprietary/commonsys-intf/data/uceservice",
+}
+hidl_package_root {
+    name: "com.qualcomm.qti.imscmservice",
+    path: "vendor/qcom/proprietary/commonsys-intf/data/imscmservice",
+}
+hidl_package_root {
+    name: "vendor.qti.hardware.data.dynamicdds",
+    path: "vendor/qcom/proprietary/commonsys-intf/data/dynamicdds",
+}
+hidl_package_root {
+    name: "vendor.qti.ims.rcsconfig",
+    path: "vendor/qcom/proprietary/commonsys-intf/data/rcsconfig",
+}
+hidl_package_root {
+    name: "vendor.qti.latency",
+    path: "vendor/qcom/proprietary/commonsys-intf/data/latency",
+}
+hidl_package_root {
+    name: "vendor.qti.hardware.data.iwlan",
+    path: "vendor/qcom/proprietary/commonsys-intf/data/iwlan",
+}
+hidl_package_root {
+    name: "vendor.qti.hardware.data.connection",
+    path: "vendor/qcom/proprietary/commonsys-intf/data/connection",
+}
+hidl_package_root {
+    name: "vendor.qti.data.slm",
+    path: "vendor/qcom/proprietary/commonsys-intf/data/slm",
+}

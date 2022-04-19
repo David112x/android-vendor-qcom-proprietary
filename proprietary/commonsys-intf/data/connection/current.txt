@@ -1,0 +1,7 @@
+e5175c20a0e4a6842be151f4030a0e2d3ce4cb5d285adfb8c8f3c7c7573c0f55 vendor.qti.hardware.data.connection@1.0::types
+e25e0dc601bae007040896dbda419ce196e84299c0d0bf4ee9100d905ac3eb20 vendor.qti.hardware.data.connection@1.0::IDataConnection
+b993d75c7862a50696649e1340e5de8d917da3debf637cdbf163487c9971b14b vendor.qti.hardware.data.connection@1.0::IDataConnectionIndication
+f501ffbc263e8d8fd863642e8cd8daf6d7fff08c8b7c1720e81d731a082ee037 vendor.qti.hardware.data.connection@1.0::IDataConnectionResponse
+
+#1.1 hal released in Android Q
+194c7b003e1886d07bea06e0b6dd72b7c9b6f13e2f1007d1d0494d1c61f2fd89 vendor.qti.hardware.data.connection@1.1::IDataConnection

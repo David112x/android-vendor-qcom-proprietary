@@ -1,0 +1,1 @@
+../../../proprietary/qcril-data-hal/datamodule/module/qcril-data-product.mk

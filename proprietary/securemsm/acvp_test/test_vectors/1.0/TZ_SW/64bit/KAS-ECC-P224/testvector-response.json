@@ -1,0 +1,272 @@
+[ {
+  "acvVersion" : "1.0"
+}, {
+  "vsId" : 21957,
+  "algorithm" : "KAS-ECC",
+  "mode" : "Component",
+  "revision" : "1.0",
+  "isSample" : false,
+  "testGroups" : [ {
+    "tgId" : 1,
+    "tests" : [ {
+      "tcId" : 1,
+      "ephemeralPublicIutX" : "EAD9369FBEFFBCFACC846C885C2A7F32ED5AEEC7A7F722FCB3916144",
+      "ephemeralPublicIutY" : "15642930A72CC769906D85960274BB3EAE0B563A13802DB0143DB594",
+      "hashZIut" : "5F42D7DC3F0196C7508F5F2463A8C2B3646E277CF39DC2AB58CD157BA61B224D"
+    }, {
+      "tcId" : 2,
+      "ephemeralPublicIutX" : "96D23E1E0A538CABA21AC431D0213620837C4FB50936FE21123AFE4D",
+      "ephemeralPublicIutY" : "F0207F2733FFD4AF7AA995FD5665A6C5C8E0559109E6225B5D26C46F",
+      "hashZIut" : "3FA89B0992272E815A4662B88D6C1DEC6563265D82EF90E373F52D8083778094"
+    }, {
+      "tcId" : 3,
+      "ephemeralPublicIutX" : "2E5CA644CE1D59EB97C19A626193154D883B31C1D014C3B0A20F5338",
+      "ephemeralPublicIutY" : "AC9AE4EFEA9C503A408B4A255B0D15C4AA5AE672A4FD4D5C63DA7749",
+      "hashZIut" : "C287EB65ABC35BEFE8C6B29ACDD2E0CF2627AAE795E35F68679B24446161C132"
+    }, {
+      "tcId" : 4,
+      "ephemeralPublicIutX" : "1BA4AEEF83DC9251690DF2039BF285551E4FD43298BAD0569439C90E",
+      "ephemeralPublicIutY" : "D1C3B736337E05ABBDB97B59DEFD7DDD8ED2ECAEEC0356289C6A5978",
+      "hashZIut" : "F81CD46640A74CE2434E178A5207837B97E8AF340A46E74A5003826EEDCD4BCC"
+    }, {
+      "tcId" : 5,
+      "ephemeralPublicIutX" : "5594E26E328C059C4885D77D2294008DF851B1C5518D190FFAB4C098",
+      "ephemeralPublicIutY" : "342966014E4D12C0C11EBA4563D71CAD0C6FE97FA3832A007E705E1B",
+      "hashZIut" : "23A3A652939C285AABCF475524410875E82F597BF1C362A274878A6F47DFDC00"
+    }, {
+      "tcId" : 6,
+      "ephemeralPublicIutX" : "AB314E592404E61D08BE2B39627AFF350C821375357B369387B04E4E",
+      "ephemeralPublicIutY" : "E51F737931C0D5DAA8FF51C7935424EF0DEA091BA1382BEA7C2FA103",
+      "hashZIut" : "EFA6869ECE5D30E7E87B3AE5082E2A9D2C1EEA09B2A91519BF0C751ADE5C532E"
+    }, {
+      "tcId" : 7,
+      "ephemeralPublicIutX" : "EF55A6DBBFC5523B46BAEE06FA4EE5BF0F5937BCA57C62B92366D816",
+      "ephemeralPublicIutY" : "84CF5D5143A384EE569EB5CA318A520075E0769B768D8EA08D35BDB6",
+      "hashZIut" : "55453A7656EDDD77455CC5F01051C9B5588BE0BB51FB419E594920F163B1EE81"
+    }, {
+      "tcId" : 8,
+      "ephemeralPublicIutX" : "7C536C777752CDC0D3848CE9BFC06BDA6CB385A59E01CA6168027BDB",
+      "ephemeralPublicIutY" : "EF1E4699B84DDA7815DA50857A99BFF3E464FD087B03371E4DD79B24",
+      "hashZIut" : "94370FC8238A246DC3B2EFE076C10B1E36DEAFAC178C45234839B55F8B169C72"
+    }, {
+      "tcId" : 9,
+      "ephemeralPublicIutX" : "B010EEEE1DD52E2E796F481D70391BCC6969F4ACC6C12B3A3370AFEA",
+      "ephemeralPublicIutY" : "C78DA280FF6B90E2864CA94AF5937CB449EE7C12CA1CFA77F273A7D4",
+      "hashZIut" : "D2044FD9A4B6D85162D1F25EE7898D9100EC2115B99CA88978B67439E35607D1"
+    }, {
+      "tcId" : 10,
+      "ephemeralPublicIutX" : "815A24222BA042AAF5BC040FBB92051EE59FA79967F5BF44A9F9C93C",
+      "ephemeralPublicIutY" : "8B0800E8665430EDE9923DBD7ABD8171036EF22A48234C396DC58074",
+      "hashZIut" : "641655A5DEEC9A49E03627D1FD5569E289E8D16D026FCDAA7EED0E393BBFAD4A"
+    } ]
+  }, {
+    "tgId" : 2,
+    "tests" : [ {
+      "tcId" : 11,
+      "ephemeralPublicIutX" : "64AABBBCE1E838D799BDCCC8B4203917A7AD602AD225177E171DB105",
+      "ephemeralPublicIutY" : "0966E75CD61FC4CA113BCFB17F9FF35FE66872A1DC5CA50B4D5807DC",
+      "hashZIut" : "0C861DD18A3D39B6861B0D93935E378BAF1B60CCBDF198CC1FDC1055FC68293B"
+    }, {
+      "tcId" : 12,
+      "ephemeralPublicIutX" : "FF4F45D8D1AE50BE9EC60F28683C59024F16E9CAEEAFBB0C22A39D89",
+      "ephemeralPublicIutY" : "F6CBC6065FEDF5D770A0A873EFE0FEE9837BD78B2299667BE10FFC3B",
+      "hashZIut" : "013CB240FC775CEA76DBFACD975FC45E45E2E38D0D6F8C1768D7192E9694C340"
+    }, {
+      "tcId" : 13,
+      "ephemeralPublicIutX" : "F32C8241815117520161E9C6D96CBB0613B9356EC2E1A1893BCB0170",
+      "ephemeralPublicIutY" : "D44EE6FDB89A028ECA1D5F41A0E78CF242ED5E9AFAE87870C2D85377",
+      "hashZIut" : "93175CFF7A5C7A24E4BA418D28E897F25740ABF8B3906BCAEC6CCB18BB89B61C"
+    }, {
+      "tcId" : 14,
+      "ephemeralPublicIutX" : "735236150B3F0A48C55E4ACFAD122B42F4793B71C6AEC7B7C45DD756",
+      "ephemeralPublicIutY" : "E30DCAC99962026E340A391E01E939C371F6D44FFC621636C1A6BD7C",
+      "hashZIut" : "9D03D454C01AD534A0F58E4C99E444A38E7B639C7DED469F00E34792488B1CAF"
+    }, {
+      "tcId" : 15,
+      "ephemeralPublicIutX" : "0056AF68582D9CCA4D2C78420C9457F6BD42FBE39B9E5B2DCE1544CE",
+      "ephemeralPublicIutY" : "EF5B56FC454F6A79957B9285D69F7335917940FAD83072F5A36ABABB",
+      "hashZIut" : "6FD56BE80E1C64D11FFA951F452E79D7EC1CA5CEB908AA0C83E59FD427D07F2A"
+    }, {
+      "tcId" : 16,
+      "ephemeralPublicIutX" : "8C2A2679166493372970BDB278A6D7A6652A4983D152438FBC80F2BF",
+      "ephemeralPublicIutY" : "CD27890474B9D3EB7D1FBE611CF69C219A04E7F5DEA7D0E1672D6FAD",
+      "hashZIut" : "7EA4D07780B56897ED34A5A6724F11521D859EEF0EA2DA708FEAC9386BFB4124"
+    }, {
+      "tcId" : 17,
+      "ephemeralPublicIutX" : "9F18D87353894B6A5B806CCF8291AEE8E58391FA3F1E5BDCC5A5369B",
+      "ephemeralPublicIutY" : "E43366277FB2C219E0936301B5A7E55C9C6CD8305CF69A880091334A",
+      "hashZIut" : "F6FFFDA2679B1FE1A7182DC64F4900D25112C908B865C720D86ABDB09799F425"
+    }, {
+      "tcId" : 18,
+      "ephemeralPublicIutX" : "C266F5D7454D72D490CCE08FE7B8172A1D98FE66A60F9AEC18CD0B6C",
+      "ephemeralPublicIutY" : "CF1B93AA3A81A3A0B18D3FA49646536CC78858AC54E5418D1D6798EE",
+      "hashZIut" : "9C53319A33B64A37D42BD279974313535E51D3B77DD6F72BF759CA65E05018FB"
+    }, {
+      "tcId" : 19,
+      "ephemeralPublicIutX" : "B3769519D585B158A6874E51ED0F490D4FA9C4D9B5EC04BDDF1BD476",
+      "ephemeralPublicIutY" : "34ADDC45299BB77C33216E40B3CD2C3660B1FDE7C79529BCE3B81A7F",
+      "hashZIut" : "5287660600970E624FF22E93934E58C337AE2257E468FF0755EAAEAFE45E0E3F"
+    }, {
+      "tcId" : 20,
+      "ephemeralPublicIutX" : "65E9799CACD4EABB0A759C5522EE6F01DEF975DC71CEBCF01468FA5F",
+      "ephemeralPublicIutY" : "5D266F6F19607BC39697287EF6B19664F8367E6B51B73A12EA08374E",
+      "hashZIut" : "5485861FA14DB48D8C63768E1A5FC73EB6F810C1DB7B07F188E57B273D6B041E"
+    } ]
+  }, {
+    "tgId" : 3,
+    "tests" : [ {
+      "tcId" : 21,
+      "testPassed" : true
+    }, {
+      "tcId" : 22,
+      "testPassed" : false
+    }, {
+      "tcId" : 23,
+      "testPassed" : false
+    }, {
+      "tcId" : 24,
+      "testPassed" : true
+    }, {
+      "tcId" : 25,
+      "testPassed" : true
+    }, {
+      "tcId" : 26,
+      "testPassed" : true
+    }, {
+      "tcId" : 27,
+      "testPassed" : true
+    }, {
+      "tcId" : 28,
+      "testPassed" : true
+    }, {
+      "tcId" : 29,
+      "testPassed" : true
+    }, {
+      "tcId" : 30,
+      "testPassed" : false
+    }, {
+      "tcId" : 31,
+      "testPassed" : true
+    }, {
+      "tcId" : 32,
+      "testPassed" : true
+    }, {
+      "tcId" : 33,
+      "testPassed" : false
+    }, {
+      "tcId" : 34,
+      "testPassed" : true
+    }, {
+      "tcId" : 35,
+      "testPassed" : true
+    }, {
+      "tcId" : 36,
+      "testPassed" : true
+    }, {
+      "tcId" : 37,
+      "testPassed" : true
+    }, {
+      "tcId" : 38,
+      "testPassed" : true
+    }, {
+      "tcId" : 39,
+      "testPassed" : true
+    }, {
+      "tcId" : 40,
+      "testPassed" : true
+    }, {
+      "tcId" : 41,
+      "testPassed" : true
+    }, {
+      "tcId" : 42,
+      "testPassed" : true
+    }, {
+      "tcId" : 43,
+      "testPassed" : true
+    }, {
+      "tcId" : 44,
+      "testPassed" : true
+    }, {
+      "tcId" : 45,
+      "testPassed" : true
+    } ]
+  }, {
+    "tgId" : 4,
+    "tests" : [ {
+      "tcId" : 46,
+      "testPassed" : true
+    }, {
+      "tcId" : 47,
+      "testPassed" : true
+    }, {
+      "tcId" : 48,
+      "testPassed" : true
+    }, {
+      "tcId" : 49,
+      "testPassed" : false
+    }, {
+      "tcId" : 50,
+      "testPassed" : true
+    }, {
+      "tcId" : 51,
+      "testPassed" : false
+    }, {
+      "tcId" : 52,
+      "testPassed" : true
+    }, {
+      "tcId" : 53,
+      "testPassed" : false
+    }, {
+      "tcId" : 54,
+      "testPassed" : true
+    }, {
+      "tcId" : 55,
+      "testPassed" : true
+    }, {
+      "tcId" : 56,
+      "testPassed" : true
+    }, {
+      "tcId" : 57,
+      "testPassed" : true
+    }, {
+      "tcId" : 58,
+      "testPassed" : true
+    }, {
+      "tcId" : 59,
+      "testPassed" : true
+    }, {
+      "tcId" : 60,
+      "testPassed" : true
+    }, {
+      "tcId" : 61,
+      "testPassed" : true
+    }, {
+      "tcId" : 62,
+      "testPassed" : true
+    }, {
+      "tcId" : 63,
+      "testPassed" : true
+    }, {
+      "tcId" : 64,
+      "testPassed" : true
+    }, {
+      "tcId" : 65,
+      "testPassed" : true
+    }, {
+      "tcId" : 66,
+      "testPassed" : true
+    }, {
+      "tcId" : 67,
+      "testPassed" : true
+    }, {
+      "tcId" : 68,
+      "testPassed" : true
+    }, {
+      "tcId" : 69,
+      "testPassed" : false
+    }, {
+      "tcId" : 70,
+      "testPassed" : true
+    } ]
+  } ]
+} ]

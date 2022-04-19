@@ -1,0 +1,282 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!--
+Copyright (c) 2018 Qualcomm Technologies, Inc.
+All Rights Reserved.
+Confidential and Proprietary - Qualcomm Technologies, Inc.
+ -->
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <!-- CONTENTS are packed by scroll view -->
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            style="@style/VoiceWakeup.Layout.Section"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <!-- DEFAULT CONFIDENCE LEVELS -->
+            <TextView
+                style="@style/VoiceWakeup.Layout.Settings.Title"
+                android:text="@string/default_confidence_levels" />
+
+            <View style="@style/VoiceWakeup.Layout.SeparatorH.bold" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    style="@style/VoiceWakeup.Layout.Settings.Name3"
+                    android:layout_width="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:layout_marginTop="10dp"
+                    android:text="@string/sound_model_3_4"/>
+            </RelativeLayout>
+
+            <View style="@style/VoiceWakeup.Layout.SeparatorH" />
+
+            <!-- Sound model 3.0 GMM KEY PHRASE CONFIDENCE THRESHOLD -->
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    style="@style/VoiceWakeup.Layout.Settings.Name"
+                    android:layout_width="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:layout_marginTop="10dp"
+                    android:text="@string/first_stage_keyphrase" />
+                <EditText
+                    android:id="@+id/sm3_edit_first_stage_keyphrase"
+                    android:layout_width="55dp"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:gravity="center_vertical|right"
+                    android:inputType="numberSigned" />
+            </RelativeLayout>
+
+            <!-- Sound model 3.0 CNN KEY PHRASE CONFIDENCE THRESHOLD -->
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    style="@style/VoiceWakeup.Layout.Settings.Name"
+                    android:layout_width="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:layout_marginTop="10dp"
+                    android:text="@string/second_stage_keyphrase" />
+                <EditText
+                    android:id="@+id/sm3_edit_second_stage_keyphrase"
+                    android:layout_width="55dp"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:gravity="center_vertical|right"
+                    android:inputType="numberSigned" />
+            </RelativeLayout>
+
+            <!-- Sound model 3.0 GMM USER CONFIDENCE THRESHOLD -->
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    style="@style/VoiceWakeup.Layout.Settings.Name"
+                    android:layout_marginTop="10dp"
+                    android:text="@string/first_stage_user" />
+                <EditText
+                    android:id="@+id/sm3_edit_first_stage_user"
+                    android:layout_width="55dp"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:gravity="center_vertical|right"
+                    android:inputType="numberSigned" />
+            </RelativeLayout>
+
+            <!-- Sound model 3.0 VOP USER CONFIDENCE THRESHOLD -->
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    style="@style/VoiceWakeup.Layout.Settings.Name"
+                    android:layout_marginTop="10dp"
+                    android:text="@string/second_stage_user" />
+                <EditText
+                    android:id="@+id/sm3_edit_second_stage_user"
+                    android:layout_width="55dp"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:gravity="center_vertical|right"
+                    android:inputType="numberSigned" />
+            </RelativeLayout>
+
+            <View style="@style/VoiceWakeup.Layout.SeparatorH" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    style="@style/VoiceWakeup.Layout.Settings.Name3"
+                    android:layout_width="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:layout_marginTop="10dp"
+                    android:text="@string/sound_model_2"/>
+            </RelativeLayout>
+
+            <View style="@style/VoiceWakeup.Layout.SeparatorH" />
+
+            <!-- Sound model 2.0 GMM KEY PHRASE CONFIDENCE THRESHOLD -->
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    style="@style/VoiceWakeup.Layout.Settings.Name"
+                    android:layout_width="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:layout_marginTop="10dp"
+                    android:text="@string/first_stage_keyphrase" />
+                <EditText
+                    android:id="@+id/sm2_edit_first_stage_keyphrase"
+                    android:layout_width="55dp"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:gravity="center_vertical|right"
+                    android:inputType="numberSigned" />
+            </RelativeLayout>
+
+            <!-- Sound model 2.0 GMM USER CONFIDENCE THRESHOLD -->
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    style="@style/VoiceWakeup.Layout.Settings.Name"
+                    android:layout_width="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:layout_marginTop="10dp"
+                    android:text="@string/first_stage_user" />
+                <EditText
+                    android:id="@+id/sm2_edit_first_stage_user"
+                    android:layout_width="55dp"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:gravity="center_vertical|right"
+                    android:inputType="numberSigned" />
+            </RelativeLayout>
+
+            <View style="@style/VoiceWakeup.Layout.SeparatorH" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    style="@style/VoiceWakeup.Layout.Settings.Name3"
+                    android:layout_width="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:layout_marginTop="10dp"
+                    android:text="@string/sound_model_general"/>
+            </RelativeLayout>
+
+            <View style="@style/VoiceWakeup.Layout.SeparatorH" />
+
+            <!-- GMM TRAINING CONFIDENCE THRESHOLD -->
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    style="@style/VoiceWakeup.Layout.Settings.Name"
+                    android:layout_marginTop="10dp"
+                    android:text="@string/gmm_training" />
+
+                <EditText
+                    android:id="@+id/edit_gmm_training"
+                    android:layout_width="55dp"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:gravity="center_vertical|right"
+                    android:inputType="numberSigned" />
+            </RelativeLayout>
+
+            <!-- OPTIONS -->
+            <TextView
+                style="@style/VoiceWakeup.Layout.Settings.Title"
+                android:layout_marginTop="20dp"
+                android:text="@string/options" />
+
+            <View style="@style/VoiceWakeup.Layout.SeparatorH.bold" />
+
+            <!-- Detection tone  -->
+            <RelativeLayout
+                android:id="@+id/layout_detection_tone"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:background="@drawable/selector_list_item"
+                android:clickable="true">
+
+                <TextView
+                    style="@style/VoiceWakeup.Layout.Settings.Name2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:layout_centerVertical="true"
+                    android:text="@string/detection_tone" />
+
+                <Switch
+                    android:id="@+id/switch_detection_tone"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:clickable="false" />
+            </RelativeLayout>
+
+            <View style="@style/VoiceWakeup.Layout.SeparatorH" />
+
+            <!-- Advanced Detail-->
+            <RelativeLayout
+                android:id="@+id/layout_advanced_details"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:background="@drawable/selector_list_item"
+                android:clickable="true">
+
+                <TextView
+                    style="@style/VoiceWakeup.Layout.Settings.Name2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:layout_centerVertical="true"
+                    android:text="@string/advanced_details" />
+
+                <Switch
+                    android:id="@+id/switch_advanced_details"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:clickable="false" />
+            </RelativeLayout>
+
+            <View style="@style/VoiceWakeup.Layout.SeparatorH" />
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

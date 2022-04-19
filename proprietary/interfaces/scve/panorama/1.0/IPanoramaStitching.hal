@@ -1,0 +1,31 @@
+/*!
+ *
+ * Copyright (c) 2018 Qualcomm Technologies, Inc.
+ * All Rights Reserved.
+ * Confidential and Proprietary - Qualcomm Technologies, Inc.
+ *
+ */
+
+package vendor.qti.hardware.scve.panorama@1.0;
+
+import IPanoramaStitching_Callbacks;
+
+interface IPanoramaStitching{
+
+    createInstance(OperationMode opMode, StitchingConfiguration_hal config, IPanoramaStitching_Callbacks panostitchCB, handle fd_pSessionUserData, int64_t size_pSessionUserData) generates (Status status,int64_t instanceId);
+
+    destroyInstance(int64_t instanceId) generates (Status status);
+
+    panoRawStitchRun_Sync(StitchingRawInput_hal ip) generates (StitchingOutput_hal op, Status status);
+
+    panoJPEGStitchRun_Sync(StitchingJPEGInput_hal ip) generates (StitchingOutput_hal op, Status status);
+
+    panoRawStitchRun_Async(StitchingRawInput_hal ip, handle fd_pTaskUserData, int64_t len_pTaskUserData) generates (Status status);
+
+    panoJPEGStitchRun_Async(StitchingJPEGInput_hal ip, handle fd_pTaskUserData, int64_t len_pTaskUserData) generates (Status status);
+
+    getPanoResultSize() generates (uint32_t pSize, Status status);
+
+    getPanoResult(handle fd_Dst,uint32_t pSize) generates (Status status);
+
+};

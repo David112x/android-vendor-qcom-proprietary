@@ -1,0 +1,42 @@
+/*********************************************************************
+ Copyright (c) 2019 Qualcomm Technologies, Inc.
+ All Rights Reserved.
+ Confidential and Proprietary - Qualcomm Technologies, Inc.
+**********************************************************************/
+
+package com.qualcomm.qti.uceservice@2.1;
+
+import IPresenceListener;
+import @2.0::IPresenceService;
+import @2.0::UceStatus;
+
+interface IPresenceService extends @2.0::IPresenceService {
+
+  /**
+   * Adds a listener to the Presence service.
+   *
+   * @param serviceHandle    received in IPresenceListener.onPresenceCreated() callback.
+   * @param listener         @2.1::IPresenceListener Object.
+   * @param clientHandle     token from the client.
+   *
+   * @return status          status of the request placed.
+   */
+  addListener_2_1(int64_t serviceHandle, IPresenceListener listener,
+      int64_t clientHandle) generates (UceStatus status);
+
+  /**
+   * Sends a request to publish current device capabilities.
+   * The network response is notifed in IPresenceListener.onSipResponseReceived() callback.
+   * If status of API is returned as NOT_SUPPORTED then it means additional capabilities
+   * introduced as part of @2.1::PresenceCapabilityInfo are not supported by the server.
+   * In this case please fallback to the @2.0::publishCapability API.
+   *
+   * @param serviceHandle     received in IPresenceListener.onPresenceCreated() callback.
+   * @param myCapInfo         @2.1::PresenceCapabilityInfo to share to network.
+   * @param userData          client token for the request.
+   * @return status           status of the request placed.
+   */
+  publishCapability_2_1(int64_t serviceHandle, PresenceCapabilityInfo capInfo,
+      int64_t userData) generates (UceStatus status);
+
+};

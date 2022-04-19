@@ -1,0 +1,112 @@
+/*
+ * Copyright (c) 2019 Qualcomm Technologies, Inc.
+ * All Rights Reserved.
+ * Confidential and Proprietary - Qualcomm Technologies, Inc.
+ */
+
+package vendor.qti.hardware.qseecom@1.0;
+
+/**
+ * Interface for QSEECom API.
+ */
+interface IQSEECom {
+
+    struct AppHandle {
+        uint64_t vendorLibHandle;
+    };
+
+    struct Buffer {
+        uint32_t offset;
+        uint32_t length;
+    };
+
+    struct ModifiedBuffer {
+        bool validFd;
+        uint32_t offset;
+    };
+
+    struct ModifiedBufferInfo {
+        ModifiedBuffer[4] data;
+        handle ionFd;
+    };
+
+    struct AppInfo{
+        bool is64;
+        uint32_t requiredSGBufferSize;
+        uint8_t[64] reserved;
+    };
+
+    /**
+     * Start App V1 - Load a secure application.
+     */
+    startApp(string path, string name, uint32_t sharedBufferSize, IBase token) generates (int32_t status, AppHandle appHandle, handle sharedBuffer);
+
+    /**
+     * Close the application associated with the handle.
+     */
+    shutdownApp(AppHandle appHandle) generates (int32_t status);
+
+    /**
+     * Register an HLOS listener service.
+     */
+    registerListner(uint32_t listnerId, uint32_t sharedBufferSize, uint32_t flags, IBase token) generates (int32_t status, AppHandle appHandle, handle sharedBuffer);
+
+    /**
+     * Unregister a listener service.
+     */
+    unregisterListner(AppHandle appHandle) generates (int32_t status);
+
+    /**
+     * Send QSAPP a "user" defined buffer (may contain some message/
+     * command request) and receives a response from QSAPP in receive buffer.
+     */
+    sendCommand(AppHandle appHandle, Buffer send, Buffer rsp) generates (int32_t status);
+
+    /**
+     * Send QSAPP a "user" defined buffer (may contain some message/
+     * command request) and receives a response from QSAPP in receive buffer.
+     */
+    sendModifiedCommand(AppHandle appHandle, Buffer send, Buffer rsp, ModifiedBufferInfo bufferInfo, bool is64) generates (int32_t status);
+
+    /**
+     * Receive a service defined buffer.
+     */
+    receiveRequest(AppHandle appHandle, Buffer buf) generates (int32_t status);
+
+    /**
+     * Send a response based on the previous receiveRequest.
+     */
+    sendResponse(AppHandle appHandle, Buffer send) generates (int32_t status);
+
+    /**
+     * Set the bandwidth for QSEE.
+     */
+    setBandwidth(AppHandle appHandle, bool high) generates (int32_t status);
+
+    /**
+     * Query QSEE to check if app is loaded.
+     */
+    appLoadQuery(AppHandle appHandle, string appName) generates (int32_t status);
+
+    /**
+     * A "user" defined API that contains the Ion fd allocated by the
+     * listener service, to be communicated with TZ.
+     */
+    sendModifiedResponse(AppHandle appHandle, Buffer send, ModifiedBufferInfo bufferInfo, bool is64) generates (int32_t status);
+
+    /**
+     * Scale bus bandwidth.
+     */
+    scaleBusBandwidth(AppHandle appHandle, int32_t mode) generates (int32_t status);
+
+    /**
+     * Get app info, including secure app arch type, sg_buffer_size, etc.
+     */
+    getAppInfo(AppHandle appHandle) generates (int32_t status, AppInfo info);
+
+    /**
+     * Load a secure application from a memory buffer containing the Trusted App.
+     */
+    startAppV2(string name, memory trustlet, uint32_t sharedBufferSize, IBase token) generates (int32_t status, AppHandle appHandle, handle sharedBuffer);
+};
+

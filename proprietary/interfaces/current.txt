@@ -1,0 +1,297 @@
+#Copyright (c) 2018-2019 Qualcomm Technologies, Inc.
+#All Rights Reserved.
+#Confidential and Proprietary - Qualcomm Technologies, Inc.
+
+#######HAL released in Android O#######
+
+##Alarm
+b95c8ca48b7eea960ce57bc3b6954c88747326b4c2d336f4e0b9961b7b9f39ad vendor.qti.hardware.alarm@1.0::IAlarm
+
+##Ant
+8e8e95cdaa5e8c77929b5c981409fdc67def9baedda64e06d77eaf571bf545ac com.qualcomm.qti.ant@1.0::types
+fa1b10bb00eb8ade6cc4e87e8381c1602164a08543a2727a9200cddd77eb42ce com.qualcomm.qti.ant@1.0::IAntHci
+210b514fd19b3227b0679265a4204f65aa328ad597d8c47196a2fcd82de2600a com.qualcomm.qti.ant@1.0::IAntHciCallbacks
+
+##Bluetooth Audio
+7130ebbd19c716fb60cc7434541c930991c4cdbb31d3009ba4bff5b1648149b1 com.qualcomm.qti.bluetooth_audio@1.0::types
+a5c65de9f2c807bf3dc077e23ba540cb737afa7437e92ccf1bda810d56586ae7 com.qualcomm.qti.bluetooth_audio@1.0::IBluetoothAudio
+8f0d44a850496e6a74b44ffae6612b5b877741ee83bf24918cc257b5d0f8934e com.qualcomm.qti.bluetooth_audio@1.0::IBluetoothAudioCallbacks
+
+##Audio ConfigStore
+23903752979739094cae97c694de6cb0409e623ce220ae3e054baaee1f8aae74 vendor.qti.hardware.audiohalext@1.0::types
+26c06b03bd080d4dae5be237cb0a3234377a85cebab5f7fcd7bcd3ec7af6a5d9 vendor.qti.hardware.audiohalext@1.0::IAudioHalExt
+
+##Data
+bf5c15a634c639ae3a483a749e49f6a2d603c3d265edf0c7b662c5e615e735dc vendor.qti.hardware.data.latency@1.0::types
+af110ea9c7550721b0b20cdbee21dbc89f03643115a359e1a464ccd6a79b949a vendor.qti.hardware.data.latency@1.0::IClientToken
+61083f615817ffe1a287ec949611ceffa8bc19d5fc3f796e001f221509ca317f vendor.qti.hardware.data.latency@1.0::ILinkLatency
+308c551f5eccca2aff80ff5a91fde49c8935c8c0a08b1556467044d38bdbc8d6 vendor.qti.hardware.data.latency@1.0::ILinkLatencyService
+
+##Display
+c652773f41be0dea445365d3c3e6a243be6c706d15ebffbff94f04664c6b26a8 vendor.display.color@1.0::types
+9fd8ac0ba3880141e2ca43107d533ee7ae514439e8206c63910b46632bd77228 vendor.display.color@1.0::IDisplayColor
+17e3ca3e5cc9069fdb56a5fae653ea387c703bdbde82fa1a2187d0f40282f81a vendor.display.postproc@1.0::types
+1b60440745b3338b36f6a4dc3b2a63b8a0d128ab2a4cb9c40a2c1ffe86dc33ba vendor.display.postproc@1.0::IDisplayPostproc
+
+##EsePowerManager
+6720ef8c53c27c5cc6d824fe03049cb1ac48a9f4ec3678cdc39176902a051122 vendor.qti.esepowermanager@1.0::IEsePowerManager
+
+65ded04e014fec63cd561928a903965b383cca6e3bfd097b02fe258c66b68bbd vendor.qti.esepowermanager@1.1::types
+2fc3c2fc259c460f9fba8ea19294f72f46a989fccb0c4b2d0c5e5e622519edee vendor.qti.esepowermanager@1.1::IEsePowerManager
+
+##FM
+325f21a59f80a9dbac21467f86f5cc97169e95924c1fc326092f03be750d6fcc vendor.qti.hardware.fm@1.0::types
+0678421223b525232fa6f07e77f84bd22e8a0f23dc106d1e31379162b3a0e72f vendor.qti.hardware.fm@1.0::IFmHci
+8ffd6dc7d8e88520f624456e7fd34b85b1ffc85c9be19d6968baf446ed9a7107 vendor.qti.hardware.fm@1.0::IFmHciCallbacks
+
+##GPS
+52aa8923a6a0c4aab6bf8eb21ff823ae30c82907bf2d5cfe77db4e1b9a85b933 vendor.qti.gnss@1.0::types
+ed62416340ea2b70d2a834367e478f27dce9fbb9ab8b8fbf6171f826d78f0ab9 vendor.qti.gnss@1.0::ILocHidlAGnss
+b49db7101493cf29de30b99484fc4638e0178aa6a236710f9a696d75efd0017f vendor.qti.gnss@1.0::ILocHidlDebugReportService
+0810898af38e41d5acbfabea8ac93c81ee62128dc733879c406d317ad8ac4822 vendor.qti.gnss@1.0::ILocHidlFlpService
+15d9a6e555108670269ae3ee5743ee31ab1d297f2fc6ddb63ce38041d41c1d6d vendor.qti.gnss@1.0::ILocHidlFlpServiceCallback
+019a2b2c2ef465a51881e3e402f2cbf0980d1300127549f1ff494e860c58e37e vendor.qti.gnss@1.0::ILocHidlGeofenceService
+8d82636ea72cc2ca2dccafb81fccb51728f414021bd46acbdb0d8ada1fb5c5d2 vendor.qti.gnss@1.0::ILocHidlGeofenceServiceCallback
+96b06ce7b0cb8b37d78c5c33a9d42baf275c3382ace45a13ca65ea6834339d38 vendor.qti.gnss@1.0::ILocHidlGnss
+f4e2c334335c17630f7757bea5eed9f027fe392526dcbe86c5cbdb249ec7648c vendor.qti.gnss@1.0::ILocHidlGnssNi
+6d86c694bba65f750a042ba625a56890e767512546d1db4a7a86ba560ca3ea40 vendor.qti.gnss@1.0::ILocHidlGnssNiCallback
+18f0ce99473636ff879dab99c176d927e36429ddea3d5acd6a95be44fd4f598a vendor.qti.gnss@1.0::ILocHidlIzatOsNpGlue
+8af2990926ce6d40911179d07227ea355dbf65814a3293159c1da75645efb403 vendor.qti.gnss@1.0::ILocHidlIzatOsNpGlueCallback
+82164ba7cad2fcbb96cdc754fe5a43ba37b4cf156aee97012f8d215d1e024beb vendor.qti.gnss@1.0::ILocHidlIzatProvider
+35dfe5692ff713a73b7fe414e2f322f3b010cccfaea0091ceae0ba8beb3fffeb vendor.qti.gnss@1.0::ILocHidlIzatProviderCallback
+7a81e8ccc37435868d8b0cd0ed7b94dd7ac87d4782e616b891eb46ed1c334ebc vendor.qti.gnss@1.0::ILocHidlIzatSubscription
+d2e81800f60bfbb594a5205df68ebcec307e1682ed5844d0df9f30e04b1c71b4 vendor.qti.gnss@1.0::ILocHidlIzatSubscriptionCallback
+6b2c669961700c1ae45c5131edd17378ebd96956245b18b896324b538e851d66 vendor.qti.gnss@1.0::ILocHidlRilInfoMonitor
+58dfa8f67d26c25e438f567ea9c69daf75cdaca24c2ce73a83893a7583194480 vendor.qti.gnss@1.0::ILocHidlWiFiDBReceiver
+e4f86a5f25f0c58e4dea5e5f8d83a98654013fd14b341a1662df781ac57cb20f vendor.qti.gnss@1.0::ILocHidlWiFiDBReceiverCallback
+5d7d5d4223726ce9d7118fb07c3bc172bbb6f1204840e34f688b5e3b9497c1b5 vendor.qti.gnss@1.0::ILocHidlXT
+
+##IOP
+9886629cf2b0ddee2438631db1067e6ce5d8a36c80be0a31203f9ed42487324a vendor.qti.hardware.iop@1.0::IIop
+567f126c54a87b5559d05752c3c0402bcc0f8f697907abf803a06f623e73ec47 vendor.qti.hardware.iop@2.0::IIop
+
+##Perf
+b6e6dbd1737050464d6405bd4c0d31907ac10dc8b7e9e0ded3df1d0f5b0f632d vendor.qti.hardware.perf@1.0::IPerf
+
+##qteeconnector
+5332900dd8eecf8deeccce2f6262b4f1ae3f875ea9d7126175c01e78ab8940d3 vendor.qti.hardware.qteeconnector@1.0::types
+77c68bdeca5aa7016efa878c57f51f817dc982ca2d696f4bf8e119ea5c807627 vendor.qti.hardware.qteeconnector@1.0::IApp
+f8e2f5e80af4a9f57f2162c8101c2044961aa858a1eb695a9d18c59bc5038bb2 vendor.qti.hardware.qteeconnector@1.0::IAppConnector
+cdbf21ab07de10903928de6ba12f7c05efdd1df14306c40a168e223838a58b91 vendor.qti.hardware.qteeconnector@1.0::IGPApp
+d60474a49b43241e14495dda90353ec2444d84e9fb2d70b8d2292586c93ee3b1 vendor.qti.hardware.qteeconnector@1.0::IGPAppConnector
+
+##qdutils_disp
+1a51389ce5ae7454ca97e4329585250e08c24052f0aa646a063737f618f4d975 vendor.qti.hardware.qdutils_disp@1.0::IQdutilsDisp
+
+
+##SensorCalibrate
+f1fabc634b658ac97c69794f37980e080cd5d94a644e91d45dfc8914ad55feca vendor.qti.hardware.sensorscalibrate@1.0::ISensorsCalibrate
+
+##fingerprint
+0c3cca06689f75d8342f8fb3074ba26436181cfbbb8381d700c462c2dc1260fa vendor.qti.hardware.fingerprint@1.0::types
+6a72d94f767d808a71a49cc31be0f4484e14664570f8a65d6f7045190bc75e92 vendor.qti.hardware.fingerprint@1.0::IQfpAndroidServices
+7a603395cc5f4754d82af8c9b9cb5202b6ece595b46fdc6715a835287c5d313a vendor.qti.hardware.fingerprint@1.0::IQtiExtendedFingerprint
+ed2f99e64ac9288f8b6ba19ae48b1cad204c5584152e32704f36a118495aaec0 vendor.qti.hardware.fingerprint@1.0::IQtiExtendedFingerprintCallback
+
+##tui_comm
+7d320eccbf0295d69ce4fa2b382afabf56cf62b256630f7cb1846819641917af vendor.qti.hardware.tui_comm@1.0::ITuiComm
+42d7997859ee0963f2e9b1abded5a1105786380745ac09ccb69d9a781505005d vendor.qti.hardware.tui_comm@1.0::ITuiCommCallBack
+
+##vpp
+6f774ff60903f07c272d0c86d962aa8975c82ecf411a3c3f02973c83a08b6ae5 vendor.qti.hardware.vpp@1.1::types
+bbb78bac57eca0cf9e0ecc09cd0eac806470812826c0a926fdbaae2919e1fcb1 vendor.qti.hardware.vpp@1.1::IHidlVpp
+7e6d0d4739c00023a9e4642e84bd05e222716188018d4a7ced6b7dd123621510 vendor.qti.hardware.vpp@1.1::IHidlVppCallbacks
+e1395c1f3bf2eaa03f0dd4f5904d42b0323c67d890412ce5e44a09cb8b411fe0 vendor.qti.hardware.vpp@1.1::IHidlVppService
+d3a2d4b55a3ff0b19beb3f564eecdd86394a93c0c3b1a8c8cbc6646b7c23d7f5 vendor.qti.hardware.vpp@1.2::types
+df412ea0eff67230a2991c7e9932dc28de2a15079d48339089d644e79d738a11 vendor.qti.hardware.vpp@1.2::IHidlVpp
+3d3f00d85d40ba7e41141de5c1e6605eaa18d403f5b2dce5e778b8c643982110 vendor.qti.hardware.vpp@1.2::IHidlVppService
+834def199acdba74f576ccf9ebc030ec2de7edfd914146048566407cabd11d0b vendor.qti.hardware.vpp@1.3::types
+2cca42d6281ce80f8a57af6c5c5cddb16b60e83bd64457e0d68c8e9388b7b4a0 vendor.qti.hardware.vpp@1.3::IHidlVpp
+c2406da6027bef0a6109759d46ca1b3b05f13a8b578f5f43906d45a7696136fa vendor.qti.hardware.vpp@1.3::IHidlVppService
+
+##wigig
+248d05aadf3fd71e1931bb5aed4b72c9f31c7636464f07029c02e28c6b3fd1dc vendor.qti.hardware.wigig.netperftuner@1.0::types
+71df3532ebbf23c2d0c6b30c54f01c7ac6cc0d625cd9b73e6cf0cca79e11407f vendor.qti.hardware.wigig.netperftuner@1.0::INetPerfTuner
+
+1513ae6b104f531afb10f46fcd9290e1ab887c63ccec7d9f3f669859cdae91ee vendor.qti.hardware.wigig.supptunnel@1.0::types
+323e8ec08c1f85e87cc3033ba555f2445d255e39dfb7a1aba9d7afb44b0108bf vendor.qti.hardware.wigig.supptunnel@1.0::ISuppTunnel
+30d2d7600f5e575bd8b98fe2456f7971d04e0cb86cb4bb015cfe4eb6d338b06a vendor.qti.hardware.wigig.supptunnel@1.0::ISuppTunnelCallback
+7298aca5567e9ce9dad9f8957a81e460b92de87472837b61827a947f9e5924ac vendor.qti.hardware.wigig.supptunnel@1.0::ISuppTunnelProvider
+
+#######HAL released in Android O-MR1######
+
+##GPS
+ead551f2da0b085d6e5ae326d7d79a10cb20ac285551f4f471971ea25f0f373e vendor.qti.gnss@1.1::types
+07ebf057e27a0550007bf8120ac8d548280d55d932e9b64f558479b51ead1c35 vendor.qti.gnss@1.1::ILocHidlAGnss
+45d5f1cc2e2464b8721299b62a2018e91b749cba19c2f167af9438f9bf6a4e11 vendor.qti.gnss@1.1::ILocHidlDebugReportService
+368d74ce8ce38a2d80c58fedff56dc2b6bc17afcb3544b8f2a67ca2524420650 vendor.qti.gnss@1.1::ILocHidlFlpService
+56155a8b4528ae8c7950fcc1cfead9f9d13c82c4e05d2312bfda5f31a08bf7ac vendor.qti.gnss@1.1::ILocHidlFlpServiceCallback
+f1567a1fb335871885c6a2098b14574de3e54b38e2756a1c0c006b9b843398ba vendor.qti.gnss@1.1::ILocHidlGeofenceService
+50342cac341e9ffaf465cfac39ec8e98049936def1ec6f6478897203ad1eee5a vendor.qti.gnss@1.1::ILocHidlGeofenceServiceCallback
+cd0b86fdbae503cce088eed68d3969c01dacbce609ef3744552c7e53b1b301bf vendor.qti.gnss@1.1::ILocHidlGnss
+42bc1b38ff7169613c2eb9906694dcf7ef2f393d7ca7aafd27175051950bdfd2 vendor.qti.gnss@1.1::ILocHidlGnssNi
+44374775cd3e1795940b31c377a45846ce4ce4c4e27d204f3d29688828e50a37 vendor.qti.gnss@1.1::ILocHidlGnssNiCallback
+22a48820de1bfbe31271a7a3ccf8b546345e9e95fed9a2dd9079071f8267795d vendor.qti.gnss@1.1::ILocHidlIzatOsNpGlue
+5514a4f37cee66339b4e3832f18294ba653c2ee302e132ae3ebbaeee0711a0eb vendor.qti.gnss@1.1::ILocHidlIzatOsNpGlueCallback
+c830a7196c47fd5f2977d0cc86963ea00a76babbe559b2ee1715787a0eabb0e8 vendor.qti.gnss@1.1::ILocHidlIzatProvider
+d5abc64590df74e162d5f523b2249c35a087e9e73b8582b9538c811b6acb922e vendor.qti.gnss@1.1::ILocHidlIzatProviderCallback
+be22513683dea747f3d5d4c6f5da46eca1473a562e8b1774b045dbc1f6e539ae vendor.qti.gnss@1.1::ILocHidlIzatSubscription
+02f04ec871e8c4b1639d3d3fa7c9ab18c41e337b59813718127c8f1174a5894e vendor.qti.gnss@1.1::ILocHidlIzatSubscriptionCallback
+4ca1af2b572387c961d9ad78efb4f3d7673917935583914b35fdebb11c47e6b0 vendor.qti.gnss@1.1::ILocHidlRilInfoMonitor
+aca98e9066cbc0b046c2d6646aca634ef84c5594f2b3d245df7ce0ce91fa88bc vendor.qti.gnss@1.1::ILocHidlWiFiDBReceiver
+89315af888d68d4ee8b3092af462b08a0ee1fd085e03c302076267968f8b7d4c vendor.qti.gnss@1.1::ILocHidlWiFiDBReceiverCallback
+9ba552cf752b81ea3759d1e496c516a4b9381b98fdcb83c067345788aca3309c vendor.qti.gnss@1.1::ILocHidlXT
+
+d4fcd27abe48badbaa429156107a4436ec22ef7db8156dbaec4bda2bcdc8429a vendor.qti.gnss@1.2::ILocHidlGnss
+ef9d1265e39e078dc21c62d9358afef3909be93f15a8aac4ad4e2ca45f969852 vendor.qti.gnss@1.2::ILocHidlWWANDBReceiver
+5d6ea747399c8a77664237fdb7773110b66f2d1df41e23ba07443fe69cb0d1dc vendor.qti.gnss@1.2::ILocHidlWWANDBReceiverCallback
+
+##Limits
+7c6afc70861cb5889ca03252dadaa3ec824cffdee5855e26d88d47a2794e8dfe vendor.qti.hardware.limits@1.0::types
+4c29767843c91e5536296f02ecf749cf7bd7d71839d15a1a053c24fe5686f4e9 vendor.qti.hardware.limits@1.0::IThermal
+19173c43e4d1339618e812f7486a62b01d193b3e6d6de821dfaa910818237506 vendor.qti.hardware.limits@1.0::IThermalCallback
+
+##Voiceprint
+145864db090eaa84a35758d1cebb238d720d3ffa81abfa5e99e7a8c25cbdfdb3 vendor.qti.voiceprint@1.0::types
+a3b36e7c1ba9881f09e527227d3841aa40c1f785b14b5ac3781be70ff065aa71 vendor.qti.voiceprint@1.0::IQtiVoicePrintService
+5294dcbc4e15c9b6c7fa52ce6f57fd3cfd9406254989ab2d079e1baee88b30d9 vendor.qti.voiceprint@1.0::IQtiVoicePrintServiceCallback
+
+##wipower
+b10abc2b3c0b66f387bcc78745ec0a702d642ac37581810dfef815d5b563cf3b vendor.qti.hardware.wipower@1.0::IWipower
+
+#######HAL released in Android P#######
+
+##Display
+5fcd0d87a7158078253118218fb1ff10f1c5248d8abc0c38bd005b2e21869113 vendor.display.color@1.1::IDisplayColor
+631c252b41bb44835b599a602b0c171f39a2ba03f0ebe3008a2d2e7dd7b34459 vendor.display.color@1.2::IDisplayColor
+b824d7b6dc1e0e55f026e918d2e5bfd869bbe1b2cf86b443c94fb36c47a33da0 vendor.display.color@1.3::types
+30c307b6e50e82288e7e7bb6be3e762ba4f5f233b93ac2cface2809675a8c5a0 vendor.display.color@1.3::IDisplayColor
+65d594a69db7c92ea9c874a1c5b319ca9e03c55d4df17e477ea24dff28aa9562 vendor.display.color@1.4::IDisplayColor
+8dfc2feeb54c2d74fb93813adc601a68d92721775685f764e30108961d0b879b vendor.display.color@1.5::types
+b6064d39a1d9269d0c11c2cdf8688ef001de3b17c00ea140d0858e64e1e1fc82 vendor.display.color@1.5::IDisplayColor
+
+##Factory
+10b5cfe236f829bf8404882f4bbaf9045df3cde94cc622b4c5e5b2c2e8055979 vendor.qti.hardware.factory@1.0::types
+0518ec530acb518ad52835b9dc9dc211b40a0d77c54c542d19a3f293ab64bf8a vendor.qti.hardware.factory@1.0::IFactory
+6b56f7731e0b2f79e7d3033356ae4906dfe1bab75c2a42fcf9ddad951f5ea65a vendor.qti.hardware.factory@1.1::types
+47da3ca07f42e7b18363cf46cd4f4ced48be7fe4b173759c0914c5567930f4d4 vendor.qti.hardware.factory@1.1::IFactory
+
+##GPS
+669630838fea153342eaef4c6b86e2c11d4de057dd48e1523222679acc2eef5b vendor.qti.gnss@2.0::ILocHidlGnss
+
+cfc85ac2c86643a0d52370256d39f542dd85cc7070cd722cb299a51ccf287c1b vendor.qti.gnss@2.1::types
+f9fa95d47f60591b201dffa38b22c2890476a4d72a685e37388a4ae8da04f398 vendor.qti.gnss@2.1::ILocHidlAGnss
+e0eb718ffc181910c62bdb86e4334bbe7085f230ddeeae19ff6c707aa662244d vendor.qti.gnss@2.1::ILocHidlAGnssCallback
+8a96413f64a8cca6a554b252be967ab1ba1103c66bcc2bac2a343b7bcc945f9a vendor.qti.gnss@2.1::ILocHidlFlpService
+7998a8a00a920298e9e81dc3c8d89c29e22869969c43a7cedf020ba96af86878 vendor.qti.gnss@2.1::ILocHidlGnss
+dc3bab6579bd0dbbfeef104a42fae323413d63ca0c7c82ec777c939eb9b35745 vendor.qti.gnss@2.1::ILocHidlGnssConfigService
+64b04067706b6963d850ca98752028571ccb9169182e3e07aae19a48c2d0a331 vendor.qti.gnss@2.1::ILocHidlGnssConfigServiceCallback
+ef519e8417c3bd2829dbdd68be979548fae7dcd91bbc3b4dd8b6c512df60a4be vendor.qti.gnss@2.1::ILocHidlWWANDBProvider
+620ce9efdd85ddbf11c22971e662b7832890ea92c9258cb902325265e6c369ea vendor.qti.gnss@2.1::ILocHidlWWANDBProviderCallback
+d14a98a9aab0177b008dffc8d7477f89be6d3eb4b36268a35f6cbf3f19bc751d vendor.qti.gnss@2.1::ILocHidlWWANDBReceiver
+2be61c9eb451c1d9c53a851d8ea1d8ab7ee01fe070fb7e870d069dae37196c31 vendor.qti.gnss@2.1::ILocHidlWWANDBReceiverCallback
+fd92ae71f7ddacac29a8e7c4e9ddd802495b166f0bb7c341be473b0d1e926465 vendor.qti.gnss@2.1::ILocHidlWiFiDBProvider
+49db5309e22c5f599e78849e568a6889d996950e6f5cd06317d4cda8f70c2e8e vendor.qti.gnss@2.1::ILocHidlWiFiDBProviderCallback
+a07fa8e5f014d8c87fbe44bfa9d63438425ba6dbae7c86781ffa115b8131fc52 vendor.qti.gnss@2.1::ILocHidlWiFiDBReceiver
+f98c584fda38d684d5132b079568431cfc2460052c2b47312c7e45e9210eeb97 vendor.qti.gnss@2.1::ILocHidlWiFiDBReceiverCallback
+
+6afdd3a28247f8e2c2f2dc5a2c44dd0cb0f22401ec576ae9913fbf8058fffc96 vendor.qti.gnss@3.0::ILocHidlGnss
+7bba6da6867edc93acc70c1cfdf3c88e8d9ecb1ac0a2f5a1885b51a1e8aaf0c6 vendor.qti.gnss@3.0::ILocHidlIzatConfig
+a736d0370c72fc12c4f23f0ce48688b555ae6c101e65c56b7de30d37da1c9cd9 vendor.qti.gnss@3.0::ILocHidlIzatConfigCallback
+
+##IMS
+e27c87bc818c1fdd5d125fc88f93759d2dfa8545d2e4b91dd76e2a4a1d8a0cc2 vendor.qti.ims.callinfo@1.0::IIncomingCallListener
+9bd0c798e6f77e3af87246e24172528a245a8ade846f3ce2fdbbdccb45092aa2 vendor.qti.ims.callinfo@1.0::IService
+
+##SOTER
+3e3e7fda784abe5fba47e31c7771276b5eb59f4fc86fffee588a28430906679a vendor.qti.hardware.soter@1.0::types
+47171ebb53283771a6fd80dacb6212941282980f9fefac7ba179ec3140d825bb vendor.qti.hardware.soter@1.0::ISoter
+
+##SCVE_Panorama
+c4b754b5aae00e36ed9d01108eacaf8b15ffa1b0d0d7911f94910aa9b489998e vendor.qti.hardware.scve.panorama@1.0::types
+5e1fc5cc7e8673534f618676d47b907b1d06d6024a60f399bd090a6b1c6372c7 vendor.qti.hardware.scve.panorama@1.0::IPanoramaStitching
+860136ba6e64aae04f56450928bc76941ad551a6380804cb3a4e19c8a049e2cd vendor.qti.hardware.scve.panorama@1.0::IPanoramaStitching_Callbacks
+bbfcea3c8b6951493679e89fc574485a5bb279f0dd44fa259cfe64215a6849b6 vendor.qti.hardware.scve.panorama@1.0::IPanoramaTracking
+02f99fe219ba1c566d4740a49e2ab10ab87c7033ae70cdedf1446ad5b88e341c vendor.qti.hardware.scve.panorama@1.0::IPanoramaTracking_Callbacks
+
+##SCVE_ObjectTracker
+1423c6d053d31ae3254340275b74602d00025bf39ffab82a79f881c1d905c380 vendor.qti.hardware.scve.objecttracker@1.0::types
+ab60cc718ff80c17840fd5f49f6f2a6af67a0129f61f631e2541d823cbab4550 vendor.qti.hardware.scve.objecttracker@1.0::IObjectTracker
+68947243d7defab73a3093320dcb789df1bac9617a78179c5ca88e291a2113c4 vendor.qti.hardware.scve.objecttracker@1.0::IObjectTracker_Callbacks
+
+##wifilearner
+54080ca19dbcae0b1e136ca3fe2da5fd3205f678ebefac8217d7a47c6ff1e42b vendor.qti.hardware.wifi.wifilearner@1.0::types
+7f94c1664fa3cbd7b4b02055104550ff8d79ac1bfce8ad579ea7aded0b13e56b vendor.qti.hardware.wifi.wifilearner@1.0::IWifiStats
+
+#Power
+e60fd76415a4caf66560c9ee05712add08575ab5f648a1c1efb1e325336c9dce vendor.qti.power.pasrmanager@1.0::types
+daa0d1e2f13712f28af4343a88c40da7de87f2d914cd72919ed2282b0e2f71a5 vendor.qti.power.pasrmanager@1.0::IPasrManager
+
+# CVP
+5d22e3aa614011de0cd1c77959aa81769b57bb1cafe5b2c80ef12a154c0fed15 vendor.qti.hardware.cvp@1.0::types
+3445e5815154ab9c1c26d327dd7cd9da17454f8998dfba9b9112082e33e897ae vendor.qti.hardware.cvp@1.0::ICvp
+4edd1a438c6f9fa9ca80cbf9befb2d3a681f3516c753517484d2674081aba98a vendor.qti.hardware.cvp@1.0::ICvpDfs_Callbacks
+28a6e3ec3ae20f872997d1f1cd803ef8c1d7030ab4017c05c91136e5beebef1e vendor.qti.hardware.cvp@1.0::ICvpDnC_Callbacks
+40f33ee96b530956b849ca9e0c2df15a0710634e3f41682f61dbb7e335347550 vendor.qti.hardware.cvp@1.0::ICvpFpx_Callbacks
+126a0f3469eea57674d1ba794696af78b196ec3abd9dd02d6e2cf0b33cf5e72a vendor.qti.hardware.cvp@1.0::ICvpNcc_Callbacks
+dc567ece1d1c9e61eace5001287d63e0c73edde4bb5ba551b714a159e65d3159 vendor.qti.hardware.cvp@1.0::ICvpOpticalFlow_Callbacks
+396f24e1b9e15148c514474f415797049a05450f76b66452ab1a774eee42039c vendor.qti.hardware.cvp@1.0::ICvpPyramidImage_Callbacks
+bdc48925d6fdd2dddb704e9fba8e9ba3f7aa0cbf91c8970a07633032c81eddae vendor.qti.hardware.cvp@1.0::ICvpPyramid_Callbacks
+4d3009f917f9debeb1d170cffa4818df92917bb4ab62d53af7d806ebd921d615 vendor.qti.hardware.cvp@1.0::ICvpScaledown_Callbacks
+e1adfe8cc817a50294c1ab3f3a0962fe49fc068cbc8e96a54706ac0748bb4494 vendor.qti.hardware.cvp@1.0::ICvp_Callbacks
+
+#Face3d
+c40b9198ae259311bacee3053d4ea1cc730069c9af799a7e5476082fb66b043c vendor.qti.hardware.biometrics.face@1.0::types
+eac5316f51b91b643ab7239dceb1936ddf63aaf440c5f24aaf8c6ce2cc68b501 vendor.qti.hardware.biometrics.face@1.0::IBiometricsFace
+82e985259d79b9c0f53a5ab1a03d1102df0c5b32f854903af24388aaa5f46783 vendor.qti.hardware.biometrics.face@1.0::IBiometricsFaceClientCallback
+
+#SecCam
+5022f0a681d6a3cf0968381dc2b121e8ad33e218609f4998f3336f6361013227 vendor.qti.hardware.seccam@1.0::ISecCam
+
+#######HAL released in Android #######
+
+## BT Configstore
+9dbdfb691c49e1e608532b7cadac8c8a96a5e5df50ca690422d5cff4b18a695f vendor.qti.hardware.btconfigstore@1.0::types
+61f09f50bfe9313b403b8ac3fae2fc3a66ae4f53807d5aaac0f06e963f96bbfa vendor.qti.hardware.btconfigstore@1.0::IBTConfigStore
+
+## qspmhal
+e5f1acb0a13d2937f968ad68f76988ff992309bc2bb2a3e5774b443f13ef3630 vendor.qti.qspmhal@1.0::IQspmhal
+
+##BT SAR
+612a1f76e007e6002ebc663807e35f7c1ff57caf43f66c4543e09a1e178cdf5f vendor.qti.hardware.bluetooth_sar@1.0::IBluetoothSar
+
+##Perf
+79d0348b1f281fe0a420624c6b7a53be58c5657d28d62ee2a8e86937fb8edf7d vendor.qti.hardware.perf@2.0::IPerf
+
+##Capability Config Store
+bf967d809dd1025c72e9c3eccfa82e40f208af520d7e07eadd759dcc9bbc924d vendor.qti.hardware.capabilityconfigstore@1.0::types
+db3a95ec31b2ebef6ad0533ecc9263ea4f216b2a3cdf3b7f7122af9b243f3699 vendor.qti.hardware.capabilityconfigstore@1.0::ICapabilityConfigStore
+
+##CryptfsHw
+58c3b1ce8742a66d6aa4690ff2404bdeb51540639e9c2409bd924fc15ba75ad9 vendor.qti.hardware.cryptfshw@1.0::ICryptfsHw
+
+#TrustedUI
+b84c72e6ee16181ba00a331db07d07f849f0dc177465c0c0162806fd2258e38c vendor.qti.hardware.trustedui@1.0::types
+24a557d39d9bed3aa8773b1e719b17838222b0393331415f630207d644811833 vendor.qti.hardware.trustedui@1.0::ITrustedInput
+4f0ca90619564ffc0e27f070e6b34ea591a15e38f9e33395757c216c5d68d244 vendor.qti.hardware.trustedui@1.0::ITrustedInputCallback
+2eef48b7a785e07baa02836a0f7a4302bee2b2a80599a64261af9e745216993a vendor.qti.hardware.trustedui@1.0::ITrustedUI
+97b10a34ee51cc37db59ff3e03f0d92a2ace17d1f2bc96e9e3129356b4e05ddc vendor.qti.hardware.trustedui@1.0::ITrustedUICallback
+
+##platform_boost
+46dbe15c23e88b75720cca1925961ecee5c179e168ef14343986037db2aa85d6 vendor.qti.platform_boost@1.0::types
+032a4d70a9679df98d3da547156f1d77f34eb7913c89b37a16a71fe61843bba8 vendor.qti.platform_boost@1.0::IPlatformBoost
+5ed22a66848d2fad544ec31cb18ec3b84728daaaa7854c1c1651e3863b43da2c vendor.qti.platform_boost@1.0::IPlatformBoostSysEventCallback
+
+##qseecom
+987bd7179fe88f40d312cc83bbc758ce188d85883e8e50efebb7dcad0e994061 vendor.qti.hardware.qseecom@1.0::IQSEECom
+
+#SPU
+428095b2a91cb0d9827cfd7a664aa1f28007fdd73526b4e04f101fc00fcc9a40 vendor.qti.spu@1.0::ISPUManager
+4a58101953831b3a08414e19930278d343ff66f815954ebdeb97b5f0edfbbee3 vendor.qti.spu@1.0::ISpcomClient
+1cad3df558eb8d1fd90a041528153f7f9c95839002b59400ee015d491e1a1dff vendor.qti.spu@1.0::ISpcomSSREvent
+176171762b04a1d8eb0f20686b0f8dbca111803371aa4a77e2ae79d13112c4bc vendor.qti.spu@1.0::ISpcomSharedBuffer
+
+#mediaSecureProcessor
+f8bd8456909bf6a4b15215e4744ff113414fcce57bfed6c766c8d08a10012521 vendor.qti.hardware.secureprocessor.common@1.0::types
+96bee3725a3ef55f2fe33d3ab3bda45d8a8f0e4311356ac766e1ec93fae48628 vendor.qti.hardware.secureprocessor.config@1.0::types
+8ca7c8d5ce50fe14ce5a9f83eb692279c38bb770312b20d75578dcf7f8011f5b vendor.qti.hardware.secureprocessor.device@1.0::ISecureProcessor

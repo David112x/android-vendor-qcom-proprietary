@@ -1,0 +1,85 @@
+/*
+ * Copyright (c) 2019 Qualcomm Technologies, Inc.
+ * All Rights Reserved.
+ * Confidential and Proprietary - Qualcomm Technologies, Inc.
+ *
+ */
+
+package vendor.qti.automotive.qcarcam@1.0;
+
+import types;
+import IQcarCameraStreamCB;
+
+/**
+ * Represents a automotive camera interfaces.
+ */
+interface IQcarCameraStream {
+
+    /**
+     * Request to configure particular input stream.
+     *
+     * Returns the Error status and Handle to input stream.
+     */
+    configureStream(QcarcamStreamParam Param, QcarcamStreamConfigData data) generates (QcarcamError Error);
+
+    /**
+     * Returns particular stream configurations.
+     *
+     * Returns the Error status and QcarcamStreamConfigData containing stream
+     * configurations.
+     */
+    getStreamConfig(QcarcamStreamParam Param) generates (QcarcamError Error, QcarcamStreamConfigData data);
+
+    /**
+     * Request to set output buffers on particular stream.
+     *
+     * Returns the Error status and Handle to input stream. Allication has to
+     * fill in the handle and QcarcamBuffersInfo.
+     */
+    setStreamBuffers(handle hndl, QcarcamBuffersInfo info) generates (QcarcamError Error);
+
+    /**
+     * Request to start particular input stream.
+     *
+     * Returns the Error status and Handle to started stream.
+     */
+    startStream(IQcarCameraStreamCB streamObj) generates (QcarcamError Error);
+
+    /**
+     * Request to stop particular input stream.
+     *
+     * Returns the Error status and Handle to stopped stream.
+     */
+    stopStream() generates (QcarcamError Error);
+
+    /**
+     * Request frames from particular input stream.
+     *
+     * Returns the Error status and retrived frame info.
+     */
+    getFrame(uint64_t timeout, uint32_t flags) generates (QcarcamError Error, QcarcamFrameInfo Info);
+
+    /**
+     * Request clear frames from particular stream.
+     *
+     * Returns the Error status and Handle to input stream.
+     */
+    releaseFrame(uint32_t idx) generates (QcarcamError Error);
+
+    /**
+     * Request to pause particular stream.
+     *
+     * Returns the Error status and Handle to paused stream. This stream will
+     * not produce any frames untill it resumed.
+     */
+    pauseStream() generates (QcarcamError Error);
+
+    /**
+     * Request resume particular stream.
+     *
+     * Returns the Error status and Handle to input stream. This stream will
+     * start producing frames after the successful resume.
+     */
+    resumeStream() generates (QcarcamError Error);
+};
+

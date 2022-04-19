@@ -1,0 +1,99 @@
+/*
+ * Copyright (c) 2018 Qualcomm Technologies, Inc.
+ * All Rights Reserved.
+ * Confidential and Proprietary - Qualcomm Technologies, Inc.
+ *
+ * Not a Contribution.
+ * Apache license notifications and license are retained
+ * for attribution purposes only.
+ */
+
+/*
+ * Copyright (C) 2016 The Android Open Source Project
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+package vendor.qti.gnss@2.1;
+
+import android.hardware.gnss@1.0;
+
+interface ILocHidlAGnssCallback extends IAGnssCallback {
+    /** LocHidl AGNSS type **/
+    @export(name="", value_prefix="AGPS_")
+    enum LocHidlAGnssType : uint8_t {
+        TYPE_ANY          = 0,
+        TYPE_SUPL         = 1,
+        TYPE_C2K          = 2,
+        TYPE_WWAN_ANY     = 3,
+        TYPE_WIFI         = 4,
+        TYPE_SUPL_ES      = 5
+    };
+
+    @export(name="", value_prefix="AGPS_")
+    enum LocHidlApnTypeMask : uint32_t {
+        APN_TYPE_MASK_DEFAULT       = 1 << 0L,
+        APN_TYPE_MASK_IMS           = 1 << 1L,
+        APN_TYPE_MASK_MMS           = 1 << 2L,
+        APN_TYPE_MASK_DUN           = 1 << 3L,
+        APN_TYPE_MASK_SUPL          = 1 << 4L,
+        APN_TYPE_MASK_HIPRI         = 1 << 5L,
+        APN_TYPE_MASK_FOTA          = 1 << 6L,
+        APN_TYPE_MASK_CBS           = 1 << 7L,
+        APN_TYPE_MASK_IA            = 1 << 8L,
+        APN_TYPE_MASK_EMERGENCY     = 1 << 9L
+    };
+
+    /**
+     * Represents the status of AGNSS augmented to support IPv4.
+     */
+    @export(name="", value_prefix="GPS_")
+    struct LocHidlAGnssStatusIpV4 {
+        LocHidlAGnssType type;
+        LocHidlApnTypeMask apnTypeMask;
+        AGnssStatusValue status;
+        /**
+         * 32-bit IPv4 address.
+         */
+        uint32_t ipV4Addr;
+    };
+
+    /**
+     * Represents the status of AGNSS augmented to support IPv6.
+     */
+    struct LocHidlAGnssStatusIpV6 {
+        LocHidlAGnssType type;
+        LocHidlApnTypeMask apnTypeMask;
+        AGnssStatusValue status;
+        /**
+         * 128-bit IPv6 address.
+         */
+        uint8_t[16] ipV6Addr;
+    };
+
+    /**
+     * Callback with AGNSS(IpV4) status information.
+     *
+     * @param status Will be of type AGnssStatusIpV4.
+     */
+    locHidlAgnssStatusIpV4Cb(LocHidlAGnssStatusIpV4 status);
+
+    /**
+     * Callback with AGNSS(IpV6) status information.
+     *
+     * @param status Will be of type AGnssStatusIpV6.
+     */
+    locHidlAgnssStatusIpV6Cb(LocHidlAGnssStatusIpV6 status);
+
+};
+

@@ -1,0 +1,40 @@
+cc_library_shared {
+    name: "vendor.qti.hardware.servicetracker@1.1-impl",
+    relative_install_path: "hw",
+    proprietary: true,
+    srcs: [
+        "Servicetracker.cpp",
+    ],
+    shared_libs: [
+        "libhidlbase",
+        "libhidltransport",
+        "libhardware",
+        "libbase",
+        "liblog",
+        "libutils",
+        "vendor.qti.hardware.servicetracker@1.1",
+        "vendor.qti.hardware.servicetracker@1.0",
+    ],
+}
+
+cc_binary {
+    name: "vendor.qti.hardware.servicetracker@1.1-service",
+    init_rc: ["vendor.qti.hardware.servicetracker@1.1-service.rc"],
+    defaults: ["hidl_defaults"],
+    vendor: true,
+    relative_install_path: "hw",
+    srcs: [
+        "service.cpp",
+    ],
+    shared_libs: [
+        "libhidlbase",
+        "liblog",
+        "libbase",
+        "libdl",
+        "libhidltransport",
+        "libhardware",
+        "libutils",
+        "vendor.qti.hardware.servicetracker@1.1",
+        "vendor.qti.hardware.servicetracker@1.0",
+    ],
+}

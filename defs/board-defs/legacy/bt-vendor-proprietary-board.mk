@@ -1,0 +1,1 @@
+../../../proprietary/commonsys-intf/bluetooth/bt-vendor-proprietary-board.mk

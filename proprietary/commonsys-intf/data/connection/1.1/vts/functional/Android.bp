@@ -1,0 +1,25 @@
+cc_test {
+
+    name: "VtsHalDataConnectionV1_1TargetTest",
+
+    cflags: [
+        "-O0",
+        "-g",
+    ],
+
+    srcs: ["VtsHalDataConnectionV1_1TargetTest.cpp"],
+
+    shared_libs: [
+        "liblog",
+        "libhidlbase",
+        "libhidltransport",
+        "libutils",
+        "vendor.qti.hardware.data.connection@1.0",
+        "vendor.qti.hardware.data.connection@1.1",
+    ],
+
+    static_libs: ["VtsHalHidlTargetTestBase"],
+
+    owner: "qti",
+
+}

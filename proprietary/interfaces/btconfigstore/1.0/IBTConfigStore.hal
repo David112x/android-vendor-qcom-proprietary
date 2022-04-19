@@ -1,0 +1,47 @@
+/*
+ * Copyright (c) 2019 Qualcomm Technologies, Inc.
+ * All Rights Reserved.
+ * Confidential and Proprietary - Qualcomm Technologies, Inc.
+ */
+
+package vendor.qti.hardware.btconfigstore@1.0;
+
+/**
+ * The BT config store interface is the layer defined for the BT/FM/ANT
+ * controller chip to communicate with upper layer of BT/FM/ANT through
+ * HwBinder. It's used to get value for predefined vendor properties &
+ * add on features list from vendor module to system module. It's also
+ * used to set value for predefined vendor properties from system module
+ * to vendor module.
+ */
+
+interface IBTConfigStore {
+    /**
+     * This method should be used to fetch Vendor Property List
+     *
+     * @param vPropType, vendor property type,  which need to be featched.
+     * @return result SUCCESS in case of success.
+     *                FAILED in case of failed.
+     * @return current configuration for vendor property.
+     */
+    getVendorProperties(uint32_t vPropType)
+            generates (Result result, vec<VendorProperty> vendorProp);
+
+    /**
+     * This method should be used to set Vendor Property.
+     *
+     * @param VendorProperty, which need to be set.
+     * @return result SUCCESS in case of success.
+     *                FAILED in case of failed.
+     */
+    setVendorProperty(VendorProperty vendorProp) generates (Result result);
+
+    /**
+     * This method should be used to fetch add on Features.
+     *
+     * @return result SUCCESS in case of success.
+     *                FAILED in case of failed.
+     * @return add on features List.
+     */
+    getAddOnFeatures() generates (Result result, AddOnFeaturesList featuresList);
+};

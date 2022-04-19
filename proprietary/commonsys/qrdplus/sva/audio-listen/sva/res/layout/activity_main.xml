@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!--
+Copyright (c) 2018 Qualcomm Technologies, Inc.
+All Rights Reserved.
+Confidential and Proprietary - Qualcomm Technologies, Inc.
+ -->
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/bg.content"
+    android:orientation="vertical">
+
+    <!-- Top Title -->
+    <TextView
+        android:id="@+id/tv_top_title"
+        style="@style/VoiceWakeup.Layout.TopTitleBar.Content"
+        android:layout_width="wrap_content"
+        android:text="@string/usage_info" />
+
+    <LinearLayout
+        android:id="@+id/layout_detected_prompt"
+        android:layout_width="match_parent"
+        android:layout_height="120dp"
+        android:background="@color/u.bg.detectedkeyphrase"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:paddingLeft="18dp"
+        android:paddingRight="18dp"
+        android:visibility="gone">
+
+        <TextView
+            android:id="@+id/tv_detected_keyphrase"
+            style="@style/User.Text.KeyphraseDetected"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/keyphrase_recognized" />
+
+        <TextView
+            android:id="@+id/tv_action"
+            style="@style/User.Text.KeyphraseDetectedAction"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/no_app_specified" />
+    </LinearLayout>
+
+    <View style="@style/VoiceWakeup.Layout.SeparatorH.bold" />
+
+    <!-- Sound Models List -->
+    <ListView
+        android:id="@+id/list_keyphrase"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <View style="@style/VoiceWakeup.Layout.SeparatorH" />
+
+</LinearLayout>

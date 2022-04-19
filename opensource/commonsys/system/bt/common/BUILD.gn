@@ -1,0 +1,18 @@
+static_library("common") {
+  cflags = [
+     "-fvisibility=default",
+  ]
+
+  sources = [
+    "address_obfuscator.cc",
+  ]
+
+  include_dirs = [
+    "//",
+    "//internal_include",
+  ]
+
+  deps = [
+    "//third_party/libchrome:base",
+  ]
+}

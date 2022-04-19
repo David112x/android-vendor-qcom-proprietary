@@ -1,0 +1,13 @@
+cc_library_static {
+    name: "libbt-common-qti",
+    defaults: ["fluoride_defaults_qti"],
+    host_supported: true,
+    include_dirs: ["vendor/qcom/opensource/commonsys/system/bt"],
+    srcs: [
+        "address_obfuscator.cc",
+    ],
+    shared_libs: [
+        "libcrypto",
+    ],
+}
+

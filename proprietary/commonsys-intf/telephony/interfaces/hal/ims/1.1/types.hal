@@ -1,0 +1,65 @@
+/*
+ * Copyright (c) 2018 Qualcomm Technologies, Inc.
+ * All Rights Reserved.
+ * Confidential and Proprietary - Qualcomm Technologies, Inc.
+ *
+ */
+
+package vendor.qti.hardware.radio.ims@1.1;
+
+import @1.0::CallDetails;
+import @1.0::CallFailCause;
+import @1.0::CallState;
+import @1.0::SipErrorInfo;
+
+enum CallFailCause : @1.0::CallFailCause {
+    CALL_FAIL_SIP_ALTERNATE_EMERGENCY_CALL
+};
+
+struct CallFailCauseResponse {
+    CallFailCause failCause;
+    vec<uint8_t> errorinfo;
+    string networkErrorString;
+    bool hasErrorDetails;
+    SipErrorInfo errorDetails;
+};
+
+struct HangupRequestInfo {
+    int32_t connIndex;
+    bool hasMultiParty;
+    bool multiParty;
+    string connUri;
+    uint32_t conf_id;
+    bool hasFailCauseResponse;
+    CallFailCauseResponse failCauseResponse;
+};
+
+struct CallInfo {
+    CallState state;
+    uint32_t index;
+    uint32_t toa;
+    bool hasIsMpty;
+    bool isMpty;
+    bool hasIsMT;
+    bool isMT;
+    uint32_t als;
+    bool hasIsVoice;
+    bool isVoice;
+    bool hasIsVoicePrivacy;
+    bool isVoicePrivacy;
+    string number;
+    uint32_t numberPresentation;
+    string name;
+    uint32_t namePresentation;
+    bool hasCallDetails;
+    CallDetails callDetails;
+    bool hasFailCause;
+    CallFailCauseResponse failCause;
+    bool hasIsEncrypted;
+    bool isEncrypted;
+    bool hasIsCalledPartyRinging;
+    bool isCalledPartyRinging;
+    string historyInfo;
+    bool hasIsVideoConfSupported;
+    bool isVideoConfSupported;
+};

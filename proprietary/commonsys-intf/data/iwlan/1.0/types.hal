@@ -1,0 +1,26 @@
+/*
+ * Copyright (c) 2018 Qualcomm Technologies, Inc.
+ * All Rights Reserved.
+ * Confidential and Proprietary - Qualcomm Technologies, Inc.
+ */
+
+package vendor.qti.hardware.data.iwlan@1.0;
+
+import android.hardware.radio@1.0::ApnTypes;
+import android.hardware.radio@1.0::RadioError;
+import android.hardware.radio@1.0::RegState;
+
+struct IWlanResponseInfo {
+    int32_t serial;                       // Serial number of the request
+    RadioError error;                     // Response error
+};
+
+struct IWlanDataRegStateResult {
+    RegState regState;
+    int32_t reasonForDenial;
+};
+
+struct QualifiedNetworks {
+    ApnTypes apnType;
+    vec<int32_t> networks;
+};

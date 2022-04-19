@@ -1,0 +1,19 @@
+/*
+ * Copyright (c) 2019 Qualcomm Technologies, Inc.
+ * All Rights Reserved.
+ * Confidential and Proprietary - Qualcomm Technologies, Inc.
+ *
+ */
+
+package vendor.qti.hardware.radio.qtiradio@2.2;
+
+import @2.1::IQtiRadio;
+
+interface IQtiRadio extends @2.1::IQtiRadio {
+    /*
+     * @param serial to match request/response. Responses must include the same token as requests.
+     *
+     * Response callback is IQtiRadioResponse.onNrIconTypeResponse()
+     */
+    oneway queryNrIconType(int32_t serial);
+};

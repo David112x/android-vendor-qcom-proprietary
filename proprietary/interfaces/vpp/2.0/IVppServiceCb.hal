@@ -1,0 +1,93 @@
+/*!
+ * @file IVppServiceCb.hal
+ *
+ * @cr
+ * Copyright (c) 2020 Qualcomm Technologies, Inc.
+ * All Rights Reserved.
+ * Confidential and Proprietary - Qualcomm Technologies, Inc.
+ *
+ * @services Defines the external interface for VPP Service.
+ */
+
+package vendor.qti.hardware.vpp@2.0;
+
+interface IVppServiceCb {
+    /*!
+     * @brief       Return an input buffer to the client.
+     *
+     * @description Called when an input buffer has been processed and can be
+     *              released from VPP Service.
+     *
+     * @input       stBuf     Returned buffer
+     *
+     * @return      VPP_OK         if the input buffer is returned successfully
+     *              VPP_ERR        if any error
+     */
+    inputBufferDone(VppBuffer stBuf) generates (VppError eResult);
+
+    /*!
+     * @brief       Return an output buffer to the client.
+     *
+     * @description Called when a buffer has been processed.
+     *              Buffers that are returned may have been originally queued
+     *              to VPP on the input or output port.
+     *
+     * @input       stBuf     Returned buffer
+     *
+     * @return      VPP_OK         if the output buffer is returned successfully
+     *              VPP_ERR        if any error
+     */
+    outputBufferDone(VppBuffer stBuf) generates (VppError eResult);
+
+    /*!
+     * @brief       Indicate to the client of a flush done event.
+     *
+     * @description Called when there is a flush done event from within
+     *              VPP that the client should know about.
+     *
+     * @input       stFlushDone     Parameters to define the flush done event
+     *
+     * @return      VPP_OK          if the event was received successfully
+     *              VPP_ERR         if any error
+     */
+    eventFlushDone(FlushDone stFlushDone) generates (VppError eResult);
+
+    /*!
+     * @brief       Indicate to the client of a drain done event
+     *
+     * @description Called when there is a drain done event from within
+     *              VPP that the client should know about.
+     *
+     * @input       void
+     *
+     * @return      VPP_OK          if the event was received successfully
+     *              VPP_ERR         if any error
+     */
+    eventDrainDone() generates (VppError eResult);
+
+    /*!
+     * @brief       Indicate to the client of a reconfigure done event.
+     *
+     * @description Called when there is a reconfigure done event from within
+     *              VPP that the client should know about.
+     *
+     * @input       stReconfigDone  Parameters to define the reconfigure done event
+     *
+     * @return      VPP_OK          if the event was received successfully
+     *              VPP_ERR         if any error
+     */
+    eventReconfigDone(ReconfigDone stReconfigDone) generates (VppError eResult);
+
+    /*!
+     * @brief       Indicate to the client of an error event
+     *
+     * @description Called when there is an error event from within
+     *              VPP that the client should know about.
+     *
+     * @input       eError          Parameter to define the type of error event
+     *
+     * @return      VPP_OK          if the event was received successfully
+     *              VPP_ERR         if any error
+     */
+    eventError(VppError eError) generates (VppError eResult);
+};

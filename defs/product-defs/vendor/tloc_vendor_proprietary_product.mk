@@ -1,0 +1,1 @@
+../../../proprietary/securemsm/config/tloc_vendor_proprietary_product.mk

@@ -1,0 +1,399 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!--
+Copyright (c) 2018 Qualcomm Technologies, Inc.
+All Rights Reserved.
+Confidential and Proprietary - Qualcomm Technologies, Inc.
+ -->
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg.content">
+
+    <!-- Footer view  -->
+    <View
+        android:id="@+id/view_footer"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/training_footer_height"
+        android:layout_alignParentBottom="true"
+        android:background="@drawable/bg_footer_repeat" />
+
+    <!-- Training tips layout  -->
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <!--User name title -->
+                <LinearLayout
+                    style="@style/VoiceWakeup.Layout.TopTitleBar"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/tv_user_name"
+                        style="@style/VoiceWakeup.Layout.TopTitleBar.Content"
+                        android:layout_gravity="center_vertical"
+                        android:drawablePadding="@dimen/body_all"
+                        android:drawableStart="@drawable/training_title"
+                        android:paddingEnd="@dimen/body_all"
+                        android:paddingStart="@dimen/body_all"
+                        android:text="@string/unknown_user"
+                        android:textAppearance="@style/VoiceWakeup.Font.TopTitle" />
+
+                </LinearLayout>
+
+
+                <!-- tips -->
+                <LinearLayout
+                    style="@style/VoiceWakeup.Layout.Section"
+                    android:orientation="vertical"
+                    android:padding="@dimen/body_all">
+
+                    <!-- training tips -->
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingBottom="@dimen/body_all"
+                        android:text="@string/training_tips"
+                        android:textColor="#333"
+                        android:textSize="18sp" />
+
+                    <!-- recording tips -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/bg_training_box"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:paddingBottom="@dimen/content_all"
+                            android:paddingLeft="@dimen/content_all"
+                            android:paddingRight="@dimen/content_all"
+                            android:text="@string/recording_tips_title"
+                            android:textAppearance="@style/VoiceWakeup.Font.Notice.Title" />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:paddingBottom="@dimen/content_all"
+                            android:paddingLeft="@dimen/content_all"
+                            android:paddingRight="@dimen/content_all">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="top"
+                                android:paddingEnd="@dimen/content_all"
+                                android:paddingStart="@dimen/content_all"
+                                android:text="@string/training_one"
+                                android:textAppearance="@style/VoiceWakeup.Font.Notice.Content" />
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="top"
+                                android:layout_weight="1"
+                                android:paddingEnd="@dimen/content_all"
+                                android:paddingStart="@dimen/content_all"
+                                android:text="@string/recording_tip1"
+                                android:textAppearance="@style/VoiceWakeup.Font.Notice.Content" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:paddingBottom="@dimen/content_all"
+                            android:paddingLeft="@dimen/content_all"
+                            android:paddingRight="@dimen/content_all">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="top"
+                                android:paddingEnd="@dimen/content_all"
+                                android:paddingStart="@dimen/content_all"
+                                android:text="@string/training_two"
+                                android:textAppearance="@style/VoiceWakeup.Font.Notice.Content" />
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="top"
+                                android:layout_weight="1"
+                                android:paddingEnd="@dimen/content_all"
+                                android:paddingStart="@dimen/content_all"
+                                android:text="@string/recording_tip2"
+                                android:textAppearance="@style/VoiceWakeup.Font.Notice.Content" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:paddingBottom="@dimen/content_all"
+                            android:paddingLeft="@dimen/content_all"
+                            android:paddingRight="@dimen/content_all">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="top"
+                                android:paddingEnd="@dimen/content_all"
+                                android:paddingStart="@dimen/content_all"
+                                android:text="@string/training_three"
+                                android:textAppearance="@style/VoiceWakeup.Font.Notice.Content" />
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="top"
+                                android:layout_weight="1"
+                                android:paddingEnd="@dimen/content_all"
+                                android:paddingStart="@dimen/content_all"
+                                android:text="@string/recording_tip3"
+                                android:textAppearance="@style/VoiceWakeup.Font.Notice.Content" />
+                        </LinearLayout>
+
+                    </LinearLayout>
+                </LinearLayout>
+            </LinearLayout>
+        </ScrollView>
+    </RelativeLayout>
+
+
+    <!-- Tap Mic Text -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/layout_mic"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="10dp"
+        android:text="@string/training_tap_mic"
+        android:textAppearance="@style/VoiceWakeup.Font.KeyPhrase.Users" />
+
+
+    <!-- recording background view -->
+    <View
+        android:id="@+id/view_recording_background"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@id/view_footer"
+        android:background="@color/bg_disableview"
+        android:visibility="invisible" />
+
+    <!-- Recording layout -->
+    <RelativeLayout
+        android:id="@+id/layout_recording"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/view_footer"
+        android:layout_centerHorizontal="true"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:background="@drawable/recording_popup_bg"
+        android:visibility="invisible">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingLeft="8dp"
+            android:paddingRight="8dp"
+            android:paddingTop="8dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_recording_popup_title"
+                android:orientation="horizontal"
+                android:paddingBottom="5dp"
+                android:paddingTop="5dp"
+                android:tileMode="repeat">
+
+                <!-- recording status -->
+                <TextView
+                    android:id="@+id/tv_recording_status"
+                    style="@style/VoiceWakeup.Font"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical"
+                    android:paddingEnd="10dp"
+                    android:paddingStart="10dp"
+                    android:textColor="#333"
+                    android:textSize="22sp"
+                    android:textStyle="bold" />
+
+                <!-- terminate training icon -->
+                <ImageButton
+                    android:id="@+id/ib_terminate_training"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginEnd="10dp"
+                    android:background="@color/transparent"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/popup_close" />
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:background="@drawable/bg_recording_popup_dot_line" />
+
+            <!-- keyphrase text view -->
+            <TextView
+                android:id="@+id/tv_keyphrase"
+                style="@style/VoiceWakeup.Layout.Section"
+                android:layout_marginBottom="10dp"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/bg_stroke_blue_heaby"
+                android:paddingBottom="10dp"
+                android:paddingEnd="10dp"
+                android:paddingStart="10dp"
+                android:paddingTop="10dp"
+                android:text="@string/keyphrase_message"
+                android:textAppearance="@style/VoiceWakeup.Font.Recording.Keyphrase" />
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp">
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/training_recordingHeaderLine_height"
+                    android:layout_centerInParent="true"
+                    android:layout_marginLeft="@dimen/body_leftRight"
+                    android:layout_marginRight="@dimen/body_leftRight"
+                    android:background="@color/bg.recording_line" />
+
+                <!-- five recording icons layout -->
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/training_recordingCounterImage_height"
+                    android:layout_centerInParent="true"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:id="@+id/iv_recording_one"
+                        android:layout_width="@dimen/training_recordingCounterImage_width"
+                        android:layout_height="@dimen/training_recordingCounterImage_width"
+                        android:layout_marginEnd="@dimen/training_recordingCounterImage_paddingRight"
+                        android:background="@drawable/recording_step_off"
+                        android:scaleType="fitXY"
+                        android:src="@drawable/recording_1_gray" />
+
+                    <ImageView
+                        android:id="@+id/iv_recording_two"
+                        android:layout_width="@dimen/training_recordingCounterImage_width"
+                        android:layout_height="@dimen/training_recordingCounterImage_height"
+                        android:layout_marginEnd="@dimen/training_recordingCounterImage_paddingRight"
+                        android:background="@drawable/recording_step_off"
+                        android:scaleType="fitXY"
+                        android:src="@drawable/recording_2_gray" />
+
+                    <ImageView
+                        android:id="@+id/iv_recording_three"
+                        android:layout_width="@dimen/training_recordingCounterImage_width"
+                        android:layout_height="@dimen/training_recordingCounterImage_height"
+                        android:layout_marginEnd="@dimen/training_recordingCounterImage_paddingRight"
+                        android:background="@drawable/recording_step_off"
+                        android:scaleType="fitXY"
+                        android:src="@drawable/recording_3_gray" />
+
+                    <ImageView
+                        android:id="@+id/iv_recording_four"
+                        android:layout_width="@dimen/training_recordingCounterImage_width"
+                        android:layout_height="@dimen/training_recordingCounterImage_height"
+                        android:layout_marginEnd="@dimen/training_recordingCounterImage_paddingRight"
+                        android:background="@drawable/recording_step_off"
+                        android:scaleType="fitXY"
+                        android:src="@drawable/recording_4_gray" />
+
+                    <ImageView
+                        android:id="@+id/iv_recording_five"
+                        android:layout_width="@dimen/training_recordingCounterImage_width"
+                        android:layout_height="@dimen/training_recordingCounterImage_height"
+                        android:background="@drawable/recording_step_off"
+                        android:scaleType="fitXY"
+                        android:src="@drawable/recording_5_gray" />
+                </LinearLayout>
+            </RelativeLayout>
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="100dp">
+
+                <!-- recording verification result display -->
+                <TextView
+                    android:id="@+id/tv_recording_result"
+                    style="@style/VoiceWakeup.Layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_horizontal"
+                    android:text="@string/recording_bad"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    android:visibility="invisible" />
+
+                <!-- Continue button after five OK recordings -->
+                <Button
+                    android:id="@+id/b_continue"
+                    style="@style/VoiceWakeup.Layout.Button.Blue"
+                    android:layout_marginLeft="40dp"
+                    android:layout_marginRight="40dp"
+                    android:layout_marginTop="10dp"
+                    android:text="@string/training_continue"
+                    android:textColor="@color/text.white"
+                    android:visibility="invisible" />
+
+            </FrameLayout>
+
+        </LinearLayout>
+    </RelativeLayout>
+
+    <!-- mic button layout -->
+    <RelativeLayout
+        android:id="@id/layout_mic"
+        android:layout_width="@dimen/training_micButton_width"
+        android:layout_height="@dimen/training_micButton_width"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="@dimen/training_micButton_paddingBottom">
+
+        <ImageButton
+            android:id="@+id/ib_mic"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#0000"
+            android:scaleType="fitXY"
+            android:src="@drawable/btn_training_record_off" />
+
+        <ImageView
+            android:layout_width="@dimen/training_micImage_width"
+            android:layout_height="@dimen/training_micImage_height"
+            android:layout_centerInParent="true"
+            android:background="#0000"
+            android:scaleType="fitXY"
+            android:src="@drawable/ic_mic" />
+    </RelativeLayout>
+
+</RelativeLayout>

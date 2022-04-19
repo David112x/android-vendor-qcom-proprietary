@@ -1,0 +1,9 @@
+subdirs = [
+    "device",
+    "btif",
+    "stack",
+    "osi",
+    "stack",
+    "bta",
+    "btconfigstore",
+]

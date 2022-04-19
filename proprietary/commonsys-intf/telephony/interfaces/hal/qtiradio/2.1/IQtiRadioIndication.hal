@@ -1,0 +1,38 @@
+/*
+ * Copyright (c) 2018 Qualcomm Technologies, Inc.
+ * All Rights Reserved.
+ * Confidential and Proprietary - Qualcomm Technologies, Inc.
+ *
+ */
+
+package vendor.qti.hardware.radio.qtiradio@2.1;
+
+import @2.0::IQtiRadioIndication;
+
+/*
+ * Interface declaring unsolicited qtiradio indications
+ */
+interface IQtiRadioIndication extends @2.0::IQtiRadioIndication {
+    /*
+     * Unsol msg to notify of upper layer indication.
+     *
+     * @param upperLayerIndInfo upper layer indication received from the modem.
+     */
+    oneway onUpperLayerIndInfoChange(UpperLayerIndInfo uliInfo);
+
+    /*
+     * Unsol msg to indicate changes in 5G SCG configuration.
+     *
+     * @param BearerStatus as per types.hal to indicate bearer allocated/removed.
+     *
+     */
+    oneway onNrBearerAllocationChange_2_1(BearerStatus bearerStatus);
+
+    /*
+     * Unsol msg to indicate changes in 5G configuration.
+     *
+     * @param 5gConfigType as per types.hal to indicate configuration NSA/SA.
+     *
+     */
+    oneway on5gConfigInfoChange(ConfigType config);
+};

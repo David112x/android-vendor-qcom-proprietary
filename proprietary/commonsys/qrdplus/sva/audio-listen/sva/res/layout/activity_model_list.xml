@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!--
+Copyright (c) 2018 Qualcomm Technologies, Inc.
+All Rights Reserved.
+Confidential and Proprietary - Qualcomm Technologies, Inc.
+ -->
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg_button_dark">
+
+    <!-- footer button layout -->
+    <LinearLayout
+        android:id="@+id/layout_footer"
+        style="?android:attr/buttonBarStyle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="@drawable/bg_footerbar"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/b_load_sm"
+            style="?android:attr/buttonBarButtonStyle"
+            android:layout_width="0px"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:onClick="onStateButtonClicked"
+            android:text="@string/load" />
+
+        <Button
+            android:id="@+id/b_start_recognition"
+            style="?android:attr/buttonBarButtonStyle"
+            android:layout_width="0px"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:onClick="onStateButtonClicked"
+            android:text="@string/start" />
+
+        <Button
+            android:id="@+id/b_stop_recognition"
+            style="?android:attr/buttonBarButtonStyle"
+            android:layout_width="0px"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:onClick="onStateButtonClicked"
+            android:text="@string/stop" />
+
+        <Button
+            android:id="@+id/b_unload_sm"
+            style="?android:attr/buttonBarButtonStyle"
+            android:layout_width="0px"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:onClick="onStateButtonClicked"
+            android:text="@string/unload" />
+
+    </LinearLayout>
+
+    <!-- title and list view -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/layout_footer"
+        android:layout_alignParentTop="true"
+        android:background="@color/bg.content"
+        android:orientation="vertical">
+
+        <!-- Top Title -->
+        <FrameLayout style="@style/VoiceWakeup.Layout.TopTitleBar">
+
+            <TextView
+                style="@style/VoiceWakeup.Layout.TopTitleBar.Content"
+                android:text="@string/sound_models" />
+        </FrameLayout>
+
+        <!-- Sound Models List -->
+        <ListView
+            android:id="@+id/lv_sound_models"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/bg.content" />
+
+        <View style="@style/VoiceWakeup.Layout.SeparatorH" />
+
+    </LinearLayout>
+
+</RelativeLayout>

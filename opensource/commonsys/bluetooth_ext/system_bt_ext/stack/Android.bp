@@ -1,0 +1,42 @@
+// Bluetooth stack static library for target
+// ========================================================
+cc_library_static {
+    name: "libbt-stack_ext",
+    defaults: ["fluoride_defaults_qti"],
+    local_include_dirs: [
+        "btm",
+        "include",
+    ],
+    include_dirs: [
+        "vendor/qcom/opensource/commonsys/system/bt",
+        "vendor/qcom/opensource/commonsys/system/bt/btcore/include",
+        "vendor/qcom/opensource/commonsys/system/bt/btif/include",
+        "vendor/qcom/opensource/commonsys/system/bt/hci/include",
+        "vendor/qcom/opensource/commonsys/system/bt/include",
+        "vendor/qcom/opensource/commonsys/system/bt/internal_include",
+        "vendor/qcom/opensource/commonsys/system/bt/udrv/include",
+        "vendor/qcom/opensource/commonsys/system/bt/bta/include",
+        "vendor/qcom/opensource/commonsys/system/bt/bta/sys",
+        "vendor/qcom/opensource/commonsys/system/bt/utils/include",
+        "vendor/qcom/opensource/commonsys/system/bt/stack/include",
+        "vendor/qcom/opensource/commonsys/system/bt/stack/btm",
+        "vendor/qcom/opensource/commonsys/bluetooth_ext/system_bt_ext/bta/include/",
+        "vendor/qcom/opensource/commonsys/bluetooth_ext/system_bt_ext/device/include/",
+        "vendor/qcom/opensource/commonsys/bluetooth_ext/vhal/include",
+        "vendor/qcom/opensource/commonsys-intf/bluetooth/include",
+    ],
+    srcs: [
+        "btm/btm_csb.cc",
+        "btm/btm_iot_config.cc",
+        "hcic/hcivendorcmds.cc",
+        "a2dp/a2dp_vendor_aptx_tws_encoder.cc",
+        "a2dp/a2dp_vendor_aptx_tws.cc",
+    ],
+    static_libs: [
+        "libbt-hci_qti",
+    ],
+    shared_libs: [
+        "libcutils",
+        "liblog",
+    ],
+}

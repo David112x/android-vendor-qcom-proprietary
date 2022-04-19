@@ -1,0 +1,1 @@
+../../../proprietary/gles/adreno_buildcfg/build/android/rs-board.mk

@@ -1,0 +1,1 @@
+../../../proprietary/securemsm/config/qseecom_hal_vendor_proprietary_product.mk

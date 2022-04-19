@@ -1,0 +1,63 @@
+// Bluetooth device static library for target
+// ========================================================
+cc_library_static {
+    name: "libbtdevice_qti",
+    defaults: ["fluoride_defaults_qti"],
+    local_include_dirs: [
+        "include",
+    ],
+    include_dirs: [
+        "vendor/qcom/opensource/commonsys/system/bt",
+        "vendor/qcom/opensource/commonsys/system/bt/bta/ag",
+        "vendor/qcom/opensource/commonsys/system/bt/bta/sys",
+        "vendor/qcom/opensource/commonsys/system/bt/bta/include",
+        "vendor/qcom/opensource/commonsys/system/bt/btcore/include",
+        "vendor/qcom/opensource/commonsys/system/bt/hci/include",
+        "vendor/qcom/opensource/commonsys/system/bt/internal_include",
+        "vendor/qcom/opensource/commonsys/system/bt/stack/include",
+        "vendor/qcom/opensource/commonsys/bluetooth_ext/system_bt_ext",
+        "vendor/qcom/opensource/commonsys/bluetooth_ext/system_bt_ext/btconfigstore",
+        "vendor/qcom/opensource/commonsys-intf/bluetooth/include",
+    ],
+    srcs: [
+        "src/controller.cc",
+        "src/esco_parameters.cc",
+    ],
+    shared_libs: [
+        "liblog",
+        "libbtconfigstore",
+    ],
+
+//ifeq ($(strip $(TARGET_BUILD_VARIANT)),userdebug)
+//ifneq ($(strip $(BOARD_HAS_QTI_BT_ROME)),true))
+    cflags: [
+        "-DQLOGKIT_USERDEBUG",
+    ],
+//endif
+//endif
+}
+
+// Bluetooth device unit tests for target
+// ========================================================
+cc_test {
+    name: "net_test_device_qti",
+    test_suites: ["device-tests"],
+    defaults: ["fluoride_defaults_qti"],
+    include_dirs: ["vendor/qcom/opensource/commonsys/system/bt"],
+    srcs: [
+        "test/interop_test.cc",
+    ],
+    shared_libs: [
+        "liblog",
+        "libdl",
+    ],
+    static_libs: [
+        "libbtdevice_qti",
+        "libbtdevice_ext",
+        "libbtcore_qti",
+        "libosi_qti",
+        "libosi-AllocationTestHarness_qti",
+        "libcutils",
+        "libbluetooth-types",
+    ],
+}

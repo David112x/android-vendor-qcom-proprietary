@@ -1,0 +1,29 @@
+/*
+ * Copyright (c) 2019 Qualcomm Technologies, Inc.
+ * All Rights Reserved.
+ * Confidential and Proprietary - Qualcomm Technologies, Inc.
+ *
+ */
+
+package vendor.qti.hardware.radio.qtiradio@2.4;
+
+import @2.3::IQtiRadioResponse;
+import @1.0::QtiRadioResponseInfo;
+/*
+ * Interface declaring responses to solicited qtiradio requests
+ *
+ */
+interface IQtiRadioResponse extends @2.3::IQtiRadioResponse {
+    /**
+     * @param info Response info struct containing response type, serial no. and error
+     *
+     * Valid errors returned:
+     *   RadioError:RIL_E_SUCCESS
+     *   RadioError:RIL_E_RADIO_NOT_AVAILABLE
+     *   RadioError:SIM_ABSENT
+     *   RadioError:RIL_E_REQUEST_NOT_SUPPORTED
+     *   RadioError:INVALID_ARGUMENTS
+     *   RadioError:MODEM_INTERNAL_FAILURE
+     */
+    oneway setCarrierInfoForImsiEncryptionResponse(QtiRadioResponseInfo info);
+};

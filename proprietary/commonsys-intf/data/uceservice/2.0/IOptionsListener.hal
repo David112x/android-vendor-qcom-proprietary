@@ -1,0 +1,66 @@
+/*********************************************************************
+ Copyright (c) 2017-2018 Qualcomm Technologies, Inc.
+ All Rights Reserved.
+ Confidential and Proprietary - Qualcomm Technologies, Inc.
+**********************************************************************/
+
+package com.qualcomm.qti.uceservice@2.0;
+
+interface IOptionsListener {
+
+  /**
+   * Callback invoked for IUceService.createOptionsService() API Call
+   * @param serviceHandle     a token to identify the client.
+   *                          -1 indicates invalid handle
+   *
+   */
+  oneway onOptionsCreated(int64_t serviceHandle);
+
+  /**
+   * Callback function to be invoked by the Options service to notify the listener of service
+   * availability. This indicates the service is ready to use.
+   * @param status       as service availability.
+   *
+   */
+  oneway serviceAvailable (UceStatusCode status);
+
+  /**
+   * Callback function to be invoked by the Options service to notify the listener of service
+   * unavailability. Indicates the service is not ready to
+   *
+   * @param status       as service unavailability.
+   *
+   */
+  oneway serviceUnAvailable(UceStatusCode status);
+
+  /**
+   * Callback function to be invoked to inform the client when the response for a SIP OPTIONS
+   * has been received.
+   *
+   * @param uri             URI of the remote entity received in network response.
+   *                        This will be either a SIP URI or Tel URI as supported on network.
+   * @param sipResponse     data of the network response received.
+   * @param capInfo         capabilities of the remote entity received.
+   *
+   */
+  oneway sipResponseReceived (string uri, OptionsSipResponse sipResponse,
+      OptionsCapabilityInfo capInfo);
+
+  /**
+   * Callback function to be invoked to inform the client of the status of an asynchronous call.
+   *
+   * @param commandStatus     command status of the request placed.
+   *
+   */
+  oneway cmdStatus(OptionsCmdStatus commandStatus);
+
+  /**
+   * Callback function to be invoked to inform the client of an incoming OPTIONS request
+   * from the network.
+   * @param uri        URI of the remote entity received.
+   *                   This will be either a SIP URI or Tel URI as supported on network.
+   * @param capInfo    capabilities of the remote entity.
+   * @param tID        transation ID of the request received from network.
+   */
+  oneway incomingOptions(string uri, OptionsCapabilityInfo capInfo, uint16_t tId);
+};

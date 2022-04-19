@@ -1,0 +1,52 @@
+ ;######################################################################
+ ; Copyright (c) 2015-2018 Qualcomm Technologies, Inc.
+ ; All Rights Reserved.
+ ; Confidential and Proprietary - Qualcomm Technologies, Inc.
+ ;######################################################################
+
+;######################################################################
+;
+; Place this logging configutration file in /data/vendor/camera/camera_dbg.txt
+;
+;######################################################################
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; Camera debug log file name
+; Default: no file for logging, log to stderr
+;          it is recommended to place the debug log output file in /data/vendor/camera
+;
+; logfile=
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; Camera global and module logging levels
+; Valid values:
+;   none    - no logging
+;   error   - error message logging only, default
+;   high    - log high priority messages and up
+;   warn    - log warnings and higher
+;   low     - verbose logging
+;   debug   - debug logging level
+;
+; cam_dbglevel=error
+; mct_dbglevel=error
+; sensor_dbglevel=error
+; iface_dbglevel=error
+; isp_dbglevel=error
+; stats_dbglevel=error
+; pproc_dbglevel=warn
+; imglib_dbglevel=error
+; cpp_dbglevel=warn
+; hal_dbglevel=error
+; jpeg_dbglevel=error
+; c2d_dbglevel=error
+; shim_dbglevel=error
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; Camera assert behavior
+; 0 - assert logging only
+; 1 - issue soft breakpoint, if available on the system
+;
+; cam_assert=0
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;

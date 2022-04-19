@@ -1,0 +1,623 @@
+[ {
+  "acvVersion" : "1.0"
+}, {
+  "vsId" : 13604,
+  "algorithm" : "HMAC-SHA2-256",
+  "revision" : "1.0",
+  "isSample" : false,
+  "testGroups" : [ {
+    "tgId" : 1,
+    "testType" : "AFT",
+    "keyLen" : 8,
+    "msgLen" : 128,
+    "macLen" : 256,
+    "tests" : [ {
+      "tcId" : 1,
+      "key" : "A1",
+      "msg" : "D6E8D8993560B689F51A9868E1D9D7A4"
+    }, {
+      "tcId" : 2,
+      "key" : "BC",
+      "msg" : "82D1104697E4E30F77DEFC4F99C4FDAE"
+    }, {
+      "tcId" : 3,
+      "key" : "39",
+      "msg" : "2A343B95F4BAA606FBB58794D9BB232D"
+    }, {
+      "tcId" : 4,
+      "key" : "15",
+      "msg" : "E4BBCA72EC1254CA4CA0D526F640CCCE"
+    }, {
+      "tcId" : 5,
+      "key" : "57",
+      "msg" : "9E143AED5A87E575DE92DE68694C398D"
+    }, {
+      "tcId" : 6,
+      "key" : "E8",
+      "msg" : "D9DCFCD29EB12FFA4C5A3B19D6D742C1"
+    }, {
+      "tcId" : 7,
+      "key" : "FE",
+      "msg" : "9A8DFF4BBDDBF6759D151AD1201BC8DC"
+    }, {
+      "tcId" : 8,
+      "key" : "3F",
+      "msg" : "28828F9575BF4AEAB34749F8EA86E6AC"
+    }, {
+      "tcId" : 9,
+      "key" : "5A",
+      "msg" : "E03A27A18C5F050D07BFA23BF5722C99"
+    }, {
+      "tcId" : 10,
+      "key" : "80",
+      "msg" : "5960722A59125067C484C4913BA12E1E"
+    }, {
+      "tcId" : 11,
+      "key" : "3B",
+      "msg" : "6F23A961F95F61D1F77CD72D7012C704"
+    }, {
+      "tcId" : 12,
+      "key" : "30",
+      "msg" : "C5C9BC9410E7035EF8E56E0DB0BC1B93"
+    }, {
+      "tcId" : 13,
+      "key" : "A2",
+      "msg" : "FBCA0EE2CF89C43369089A676E040DF4"
+    }, {
+      "tcId" : 14,
+      "key" : "15",
+      "msg" : "6684A97F059BB49E501291D44985A5D4"
+    }, {
+      "tcId" : 15,
+      "key" : "8D",
+      "msg" : "F429E6D924A80FF4E11A670326FCBF7C"
+    }, {
+      "tcId" : 16,
+      "key" : "C4",
+      "msg" : "09E739121021182FDED9F977F4897209"
+    }, {
+      "tcId" : 17,
+      "key" : "A2",
+      "msg" : "41B2949F1E8C61F0CCBAB30990ED8D5E"
+    }, {
+      "tcId" : 18,
+      "key" : "FC",
+      "msg" : "74CA2491FA6AA3BFD90787CEA41D0010"
+    }, {
+      "tcId" : 19,
+      "key" : "52",
+      "msg" : "597B78B31F9312A3285E47B7C7C1B064"
+    }, {
+      "tcId" : 20,
+      "key" : "AA",
+      "msg" : "E67C6290CDC11F4CDDFAFAD8C5B5A209"
+    }, {
+      "tcId" : 21,
+      "key" : "C0",
+      "msg" : "97E80680230F4F70C0453E5D10A9A45E"
+    }, {
+      "tcId" : 22,
+      "key" : "E9",
+      "msg" : "1AF3E6130C71E89406F3CFA897418B67"
+    }, {
+      "tcId" : 23,
+      "key" : "EE",
+      "msg" : "27849F6403AF2CFC80541CFC6AF44DA7"
+    }, {
+      "tcId" : 24,
+      "key" : "E0",
+      "msg" : "0824D5AF8073BC20DE11CBD9B7E949C0"
+    }, {
+      "tcId" : 25,
+      "key" : "3D",
+      "msg" : "FDF52FCD42F949CDD7C54B5249E0350A"
+    }, {
+      "tcId" : 26,
+      "key" : "49",
+      "msg" : "FE48FDB2B24324043A03BDF9EA2EF077"
+    }, {
+      "tcId" : 27,
+      "key" : "FE",
+      "msg" : "49FF361E5AE6AC5032904713FD2A5591"
+    }, {
+      "tcId" : 28,
+      "key" : "72",
+      "msg" : "D69CE90AB2C41B6EA6781DA8BDA366A9"
+    }, {
+      "tcId" : 29,
+      "key" : "2B",
+      "msg" : "2DA00A6D750F435D1CD929597D8DF268"
+    }, {
+      "tcId" : 30,
+      "key" : "79",
+      "msg" : "68FED1D23B0C9A8EAC08EF66B565385A"
+    }, {
+      "tcId" : 31,
+      "key" : "18",
+      "msg" : "704BD9E1791A48323E8B3C5FF77D70F6"
+    }, {
+      "tcId" : 32,
+      "key" : "F5",
+      "msg" : "FA039999D264212628D738D3AD6B8650"
+    }, {
+      "tcId" : 33,
+      "key" : "68",
+      "msg" : "863B0ADEF8A8211CB4353B644A676F27"
+    }, {
+      "tcId" : 34,
+      "key" : "AD",
+      "msg" : "DE95CBEFB720CD56EB129A3EA27CDF30"
+    }, {
+      "tcId" : 35,
+      "key" : "4B",
+      "msg" : "1A7704197909103CF52AAE7A543F5ED7"
+    }, {
+      "tcId" : 36,
+      "key" : "8C",
+      "msg" : "DCD6DFFED6FFD654F4E76908940813AC"
+    }, {
+      "tcId" : 37,
+      "key" : "80",
+      "msg" : "438664F3A0926B1D0D9D2CADB5E3CFCB"
+    }, {
+      "tcId" : 38,
+      "key" : "C9",
+      "msg" : "98B114E6F60B821F388D233888EE939F"
+    }, {
+      "tcId" : 39,
+      "key" : "97",
+      "msg" : "0AA005ECBFD50197AF3AA406B3B26E51"
+    }, {
+      "tcId" : 40,
+      "key" : "56",
+      "msg" : "8DDAF86C3E26E9796D5D8290852399F5"
+    }, {
+      "tcId" : 41,
+      "key" : "71",
+      "msg" : "32E096129D6BA1E685D13FBE62A56DD3"
+    }, {
+      "tcId" : 42,
+      "key" : "74",
+      "msg" : "3AB35B590C612E81158EFBB5AD601F41"
+    }, {
+      "tcId" : 43,
+      "key" : "E8",
+      "msg" : "98784D8212D6C3D4D8CCD7C76735B4ED"
+    }, {
+      "tcId" : 44,
+      "key" : "4A",
+      "msg" : "9B28E3285ACFBA990ADB2FF83471E561"
+    }, {
+      "tcId" : 45,
+      "key" : "93",
+      "msg" : "922CA46F5E86DBFA5F66FA95B8289E13"
+    }, {
+      "tcId" : 46,
+      "key" : "58",
+      "msg" : "58B6861D486D1884DE29AAF5ABAF3C42"
+    }, {
+      "tcId" : 47,
+      "key" : "BF",
+      "msg" : "35B01172BA186832FA3D2969B87F9CA4"
+    }, {
+      "tcId" : 48,
+      "key" : "F5",
+      "msg" : "5F4660FBCDBD6FDB5CCB8136AAD1983E"
+    }, {
+      "tcId" : 49,
+      "key" : "D4",
+      "msg" : "62DFE5EDC38E99CA91E6E7D36A6A8BDF"
+    }, {
+      "tcId" : 50,
+      "key" : "90",
+      "msg" : "F64A5F26095E1958DFDDFB45EB5D149B"
+    }, {
+      "tcId" : 51,
+      "key" : "F2",
+      "msg" : "93DBAF936743C32117DA6027C44ACAE2"
+    }, {
+      "tcId" : 52,
+      "key" : "6D",
+      "msg" : "54318CD820632DBE9930CF8580D46C32"
+    }, {
+      "tcId" : 53,
+      "key" : "D6",
+      "msg" : "E8B556DFBD5BDF8A664F0932C09DBCF3"
+    }, {
+      "tcId" : 54,
+      "key" : "5E",
+      "msg" : "A44D72E89F52E0EA22695AE7F42B0A70"
+    }, {
+      "tcId" : 55,
+      "key" : "E9",
+      "msg" : "C0AC5F257DA780E1CCCABCA4734B8B82"
+    }, {
+      "tcId" : 56,
+      "key" : "E3",
+      "msg" : "1B4FDABE2E886EFE9BBE1CEDE065826A"
+    }, {
+      "tcId" : 57,
+      "key" : "E9",
+      "msg" : "86154CFA8A0B1C7AA462C4C88B3FF713"
+    }, {
+      "tcId" : 58,
+      "key" : "73",
+      "msg" : "5AD84200761B4F57CB7BA0337F412179"
+    }, {
+      "tcId" : 59,
+      "key" : "F2",
+      "msg" : "128D76BE9FEE706422B36E490ACFDCD0"
+    }, {
+      "tcId" : 60,
+      "key" : "28",
+      "msg" : "CB9418549D1926D7526706E4DB8D8F22"
+    }, {
+      "tcId" : 61,
+      "key" : "04",
+      "msg" : "ACA5A1CC35A0E80DC7A2D97B361C3F3C"
+    }, {
+      "tcId" : 62,
+      "key" : "A6",
+      "msg" : "CFB8F25AE6EB4058A475E19BC0E7AE40"
+    }, {
+      "tcId" : 63,
+      "key" : "2E",
+      "msg" : "1BA96142E9856CE945470512CA683A51"
+    }, {
+      "tcId" : 64,
+      "key" : "FB",
+      "msg" : "8F0432E83828D0DA098F97489C7C404B"
+    }, {
+      "tcId" : 65,
+      "key" : "83",
+      "msg" : "21DC7461E2CD6DA633D16CA9A1930434"
+    }, {
+      "tcId" : 66,
+      "key" : "60",
+      "msg" : "A8E7ECE11ED0A5147C7D83CF201681C0"
+    }, {
+      "tcId" : 67,
+      "key" : "E2",
+      "msg" : "73568DCF0F1447ABF188181EC3C4ED78"
+    }, {
+      "tcId" : 68,
+      "key" : "0F",
+      "msg" : "33FC1F0C003E5C382BCEE59B29F77AD1"
+    }, {
+      "tcId" : 69,
+      "key" : "E4",
+      "msg" : "4FD4807F656708B108C0C7CB52B59909"
+    }, {
+      "tcId" : 70,
+      "key" : "1B",
+      "msg" : "4B1AE3F4467E9E099A0CE270EF63ECDC"
+    }, {
+      "tcId" : 71,
+      "key" : "5E",
+      "msg" : "F229B038656312797F14B13F9C15EA4A"
+    }, {
+      "tcId" : 72,
+      "key" : "F3",
+      "msg" : "D5C95BD11D57443842057446656E40CB"
+    }, {
+      "tcId" : 73,
+      "key" : "7F",
+      "msg" : "95F1FBBE306A078ED8A5C73D4EDAD8CC"
+    }, {
+      "tcId" : 74,
+      "key" : "16",
+      "msg" : "F7685B60D7428D9168D9A99D9E0D5D7B"
+    }, {
+      "tcId" : 75,
+      "key" : "53",
+      "msg" : "D763A797232BE3CB05009F90BF7F8242"
+    } ]
+  }, {
+    "tgId" : 2,
+    "testType" : "AFT",
+    "keyLen" : 16,
+    "msgLen" : 128,
+    "macLen" : 256,
+    "tests" : [ {
+      "tcId" : 76,
+      "key" : "2A67",
+      "msg" : "D77CFC87400082864C588F281BC0B9CC"
+    }, {
+      "tcId" : 77,
+      "key" : "871B",
+      "msg" : "ABB54375AAF16F8929DBFFDC578D7C17"
+    }, {
+      "tcId" : 78,
+      "key" : "52BD",
+      "msg" : "16A324975590B5D7BE2451D27793F2B4"
+    }, {
+      "tcId" : 79,
+      "key" : "BA68",
+      "msg" : "5E8DBF0C5809C245802D84B6B75C30F7"
+    }, {
+      "tcId" : 80,
+      "key" : "D4FF",
+      "msg" : "5BB00685C9D6619599A77485CDFAA046"
+    }, {
+      "tcId" : 81,
+      "key" : "E0A4",
+      "msg" : "39E060C859E000202DED9E78038F1EA0"
+    }, {
+      "tcId" : 82,
+      "key" : "6024",
+      "msg" : "AF1581B23D82FFA2DC839DAA53AFC803"
+    }, {
+      "tcId" : 83,
+      "key" : "D6B8",
+      "msg" : "AB9F85DF35E50CE70AC26A1B4AB0A821"
+    }, {
+      "tcId" : 84,
+      "key" : "D9B6",
+      "msg" : "A3421E876047868E55EAD41385EE9F2A"
+    }, {
+      "tcId" : 85,
+      "key" : "85A1",
+      "msg" : "0E08EBFD58CB9E3CD5420674B34E8AAF"
+    }, {
+      "tcId" : 86,
+      "key" : "D1C5",
+      "msg" : "2848E229224D8C80DB5333514FD4194A"
+    }, {
+      "tcId" : 87,
+      "key" : "6A3A",
+      "msg" : "9729161FD3FCDEA7F76F6013144A3D17"
+    }, {
+      "tcId" : 88,
+      "key" : "C324",
+      "msg" : "570EB5740F4F2BA6993FA5C5F2B3ABAB"
+    }, {
+      "tcId" : 89,
+      "key" : "BADE",
+      "msg" : "CA51B147E2314EB2DDCD20C20F8CA095"
+    }, {
+      "tcId" : 90,
+      "key" : "7982",
+      "msg" : "6836F006734C5607AF08447604D14A23"
+    }, {
+      "tcId" : 91,
+      "key" : "A5BD",
+      "msg" : "086D896E1D33C91F35FD5D8AB3653869"
+    }, {
+      "tcId" : 92,
+      "key" : "5E27",
+      "msg" : "BD0C75FE0C1E4C802BEFFA70F09211FA"
+    }, {
+      "tcId" : 93,
+      "key" : "DCF1",
+      "msg" : "82A5EC794140F17718C4B39962DB8EFD"
+    }, {
+      "tcId" : 94,
+      "key" : "3B8A",
+      "msg" : "457ED4C8B1259240330BAB839934941F"
+    }, {
+      "tcId" : 95,
+      "key" : "C56D",
+      "msg" : "F8FDFD32B9FA5B66CF53938D8AAC76AB"
+    }, {
+      "tcId" : 96,
+      "key" : "A0E5",
+      "msg" : "E77AF080D19F55C6E88E344296FF2D0B"
+    }, {
+      "tcId" : 97,
+      "key" : "FD60",
+      "msg" : "7A42D1D53016B126FD7D1FDA18406731"
+    }, {
+      "tcId" : 98,
+      "key" : "AE07",
+      "msg" : "992D3BF6B3CD84585F7C1625F32827C1"
+    }, {
+      "tcId" : 99,
+      "key" : "39E2",
+      "msg" : "96B2144BE079D7B16385E2A7C7F04D28"
+    }, {
+      "tcId" : 100,
+      "key" : "5F4C",
+      "msg" : "2F150D94A7358B9B4D90C15B3BF58163"
+    }, {
+      "tcId" : 101,
+      "key" : "D690",
+      "msg" : "C01128D4672E2E36409A79774C455B95"
+    }, {
+      "tcId" : 102,
+      "key" : "E0CA",
+      "msg" : "4A257CCD80ADAF715F7C472942ECF76F"
+    }, {
+      "tcId" : 103,
+      "key" : "412B",
+      "msg" : "EB1B39BB94432ACC7B01E39EDCB68B4B"
+    }, {
+      "tcId" : 104,
+      "key" : "0FD3",
+      "msg" : "7E4A8CDD1274E5602AA4B3EAD8D776E0"
+    }, {
+      "tcId" : 105,
+      "key" : "D1C3",
+      "msg" : "4C08089CDB74B22E853EC806E9EF402A"
+    }, {
+      "tcId" : 106,
+      "key" : "5D4C",
+      "msg" : "441CE88A078CD06C3A0EA02E79ACB777"
+    }, {
+      "tcId" : 107,
+      "key" : "18DD",
+      "msg" : "0055D0613E50B6119EA0365D40EC2C9D"
+    }, {
+      "tcId" : 108,
+      "key" : "73FD",
+      "msg" : "B19CEEA0045D652DF18B368C15881512"
+    }, {
+      "tcId" : 109,
+      "key" : "2319",
+      "msg" : "5DE2DA2FDA3DC2E34F83ADD056BC4BD6"
+    }, {
+      "tcId" : 110,
+      "key" : "D33A",
+      "msg" : "4BD9D904EE8666709EE7840426619A8C"
+    }, {
+      "tcId" : 111,
+      "key" : "7208",
+      "msg" : "13D6076C33D8CE8B8B6F63EDBB8E69E1"
+    }, {
+      "tcId" : 112,
+      "key" : "96DA",
+      "msg" : "F821965CAFF7582DBB118E2D2730D4DA"
+    }, {
+      "tcId" : 113,
+      "key" : "84DA",
+      "msg" : "E31D14D698DCEEB760AC4E440B7EFFA5"
+    }, {
+      "tcId" : 114,
+      "key" : "0BDE",
+      "msg" : "DF312E952D825690382A94185960CD35"
+    }, {
+      "tcId" : 115,
+      "key" : "3B25",
+      "msg" : "DEE8B2A66A6DFC6182CA409FCC921BDA"
+    }, {
+      "tcId" : 116,
+      "key" : "ABE2",
+      "msg" : "FB55088F5BCDC83051E9EEB5593F9446"
+    }, {
+      "tcId" : 117,
+      "key" : "659C",
+      "msg" : "965B77B4FF64F95FF0211378FC0F010B"
+    }, {
+      "tcId" : 118,
+      "key" : "5CF9",
+      "msg" : "AD281DE1DC62A68EB4756829460C2CCC"
+    }, {
+      "tcId" : 119,
+      "key" : "F0E3",
+      "msg" : "AF9AD3412D34EE493E6D97240CB058AB"
+    }, {
+      "tcId" : 120,
+      "key" : "21DD",
+      "msg" : "099A699C0AAD07006D57B8336EE6DAE2"
+    }, {
+      "tcId" : 121,
+      "key" : "CE45",
+      "msg" : "5FFAB990BEE12BAA172EE9D7C455BC8F"
+    }, {
+      "tcId" : 122,
+      "key" : "D820",
+      "msg" : "68B21E5CD5501EA0554684378D790913"
+    }, {
+      "tcId" : 123,
+      "key" : "CC26",
+      "msg" : "88D8E111C0482F6F274BCFCFED7F8076"
+    }, {
+      "tcId" : 124,
+      "key" : "2E99",
+      "msg" : "E58405B5EAD0A98C6C36D7698FF48294"
+    }, {
+      "tcId" : 125,
+      "key" : "080D",
+      "msg" : "BC854ECD0EBC633F2F2916CDF16C9FE3"
+    }, {
+      "tcId" : 126,
+      "key" : "32D5",
+      "msg" : "E147C4A06E6FAC6494485D2891A71BE4"
+    }, {
+      "tcId" : 127,
+      "key" : "DE7D",
+      "msg" : "AF97D250A8710B2346F1C605988CF54F"
+    }, {
+      "tcId" : 128,
+      "key" : "4F9E",
+      "msg" : "0C17FB2B14B2ED6A1112A07256A9DE36"
+    }, {
+      "tcId" : 129,
+      "key" : "E9FA",
+      "msg" : "54CAECCAA9AA77AB9AF1DE139EE3C37C"
+    }, {
+      "tcId" : 130,
+      "key" : "CCF7",
+      "msg" : "62ACCEFB52B95ABE6F16E004A86937C2"
+    }, {
+      "tcId" : 131,
+      "key" : "3F82",
+      "msg" : "D7B8B9862F3F4AEC821C9A93315D4126"
+    }, {
+      "tcId" : 132,
+      "key" : "7608",
+      "msg" : "D767FBEE3E02B5BEBF8FE4ABC86DAED4"
+    }, {
+      "tcId" : 133,
+      "key" : "9C17",
+      "msg" : "37DC48EF2B54A7996AF3569EDFBA123A"
+    }, {
+      "tcId" : 134,
+      "key" : "8492",
+      "msg" : "9BE953B6FB87D443ED094BD600383862"
+    }, {
+      "tcId" : 135,
+      "key" : "5040",
+      "msg" : "80B671DCB49C25316210A98B6BBA11A5"
+    }, {
+      "tcId" : 136,
+      "key" : "D274",
+      "msg" : "D4BEE110A96E5FF9767560070CAB62D7"
+    }, {
+      "tcId" : 137,
+      "key" : "ADC5",
+      "msg" : "C8532BD0224574CB7E4E6DBC30572EE6"
+    }, {
+      "tcId" : 138,
+      "key" : "70D8",
+      "msg" : "A6F0C227587C1652268E76FFCD2AE906"
+    }, {
+      "tcId" : 139,
+      "key" : "04CB",
+      "msg" : "5EB736F041306F17B1D53E326C37976D"
+    }, {
+      "tcId" : 140,
+      "key" : "6241",
+      "msg" : "46A298A82716C76382BBF454313248B7"
+    }, {
+      "tcId" : 141,
+      "key" : "AAEB",
+      "msg" : "D292E738874F7B5100A060D0D80B8D59"
+    }, {
+      "tcId" : 142,
+      "key" : "8F02",
+      "msg" : "C99873F0ABCC792FFA71382AA530530D"
+    }, {
+      "tcId" : 143,
+      "key" : "C1D8",
+      "msg" : "829069F5D9B5BE06785FBB37A16D8888"
+    }, {
+      "tcId" : 144,
+      "key" : "463D",
+      "msg" : "4D67D1B3A19A2D51A914A36C9169C707"
+    }, {
+      "tcId" : 145,
+      "key" : "234B",
+      "msg" : "090D13B443C5C40FC10C860601FAC62B"
+    }, {
+      "tcId" : 146,
+      "key" : "588D",
+      "msg" : "BB51D368FF4A94CD90AC5D9CDF003C01"
+    }, {
+      "tcId" : 147,
+      "key" : "9D7C",
+      "msg" : "4345AC56250EE76568AE54363CDDDABC"
+    }, {
+      "tcId" : 148,
+      "key" : "4478",
+      "msg" : "68015950F00689E4394B873C32E79ACF"
+    }, {
+      "tcId" : 149,
+      "key" : "E59E",
+      "msg" : "20DB01BE57E7DC87DDC41EA358F473D8"
+    }, {
+      "tcId" : 150,
+      "key" : "F951",
+      "msg" : "F4117C8E443CECF6B53DF325C5677336"
+    } ]
+  } ]
+} ]

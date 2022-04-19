@@ -1,0 +1,1 @@
+../../../proprietary/securemsm/config/keymaster_vendor_proprietary_product.mk

@@ -1,0 +1,48 @@
+/*
+ * Copyright (c) 2018 Qualcomm Technologies, Inc.
+ * All Rights Reserved.
+ * Confidential and Proprietary - Qualcomm Technologies, Inc.
+ */
+
+package vendor.qti.latency@2.0;
+
+/**
+ * This is the root of the HAL module and is the interface returned when
+ * loading an implementation of the IFactory HAL.
+ */
+interface ILinkLatencyService{
+    /**
+     * Configures the uplink and downlink link latency for
+     * the specified radio link and slot Id. In case of multiple requests,
+     * system will pick the lowest latency level amongst outstanding
+     * requests. A client is guaranteed a latency level at
+     * least as good as what it requested, but the effective level may
+     * be better by virtue of other concurrent requests.
+     * Enables extension of existing radio connection extension of the
+     * specified radio link and slot Id. System will enable radio connection
+     * extension as long as there is at least one vote for it.
+     *
+     * @param params data structure containing latency config parameters.
+     * @return status operation status
+     * @return effectiveUplink level currently set on the system.
+     * @return effectiveDownlink level currently set on the system.
+     */
+    @callflow(next={"*"})
+    setLevel(Config params)
+        generates (StatusCode status, Level effectiveUplink,  Level effectiveDownlink);
+
+    /**
+     * Enables prioritization of default data subcription. System will
+     * prioritize default data subscription over other subscriptions,
+     * as long as there is at least one vote for it.
+     *
+     * @param isEnabled true enables prioritization of default data
+     *    subscription, and false disables it. System will continue
+     *    prioritizing default data subscription as long as there is
+     *    one client requesting for this to be enabled.
+     * @return status operation status
+     */
+    @callflow(next={"*"})
+    prioritizeDefaultDataSubscription(bool isEnabled)
+        generates (StatusCode status);
+};

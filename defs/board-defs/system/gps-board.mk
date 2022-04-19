@@ -1,0 +1,1 @@
+../../../proprietary/gps-release/gps_system_board.mk

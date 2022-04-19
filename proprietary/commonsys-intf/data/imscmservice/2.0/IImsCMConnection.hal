@@ -1,0 +1,108 @@
+/*
+ * Copyright (c) 2017-2018 Qualcomm Technologies, Inc.
+ * All Rights Reserved.
+ * Confidential and Proprietary - Qualcomm Technologies, Inc.
+ *
+ */
+
+package com.qualcomm.qti.imscmservice@2.0;
+
+import IImsCMConnectionListener;
+
+interface IImsCMConnection {
+
+/**
+ * Adds a listener containing the list of
+ * function pointers to be invoked to notify clients of the
+ * various events from the connection.
+ *
+ * @param[in] pConnectionListener  Structure with the list of
+ *                                 callbacks.
+ *
+ * @return
+ *   Status code.                  See #StatusCode.
+ *   uint64_t listenerToken        unique id for connListener
+ *
+ * @dependencies
+ *   None.
+ */
+addListener(IImsCMConnectionListener connlistener) generates (StatusCode status,
+                                                              uint64_t listenerToken);
+
+/**
+ * Removes a listener from the IMS connection.
+ *
+ * @param[in]  listenerToken     unique id provided in addListener()
+ *                               or createConnection() API.
+ *
+ * @return
+ *   Status code.                See #StatusCode.
+ *
+ * @dependencies
+ *   None.
+ */
+removeListener(uint64_t listenerToken) generates (uint32_t status);
+
+/**
+ * Sends a SIP message with a unique call ID.
+ *
+ * @param[in] data       Structure consisting of outgoing
+ *                       message parameters.
+ * @param[in] userdata   Command  user data.
+ *
+ * @return
+ *   Status code.        See #StatusCode.
+ *
+ * @dependencies
+ *   None.
+ */
+sendMessage(outgoingMessage data,
+            uint32_t userdata) generates (uint32_t status);
+
+/**
+ * Terminates a SIP transaction with a specified call ID.
+ *
+ * @param[in] pCallId        Call ID.
+ * @param[in] userdata       Command  user data.
+ *
+ * @return
+ *   Status code.            See #StatusCode.
+ *
+ * @dependencies
+ *   None.
+ */
+closeTransaction(string callID,
+                 uint32_t userdata) generates (uint32_t status);
+
+/**
+ * Terminates all transactions being handled by the connection object.
+ *
+ * @param[in] userdata       Command  user data.
+ *
+ * @return
+ *   Status code.            See #StatusCode.
+ *
+ * @dependencies
+ *   None.
+ */
+closeAllTransactions(uint32_t userdata) generates (uint32_t status);
+
+/**
+ * Set the current status of the service(Feature Tag of the service)
+ * which is session based and using the current connection.
+ *
+ * @param[in] pFeatureTag     FeatureTag/Service.
+ * @param[in] status          Status of the session.
+ *
+ * @return
+ *   Status code.             See #StatusCode.
+ *
+ * @dependencies
+ *   None.
+ */
+setStatus(string featureTag,
+          uint32_t status) generates (uint32_t statusCode);
+
+
+
+};

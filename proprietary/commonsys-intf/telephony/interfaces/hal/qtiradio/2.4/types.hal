@@ -1,0 +1,29 @@
+/*
+ * Copyright (c) 2019 Qualcomm Technologies, Inc.
+ * All Rights Reserved.
+ * Confidential and Proprietary - Qualcomm Technologies, Inc.
+ *
+ */
+
+package vendor.qti.hardware.radio.qtiradio@2.4;
+
+import android.hardware.radio@1.1::ImsiEncryptionInfo;
+
+/**
+ * Public key type from carrier certificate.
+ * If not specified, default type is WLAN.
+ */
+enum PublicKeyType : int32_t {
+    UNKNOWN = 0,                   // Key type not specified
+    EPDG    = 1,                   // Key type to be used for ePDG
+    WLAN    = 2,                   // Key type to be used for WLAN
+};
+
+/**
+ * Carrier specific Information sent by the carrier,
+ * which will be used to encrypt the IMSI and IMPI.
+ */
+struct ImsiEncryptionInfo {
+    @1.1::ImsiEncryptionInfo base;
+    PublicKeyType keyType;         // Public key type
+};

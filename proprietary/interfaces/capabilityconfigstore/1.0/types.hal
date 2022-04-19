@@ -1,0 +1,20 @@
+/*
+ * Copyright (c) 2019 Qualcomm Technologies, Inc.
+ * All Rights Reserved.
+ * Confidential and Proprietary - Qualcomm Technologies, Inc.
+ */
+
+package vendor.qti.hardware.capabilityconfigstore@1.0;
+
+/* Type enumerating  various  result  codes returned from ICapabilityConfigStore method.*/
+enum Result : int32_t {
+    SUCCESS = 0,
+    NOT_FOUND = -1
+};
+
+struct CommandResult {
+    Result result_type;
+    string value;
+};
+
+

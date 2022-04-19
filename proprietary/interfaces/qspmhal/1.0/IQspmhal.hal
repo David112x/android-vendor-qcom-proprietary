@@ -1,0 +1,60 @@
+/*
+ * Copyright (c) 2019 Qualcomm Technologies, Inc.
+ * All Rights Reserved.
+ * Confidential and Proprietary - Qualcomm Technologies, Inc.
+ *
+ */
+
+package vendor.qti.qspmhal@1.0;
+
+interface IQspmhal {
+
+    /**
+     * Retrieves GPU profiles into a shared HIDL buffer.
+     *
+     * @param pid PID of the caller.
+     *
+     * @return mem HIDL shared buffer which has contents of the profile.
+     * @return size Size of the HIDL shared buffer.
+     * @return pkg_name Name of the requested profile.
+     * @return pkg_ver Version of the requested profile.
+     * @return timestamp Last modified time stamp.
+     * @return Status Status of the operation.
+     */
+    getGpuProf(uint32_t pid) generates (memory mem, uint32_t size, string pkg_name, string pkg_ver, string timestamp, Status status);
+
+    /**
+     * Retrieves CPU profiles into a shared HIDL buffer.
+     *
+     * @param pkg_name Name of the requested profile.
+     *
+     * @return mem HIDL shared buffer which has contents of the profile.
+     * @return size Size of the HIDL shared buffer.
+     * @return pkg_name Name of the requested profile.
+     * @return pkg_ver Version of the requested profile.
+     * @return timestamp Last modified time stamp.
+     * @return Status Status of the operation.
+     */
+    getCpuProf(string pkg_name) generates (memory mem, uint32_t size, string pkg_name, string timestamp, Status status);
+
+    /**
+     * Locally caches all the active PIDs and corresponding package name.
+     *
+     * @param pid PID of the caller.
+     * @param pkg_name Name of the requested profile.
+     * @param pkg_ver Version of the requested profile.
+     */
+    setAppInfoH(uint32_t pid, string pkg_name, string pkg_ver);
+
+    /**
+     * Receives the profile info in shared buffer and stores it.
+     *
+     * @param prof_buf HIDL shared buffer which has contents of the profile.
+     * @param size Size of the shared HIDL buffer
+     * @param prof_name Name of the profile.
+     * @param cmd Command to be performed
+     *
+     * @return Status Status of the operation.
+     */
+    setAppProfile(memory prof_buf, uint32_t size, string prof_name, Command cmd) generates (Status status);
+};

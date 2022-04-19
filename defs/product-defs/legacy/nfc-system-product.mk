@@ -1,0 +1,1 @@
+../../../../nxp/opensource/commonsys/packages/apps/Nfc/nfc_system_product.mk

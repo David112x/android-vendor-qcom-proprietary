@@ -1,0 +1,63 @@
+/*
+ * Copyright (c) 2018 Qualcomm Technologies, Inc.
+ * All Rights Reserved.
+ * Confidential and Proprietary - Qualcomm Technologies, Inc.
+ */
+
+package vendor.qti.latency@2.0;
+
+/**
+ * Return values for ILatencyService requests
+ */
+enum StatusCode : uint64_t {
+    OK,
+    INVALID_ARGUMENTS,
+    SET_ERROR
+};
+
+/**
+ * Enum which holds the latency levels
+ * As the L* value increases, the latency will decrease.
+ * the higher Level has the lowest latency.
+ */
+enum Level : uint64_t {
+    L1 = 1,
+    L2 = 2,
+    L3 = 3,
+    L4 = 4,
+    L5 = 5,
+    L6 = 6
+};
+
+/**
+ * Enum describing radio types
+ */
+enum Radio : uint64_t {
+    WWAN,
+    WLAN
+};
+
+/**
+ * Enum describing SIM slot Id.
+ */
+enum SlotId : int64_t {
+    SLOT_UNSPECIFIED = -1,
+    SLOT_FIRST = 0,
+    SLOT_SECOND = 1,
+    SLOT_THIRD = 2,
+};
+/**
+ * Data structure passed to the setLevel() for setting latency config.
+ * @field rat Radio type.
+ * @field slotId SIM slot Id.
+ * @field uplink latency level.
+ * @field downlink latency level.
+ * @field enableConnectionExtension extension of existing radio connection.
+ */
+struct Config {
+    Radio rat;
+    SlotId slotId;
+    Level uplink;
+    Level downlink;
+    bool enableConnectionExtension;
+};

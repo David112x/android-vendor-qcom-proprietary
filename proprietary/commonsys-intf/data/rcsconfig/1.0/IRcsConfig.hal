@@ -1,0 +1,23 @@
+/*********************************************************************
+Copyright (c) 2018 Qualcomm Technologies, Inc.
+All Rights Reserved.
+Confidential and Proprietary - Qualcomm Technologies, Inc.
+**********************************************************************/
+
+package vendor.qti.ims.rcsconfig@1.0;
+import ISetConfigCb;
+
+/**
+ * This is the interface returned when loading an implementation of RcsConfigService.
+ * The data is expected to be an xml rcsconfig file passed as a uint8_t array.
+ * If the file is large, the client may gzip it.
+ */
+interface IRcsConfig {
+    /**
+     * Sends RCS configuration data to modem
+     *
+     * @param   data       the new configuration in a container
+     * @param   cb         callback for result of setConfig request
+     */
+    oneway setConfig(Container configData, ISetConfigCb cb);
+};

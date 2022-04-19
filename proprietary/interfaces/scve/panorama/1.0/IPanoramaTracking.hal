@@ -1,0 +1,22 @@
+/*!
+ *
+ * Copyright (c) 2018 Qualcomm Technologies, Inc.
+ * All Rights Reserved.
+ * Confidential and Proprietary - Qualcomm Technologies, Inc.
+ *
+ */
+
+package vendor.qti.hardware.scve.panorama@1.0;
+
+import IPanoramaTracking_Callbacks;
+
+interface IPanoramaTracking{
+
+    createInstance(OperationMode opMode, TrackingConfiguration_hal config, IPanoramaTracking_Callbacks panotrackCB, handle fd_pSessionUserData, int64_t size_pSessionUserData) generates (Status status,int64_t instanceId);
+
+    destroyInstance(int64_t instanceId) generates (Status status);
+
+    pTrackRun_Sync(TrackingInput_hal ip) generates (TrackingOutput_hal op, Status status);
+
+    pTrackRun_Async(TrackingInput_hal ip, handle fd_pTaskUserData, int64_t len_pTaskUserData) generates (Status status);
+};

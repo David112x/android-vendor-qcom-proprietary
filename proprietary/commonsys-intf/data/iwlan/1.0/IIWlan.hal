@@ -1,0 +1,92 @@
+/*
+ * Copyright (c) 2018 Qualcomm Technologies, Inc.
+ * All Rights Reserved.
+ * Confidential and Proprietary - Qualcomm Technologies, Inc.
+ */
+
+package vendor.qti.hardware.data.iwlan@1.0;
+
+import IIWlanResponse;
+import IIWlanIndication;
+
+import android.hardware.radio@1.2::DataRequestReason;
+import android.hardware.radio@1.4::DataProfileInfo;
+
+/**
+ * Interface for mobile data service. Used with iWLAN.
+ */
+interface IIWlan {
+  /**
+   *  Returns current transport status.
+   *
+   * @param dataResponse Object containing data service response functions
+   * @param dataIndication Object containing data service indications
+   */
+   setResponseFunctions(IIWlanResponse dataResponse, IIWlanIndication dataIndication);
+
+  /**
+   * Setup a packet data connection.
+   *
+   * @param serial Serial number of request.
+   * @param dataProfile Data profile used for data call setup. See {@link DataProfileInfo}
+   * @param allowRoaming True if data roaming is allowed by the user.
+   * @param reason reason for the data request.
+   * @param addresses If isHandover is true, this indicates the link addresses of the
+   * data connection. It's a list of addresses with optional "/" prefix (The format is defined
+   * in RFC-4291 section 2.3). For example, "192.0.1.3" or "192.0.1.11/16 2001:db8::1/64".
+   * Typically 1 IPv4 or 1 IPv6 or one of each. If the prefix length is absent the addresses
+   * are assumed to be point to point with IPv4 having a prefix length of 32 and IPv6 128.
+   * Empty if isHandover is false.
+   * @param dnses If isHandover is true, this indicates the DNS addresses of the data
+   * connection. It's a list of DNS server addresses, e.g., "192.0.1.3" or
+   * "192.0.1.11 2001:db8::1". This parameter must be ignored unless isHandover is false.
+   */
+   @entry
+  oneway setupDataCall(int32_t serial, DataProfileInfo dataProfile, bool allowRoaming,
+                       DataRequestReason reason, vec<string> addresses, vec<string> dnses);
+
+  /**
+   *  Deactivate packet data connection.
+   *
+   * @param serial Serial number of request.
+   * @param cid Call id returned in the callback of {@link DataServiceProvider#setupDataCall(
+   * int32_t, DataProfile, boolean, boolean, boolean, LinkProperties, DataServiceCallback)}.
+   * @param reason request reason for device shut down.
+   */
+   @exit
+  oneway deactivateDataCall(int32_t serial, int32_t cid, DataRequestReason reason);
+
+  /**
+   *  Returns the data call list.
+   *
+   * @param serial Serial number of request.
+   */
+  oneway getDataCallList(int32_t serial);
+
+   /**
+   *  Returns the network registration state.
+   *
+   * @param serial Serial number of request.
+   */
+  oneway getDataRegistrationState(int32_t serial);
+
+   /**
+   *  Returns the qualified networks
+   *
+   * @param serial Serial number of request.
+   */
+   oneway getAllQualifiedNetworks(int32_t serial);
+
+  /**
+   * When response type received from a IWlan indication
+   * acknowledge the receipt of those messages by sending responseAcknowledgement().
+   *
+   */
+  oneway responseAcknowledgement();
+
+  /**
+   * iWlan has been disabled by framework
+   *
+   */
+  oneway iwlanDisabled();
+};

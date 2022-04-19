@@ -1,0 +1,52 @@
+cc_defaults {
+    name: "audio_a2dp_hw_defaults_qti",
+    defaults: ["fluoride_defaults"],
+    include_dirs: [
+        "vendor/qcom/opensource/commonsys/system/bt",
+        "system/bt/include",
+        "vendor/qcom/opensource/commonsys/system/bt/audio_a2dp_hw/include",
+    ]
+}
+
+// Audio A2DP shared library for target
+// ========================================================
+cc_library {
+    name: "audio.a2dp.default_qti",
+    defaults: ["audio_a2dp_hw_defaults_qti"],
+    relative_install_path: "hw",
+    srcs: [
+        "src/audio_a2dp_hw.cc",
+        "src/audio_a2dp_hw_utils.cc",
+    ],
+    shared_libs: [
+        "liblog",
+        "libcutils",
+    ],
+    static_libs: ["libosi_qti"],
+}
+
+cc_library_static {
+    name: "libaudio-a2dp-hw-utils_qti",
+    defaults: ["audio_a2dp_hw_defaults_qti"],
+    srcs: [
+        "src/audio_a2dp_hw_utils.cc",
+    ],
+}
+
+// Audio A2DP library unit tests for target and host
+// ========================================================
+cc_test {
+    name: "net_test_audio_a2dp_hw_qti",
+    test_suites: ["device-tests"],
+    defaults: ["audio_a2dp_hw_defaults_qti"],
+    srcs: [
+        "test/audio_a2dp_hw_test.cc",
+    ],
+    shared_libs: [
+        "liblog",
+    ],
+    static_libs: [
+        "audio.a2dp.default_qti",
+        "libosi_qti",
+    ],
+}

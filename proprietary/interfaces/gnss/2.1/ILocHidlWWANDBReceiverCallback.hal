@@ -1,0 +1,20 @@
+/*
+ * Copyright (c) 2017-18 Qualcomm Technologies, Inc.
+ * All Rights Reserved.
+ * Confidential and Proprietary - Qualcomm Technologies, Inc.
+ */
+
+package vendor.qti.gnss@2.1;
+
+import @1.2::ILocHidlWWANDBReceiverCallback;
+
+interface ILocHidlWWANDBReceiverCallback extends @1.2::ILocHidlWWANDBReceiverCallback {
+
+    struct LocHidlBsInfoExt {
+        LocHidlBsInfo base_bsinfo_1_2;
+        uint64_t timestamp;
+    };
+
+    bsListUpdateCallback_2_1(vec<LocHidlBsInfoExt> bsInfoList, int32_t bsListSize,
+            uint8_t status, LocHidlUlpLocation ulpLocation);
+};

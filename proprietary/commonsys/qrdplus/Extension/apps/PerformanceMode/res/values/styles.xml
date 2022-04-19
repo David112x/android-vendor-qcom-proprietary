@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    Copyright (c) 2019 Qualcomm Technologies, Inc.
+    All Rights Reserved.
+    Confidential and Proprietary - Qualcomm Technologies, Inc.
+-->
+
+<resources>
+
+    <style name="TurnOnNowButton" parent="android:Widget.DeviceDefault.Button.Colored"/>
+    <style name="TurnOffNowButton" parent="android:Widget.DeviceDefault.Button"/>
+
+</resources>

@@ -1,0 +1,155 @@
+/*
+ * Copyright (c) 2018-2019 Qualcomm Technologies, Inc.
+ * All Rights Reserved.
+ * Confidential and Proprietary - Qualcomm Technologies, Inc.
+ */
+
+package vendor.qti.hardware.sidekickmetrics@1.0;
+
+typedef uint32_t MetricId;
+
+enum Status: uint32_t {
+    OK,
+    UNKNOWN_ERROR,
+    BAD_VALUE,  // Some parameter is invalid
+    UNSUPPORTED_OPERATION,  // A function is not supported in this HAL
+};
+
+enum MetricSensorStatus: uint32_t {
+  /** Sensor is available after a temporary disconnect */
+  METRIC_SENSOR_STATUS_AVAILABLE,
+  /** Sensor is temporary available, no action required by client */
+  METRIC_SENSOR_STATUS_TEMPORARY_UNAVAILABLE,
+  /** Sensor is un-available, client is expected to
+   *  clean-up all active metric instances */
+  METRIC_SENSOR_STATUS_LOST,
+
+  METRIC_OFFLOAD_SUBSYSTEM_TEMPORARY_UNAVAILABLE,
+  METRIC_OFFLOAD_SUBSYSTEM_AVAILABLE,
+  METRIC_OFFLOAD_SUBSYSTEM_LOST,
+  METRIC_RECORD_SUBSYSTEM_TEMPORARY_UNAVAILABLE,
+  METRIC_RECORD_SUBSYSTEM_AVAILABLE,
+  METRIC_RECORD_SUBSYSTEM_LOST,
+
+};
+
+@export(name="", value_prefix="METRIC_SENSOR_EVENT_STATUS_")
+enum MetricSensorEventStatus: uint32_t {
+  /** A event from a sensor is un-reliable */
+  UNRELIABLE,
+  /** A event accuracy from a sensor (ex: heart_rate) can be low/medium/high */
+  ACCURACY_LOW,
+  ACCURACY_MEDIUM,
+  ACCURACY_HIGH,
+};
+
+@export(name="", value_prefix="METRIC_SENSOR_")
+enum MetricSensorEventType: uint32_t {
+  /** Indicates one or more float data items  */
+  OUTPUT_DATA_EVENT,
+  /** Indicates buffer data */
+  OUTPUT_BUFFER_EVENT,
+  /** Indicates last event in a batch of events for a metric id */
+  FLUSH_COMPLETE_EVENT,
+  /** Indicates configuration data of string
+   * returned asynchronously w.r.t to getSensorConfigData() API call
+   */
+  CONFIG_DATA_EVENT,
+};
+
+enum MetricBatchGroup: uint32_t {
+
+  METRIC_BATCH_UNUSED = 0,
+  /** indicates streaming, batch() API is ignored */
+  METRIC_NO_BATCHING = 1,
+  /** For Groups 0 to 5, batch period is configured using batch() API */
+  METRIC_BATCH_GROUP_0 = 2,
+  METRIC_BATCH_GROUP_1 = 3,
+  METRIC_BATCH_GROUP_2 = 4,
+  METRIC_BATCH_GROUP_3 = 5,
+  METRIC_BATCH_GROUP_4 = 6,
+  METRIC_BATCH_GROUP_5 = 7,
+};
+
+enum HAL_Features: uint32_t {
+
+ METRIC_HAL_SSR_DISABLE = 1,
+
+};
+
+struct MetricSensorInfo {
+    /**
+     * handle that identifies this sensors. This handle may used to reference
+     * this sensor throughout the metric HAL API.
+     */
+    int32_t sensorHandle;
+
+    /** this is offloadable sensor string Type. */
+    string type;
+
+    /**
+     * Name of this sensor.
+     * All sensor implementations of the same "type" must have a different "name".
+     */
+    string name;
+
+    /** vendor of the sensor/algorithm */
+    string vendor;
+
+    /**
+     * version of the sensor/algorithm. The value of this field
+     * must increase when the algorithm is updated in a way that changes the
+     * output of this sensor. This is important for fused sensors when the
+     * fusion algorithm is updated.
+     */
+    int32_t version;
+};
+
+struct EventPayload {
+    vec<uint8_t>  eventBuf;
+};
+
+struct MetricSensorEvent {
+    /** Time measured in nanoseconds, in "elapsedRealtimeNano()'s" timebase. */
+    int64_t timestamp;
+
+    /** sensor identifier */
+    int32_t sensorHandle;
+
+    /** MetircSensorEventStatus */
+    uint32_t status;
+
+    /** MetricSensorEventType */
+    uint32_t eventType;
+
+    /** Sensor data */
+    EventPayload u;
+};
+
+struct MetricSensorRequest {
+
+    /** Unique id provided by application */
+    MetricId metricId;
+    /** Unique metric name
+        If sensor handle is used, metricName must be "UNUSED"
+    */
+    string metricName;
+    /** Handle returned by getMetricSensorsList() for a formatter sensor */
+    int32_t formatterSensorHandle;
+    /** Handle returned by getMetricSensorsList() for a non sensor.
+         If Sensor Handle is 0, unique metricName must be provided	*/
+    int32_t sensorHandle;
+    /** format input string */
+    string format;
+    /** The rate in milliseconds at which the formatted
+        value is updated at dispaly in ambi active mode. */
+    uint32_t refreshRate;
+    /** MetricBatchGroup used to for batch period of metricId */
+    uint32_t metricBatchGroup;
+    /** TRUE  : Request is sent to ambi-active sub system.
+        FALSE : Request is not sent to ambi-active sub system. */
+    bool  offload;
+    /** TRUE  : Request is sent to recording sub system.
+        FALSE : Request is not sent to recording sub system. */
+    bool  recordData;
+};

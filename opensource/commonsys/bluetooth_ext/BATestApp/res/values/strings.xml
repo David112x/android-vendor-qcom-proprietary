@@ -1,0 +1,49 @@
+<!--
+/*
+ * Copyright (c) 2017, The Linux Foundation. All rights reserved.
+ *
+ * Redistribution and use in source and binary forms, with or without
+ * modification, are permitted provided that the following conditions are
+ * met:
+ *    * Redistributions of source code must retain the above copyright
+ *      notice, this list of conditions and the following disclaimer.
+ *    * Redistributions in binary form must reproduce the above
+ *      copyright notice, this list of conditions and the following
+ *      disclaimer in the documentation and/or other materials provided
+ *      with the distribution.
+ *    * Neither the name of The Linux Foundation nor the names of its
+ *      contributors may be used to endorse or promote products derived
+ *      from this software without specific prior written permission.
+ *
+ * THIS SOFTWARE IS PROVIDED "AS IS" AND ANY EXPRESS OR IMPLIED
+ * WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF
+ * MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT
+ * ARE DISCLAIMED.  IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS
+ * BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR
+ * CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF
+ * SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR
+ * BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
+ * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE
+ * OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN
+ * IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+ */
+ -->
+
+<resources>
+    <string name="app_name">BA TestApp</string>
+    <string name="msg_association_initiated">Initiated association with : %1$s </string>
+    <string name="msg_association_success">Successfully associated with : %1$s </string>
+    <string name="msg_association_failed">Association failed with : %1$s </string>
+    <string name="msg_no_bluetooth">Device does not support Bluetooth</string>
+    <string name="permission_not_granted">Permission not granted</string>
+    <string name="msg_ba_notification_title">Broadcast Audio Notification</string>
+    <string name="msg_ba_notification_content">Broadcast Audio Notification</string>
+    <string name="devices_list">BA device List</string>
+    <string name="go_previous">Disable Broadcast Receiver Association</string>
+    <string name="ba_disabled">Enable Broadcast Audio</string>
+    <string name="ba_enabled">Disable Broadcast Audio</string>
+    <string name="mp_disabled">Enable Megaphone</string>
+    <string name="mp_enabled">Disable Megaphone</string>
+    <string name="enable_bra">Enable Broadcast Receiver Association</string>
+    <string name="change_enc">Change Encryption Key</string>
+</resources>

@@ -1,0 +1,31 @@
+cc_library_shared {
+    name: "btaudio_offload_if",
+    vendor: true,
+    proprietary: true,
+    srcs: [
+        "btaudio_offload.cpp",
+    ],
+    header_libs: ["libhardware_headers"],
+    include_dirs: [
+        "hardware/interfaces/bluetooth/audio/2.0/",
+        "hardware/interfaces/bluetooth/audio/2.0/default/",
+        "vendor/qcom/proprietary/bluetooth/bluetooth_audio/2.0/default/session/hw/",
+    ],
+    shared_libs: [
+        "libbase",
+        "libcutils",
+        "libfmq",
+        "libhidlbase",
+        "libhidltransport",
+        "liblog",
+        "libutils",
+        "android.hardware.bluetooth.audio@2.0",
+        "libbluetooth_audio_session",
+        "libbluetooth_audio_session_qti",
+    ],
+    cflags: [
+        "-Wall",
+        "-Werror",
+        "-Wno-unused-parameter",
+    ],
+}

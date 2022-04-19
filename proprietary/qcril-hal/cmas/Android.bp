@@ -1,0 +1,56 @@
+tidy_errors = [
+   "modernize-*",
+   "clang-analyzer-*",
+   "cppcoreguidelines-*",
+   "cert-*",
+   "-cppcoreguidelines-avoid-magic-numbers",
+]
+cc_library_headers {
+    name: "libqcril-qc-hal-cmas-headers",
+    host_supported: true,
+    native_coverage: true,
+    proprietary: true,
+    export_include_dirs: ["inc"],
+}
+
+cc_library_static {
+    name: "libqcril-qc-hal-cmas",
+    vendor: true,
+    owner: "qti",
+    proprietary: true,
+    host_supported: true,
+    native_coverage: true,
+    cflags: [
+        "-g",
+        "-O0",
+        "-Wall",
+        "-Werror",
+        "-Wno-error=unused-parameter",
+        "-pedantic",
+    ],
+    tidy: true,
+    tidy_checks: tidy_errors,
+    tidy_flags: [
+        "-format-style='file'",
+        "--header-filter='android-base'",
+    ],
+    cppflags: [
+        "-std=c++17",
+        "-g",
+        "-O0",
+        "-Wall",
+        "-Werror",
+        "-Wno-error=unused-parameter",
+        "-pedantic",
+    ],
+
+    header_libs: [
+        "libqcril-qc-hal-cmas-headers",
+    ],
+    shared_libs: [
+        "liblog",
+        "libbase",
+    ],
+    local_include_dirs: ["inc"],
+    srcs: ["src/*.cpp"],
+}

@@ -1,0 +1,184 @@
+/*
+ * Copyright (c) 2018 Qualcomm Technologies, Inc.
+ * All Rights Reserved.
+ * Confidential and Proprietary - Qualcomm Technologies, Inc.
+ *
+ */
+
+package vendor.qti.hardware.radio.ims@1.2;
+
+import @1.0::CallDetails;
+import @1.0::CallState;
+import @1.0::SipErrorInfo;
+import @1.1::CallFailCause;
+
+enum CallFailCause : @1.1::CallFailCause {
+    CALL_FAIL_RADIO_OFF,
+    CALL_FAIL_OUT_OF_SERVICE,
+    CALL_FAIL_NO_VALID_SIM,
+    CALL_FAIL_RADIO_INTERNAL_ERROR,
+    CALL_FAIL_NETWORK_RESP_TIMEOUT,
+    CALL_FAIL_NETWORK_REJECT,
+    CALL_FAIL_RADIO_ACCESS_FAILURE,
+    CALL_FAIL_RADIO_LINK_FAILURE,
+    CALL_FAIL_RADIO_LINK_LOST,
+    CALL_FAIL_RADIO_UPLINK_FAILURE,
+    CALL_FAIL_RADIO_SETUP_FAILURE,
+    CALL_FAIL_RADIO_RELEASE_NORMAL,
+    CALL_FAIL_RADIO_RELEASE_ABNORMAL,
+    CALL_FAIL_NETWORK_DETACH,
+    //The OEM Call Fail Causes (CALL_FAIL_OEM_CAUSE_1 - 15) are for debugging
+    //purpose only. They shall not be used as a part of the business requirements.
+    CALL_FAIL_OEM_CAUSE_1,
+    CALL_FAIL_OEM_CAUSE_2,
+    CALL_FAIL_OEM_CAUSE_3,
+    CALL_FAIL_OEM_CAUSE_4,
+    CALL_FAIL_OEM_CAUSE_5,
+    CALL_FAIL_OEM_CAUSE_6,
+    CALL_FAIL_OEM_CAUSE_7,
+    CALL_FAIL_OEM_CAUSE_8,
+    CALL_FAIL_OEM_CAUSE_9,
+    CALL_FAIL_OEM_CAUSE_10,
+    CALL_FAIL_OEM_CAUSE_11,
+    CALL_FAIL_OEM_CAUSE_12,
+    CALL_FAIL_OEM_CAUSE_13,
+    CALL_FAIL_OEM_CAUSE_14,
+    CALL_FAIL_OEM_CAUSE_15,
+    CALL_FAIL_NO_CSFB_IN_CS_ROAM,
+};
+
+struct CallFailCauseResponse {
+    CallFailCause failCause;
+    vec<uint8_t> errorinfo;
+    string networkErrorString;
+    bool hasErrorDetails;
+    SipErrorInfo errorDetails;
+};
+
+struct HangupRequestInfo {
+    int32_t connIndex;
+    bool hasMultiParty;
+    bool multiParty;
+    string connUri;
+    uint32_t conf_id;
+    bool hasFailCauseResponse;
+    CallFailCauseResponse failCauseResponse;
+};
+
+struct CallInfo {
+    CallState state;
+    uint32_t index;
+    uint32_t toa;
+    bool hasIsMpty;
+    bool isMpty;
+    bool hasIsMT;
+    bool isMT;
+    uint32_t als;
+    bool hasIsVoice;
+    bool isVoice;
+    bool hasIsVoicePrivacy;
+    bool isVoicePrivacy;
+    string number;
+    uint32_t numberPresentation;
+    string name;
+    uint32_t namePresentation;
+    bool hasCallDetails;
+    CallDetails callDetails;
+    bool hasFailCause;
+    CallFailCauseResponse failCause;
+    bool hasIsEncrypted;
+    bool isEncrypted;
+    bool hasIsCalledPartyRinging;
+    bool isCalledPartyRinging;
+    string historyInfo;
+    bool hasIsVideoConfSupported;
+    bool isVideoConfSupported;
+};
+
+enum ImsSmsSendStatusResult : int32_t {
+    /** Message was sent successfully. */
+    SEND_STATUS_OK,
+    /** IMS provider failed to send the message and platform
+        should not retry falling back to sending the message
+        using the radio. */
+    SEND_STATUS_ERROR,
+    /** IMS provider failed to send the message and platform
+        should retry again after setting TP-RD */
+    SEND_STATUS_ERROR_RETRY,
+    /** IMS provider failed to send the message and platform
+        should retry falling back to sending the message
+        using the radio. */
+    SEND_STATUS_ERROR_FALLBACK,
+};
+
+enum ImsSmsSendFailureReason : int32_t {
+    RESULT_ERROR_NONE,
+    /** Generic failure cause */
+    RESULT_ERROR_GENERIC_FAILURE,
+    /** Failed because radio was explicitly turned off */
+    RESULT_ERROR_RADIO_OFF,
+    /** Failed because no pdu provided */
+    RESULT_ERROR_NULL_PDU,
+    /** Failed because service is currently unavailable */
+    RESULT_ERROR_NO_SERVICE,
+    /** Failed because we reached the sending queue limit. */
+    RESULT_ERROR_LIMIT_EXCEEDED,
+    /** Failed because user denied the sending of this short code. */
+    RESULT_ERROR_SHORT_CODE_NOT_ALLOWED,
+    /** Failed because the user has denied this app
+        ever send premium short codes. */
+    RESULT_ERROR_SHORT_CODE_NEVER_ALLOWED,
+};
+
+enum ImsSmsDeliverStatusResult : int32_t {
+    /** Message was delivered successfully. */
+    DELIVER_STATUS_OK,
+    /** Message was not delivered. */
+    DELIVER_STATUS_ERROR,
+};
+
+enum ImsSmsStatusReportResult : int32_t {
+    /** Status Report was set successfully. */
+    STATUS_REPORT_STATUS_OK,
+    /** Error while setting status report */
+    STATUS_REPORT_STATUS_ERROR,
+};
+
+enum VerificationStatus : int32_t {
+    /** Telephone number is not validated. */
+    STATUS_VALIDATION_NONE,
+    /** Telephone number validation passed. */
+    STATUS_VALIDATION_PASS,
+    /** Telephone number validation failed. */
+    STATUS_VALIDATION_FAIL,
+};
+
+struct ImsSmsMessage {
+    uint32_t messageRef;
+    string format;
+    string smsc;
+    bool shallRetry;
+    vec<uint8_t>  pdu;
+};
+
+struct ImsSmsSendStatusReport {
+    uint32_t messageRef;
+    string format;
+    vec<uint8_t>  pdu;
+};
+
+struct IncomingImsSms {
+    string format;
+    vec<uint8_t>  pdu;
+    VerificationStatus verstat;
+};
+
+struct AddressInfo {
+    string city;
+    string state;
+    string country;
+    string postalCode;
+    string countryCode;
+    string street;
+    string houseNumber;
+};

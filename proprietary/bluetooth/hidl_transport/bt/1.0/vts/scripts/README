@@ -1,0 +1,91 @@
+#
+# Copyright (c) 2019 Qualcomm Technologies, Inc.
+#  All Rights Reserved.
+# Confidential and Proprietary - Qualcomm Technologies, Inc.
+#
+
+# Description: Instructions for running test cases
+
+FOR EXECUTING THE TEST CASES WITH BTTRANSPORTTESTS.PY FOLLOW FOLLOWING STEPS
+   THIS IS HELPFUL IN AUTOMATION. ALL THE LOGS/SSRDUMPS ARE PULLED TO
+   THE LOCAL PC AND TEST RESULTS SAVED. IF NEEDED, RESULTS CAN BE EMAILED
+   AFTER TEST EXECUTION FINISHES
+============================================================================
+1. Compile the VTS app in the build:
+     cd v/q/p/bluetooth/hidl_transport/bt/1.0/vts
+     mm -j16
+   This will generate the binary in the following folder:
+       out\target\product\kona\data\nativetest64\VtsHalBluetooth_TransportTest\
+
+2. Make a test execution dir in your PC, e.g:
+     c:\tests\BtTransportTests
+     A. Copy the test binary(VtsHalBluetooth_TransportTest) from the build to
+           c:\tests\BtTransportTests
+     B. Copy the BT-Transport-VTS.sh from the build to c:\tests\BtTransportTests
+           (v/q/p/bluetooth/hidl_transport/bt/1.0/vts/scripts/BT-Transport-VTS.sh)
+     C. Copy the bttransporttests.py from the build to c:\tests\BtTransportTests
+           (v/q/p/bluetooth/hidl_transport/bt/1.0/vts/scripts/bttransporttests.py)
+
+3. File descriptions:
+          bttransporttests.py : Main file for executing the test cases(simulates BT stack)
+          BT-Transport-VTS.sh : Script copied to the DUT for actual execution of testcases.
+                                Executing tests from the DUT itself is necessary to supported
+                                USB disconnected mode.
+
+4. The find details of the command line parameters supported and their description, execute following
+    command:  python bttransporttests.py --listtests
+    Sample Output:
+    command:  python bttransporttests.py --listtests
+    Sample Output:
+                 BluetoothTransportTest.
+                          InitializeAndClose
+                          HciReset
+                          HciVersionTest
+                          WriteLoopbackMode
+                          RandomHostCommands
+                          RandomHostData
+                          BtOnOff
+                          SsrStackInitiated
+                          RxThreadStuck
+                          HciUnknownCommand
+                          SsrSwErrFatal
+                          SsrSwExceptionDivBy0
+                          SsrSwExceptionNullPtr
+                          SsrWatchDogBits
+
+5. To execute specific test for two repetitions:
+        python bttransporttests.py --testfilter=*.BtOnOff --repeatcount=2  --logdirprefix=BtOnOff
+
+     For two repetions, this will create a folder in log path(curr dir by default) like:
+       ..\BtOnOff-10102019-123141\Rep1
+       ..\BtOnOff-10102019-123141\Rep2
+
+6. To execute specific test in USB disconnected mode:
+        python bttransporttests.py --testfilter=BluetoothTransportTest.InitializeAndClose --usbdisc --logdirprefix=InitAndClose
+     As no "--repeatcount" parameter is specified, default count is used.
+     This will create a folder in log path(curr dir by default) like:
+       ..\10102019-123141\Rep1
+
+7. To execute all tests:
+        python bttransporttests.py --testfilter=BluetoothTransportTest.* --logdirprefix=AllTests
+
+8. To execute only SSR tests:
+        python bttransporttests.py --testfilter=BluetoothTransportTest.Ssr* --logdirprefix=ssr
+
+9. The details of the command line parameters supported and their descriptions:
+        python bttransporttests.py --help
+
+10. Executing tests and sending results via email:
+   python bttransporttests.py --testfilter=*.BtOnOff --repeatcount=2 --mailresults --mailsender="abc1@def.com" --mailreceivers="abc2@def.com,abc3@def.com"
+
+
+FOR EXECUTING THE TEST CASES ON COMMAND LINE DIRECTLY WITH VTS APP
+==================================================================
+1. List All The Testcases
+adb shell /data/nativetest64/VtsHalBluetooth_TransportTest/VtsHalBluetooth_TransportTest --gtest_list_tests
+
+2. Execute HciReset Testcase
+adb shell /data/nativetest64/VtsHalBluetooth_TransportTest/VtsHalBluetooth_TransportTest --gtest_filter=BluetoothTransportTest.HciReset --maxAppSleepTimer=5000 --maxIterations=1 --maxmsgsPerIteration=1 --logCommands --logEvents --logData --consoleLogs > tstlog.txt
+
+3. Execute All the Testcases
+adb shell /data/nativetest64/VtsHalBluetooth_TransportTest/VtsHalBluetooth_TransportTest --gtest_filter=BluetoothTransportTest.* --maxAppSleepTimer=5000 --maxIterations=1 --maxmsgsPerIteration=1 --logCommands --logEvents --logData --consoleLogs > tstlog.txt

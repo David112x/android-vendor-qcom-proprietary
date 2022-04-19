@@ -1,0 +1,44 @@
+/*
+ * Copyright (c) 2018 Qualcomm Technologies, Inc.
+ * All Rights Reserved.
+ * Confidential and Proprietary - Qualcomm Technologies, Inc.
+ *
+ */
+
+package vendor.qti.hardware.radio.qtiradio@2.1;
+
+import @2.0::IQtiRadioResponse;
+
+/*
+ * Interface declaring responses to solicited qtiradio requests
+ *
+ */
+interface IQtiRadioResponse extends @2.0::IQtiRadioResponse {
+     /*
+     * Response to IQtiRadio.queryUpperLayerIndInfo
+     *
+     * @param serial to match request/response. Response must inclue same serial as request.
+     * @param errorCode - errorCode as per types.hal returned from RIL.
+     * @param  upperLayerIndInfo - values as per types.hal to indicate upperlayer indication info
+     */
+    oneway onUpperLayerIndInfoResponse(int32_t serial, uint32_t errorCode, UpperLayerIndInfo uliInfo);
+
+     /**
+     * Response to IQtiRadio.queryNrBearerAllocation
+     *
+     * @param serial to match request/response. Response must inclue same serial as request.
+     * @param errorCode - errorCode as per types.hal returned from RIL.
+     * @param bearerStatus values as per types.hal to indicate status of 5g bearer allocation..
+     */
+    oneway onNrBearerAllocationResponse_2_1(int32_t serial, uint32_t errorCode,
+            BearerStatus bearerStatus);
+
+     /**
+     * Response to IQtiRadio.queryNrBearerAllocation
+     *
+     * @param serial to match request/response. Response must inclue same serial as request.
+     * @param errorCode - errorCode as per types.hal returned from RIL.
+     * @param config values as per types.hal to indicate status of 5g configuration type NSA/SA.
+     */
+    oneway on5gConfigInfoResponse(int32_t serial, uint32_t errorCode, ConfigType config);
+};

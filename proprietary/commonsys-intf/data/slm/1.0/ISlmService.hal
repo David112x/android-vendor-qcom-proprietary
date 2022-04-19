@@ -1,0 +1,44 @@
+/*
+ * Copyright (c) 2019 Qualcomm Technologies, Inc.
+ * All Rights Reserved.
+ * Confidential and Proprietary - Qualcomm Technologies, Inc.
+ */
+
+package vendor.qti.data.slm@1.0;
+
+/**
+ * This is the root of the HAL module and is the interface returned when
+ * loading an implementation of the ISlmService HAL.
+ */
+interface ISlmService{
+    /**
+     * Enables SLM for the list of UIDs.
+     *
+     * @param uids List containing uids for enabling SLM
+     * @param pref Preference which mentions whether the uids
+     *             requires link aggregation or link selection
+     * @return status operation status
+     */
+    @callflow(next={"*"})
+    enableSlm(vec<uint32_t> uids, Preference pref)
+        generates (ReturnCode status);
+
+    /**
+     * Disables SLM for the list of UIDs.
+     *
+     * @param uids List containing uids for disabling SLM
+     * @return status operation status
+     */
+    @callflow(next={"*"})
+    disableSlm(vec<uint32_t> uids)
+        generates (ReturnCode status);
+
+    /**
+     * Disables SLM for all the UIDs.
+     *
+     * @param uids None
+     * @return status operation status
+     */
+    @callflow(next={"*"})
+    disableSlmforAllUids() generates (ReturnCode status);
+};

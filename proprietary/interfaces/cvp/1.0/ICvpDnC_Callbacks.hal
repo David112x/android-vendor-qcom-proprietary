@@ -1,0 +1,39 @@
+/*!
+ *
+ * Copyright (c) 2018 Qualcomm Technologies, Inc.
+ * All Rights Reserved.
+ * Confidential and Proprietary - Qualcomm Technologies, Inc.
+ *
+ */
+package vendor.qti.hardware.cvp@1.0;
+
+interface ICvpDnC_Callbacks{
+//------------------------------------------------------------------------------
+/// @brief
+///    The Detector Classifier pipeline has been processed by the CVP system, and the
+///    output is ready to be consumed. This callback is used to notify the
+///    application. The application sends the image using the
+///    cvpDetectionClassification_Async call.
+///
+/// @param eStatus
+///    CVP status for the current process.
+/// @param pOutput
+///    Pointer to the Detector Classifier pipeline ouput structure.
+/// @param hDetectorClassifier
+///    Handle for the Detector Classifier pipeline that was passed in the
+///    cvpDetectionClassification_Async function.
+/// @param pSessionUserData
+///    User-data that was set in the cvpConfigDetectorClassifier structure.
+/// @param pTaskUserData
+///    User-data that was passed in the cvpDetectionClassification_Async function
+///    which corresponds to this callback.
+///
+/// @ingroup cvp_feature_detection, cvp_object_detection, cvp_machine_learning
+//------------------------------------------------------------------------------
+oneway cvpHalDetectionClassificationCb (cvpHalStatus             eStatus,
+                                        cvpHalDetectionClassificationOutput pOutput,
+                                        cvpHalHandle             hDetectorClassifier,
+                                        uint64_t                 pSessionUserData,
+                                        uint64_t                 pTaskUserData);
+
+};

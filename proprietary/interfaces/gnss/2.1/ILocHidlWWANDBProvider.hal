@@ -1,0 +1,17 @@
+/*
+ * Copyright (c) 2018 Qualcomm Technologies, Inc.
+ * All Rights Reserved.
+ * Confidential and Proprietary - Qualcomm Technologies, Inc.
+ */
+
+package vendor.qti.gnss@2.1;
+
+import ILocHidlWWANDBProviderCallback;
+
+interface ILocHidlWWANDBProvider {
+    init(ILocHidlWWANDBProviderCallback callback) generates (bool success);
+
+    registerWWANDBProvider(ILocHidlWWANDBProviderCallback callback);
+    unregisterWWANDBProvider();
+    sendBSObsLocDataRequest();
+};

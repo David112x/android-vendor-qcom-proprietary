@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Copyright (c) 2015, 2019 Qualcomm Technologies, Inc.
+  All Rights Reserved.
+  Confidential and Proprietary - Qualcomm Technologies, Inc.
+-->
+
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <!-- IMS settings related strings -->
+    <!-- Title displayed IMS account settings in the sip settings category. [CHAR LIMIT=NONE] -->
+    <string name="ims_settings">IMS Settings</string>
+
+    <!-- VT call quality settings. -->
+    <string name="ims_vt_call_quality_title">VT Call Quality</string>
+    <string name="ims_vt_call_quality_low">Low</string>
+    <string name="ims_vt_call_quality_medium">Medium</string>
+    <string name="ims_vt_call_quality_high">High</string>
+    <string name="ims_vt_call_quality_unknown">Unknown</string>
+    <string name="ims_vt_call_quality_set_failed">Failed to set video quality</string>
+
+    <!-- Call Deflect settings -->
+    <string translatable="false" name="qti_ims_call_deflect">calldeflect</string>
+    <string name="qti_ims_call_deflect_title">Call Deflect number</string>
+    <string name="qti_ims_number_not_set">Not set</string>
+
+    <string translatable="false" name="ims_to_cs_retry">ImsToCsRetry</string>
+    <!-- IMS to CS Retry setting title.  [CHAR LIMIT=30] -->
+    <string name="ims_to_cs_retry_title">CS Retry</string>
+    <!-- IMS to CS Retry setting summary.  [CHAR LIMIT=80] -->
+    <string name="ims_to_cs_retry_summary">Auto Retry with regular voice communications (Recommended)</string>
+
+    <!--VT call static image settings -->
+    <string name="ims_vt_call_static_image_text">Select Static Image</string>
+    <string name="ims_vt_call_static_image_error">Unsupported Image Format. Please select another image</string>
+    <string name="ims_vt_call_static_image_ignore">Cannot change Static Image while in a call</string>
+    <string name="ims_vt_call_static_image_okay">Static Image Selected</string>
+
+    <!-- RTT settings -->
+    <string name="rtt_toggle_title">RTT</string>
+    <string name="rtt_toggle_summary">RTT Mode</string>
+
+    <!-- RTT visibility settings -->
+    <string name="rtt_visibility_toggle_title">RTT Visibility</string>
+    <string name="rtt_visibility_toggle_summary">RTT Visibility Setting</string>
+
+    <!-- Call auto reject settings -->
+    <string name="auto_reject_toggle_title">Auto reject incoming calls.</string>
+    <string name="auto_reject_toggle_summary">Auto reject incoming calls on idle SIM card when there is a high priority data call on DDS sub</string>
+
+</resources>

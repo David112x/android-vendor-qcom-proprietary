@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    Copyright (c) 2019 Qualcomm Technologies, Inc.
+    All Rights Reserved.
+    Confidential and Proprietary - Qualcomm Technologies, Inc.
+-->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:minHeight="@dimen/editor_min_line_item_height"
+    android:paddingBottom="@dimen/editor_name_top_margin">
+
+    <ImageView
+        android:id="@+id/account_type_icon"
+        android:src="@drawable/quantum_ic_sim_card_vd_theme_24"
+        style="@style/EditSelectorIconStyle"/>
+
+    <LinearLayout
+        android:layout_height="wrap_content"
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:layout_marginTop="@dimen/saving_account_header_top_margin"
+        android:layout_marginStart="@dimen/saving_account_header_left_margin"
+        android:layout_gravity="center_vertical"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/saving_to"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="16sp"
+            android:maxLines="1"
+            android:text="@string/editor_saving_to"
+            android:textColor="@color/primary_text_color"
+            android:ellipsize="end"
+            android:textAlignment="viewStart" />
+
+        <TextView
+            android:id="@+id/account_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="14sp"
+            android:maxLines="1"
+            android:textColor="@color/secondary_text_color"
+            android:ellipsize="end"
+            android:textAlignment="viewStart" />
+
+    </LinearLayout>
+
+</LinearLayout>

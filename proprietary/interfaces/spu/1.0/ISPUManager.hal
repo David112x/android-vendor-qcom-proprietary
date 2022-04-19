@@ -1,0 +1,153 @@
+/*!
+ *
+ * Copyright (c) 2019 Qualcomm Technologies, Inc.
+ * All Rights Reserved.
+ * Confidential and Proprietary - Qualcomm Technologies, Inc.
+ *
+ */
+
+package vendor.qti.spu@1.0;
+
+import android.hidl.memory.block@1.0::MemoryBlock;
+
+import ISpcomSSREvent;
+import ISpcomSharedBuffer;
+import ISpcomClient;
+
+interface ISPUManager {
+
+    /**
+     * Health API response data struct
+     */
+    struct HealthStatusData {
+        uint32_t ariMode;
+        uint32_t ariFuseGauge;
+        uint32_t fipsEnabled;
+        uint32_t fipsSelfTestPassed;
+        uint32_t sensorsCalibrated;
+        uint32_t ariOnFuse;
+        uint32_t porIndicator;
+        uint32_t porCounter;
+        uint32_t auxData0;
+        uint32_t auxData1;
+        uint32_t auxData2;
+        uint32_t auxData3;
+        uint32_t iarCeStatus;
+        vec<uint32_t> additionalData;
+    };
+
+   /**
+     * List of predefined SPU system parameters.
+     */
+    enum SysparamID : uint32_t {
+        SYSPARAM_ID_FIRST,
+        BUILD_VERSION = SYSPARAM_ID_FIRST,      // Read-Only
+        BUILD_VERSION_HASH,                     // Read-Only
+        ARI_CONFIG,                             // Write-Only
+        APP_BUILD_VERSION,                      // Read-Only
+        APP_BUILD_VERSION_HASH,                 // Read-Only
+        HW_VERSION,                             // Read-Only
+        FIPS_OVERRIDE,                          // Write-Only
+        SYSPARAM_ID_LAST
+    };
+
+    /**
+     * Wait for until SPU link is up (SPU is ready)
+     *
+     * @param timeoutMs timeout in milliseconds
+     * @return status true if link is up, false if link is down
+     */
+    waitForLinkUp(uint32_t timeoutMs) generates (bool status);
+
+    /**
+     * Check if SPU link is up
+     *
+     * @return status true if link is up, false if link is down
+     */
+    isLinkUp() generates (bool status);
+
+    /**
+     * Send command to SPU and trigger SPU subsystem reset
+     *
+     * @return error 0 on success, nonzero otherwise (see errno.h)
+     */
+    resetSpu() generates (int32_t error);
+
+    /**
+     * Check if SPU application is already loaded
+     *
+     * @param appName should be the same app name as defined in spu app
+     *                manifest
+     * @return true if loaded false otherwise
+     */
+    isAppLoaded(string appName) generates (bool status);
+
+    /**
+     * Load SPU application
+     *
+     * @param chName channel name as defined in application manifest
+     * @param appName application name
+     * @param appBin Shared memory to share app bin file
+     * @param appBinSize App bin file size
+     * @param swapSize Memory size required to store the context of the app
+     *                 when swapped out
+     *
+     * Please note for SM8250:
+     *       - chName and appName: both should be equal to channel name in the
+     *         SPU application manifest file. The two parameters are required
+     *         for a future support of two diffrent 3rd party SPU application
+     *         which will use the same channel name.
+     *       - SwapSize: Not used. Swap size has a prefefined fixed size and
+     *         the value got from the user is ignored.
+     *
+     * @return error 0 on success, nonzero otherwise (see errno.h)
+     */
+    loadApp(string chName, string appName, memory appBin, int32_t appBinSize,
+        int32_t swapSize) generates (int32_t error);
+
+    /**
+     * Create SPU spcom client
+     *
+     * @param channelName glink logical channel name
+     * @return client spu client object to handle client APIs,
+     *                nullptr on failure
+     */
+    getSpcomClient(string channelName) generates (ISpcomClient client);
+
+    /**
+     *
+     * Request SPU to send information regarding ARI, FIPS, Sensors
+     *
+     * @return error 0 on success, nonzero otherwise (see errno.h)
+     * @return statusData A struct used to return the health data
+     */
+    checkHealth()
+        generates (int32_t error, HealthStatusData statusData);
+
+    /**
+     *
+     * Read SPU system parameter
+     *
+     * @param id predefined system parameter id
+     * @param arg1 first argument
+     * @param arg2 second argument
+     *
+     * @return error 0 on success, nonzero otherwise (see errno.h)
+     * @return value
+     */
+    sysparamRead(SysparamID id, uint32_t arg1, uint32_t arg2)
+        generates (int32_t error, uint32_t value);
+
+    /**
+     *
+     * Write SPU System parameter
+     *
+     * @param id predefined system parameter id
+     * @param arg1 first argument
+     * @param arg2 second argument
+     *
+     * @return error 0 on success, nonzero otherwise (see errno.h)
+     */
+    sysparamWrite(SysparamID id, uint32_t arg1, uint32_t arg2)
+        generates (int32_t error);
+};

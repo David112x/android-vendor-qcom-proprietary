@@ -1,0 +1,7 @@
+# Define all config properties for VTS
+# read subId of the SIM card
+slot_id=0
+# gzip the xml data?
+isCompressed=0
+#location of the XML file
+xmlFile=/data/myxmlfile.txt

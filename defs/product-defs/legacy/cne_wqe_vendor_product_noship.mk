@@ -1,0 +1,1 @@
+../../../proprietary/cne/cne_wqe_vendor_product_noship.mk

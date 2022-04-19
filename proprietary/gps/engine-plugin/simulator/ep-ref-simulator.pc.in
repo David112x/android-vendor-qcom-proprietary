@@ -1,0 +1,10 @@
+prefix=@prefix@
+exec_prefix=@exec_prefix@
+libdir=@libdir@
+includedir=@includedir@
+
+Name: engine plugin reference simulator
+Description: QTI engine plugin simulator
+Version: @VERSION
+Libs: -L${libdir} -lep_ref_simulator
+Cflags: -I${includedir}/ep-ref-simulator

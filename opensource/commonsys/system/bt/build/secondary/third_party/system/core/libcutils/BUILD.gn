@@ -1,0 +1,19 @@
+shared_library("libcutils") {
+  sources = [
+    "android_get_control_file.cpp",
+    "fs.cpp",
+    "multiuser.cpp",
+    "socket_inaddr_any_server_unix.cpp",
+    "socket_local_client_unix.cpp",
+    "socket_local_server_unix.cpp",
+    "socket_network_client_unix.cpp",
+    "sockets_unix.cpp",
+    "str_parms.cpp",
+  ]
+
+  include_dirs = [
+    "include",
+    "//third_party/system/core/include",
+    "//third_party/system/core/base/include",
+  ]
+}

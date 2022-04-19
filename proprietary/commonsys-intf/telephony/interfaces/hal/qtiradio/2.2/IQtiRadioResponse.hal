@@ -1,0 +1,27 @@
+/*
+ * Copyright (c) 2019 Qualcomm Technologies, Inc.
+ * All Rights Reserved.
+ * Confidential and Proprietary - Qualcomm Technologies, Inc.
+ *
+ */
+
+package vendor.qti.hardware.radio.qtiradio@2.2;
+
+import @2.1::IQtiRadioResponse;
+
+/*
+ * Interface declaring responses to solicited qtiradio requests
+ *
+ */
+interface IQtiRadioResponse extends @2.1::IQtiRadioResponse {
+
+     /**
+     * Response to IQtiRadio.queryNrIconType
+     *
+     * @param serial to match request/response. Response must include same serial as request.
+     * @param errorCode - errorCode as per types.hal returned from RIL.
+     * @param NrIconType as per types.hal to indicate 5G icon - NONE(Non-5G) or
+     *        5G BASIC or 5G UWB shown on the UI.
+     */
+    oneway onNrIconTypeResponse(int32_t serial, uint32_t errorCode, NrIconType iconType);
+};

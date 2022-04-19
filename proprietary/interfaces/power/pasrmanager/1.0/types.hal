@@ -1,0 +1,17 @@
+/***************************************************************************
+* Copyright (c) 2018 Qualcomm Technologies, Inc.
+* All Rights Reserved.
+* Confidential and Proprietary - Qualcomm Technologies, Inc.
+***************************************************************************/
+
+package vendor.qti.power.pasrmanager@1.0;
+
+enum Status : int32_t {
+    ERROR = -10,
+
+    INCOMPLETE_ONLINE = -2,
+    ONLINE =-1,
+
+    OFFLINE = 1,
+    INCOMPLETE_OFFLINE = 2
+};

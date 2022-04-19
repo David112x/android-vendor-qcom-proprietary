@@ -1,0 +1,50 @@
+/*********************************************************************
+ Copyright (c) 2017 Qualcomm Technologies, Inc.
+ All Rights Reserved.
+ Confidential and Proprietary - Qualcomm Technologies, Inc.
+**********************************************************************/
+
+
+package com.qualcomm.qti.uceservice@1.1;
+
+import com.qualcomm.qti.uceservice@1.0;
+import @1.0::IUceService;
+
+import @1.0::IPresenceListener;
+import @1.0::IOptionsListener;
+import IUceListener;
+
+interface IUceService extends @1.0::IUceService {
+
+  /**
+   *
+   * @return
+   * UceStatus.SUCESS for success
+   * UceStatus.Failure for failure
+   *
+   */
+  addUceListener_1_1(IUceListener listener) generates (UceStatus status);
+
+  /**
+   * Places a request to create Presence Service.
+   * upon successful, the application should expect to receive
+   * IPresenceListener.OnPresenceCreated() callback
+   *
+   * Note: Customer needs to create unique listener for each sub
+   */
+  createPresenceServiceForIccid(IPresenceListener listener, int64_t clientHandle,
+                        string iccId) generates (UceStatus status);
+
+
+  /**
+   * Places a request to create Options Service.
+   * upon successful, the application should expect to receive
+   * IOptionsListener.OnOptionsCreated() callback
+   *
+   * Note: Customer needs to create unique listener for each sub
+   */
+  createOptionsServiceForIccId(IOptionsListener listener, int64_t clientHandle,
+                       string iccId) generates (UceStatus status);
+
+
+};

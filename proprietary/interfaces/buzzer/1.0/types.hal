@@ -1,0 +1,28 @@
+/*
+ * Copyright (c) 2018-2019 Qualcomm Technologies, Inc.
+ * All Rights Reserved.
+ * Confidential and Proprietary - Qualcomm Technologies, Inc.
+ */
+
+package vendor.qti.hardware.buzzer@1.0;
+
+enum Status : uint32_t {
+    OK,
+    UNKNOWN_ERROR,                  // Some unforeseen problem that can't be described accurately
+    INSUFFICIENT_RESOURCE,  // Not enough resource memory on sidekick
+    BAD_VALUE,             // Some parameter is invalid or not acceptable by sidekick and buzzer
+};
+
+struct Note {
+    uint32_t timeInMs;   // Time to play specific note i in the tone
+    float freq;          // Note frequency (ie. 1975.53Hz, 0Hz means silence)
+};
+
+/*
+ * BuzzInfo is a full description of the tone
+ */
+struct BuzzInfo {
+    uint16_t totalDuration;   // Total time in ms to play tone. FFFF if it has to play continuously (or until stop received)
+    vec<Note> notes;       // Vector of notes to be played (ie. "8b3 16-" would be [{200, 1975.53}, {100, 0}] )
+};
+

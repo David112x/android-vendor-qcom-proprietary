@@ -1,0 +1,13 @@
+service vendor.bluetooth-1-0-qti /vendor/bin/hw/android.hardware.bluetooth@1.0-service-qti-lazy
+    interface android.hardware.bluetooth@1.0::IBluetoothHci default
+    interface vendor.qti.hardware.fm@1.0::IFmHci default
+    interface com.qualcomm.qti.ant@1.0::IAntHci default
+    interface vendor.qti.hardware.bluetooth_sar@1.0::IBluetoothSar default
+    interface vendor.qti.hardware.btconfigstore@1.0::IBTConfigStore default
+    oneshot
+    disabled
+    class hal
+    capabilities BLOCK_SUSPEND NET_ADMIN SYS_NICE
+    user bluetooth
+    group bluetooth system wakelock oem_2901
+    writepid /dev/stune/foreground/tasks

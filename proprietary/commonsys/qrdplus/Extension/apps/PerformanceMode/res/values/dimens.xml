@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    Copyright (c) 2019 Qualcomm Technologies, Inc.
+    All Rights Reserved.
+    Confidential and Proprietary - Qualcomm Technologies, Inc.
+-->
+
+<resources>
+    <!-- Button margin top -->
+    <dimen name="button_margin_top">30dp</dimen>
+
+    <!-- Button margin bottom -->
+    <dimen name="button_margin_bottom">30dp</dimen>
+
+    <!-- Button margin start -->
+    <dimen name="button_margin_start">75dp</dimen>
+
+    <dimen name="divider_height">1dp</dimen>
+    <dimen name="icon_padding_top">16dp</dimen>
+    <dimen name="text_view_padding_start">10dp</dimen>
+    <dimen name="text_view_padding_end">10dp</dimen>
+    <dimen name="text_view_padding_top">16dp</dimen>
+    <dimen name="text_view_padding_bottom">16dp</dimen>
+</resources>

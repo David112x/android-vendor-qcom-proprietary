@@ -1,0 +1,26 @@
+///******************************************************************************
+//*@file Android.bp
+//* brief Rules to create an package which exposes the location api
+//*******************************************************************************/
+
+java_library {
+
+    name: "com.qti.location.sdk",
+    installable: true,
+
+    srcs: ["java/**/*.java"],
+
+    static_libs: ["izat.lib.glue"],
+
+    optimize: {
+        proguard_flags_files: ["proguard.flags"],
+    },
+
+    owner: "qti",
+
+    dex_preopt: {
+        app_image: true,
+    },
+
+}
+

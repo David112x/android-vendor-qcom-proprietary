@@ -1,0 +1,1 @@
+../../../proprietary/commonsys/securemsm/config/qseecom_lib_system_product.mk

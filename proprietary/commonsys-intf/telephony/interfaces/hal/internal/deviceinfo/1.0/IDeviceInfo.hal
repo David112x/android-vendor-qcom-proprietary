@@ -1,0 +1,67 @@
+/*
+ * Copyright (c) 2019 Qualcomm Technologies, Inc.
+ * All Rights Reserved.
+ * Confidential and Proprietary - Qualcomm Technologies, Inc.
+ *
+ */
+
+package vendor.qti.hardware.radio.internal.deviceinfo@1.0;
+
+import IDeviceInfoIndication;
+import IDeviceInfoResponse;
+
+interface IDeviceInfo {
+
+    /**
+     * Set callbacks for device info responses (corresponding to requests) and indications
+     *
+     * @param deviceInfoResponseCb -  Callback object for responses to Device Info HIDL requests
+     *
+     * @param deviceInfoIndicationCb - Callback object for Device info related indications
+     */
+    oneway setCallbacks(IDeviceInfoResponse deviceInfoResponseCb,
+            IDeviceInfoIndication deviceInfoIndicationCb);
+
+    /**
+     * Notify RIL whether we support feature for reporting device power info and device interactive
+     * info so it could be conveyed to any consumers of this data. This is part of a 2-way
+     * handshake between the two entities wherein we send if feature is supported to interested
+     * consumers which should then send an indication requesting that we start reporting the data
+     *
+     * @param serial - Serial number of request.
+     *
+     * @param supportDevicePowerInfo - Boolean indicating if we support reporting device power info
+     *
+     * @param supportDeviceInteractiveInfo - Boolean indicating if we support reporting device
+     * interactive state info
+     *
+     * Response callback is IDeviceInfoResponse.sendFeaturesSupportedResponse()
+     */
+    oneway sendFeaturesSupported(int32_t serial, bool supportDevicePowerInfo,
+            bool supportDeviceInteractiveInfo);
+
+    /**
+     * Send device power info to RIL.
+     *
+     * @param serial - Serial number of request.
+     *
+     * @param DevicePowerInfo - the battery statistics – charging state of device, type of charger,
+     * battery capacity (current and total), power save mode enabled, etc.
+     *
+     * Response callback is IDeviceInfoResponse.sendDevicePowerInfoResponse()
+     */
+    oneway sendDevicePowerInfo(int32_t serial, DevicePowerInfo devicePowerInfo);
+
+    /**
+     * Send device interactive state info to RIL
+     *
+     * @param serial - Serial number of request.
+     *
+     * @param deviceState - enum DeviceState - INVALID, INTERACTIVE, NON_INTERACTIVE
+     * @See PowerManager#isInteractive()
+     *
+     * Response callback is IDeviceInfoResponse.sendDeviceInteractiveInfoResponse()
+     */
+    oneway sendDeviceInteractiveInfo(int32_t serial, DeviceState deviceState);
+};
+

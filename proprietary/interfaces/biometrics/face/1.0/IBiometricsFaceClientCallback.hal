@@ -1,0 +1,67 @@
+/* Copyright (c) 2018 Qualcomm Technologies, Inc.
+* All Rights Reserved.
+* Confidential and Proprietary - Qualcomm Technologies, Inc.
+*/
+
+package vendor.qti.hardware.biometrics.face@1.0;
+
+
+/* This HAL interface communicates asynchronous results from the
+ *  face engine in response to user actions using IBiometricsFace.
+*/
+interface IBiometricsFaceClientCallback{
+
+    /**
+     * Sent when one enrollment step is complete.
+     * @param deviceId the instance of this face device
+     * @param uid the face template being enrolled
+     * @param gid the groupid for the template being enrolled
+     */
+    oneway onEnrollResult(uint64_t deviceId, uint32_t uid, uint32_t gid);
+
+    /**
+     * Will send the enroll pose info to the client during enrollment.
+     * @param PoseInfo pose info
+     */
+   oneway onEnrolling(PoseInfo poseinfo);
+
+    /**
+     * Sent when a face is authenticated
+     * @param deviceId the instance of this face device
+     * @param uid the face template that was authenticated
+     * @param gid the groupid for the template that was authenticated
+     * @param token the hardware authentication token to pass to Keystore.addAuthToken()
+     */
+    oneway onAuthenticated(uint64_t deviceId, uint32_t uid, uint32_t gid, vec<uint8_t> token);
+
+    /**
+     * Sent when an error occurs
+     * @param deviceId the instance of this face device
+     * @param error a message about the error that occurred
+     */
+    oneway onError(uint64_t deviceId, FaceError error);
+
+    /**
+     * Sent when face(s) is removed
+     * @param deviceId the instance of this face device
+     * @param uid the face template being removed
+     * @param gid the groupid for the template being removed
+     */
+    oneway onRemoved(uint64_t deviceId, uint32_t uid, uint32_t gid);
+
+
+    /**
+     * Sent when ping is called
+     * @param ping_id the id sent in sendPingCommand
+     */
+   oneway onPingResponse(uint32_t ping_id);
+
+   /**
+     * INTERNAL API to request camera frames
+     *
+     *@param frameType, can be NIR or Depth frame request
+     *@return imageHandler will contain the frame info
+     */
+     getFrame(FrameType frameType) generates (ImageHandler imageHandler);
+
+};

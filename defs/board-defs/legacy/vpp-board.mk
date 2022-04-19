@@ -1,0 +1,1 @@
+../../../proprietary/vpp/config/vpp-vendor-board.mk

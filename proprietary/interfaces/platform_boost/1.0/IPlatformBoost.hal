@@ -1,0 +1,150 @@
+/*
+ * Copyright (c) 2019 Qualcomm Technologies, Inc.
+ * All Rights Reserved.
+ * Confidential and Proprietary - Qualcomm Technologies, Inc.
+ */
+
+package vendor.qti.platform_boost@1.0;
+
+import IPlatformBoostSysEventCallback;
+
+interface IPlatformBoost {
+
+    /**
+     * boostMode:
+     *
+     * Set device into the specific mode that vendor will simulate to accomplish.
+     *
+     * @param mode the mode to set.
+     *
+     * @param duration the time hold for the mode, valid: >0 no-timeout: <=0
+     *
+     * @return ret_handle result value for the operation, one of:
+     *    < 0:
+     *        Fail to set the mode.
+     *         -2: UNSUPPORTED
+     *         -1: FAILED
+     *    > 0:
+     *        Handle ID.
+     *
+     */
+    boostMode(string mode, int32_t duration) generates (int32_t ret_handle);
+
+    /**
+     * boostCap:
+     *
+     * Set one single Capability for device.
+     *
+     * @param target
+     *
+     * @param cap the capability of the target to set.
+     *
+     * @param value the abstract value of the capability to set.
+     *
+     * @param duration the time hold for the mode. valid: >0 no-timeout: <=0
+     *
+     * @return ret_handle result value for the operation, one of:
+     *    < 0:
+     *        Fail to set the mode.
+     *         -2: UNSUPPORTED
+     *         -1: FAILED
+     *    > 0:
+     *        Handle ID.
+     *
+     */
+    boostCap(string target, string cap, string value, int32_t duration) generates (int32_t ret_handle);
+
+    /**
+     * queryMode:
+     *
+     * Query device if support the specific mode.
+     *
+     * @param mode the mode to query.
+     *
+     * @return state state code for the operation, one of:
+     *    UNSUPPORTED:
+     *        Don't support this mode.
+     *    SUCCESS:
+     *        Support this mode.
+     *
+     */
+    queryMode(string mode) generates (PlatformBoostQueryState state);
+
+    /**
+     * queryCap:
+     *
+     * Query device if support the specific capability.
+     *
+     * @param target TBD.
+     *
+     * @param cap the capability of the target to query.
+     *
+     * @return state state code for the operation, one of:
+     *    UNSUPPORTED:
+     *        Don't support this capability.
+     *    SUCCESS:
+     *        Support this capability.
+     *
+     */
+    queryCap(string target, string cap) generates (PlatformBoostQueryState state);
+
+    /**
+     * boostRelease:
+     *
+     * Release boost by hanlde id.
+     *
+     * @param pl_handle the hanlde id.
+     *
+     */
+    boostRelease(int32_t pl_handle);
+
+    /**
+     * restore:
+     *
+     * Restore device into the specific state.
+     *
+     * @param state the state to restore.
+     *
+     * @return result result code for the operation, one of:
+     *    UNSUPPORTED:
+     *        Unsupported state to restore.
+     *    FAILED:
+     *        Fail to restore device into the state.
+     *    SUCCESS:
+     *        Success to restore device into the state.
+     *
+     */
+    restore(PlatformBoostRestoreState state) generates (PlatformBoostResult result);
+
+    /**
+     * getSysStatus:
+     *
+     * Query and get the status of system and sub system.
+     *
+     * @param sys the system to query.
+     *
+     * @param subSys the sub system to query.
+     *
+     * @return Status
+     *
+     */
+    getSysStatus(string sys, string subSys) generates (string Status);
+
+    /**
+     * registerForSystemEvents:
+     *
+     * Register a callback for some specific system events.
+     *
+     * @param callback the callback to register.
+     *
+     * @return result result code for the operation, one of:
+     *    UNSUPPORTED:
+     *        Unsupported event to register.
+     *    FAILED:
+     *        Fail to register event.
+     *    SUCCESS:
+     *        Success to register event.
+     *
+     */
+    registerForSystemEvents(IPlatformBoostSysEventCallback callback) generates (PlatformBoostResult result);
+};

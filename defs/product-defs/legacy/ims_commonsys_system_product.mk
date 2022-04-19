@@ -1,0 +1,1 @@
+../../../proprietary/commonsys/ims-ship/ims_commonsys_system_product.mk

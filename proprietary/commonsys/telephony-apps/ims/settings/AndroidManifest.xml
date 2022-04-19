@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Copyright (c) 2015, 2018 Qualcomm Technologies, Inc.
+  All Rights Reserved.
+  Confidential and Proprietary - Qualcomm Technologies, Inc.
+-->
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+      package="com.qualcomm.qti.ims"
+      android:versionCode="1"
+      android:versionName="1.0">
+
+    <uses-sdk android:minSdkVersion="23"
+        android:targetSdkVersion="29"/>
+
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.READ_PRIVILEGED_PHONE_STATE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="com.qti.permission.BIND_QTI_IMS_SERVICE" />
+    <uses-permission android:name="android.permission.WRITE_SECURE_SETTINGS" />
+    <uses-permission android:name="android.permission.MODIFY_PHONE_STATE" />
+    <application>
+        <activity android:name="ImsSettings"
+            android:theme="@style/ImsSettingsTheme"
+            android:configChanges="orientation|screenSize|keyboardHidden"
+            android:uiOptions="splitActionBarWhenNarrow">
+         <intent-filter>
+             <action android:name="org.codeaurora.IMS_SETTINGS" />
+             <category android:name="android.intent.category.DEFAULT" />
+         </intent-filter>
+        </activity>
+        <uses-library android:name="ims-ext-common"/>
+    </application>
+</manifest>

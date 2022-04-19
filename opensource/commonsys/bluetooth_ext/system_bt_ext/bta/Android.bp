@@ -1,0 +1,43 @@
+// libbt-bta-ext static library for target
+// ========================================================
+cc_library_static {
+    name: "libbt-bta-ext",
+    defaults: ["fluoride_defaults_qti"],
+    include_dirs: [
+        "vendor/qcom/opensource/commonsys/system/bt",
+        "vendor/qcom/opensource/commonsys/system/bt/btcore/include",
+        "vendor/qcom/opensource/commonsys/system/bt/hci/include",
+        "vendor/qcom/opensource/commonsys/system/bt/internal_include",
+        "vendor/qcom/opensource/commonsys/system/bt/stack/include",
+        "vendor/qcom/opensource/commonsys/system/bt/btif/include",
+        "vendor/qcom/opensource/commonsys/system/bt/bta/include/",
+        "vendor/qcom/opensource/commonsys/system/bt/bta/ag/",
+        "vendor/qcom/opensource/commonsys/system/bt/bta/sys/",
+        "vendor/qcom/opensource/commonsys/system/bt/utils/include/",
+        "vendor/qcom/opensource/commonsys/system/bt/stack/l2cap/",
+        "vendor/qcom/opensource/commonsys/bluetooth_ext/system_bt_ext/include/",
+        "vendor/qcom/opensource/commonsys/bluetooth_ext/system_bt_ext/bta/include/",
+        "vendor/qcom/opensource/commonsys/bluetooth_ext/system_bt_ext/btif/include/",
+        "vendor/qcom/opensource/commonsys/bluetooth_ext/vhal/include/",
+        "vendor/qcom/opensource/commonsys-intf/bluetooth/include/",
+    ],
+    srcs: [
+        "tws_plus/bta_tws_plus_main.cc",
+        "tws_plus/bta_tws_plus_act.cc",
+        "tws_plus/bta_tws_plus_api.cc",
+        "ba/bta_ba.cc",
+        "tws_plus/ag/bta_ag_twsp_dev.cc",
+        "tws_plus/ag/bta_ag_twsp_sco.cc",
+        "swb/bta_ag_swb.cc"
+    ],
+    shared_libs: [
+        "libcutils",
+        "libutils",
+        "libhardware",
+    ],
+    static_libs: [
+        "libosi",
+        "libbt-utils",
+    ],
+    cflags: ["-DBUILDCFG"],
+}

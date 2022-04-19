@@ -1,0 +1,1 @@
+../../../opensource/location/gps_vendor_product.mk

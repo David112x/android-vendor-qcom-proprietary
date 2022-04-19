@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    Copyright (c) 2019 Qualcomm Technologies, Inc.
+    All Rights Reserved.
+    Confidential and Proprietary - Qualcomm Technologies, Inc.
+-->
+<Button xmlns:android="http://schemas.android.com/apk/res/android"
+    style="?android:attr/buttonBarButtonStyle"
+    android:id="@+id/editor_menu_save_button"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="@string/menu_save"
+    android:textColor="@color/action_bar_button_text_color"
+    android:textSize="14sp">
+</Button>

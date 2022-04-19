@@ -1,0 +1,80 @@
+/*
+ * Copyright (c) 2019 Qualcomm Technologies, Inc.
+ * All Rights Reserved.
+ * Confidential and Proprietary - Qualcomm Technologies, Inc.
+ *
+ */
+
+package vendor.qti.hardware.radio.uim_remote_client@1.2;
+
+enum UimRemoteClientAppType : uint32_t {
+  /**
+  * Un-known app type
+  */
+  UIM_RMT_APP_UNKNOWN               = 0,
+  /**
+  * SIM app type
+  */
+  UIM_RMT_APP_SIM                   = 1,
+  /**
+  * USIM app type
+  */
+  UIM_RMT_APP_USIM                  = 2,
+  /**
+  * RUIM app type
+  */
+  UIM_RMT_APP_RUIM                  = 3,
+  /**
+  * CSIM app type
+  */
+  UIM_RMT_APP_CSIM                  = 4
+};
+
+enum UimRemoteClientAppState : uint32_t {
+  /**
+  * Un-known app state
+  */
+  UIM_RMT_APP_STATE_UNKNOWN         = 0,
+  /**
+  * Detected app state
+  */
+  UIM_RMT_APP_STATE_DETECTED        = 1,
+  /**
+  * Waiting-On-User app state
+  */
+  UIM_RMT_APP_STATE_WAITING_ON_USER = 2,
+  /**
+  * Halted app state
+  */
+  UIM_RMT_APP_STATE_HALTED          = 3,
+  /**
+  * Ready app state
+  */
+  UIM_RMT_APP_STATE_READY           = 4
+};
+
+struct UimRemoteClientAppInfo {
+  /**
+  * Enumeration for app type
+  */
+  UimRemoteClientAppType            appType;
+  /**
+  * Enumeration for app state
+  */
+  UimRemoteClientAppState           appState;
+};
+
+struct UimRemoteClientCardInitStatusType {
+  /**
+  * Num of active SIM slots in device
+  */
+  uint8_t                           numOfActiveSlots;
+  /**
+  * Num of Apps for a slot
+  */
+  uint8_t                           numOfApps;
+  /**
+  * App-Info for each App of a slot
+  */
+  vec<UimRemoteClientAppInfo>       appInfo;
+};

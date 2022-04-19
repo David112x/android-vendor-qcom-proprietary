@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!---/*************************************************************************
+  Copyright (c) 2018 Qualcomm Technologies, Inc.
+  All Rights Reserved.
+  Confidential and Proprietary - Qualcomm Technologies, Inc.
+*****************************************************************************-->
+
+<resources>
+    <bool name="config_enableNpOverlay" translatable="false">true</bool>
+    <string name="config_OSNP_PackageName" translatable="false">com.google.android.gms</string>
+    <string name="config_regional_OSNP_Baidu_PackageName" translatable="false">com.baidu.map.location</string>
+    <string name="config_regional_OSNP_AutoNavi_PackageName" translatable="false">com.amap.android.location</string>
+    <string name="config_regional_OSNP_AutoNavi_PackageName_1" translatable="false">com.amap.android.ams</string>
+    <string name="config_regional_OSNP_Tencent_PackageName" translatable="false">com.tencent.android.location</string>
+    <string-array name="config_OSNP_NpPackageNames" translatable="false">
+        <item>com.google.android.gms</item>
+    </string-array>
+    <string-array name="config_Baidu_NpPackageNames" translatable="false">
+        <item>com.baidu.map.location</item>
+    </string-array>
+    <string-array name="config_AutoNavi_NpPackageNames" translatable="false">
+        <item>com.amap.android.location</item>
+    </string-array>
+    <string-array name="config_AutoNavi_NpPackageNames_1" translatable="false">
+        <item>com.amap.android.ams</item>
+    </string-array>
+    <string-array name="config_Tencent_NpPackageNames" translatable="false">
+        <item>com.tencent.android.location</item>
+    </string-array>
+</resources>

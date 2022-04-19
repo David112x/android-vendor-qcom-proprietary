@@ -1,0 +1,29 @@
+/*
+ * Copyright (c) 2018-2019 Qualcomm Technologies, Inc.
+ * All Rights Reserved.
+ * Confidential and Proprietary - Qualcomm Technologies, Inc.
+ */
+
+package vendor.qti.hardware.buzzer@1.0;
+
+/**
+ * IBuzzer is an interface that tells a Sidekick chip (small
+ * compute resource) how to control the buzzer
+ */
+
+interface IBuzzer {
+
+    /**
+     * Sends buzz to sidekick and will play on buzzer (based off of single-shot buzz transfer)
+     * @param buzzInfo How to play this buzz
+     * @return status OK, FAIL, or BAD_VALUE
+     */
+    sendBuzz(BuzzInfo buzzInfo) generates (Status status);
+
+    /**
+     * Tells buzzer to stop playing
+     * @return status OK or FAIL if called out of order
+     */
+    stopBuzz() generates (Status status);
+
+};

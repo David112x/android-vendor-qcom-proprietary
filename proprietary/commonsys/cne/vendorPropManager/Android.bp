@@ -1,0 +1,13 @@
+java_library {
+    name: "VendorPropExt",
+    installable: true,
+    srcs: ["src/**/*.java"],
+
+    static_libs: ["vendor.qti.hardware.data.connection-V1.1-java"],
+
+    javacflags: [
+        "-Xlint",
+        "-Werror",
+    ],
+    owner: "qti",
+}

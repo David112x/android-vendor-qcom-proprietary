@@ -1,0 +1,52 @@
+# Copyright (c) 2019 Qualcomm Technologies, Inc.
+# All Rights Reserved.
+# Confidential and Proprietary - Qualcomm Technologies, Inc.
+#
+
+on boot
+    #Create QMUX deamon socket area
+    mkdir /dev/socket/qmux_radio 0770 radio radio
+    chmod 2770 /dev/socket/qmux_radio
+    mkdir /dev/socket/qmux_audio 0770 media audio
+    chmod 2770 /dev/socket/qmux_audio
+    mkdir /dev/socket/qmux_bluetooth 0770 bluetooth bluetooth
+    chmod 2770 /dev/socket/qmux_bluetooth
+    mkdir /dev/socket/qmux_gps 0770 gps gps
+    chmod 2770 /dev/socket/qmux_gps
+
+# QMUX must be in multiple groups to support external process connections
+service vendor.qmuxd /system/vendor/bin/qmuxd
+    class main
+    user root
+    group radio audio bluetooth gps nfc diag
+    disabled
+
+on property:ro.baseband=msm
+    start vendor.qmuxd
+
+on property:ro.baseband=csfb
+    start vendor.qmuxd
+
+on property:ro.baseband=svlte2a
+    start vendor.qmuxd
+
+on property:ro.baseband=mdm
+    start vendor.qmuxd
+
+on property:ro.baseband=mdm2
+    start vendor.qmuxd
+
+on property:ro.baseband=sglte
+    start vendor.qmuxd
+
+on property:ro.baseband=sglte2
+    start vendor.qmuxd
+
+on property:ro.baseband=dsda2
+    start vendor.qmuxd
+
+on property:ro.baseband=unknown
+    start vendor.qmuxd
+
+on property:ro.baseband=dsda3
+    start vendor.qmuxd

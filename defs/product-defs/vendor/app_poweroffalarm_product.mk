@@ -1,0 +1,1 @@
+../../../proprietary/qrdplus/PowerOffAlarm/app_poweroffalarm_vendor_product.mk

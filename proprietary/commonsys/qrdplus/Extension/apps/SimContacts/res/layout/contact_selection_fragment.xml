@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    Copyright (c) 2019 Qualcomm Technologies, Inc.
+    All Rights Reserved.
+    Confidential and Proprietary - Qualcomm Technologies, Inc.
+-->
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#fafafa"
+    android:orientation="vertical">
+
+    <com.qualcomm.qti.simcontacts.widget.ContactToolbar
+        android:id="@+id/toolbar"
+        style="@style/ContactsToolbarStyle"
+        android:theme="@style/default_toolbar_theme"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="?attr/colorPrimary"
+        android:padding="0dp"/>
+
+    <ListView
+        android:id="@android:id/list"
+        android:layout_width="match_parent"
+        android:layout_height="0dip"
+        android:layout_weight="1.0"
+        android:divider="@null"
+        android:fastScrollEnabled="true" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/divider_line_color" />
+
+    <TextView
+        android:id="@+id/confirmation_button"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/multiple_selection_confirmation_button_height"
+        android:layout_gravity="bottom"
+        android:enabled="false"
+        android:background="?android:attr/selectableItemBackgroundBorderless"
+        android:fontFamily="sans-serif-medium"
+        android:gravity="center"
+        android:textSize="@dimen/contacts_text_size" />
+
+</LinearLayout>

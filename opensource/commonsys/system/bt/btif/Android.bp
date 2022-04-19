@@ -1,0 +1,170 @@
+// Common variables
+// ========================================================
+btifCommonIncludes = [
+    "vendor/qcom/opensource/commonsys/system/bt",
+    "vendor/qcom/opensource/commonsys/system/bt/bta/include",
+    "vendor/qcom/opensource/commonsys/system/bt/bta/ag",
+    "vendor/qcom/opensource/commonsys/system/bt/bta/sys",
+    "vendor/qcom/opensource/commonsys/system/bt/bta/ag",
+    "vendor/qcom/opensource/commonsys/system/bt/bta/dm",
+    "vendor/qcom/opensource/commonsys/system/bt/btcore/include",
+    "vendor/qcom/opensource/commonsys/system/bt/device/include",
+    "vendor/qcom/opensource/commonsys/system/bt/internal_include",
+    "vendor/qcom/opensource/commonsys/system/bt/stack/include",
+    "vendor/qcom/opensource/commonsys/system/bt/stack/l2cap",
+    "vendor/qcom/opensource/commonsys/system/bt/stack/a2dp",
+    "vendor/qcom/opensource/commonsys/system/bt/stack/btm",
+    "vendor/qcom/opensource/commonsys/system/bt/stack/avdt",
+    "vendor/qcom/opensource/commonsys/system/bt/udrv/include",
+    "vendor/qcom/opensource/commonsys/system/bt/btif/include",
+    "vendor/qcom/opensource/commonsys/system/bt/btif/co",
+    "vendor/qcom/opensource/commonsys/system/bt/hci/include",
+    "vendor/qcom/opensource/commonsys/system/bt/vnd/include",
+    "vendor/qcom/opensource/commonsys/system/bt/embdrv/sbc/encoder/include",
+    "vendor/qcom/opensource/commonsys/system/bt/embdrv/sbc/decoder/include",
+    "vendor/qcom/opensource/commonsys/system/bt/utils/include",
+    "vendor/qcom/opensource/commonsys/bluetooth_ext/system_bt_ext/btif/include",
+    "vendor/qcom/opensource/commonsys/bluetooth_ext/system_bt_ext",
+    "vendor/qcom/opensource/commonsys/bluetooth_ext/system_bt_ext/bta/include",
+    "vendor/qcom/opensource/commonsys/bluetooth_ext/vhal/include",
+    "vendor/qcom/opensource/commonsys-intf/bluetooth/include",
+
+    "system/bt/include",
+]
+
+// libbtif static library for target
+// ========================================================
+cc_library_static {
+    name: "libbtif_qti",
+    defaults: ["fluoride_defaults_qti"],
+    include_dirs: btifCommonIncludes,
+    srcs: [
+        // HAL layer
+        "src/bluetooth.cc",
+        // BTIF implementation
+        "src/btif_a2dp.cc",
+        "src/btif_a2dp_control.cc",
+        "src/btif_a2dp_sink.cc",
+        "src/btif_a2dp_source.cc",
+        "src/btif_a2dp_audio_interface.cc",
+        "src/btif_av.cc",
+        "src/btif_avrcp_audio_track.cc",
+        "src/btif_ble_advertiser.cc",
+        "src/btif_ble_scanner.cc",
+        "src/btif_bqr.cc",
+        "src/btif_config.cc",
+        "src/btif_config_transcode.cc",
+        "src/btif_core.cc",
+        "src/btif_debug.cc",
+        "src/btif_debug_btsnoop.cc",
+        "src/btif_debug_conn.cc",
+        "src/btif_dm.cc",
+        "src/btif_gatt.cc",
+        "src/btif_gatt_client.cc",
+        "src/btif_gatt_server.cc",
+        "src/btif_gatt_test.cc",
+        "src/btif_gatt_util.cc",
+        "src/btif_hearing_aid.cc",
+        "src/btif_hf.cc",
+        "src/btif_hf_client.cc",
+        "src/btif_hh.cc",
+        "src/btif_hd.cc",
+        "src/btif_mce.cc",
+        "src/btif_pan.cc",
+        "src/btif_profile_queue.cc",
+        "src/btif_rc.cc",
+        "src/btif_sdp.cc",
+        "src/btif_sdp_server.cc",
+        "src/btif_sm.cc",
+        "src/btif_sock.cc",
+        "src/btif_sock_rfc.cc",
+        "src/btif_sock_l2cap.cc",
+        "src/btif_sock_sco.cc",
+        "src/btif_sock_sdp.cc",
+        "src/btif_sock_thread.cc",
+        "src/btif_sock_util.cc",
+        "src/btif_storage.cc",
+        "src/btif_uid.cc",
+        "src/btif_util.cc",
+        "src/stack_manager.cc",
+        // Callouts
+        "co/bta_ag_co.cc",
+        "co/bta_dm_co.cc",
+        "co/bta_av_co.cc",
+        "co/bta_hh_co.cc",
+        "co/bta_pan_co.cc",
+        "co/bta_gatts_co.cc",
+    ],
+    shared_libs: [
+        "libaudioclient",
+        "libcutils",
+        "libfmq",
+        "liblog",
+        "libz",
+        "libtinyxml2",
+        "com.qualcomm.qti.bluetooth_audio@1.0",
+        "vendor.qti.hardware.bluetooth_audio@2.0",
+        "libhidlbase",
+        "libhidltransport",
+        "libhwbinder",
+        "libutils",
+//        "libdl",
+        "libcrypto",
+    ],
+    whole_static_libs: [
+        "libbt-audio-hal-interface-qti",
+        "libaudio-a2dp-hw-utils",
+        "libbt-common-qti",
+        //"libbtif_ext",
+    ],
+    cflags: ["-DBUILDCFG"],
+
+}
+
+// btif unit tests for target
+// ========================================================
+cc_test {
+    name: "net_test_btif_qti",
+    defaults: ["fluoride_defaults_qti"],
+    include_dirs: btifCommonIncludes,
+    srcs: ["test/btif_storage_test.cc"],
+    header_libs: ["libbluetooth_headers"],
+    shared_libs: [
+        "liblog",
+        "libcutils",
+        "libutils",
+        "libcrypto",
+    ],
+    static_libs: [
+        "libbtcore_qti",
+        "libbtif_qti",
+        "libbt-stack_qti",
+        "libbluetooth-types",
+        "libosi_qti",
+        "libbt-common-qti",
+    ],
+    cflags: ["-DBUILDCFG"],
+}
+
+// btif profile queue unit tests for target
+// ========================================================
+cc_test {
+    name: "net_test_btif_profile_queue_qti",
+    defaults: ["fluoride_defaults_qti"],
+    include_dirs: btifCommonIncludes,
+    srcs: [
+      "src/btif_profile_queue.cc",
+      "test/btif_profile_queue_test.cc"
+    ],
+    header_libs: ["libbluetooth_headers"],
+    shared_libs: [
+        "liblog",
+        "libcutils",
+    ],
+    static_libs: [
+        "libbluetooth-types",
+        "libosi_qti",
+        "libbt-common-qti",
+    ],
+    cflags: ["-DBUILDCFG"],
+}

@@ -1,0 +1,48 @@
+/*
+ * Copyright (c) 2018 Qualcomm Technologies, Inc.
+ * All Rights Reserved.
+ * Confidential and Proprietary - Qualcomm Technologies, Inc.
+ *
+ */
+
+package vendor.qti.hardware.radio.qtiradio@2.0;
+
+import @1.0::IQtiRadioIndication;
+
+/*
+ * Interface declaring unsolicited qtiradio indications
+ */
+interface IQtiRadioIndication extends @1.0::IQtiRadioIndication {
+    /*
+     * Unsol msg to indicate change in 5g status in NSA and SA mode.
+     *
+     * @param enableStatus as per types.hal to indicate enabled/disabled state.
+     *
+     */
+    oneway on5gStatusChange(EnableStatus status);
+
+    /*
+     * Unsol msg to indicate changes in EutraNewRadioDualConnectivity(EN-DC)
+     * and RestrictDualConnectivityWithNewRadio(restrictDCNR) for current LTE cell.
+     *
+     * @param DcParam as per types.hal to indicate various states of EN-DC and restrictDCNR.
+     *
+     */
+    oneway onNrDcParamChange(DcParam dcParam);
+
+    /*
+     * Unsol msg to indicate changes in 5G SCG configuration.
+     *
+     * @param BearerStatus as per types.hal to indicate bearer allocated/removed.
+     *
+     */
+    oneway onNrBearerAllocationChange(BearerStatus bearerStatus);
+
+    /*
+     * Unsol msg to indicate changes in 5G signal strength.
+     *
+     * @param SignalStrength as per types.hal to indicate 5g signal strength.
+     *
+     */
+    oneway onSignalStrengthChange(SignalStrength signalStrength);
+};

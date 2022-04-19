@@ -1,0 +1,147 @@
+static_library("system_bt_ext_bta") {
+  sources = [
+    "bta/tws_plus/bta_tws_plus_main.cc",
+    "bta/tws_plus/bta_tws_plus_act.cc",
+    "bta/tws_plus/bta_tws_plus_api.cc",
+    "bta/ba/bta_ba.cc",
+    "bta/tws_plus/ag/bta_ag_twsp_dev.cc",
+    "bta/tws_plus/ag/bta_ag_twsp_sco.cc",
+  ]
+
+  include_dirs = [
+    "include",
+    "bta/include",
+    "btif/include",
+    "//third_party/bluetooth_ext/vhal/include",
+    "//",
+    "//btcore/include",
+    "//hci/include",
+    "//internal_include",
+    "//stack/include",
+    "//btif/include",
+    "//bta/include",
+    "//bta/ag",
+    "//bta/sys",
+    "//utils/include",
+    "//stack/l2cap",
+    "//third_party/libchrome",
+    "//third_party/googletest/googletest/include",
+  ]
+}
+
+static_library("system_bt_ext_btif") {
+  sources = [
+    "btif/src/btif_l2cap.cc",
+    "btif/src/btif_rfcomm.cc",
+    "btif/src/btif_vendor.cc",
+    "btif/src/btif_vendor_socket.cc",
+    "btif/src/btif_gap.cc",
+    "btif/src/btif_gatt_qual.cc",
+    "btif/src/btif_smp.cc",
+    "btif/src/btif_tws_plus.cc",
+    "btif/src/btif_ba.cc",
+    "btif/src/btif_twsp_hf.cc",
+  ]
+
+  include_dirs = [
+    "include",
+    "device/include",
+    "bta/include",
+    "btif/include",
+    "//include",
+    "//third_party/bluetooth_ext/vhal/include",
+    "//",
+    "//btcore/include",
+    "//hci/include",
+    "//internal_include",
+    "//stack/include",
+    "//btif/include",
+    "//bta/include",
+    "//bta/ag",
+    "//bta/sys",
+    "//utils/include",
+    "//stack/l2cap",
+    "//third_party/system/core/include",
+  ]
+  deps = [
+    "//third_party/libchrome:base",
+  ]
+}
+
+static_library("system_bt_ext_device") {
+  sources = [
+    "device/src/interop.cc",
+    "device/src/profile_config.cc",
+    "device/src/device_iot_config.cc",
+  ]
+
+  include_dirs = [
+    "include",
+    "//third_party/bluetooth_ext/vhal/include",
+    "//third_party/bluetooth_ext/system_bt_ext/device/include",
+    "//",
+    "//btcore/include",
+    "//hci/include",
+    "//internal_include",
+    "//stack/include",
+    "//third_party/libchrome",
+    "//bta/include",
+    "//utils/include",
+  ]
+}
+
+static_library("system_bt_ext_osi") {
+  sources = [
+    "osi/src/vnd_log.cc",
+  ]
+
+  include_dirs = [
+    "include",
+    "//",
+    "//internal_include",
+    "//stack/include",
+    "//btif/include",
+    "//utils/include",
+    "//utils/include",
+    "//third_party/system/core/include",
+    "//third_party/system/core/include/cutils",
+    ]
+
+  deps = [
+    "//third_party/system/core/libcutils:libcutils",
+  ]
+}
+
+static_library("system_bt_ext_stack") {
+  sources = [
+     "stack/btm/btm_csb.cc",
+     "stack/btm/btm_iot_config.cc",
+     "stack/hcic/hcivendorcmds.cc",
+     "stack/a2dp/a2dp_vendor_aptx_tws_encoder.cc",
+     "stack/a2dp/a2dp_vendor_aptx_tws.cc",
+  ]
+
+  include_dirs = [
+    "include",
+    "btm",
+    "bta/include",
+    "stack/include",
+    "//third_party/bluetooth_ext/vhal/include",
+    "//",
+    "//btcore/include",
+    "//btif/include",
+    "//hci/include",
+    "//include",
+    "//internal_include",
+    "//udrv/include",
+    "//bta/include",
+    "//bta/sys",
+    "//utils/include",
+    "//stack/include",
+    "//stack/btm",
+    "//third_party/bluetooth_ext/system_bt_ext/device/include",
+  ]
+  deps = [
+    "//third_party/libchrome:base",
+  ]
+}

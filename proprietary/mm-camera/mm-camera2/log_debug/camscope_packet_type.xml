@@ -1,0 +1,273 @@
+﻿<?xml version="1.0"?>
+<!-- ******************************************************************************* -->
+<!-- Copyright (c) 2016 Qualcomm Technologies, Inc.                                  -->
+<!-- All Rights Reserved.                                                            -->
+<!-- Confidential and Proprietary - Qualcomm Technologies, Inc.                      -->
+<!-- ******************************************************************************* -->
+<scopePacketTypes>
+
+    <define Name="camscope_defines">
+        <defineVal Name="CAMSCOPE_OFF_FLAG"       Value="0x00000000" />
+        <defineVal Name="CAMSCOPE_ON_FLAG"        Value="0xFFFFFFFF" />
+
+        <defineVal Name="CAMSCOPE_OFF_MASK"       Value="0x00000000" />
+        <defineVal Name="CAMSCOPE_KPI_MASK"       Value="0x00000001" />
+        <defineVal Name="CAMSCOPE_KPI_DBG_MASK"   Value="0x00000002" />
+        <defineVal Name="CAMSCOPE_ALWAYS_ON_MASK" Value="0xFFFFFFFF" />
+    </define>
+
+    <enum Name="camscope_packet_type">
+        <enumVal Name="CAMSCOPE_BASE"          Value="0" />
+        <enumVal Name="CAMSCOPE_SOFTWARE_BASE" Value="1" />
+        <enumVal Name="CAMSCOPE_SYNC_BEGIN"    Value="2" />
+        <enumVal Name="CAMSCOPE_SYNC_END"      Value="3" />
+        <enumVal Name="CAMSCOPE_ASYNC_BEGIN"   Value="4" />
+        <enumVal Name="CAMSCOPE_ASYNC_END"     Value="5" />
+        <enumVal Name="CAMSCOPE_SYNC_EVENT"    Value="6" />
+        <enumVal Name="CAMSCOPE_ASYNC_EVENT"   Value="7" />
+        <enumVal Name="CAMSCOPE_RESERVED"      Value="0xFFFFFFFF" />
+    </enum>
+
+    <enum Name="camscope_event_name">
+        <enumVal Name="CAMSCOPE_MCT_SOF"                Value="0"  Desc="Mct_Sof" />
+        <enumVal Name="CAMSCOPE_MCT_SUP_PARAMS"         Value="1"  Desc="Mct_super_params" />
+        <enumVal Name="CAMSCOPE_MCT_SPEC_EVT"           Value="2"  Desc="Mct_special_event" />
+        <enumVal Name="CAMSCOPE_MCT_BUS_PROC"           Value="3"  Desc="Mct_process_bus_msg" />
+        <enumVal Name="CAMSCOPE_AFD"                    Value="4"  Desc="Camera:AFD" />
+        <enumVal Name="CAMSCOPE_ASD"                    Value="5"  Desc="Camera:ASD" />
+        <enumVal Name="CAMSCOPE_AEC"                    Value="6"  Desc="Camera:AEC" />
+        <enumVal Name="CAMSCOPE_AWB"                    Value="7"  Desc="Camera:AWB" />
+        <enumVal Name="CAMSCOPE_AF"                     Value="8"  Desc="Camera:AF" />
+        <enumVal Name="CAMSCOPE_CPP"                    Value="9"  Desc="CPP" />
+        <enumVal Name="CAMSCOPE_CPP_CAPTURE"            Value="10" Desc="CPP_Capture" />
+        <enumVal Name="CAMSCOPE_CPP_CLK_REQ"            Value="11" Desc="CPP_clock_request" />
+        <enumVal Name="CAMSCOPE_CPP_HOLDING"            Value="12" Desc="CPP_Holding_Time" />
+        <enumVal Name="CAMSCOPE_CPP_HW_ON"              Value="13" Desc="CPP_Hardware_On" />
+        <enumVal Name="CAMSCOPE_SNAPSHOT"               Value="14" Desc="Snapshot" />
+        <enumVal Name="CAMSCOPE_ISP_HW_UPDATE"          Value="15" Desc="ISP_Hardware_Update" />
+        <enumVal Name="CAMSCOPE_JPEG"                   Value="16" Desc="JPEG" />
+        <enumVal Name="CAMSCOPE_FACEPROC"               Value="17" Desc="FaceProc" />
+        <enumVal Name="CAMSCOPE_SENSOR_PROCESS"         Value="18" Desc="Sensor_process_event" />
+        <enumVal Name="CAMSCOPE_FD_NUM_DETECTED"        Value="19" Desc="FD_num_faces_detected" />
+        <enumVal Name="CAMSCOPE_CAM_ALLOC"              Value="20" Desc="Camera:alloc" />
+        <enumVal Name="CAMSCOPE_IFACE_STREAMON_FWD"     Value="21" Desc="iface:streamon_fwd" />
+        <enumVal Name="CAMSCOPE_IFACE_STREAMON_THREAD"  Value="22" Desc="iface:streamon_to_thread" />
+        <enumVal Name="CAMSCOPE_IFACE_STREAMOFF_FWD"    Value="23" Desc="iface:streamoff_fwd" />
+        <enumVal Name="CAMSCOPE_IFACE_STREAMOFF_THREAD" Value="24" Desc="iface:streamoff_to_thread" />
+        <enumVal Name="CAMSCOPE_IFACE_CFG_ISP"          Value="25" Desc="iface:config_ISP" />
+        <enumVal Name="CAMSCOPE_IFACE_HW_CFG"           Value="26" Desc="iface:hw_config" />
+        <enumVal Name="CAMSCOPE_IFACE_CREATE_AXI_HW"    Value="27" Desc="iface:create_axi_hw" />
+        <enumVal Name="CAMSCOPE_IFACE_CFG_AXI_HW"       Value="28" Desc="iface:config_axi_hw" />
+        <enumVal Name="CAMSCOPE_IFACE_STREAMON"         Value="29" Desc="iface:streamon" />
+        <enumVal Name="CAMSCOPE_IFACE_STREAMOFF"        Value="30" Desc="iface:streamoff" />
+        <enumVal Name="CAMSCOPE_AF_START"               Value="31" Desc="AF_START" />
+        <enumVal Name="CAMSCOPE_AF_SET"                 Value="32" Desc="AF_SET" />
+        <enumVal Name="CAMSCOPE_IS"                     Value="33" Desc="Camera:IS" />
+        <enumVal Name="CAMSCOPE_ISP_STREAMON"           Value="34" Desc="ISP:streamon" />
+        <enumVal Name="CAMSCOPE_ISP_STREAMOFF"          Value="35" Desc="ISP:streamoff" />
+        <enumVal Name="CAMSCOPE_ISP_SET_STRM_CFG"       Value="36" Desc="ISP:set_Strm_config" />
+        <enumVal Name="CAMSCOPE_VFE_HW_UPDATE"          Value="37" Desc="VFE_HW_UPDATE" />
+        <enumVal Name="CAMSCOPE_ISP_STREAMON_FWD"       Value="38" Desc="ISP:streamon_fwd" />
+        <enumVal Name="CAMSCOPE_SENSOR_SD_OPEN"         Value="39" Desc="SENSOR_SD_OPEN" />
+        <enumVal Name="CAMSCOPE_SENSOR_START_SESSION"   Value="40" Desc="SENSOR_START_SESSION" />
+        <enumVal Name="CAMSCOPE_SENSOR_SET_RESOLUTION"  Value="41" Desc="SENSOR_SET_RESOLUTION" />
+        <enumVal Name="CAMSCOPE_SENSOR_SET_STRM_CFG"    Value="42" Desc="SENSOR_SET_STREAM_CONFIG" />
+        <enumVal Name="CAMSCOPE_SENSOR_CFG_PDAF"        Value="43" Desc="SENSOR_CONFIG_PDAF" />
+        <enumVal Name="CAMSCOPE_SENSOR_LOAD_CHROMATIX"  Value="44" Desc="SENSOR_LOAD_CHROMATIX" />
+        <enumVal Name="CAMSCOPE_SENSOR_START_STREAM"    Value="45" Desc="SENSOR_START_STREAM" />
+        <enumVal Name="CAMSCOPE_SENSOR_SET_FPS"         Value="46" Desc="SENSOR_SET_FPS" />
+        <enumVal Name="CAMSCOPE_SENSOR_STREAMOFF"       Value="47" Desc="SENSOR_STREAMOFF" />
+        <enumVal Name="CAMSCOPE_WNR"                    Value="48" Desc="Camera:WNR" />
+        <enumVal Name="CAMSCOPE_WNR_MEMCPY"             Value="49" Desc="Camera:WNR:memcpy" />
+        <enumVal Name="CAMSCOPE_PPROC_STREAMOFF"        Value="50" Desc="PPROC_streamoff" />
+        <enumVal Name="CAMSCOPE_CPP_STREAMON"           Value="51" Desc="CPP:Streamon" />
+        <enumVal Name="CAMSCOPE_CAC"                    Value="52" Desc="Camera:CAC" />
+        <enumVal Name="CAMSCOPE_CPP_CREATE_HW_FRAME"    Value="53" Desc="CPP_create_hw_frame" />
+        <enumVal Name="CAMSCOPE_CPP_SET_STRM_CFG"       Value="54" Desc="CPP_set_Strm_config" />
+        <enumVal Name="CAMSCOPE_MCT_START_SESSION"      Value="55" Desc="Mct_start_session" />
+        <enumVal Name="CAMSCOPE_MCT_STOP_SESSION"       Value="56" Desc="Mct_stop_session" />
+        <enumVal Name="CAMSCOPE_IMGLIB_STREAMON"        Value="57" Desc="IMG:streamon" />
+        <enumVal Name="CAMSCOPE_MCT_CREATE_BUF"         Value="58" Desc="MCT:create_buf" />
+        <enumVal Name="CAMSCOPE_HAL1_START_PREVIEW"     Value="59" Desc="QCamera2HWI::start_preview"
+                                                                   DescSystrace="start_preview" />
+        <enumVal Name="CAMSCOPE_HAL1_STOP_PREVIEW"      Value="60" Desc="QCamera2HWI::stop_preview"
+                                                                   DescSystrace="stop_preview" />
+        <enumVal Name="CAMSCOPE_HAL1_TAKE_PICTURE"      Value="61" Desc="QCamera2HWI::take_picture"
+                                                                   DescSystrace="take_picture" />
+        <enumVal Name="CAMSCOPE_HAL1_CLOSECAMERA"       Value="62" Desc="QCamera2HWI::close_camera_device"
+                                                                   DescSystrace="close_camera_device" />
+        <enumVal Name="CAMSCOPE_HAL1_OPENCAMERA"        Value="63" Desc="QCamera2HWI::openCamera"
+                                                                   DescSystrace="openCamera" />
+        <enumVal Name="CAMSCOPE_HAL1_STARTPREVIEW"      Value="64" Desc="QCamera2HWI::startPreview"
+                                                                   DescSystrace="startPreview" />
+        <enumVal Name="CAMSCOPE_HAL1_STOPPREVIEW"       Value="65" Desc="QCamera2HWI::stopPreview"
+                                                                   DescSystrace="stopPreview" />
+        <enumVal Name="CAMSCOPE_HAL1_CAPTURE_CH_CB"     Value="66" Desc="capture_channel_cb_routine" />
+        <enumVal Name="CAMSCOPE_HAL1_PREVIEW_STRM_CB"   Value="67" Desc="preview_stream_cb_routine" />
+        <enumVal Name="CAMSCOPE_HAL3_SNAPSHOT"          Value="68" Desc="SNAPSHOT" />
+        <enumVal Name="CAMSCOPE_HAL3_GETSTREAMBUFS"     Value="69" Desc="QCamera3ProcessingChannel::getStreamBufs"
+                                                                   DescSystrace="getStreamBufs" />
+        <enumVal Name="CAMSCOPE_HAL3_OPENCAMERA"        Value="70" Desc="QCamera3HWI::openCamera"
+                                                                   DescSystrace="openCamera" />
+        <enumVal Name="CAMSCOPE_HAL3_CLOSECAMERA"       Value="71" Desc="QCamera3HWI::closeCamera"
+                                                                   DescSystrace="closeCamera" />
+        <enumVal Name="CAMSCOPE_HAL3_FLUSH"             Value="72" Desc="QCamera3HWI::flush"
+                                                                   DescSystrace="flush" />
+        <enumVal Name="CAMSCOPE_HAL1_ZSL_CH_CB"            Value="73" Desc="zsl_channel_cb" />
+        <enumVal Name="CAMSCOPE_HAL1_PP_CH_CB"             Value="74" Desc="postproc_channel_cb_routine" />
+        <enumVal Name="CAMSCOPE_HAL1_SYNC_STRM_CB"         Value="75" Desc="synchronous_stream_cb_routine" />
+        <enumVal Name="CAMSCOPE_HAL1_NODIS_PREVIEW_STRMCB" Value="76" Desc="nodisplay_preview_stream_cb_routine" />
+        <enumVal Name="CAMSCOPE_HAL1_RDI_MODE_STRM_CB"     Value="77" Desc="rdi_mode_stream_cb_routine" />
+        <enumVal Name="CAMSCOPE_HAL1_POSTVIEW_STRM_CB"     Value="78" Desc="postview_stream_cb_routine" />
+        <enumVal Name="CAMSCOPE_HAL1_VIDEO_STRM_CB"        Value="79" Desc="video_stream_cb_routine" />
+        <enumVal Name="CAMSCOPE_HAL1_SNAPSHOT_CH_CB"       Value="80" Desc="snapshot_channel_cb_routine" />
+        <enumVal Name="CAMSCOPE_HAL1_RAW_STRM_CB"          Value="81" Desc="raw_stream_cb_routine" />
+        <enumVal Name="CAMSCOPE_HAL1_RAW_CH_CB"            Value="82" Desc="raw_channel_cb_routine" />
+        <enumVal Name="CAMSCOPE_HAL1_PREVIEW_RAW_STRM_CB"  Value="83" Desc="preview_raw_stream_cb_routine" />
+        <enumVal Name="CAMSCOPE_HAL1_SNAPSHOT_RAW_STRM_CB" Value="84" Desc="snapshot_raw_stream_cb_routine" />
+        <enumVal Name="CAMSCOPE_HAL1_METADATA_STRM_CB"     Value="85" Desc="metadata_stream_cb_routine" />
+        <enumVal Name="CAMSCOPE_HAL1_REPROC_STRM_CB"       Value="86" Desc="reprocess_stream_cb_routine" />
+        <enumVal Name="CAMSCOPE_HAL1_CB_STRM_CB"           Value="87" Desc="callback_stream_cb_routine" />
+        <enumVal Name="CAMSCOPE_HAL1_SET_PREVIEW_WINDOW"   Value="88" Desc="set_preview_window" />
+        <enumVal Name="CAMSCOPE_HAL1_SET_CALLBACKS"        Value="89" Desc="set_CallBacks" />
+        <enumVal Name="CAMSCOPE_HAL1_ENABLE_MSG_TYPE"      Value="90" Desc="enable_msg_type" />
+        <enumVal Name="CAMSCOPE_HAL1_DISABLE_MSG_TYPE"     Value="91" Desc="disable_msg_type" />
+        <enumVal Name="CAMSCOPE_HAL1_MSG_TYPE_ENABLED"     Value="92" Desc="msg_type_enabled" />
+        <enumVal Name="CAMSCOPE_HAL1_PREPARE_PREVIEW"      Value="93" Desc="prepare_preview" />
+        <enumVal Name="CAMSCOPE_HAL1_PREVIEW_ENABLED"      Value="94" Desc="preview_enabled" />
+        <enumVal Name="CAMSCOPE_HAL1_RESTART_START_PREVIEW" Value="95" Desc="restart_start_preview" />
+        <enumVal Name="CAMSCOPE_HAL1_RESTART_STOP_PREVIEW"  Value="96" Desc="restart_stop_preview" />
+        <enumVal Name="CAMSCOPE_HAL1_PRE_START_RECORDING"   Value="97" Desc="pre_start_recording" />
+        <enumVal Name="CAMSCOPE_HAL1_START_RECORDING"       Value="98" Desc="start_recording" />
+        <enumVal Name="CAMSCOPE_HAL1_STOP_RECORDING"        Value="99" Desc="stop_recording" />
+        <enumVal Name="CAMSCOPE_HAL1_RECORDING_ENABLED"     Value="100" Desc="recording_enabled" />
+        <enumVal Name="CAMSCOPE_HAL1_REL_REC_FRAME"         Value="101" Desc="release_recording_frame" />
+        <enumVal Name="CAMSCOPE_HAL1_CANCEL_AF"             Value="102" Desc="cancel_auto_focus" />
+        <enumVal Name="CAMSCOPE_HAL1_PRE_TAKE_PICTURE"      Value="103" Desc="pre_take_picture" />
+        <enumVal Name="CAMSCOPE_HAL1_CANCEL_PICTURE"        Value="104" Desc="cancel_picture" />
+        <enumVal Name="CAMSCOPE_HAL1_SET_PARAMETERS"        Value="105" Desc="set_parameters" />
+        <enumVal Name="CAMSCOPE_HAL1_STOP_AFTER_SET_PARAMS" Value="106" Desc="stop_after_set_params" />
+        <enumVal Name="CAMSCOPE_HAL1_COMMIT_PARAMS"         Value="107" Desc="commit_params" />
+        <enumVal Name="CAMSCOPE_HAL1_RESTART_AFTER_SET_PARAMS" Value="108" Desc="restart_after_set_params" />
+        <enumVal Name="CAMSCOPE_HAL1_GET_PARAMETERS"           Value="109" Desc="get_parameters" />
+        <enumVal Name="CAMSCOPE_HAL1_PUT_PARAMETERS"           Value="110" Desc="put_parameters" />
+        <enumVal Name="CAMSCOPE_HAL1_SEND_COMMAND"             Value="111" Desc="send_command" />
+        <enumVal Name="CAMSCOPE_HAL1_SEND_COMMAND_RESTART"     Value="112" Desc="send_command_restart" />
+        <enumVal Name="CAMSCOPE_HAL1_RELEASE"                  Value="113" Desc="release" />
+        <enumVal Name="CAMSCOPE_HAL1_REGISTER_FACE_IMAGE"      Value="114" Desc="register_face_image" />
+        <enumVal Name="CAMSCOPE_HAL1_PREPARE_SNAPSHOT"         Value="115" Desc="prepare_snapshot" />
+        <enumVal Name="CAMSCOPE_HAL1_QCAMERA2HWI"              Value="116" Desc="QCamera2HardwareInterface" />
+        <enumVal Name="CAMSCOPE_HAL1_INIT_CAP"                 Value="117" Desc="initCapabilities" />
+        <enumVal Name="CAMSCOPE_HAL1_GET_CAP"                  Value="118" Desc="getCapabilities" />
+        <enumVal Name="CAMSCOPE_HAL1_PREPAREPREVIEW"           Value="119" Desc="preparePreview" />
+        <enumVal Name="CAMSCOPE_HAL1_PREPARE_HW_FOR_SNAPSHOT"  Value="120" Desc="prepareHardwareForSnapshot" />
+        <enumVal Name="CAMSCOPE_HAL3_INIT"                      Value="121" Desc="QCamera3HWI::initialize"
+                                                                            DescSystrace="initialize" />
+        <enumVal Name="CAMSCOPE_HAL3_CFG_STRMS"                 Value="122" Desc="configureStreams" />
+        <enumVal Name="CAMSCOPE_HAL3_CFG_STRMS_PERF_LKD"        Value="123" Desc="configureStreamsPerfLocked" />
+        <enumVal Name="CAMSCOPE_HAL3_HANDLE_BATCH_METADATA"     Value="124" Desc="handleBatchMetadata" />
+        <enumVal Name="CAMSCOPE_HAL3_HANDLE_METADATA_LKD"       Value="125" Desc="handleMetadataWithLock" />
+        <enumVal Name="CAMSCOPE_HAL3_HANDLE_IN_BUF_LKD"         Value="126" Desc="handleInputBufferWithLock" />
+        <enumVal Name="CAMSCOPE_HAL3_HANDLE_BUF_LKD"            Value="127" Desc="handleBufferWithLock" />
+        <enumVal Name="CAMSCOPE_HAL3_PROC_CAP_REQ"              Value="128" Desc="processCaptureRequest" />
+        <enumVal Name="CAMSCOPE_HAL3_FLUSH_PREF"                Value="129" Desc="flushPerf" />
+        <enumVal Name="CAMSCOPE_HAL3_GET_CAM_INFO"              Value="130" Desc="getCamInfo" />
+        <enumVal Name="CAMSCOPE_HAL3_DYN_UPDATE_META_STRM_INFO" Value="131" Desc="dynamicUpdateMetaStreamInfo" />
+        <enumVal Name="CAMSCOPE_HAL3_CH_START"                  Value="132" Desc="QCamera3Channel::start"
+                                                                            DescSystrace="start" />
+        <enumVal Name="CAMSCOPE_HAL3_CH_STOP"                   Value="133" Desc="QCamera3Channel::stop"
+                                                                            DescSystrace="stop" />
+        <enumVal Name="CAMSCOPE_HAL3_CH_FLUSH"                  Value="134" Desc="QCamera3Channel::flush"
+                                                                            DescSystrace="flush" />
+        <enumVal Name="CAMSCOPE_HAL3_PROC_CH_STRM_CB"           Value="135" Desc="QCamera3ProcessingChannel::streamCbRoutine"
+                                                                            DescSystrace="streamCbRoutine" />
+        <enumVal Name="CAMSCOPE_HAL3_PROC_CH_REG_BUF"           Value="136" Desc="QCamera3ProcessingChannel::registerBuffer"
+                                                                            DescSystrace="registerBuffer" />
+        <enumVal Name="CAMSCOPE_HAL3_PROC_CH_REPROC_CB"         Value="137" Desc="QCamera3ProcessingChannel::reprocessCbRoutine"
+                                                                            DescSystrace="reprocessCbRoutine" />
+        <enumVal Name="CAMSCOPE_HAL3_REG_CH_INIT"               Value="138" Desc="QCamera3RegularChannel::initialize"
+                                                                            DescSystrace="initialize" />
+        <enumVal Name="CAMSCOPE_HAL3_REG_CH_REQ"                Value="139" Desc="QCamera3RegularChannel::request"
+                                                                            DescSystrace="request" />
+        <enumVal Name="CAMSCOPE_HAL3_METADATA_CH_INIT"          Value="140" Desc="QCamera3MetadataChannel::initialize"
+                                                                            DescSystrace="initialize" />
+        <enumVal Name="CAMSCOPE_HAL3_RAW_CH_STRM_CB"            Value="141" Desc="QCamera3RawChannel::streamCbRoutine"
+                                                                            DescSystrace="streamCbRoutine" />
+        <enumVal Name="CAMSCOPE_HAL3_YUV_CH_INIT"               Value="142" Desc="QCamera3YUVChannel::initialize"
+                                                                            DescSystrace="initialize" />
+        <enumVal Name="CAMSCOPE_HAL3_YUV_CH_STRM_CB"            Value="143" Desc="QCamera3YUVChannel::streamCbRoutine"
+                                                                            DescSystrace="streamCbRoutine" />
+        <enumVal Name="CAMSCOPE_HAL3_PIC_CH_JPEG_EVT_HANDLE"    Value="144" Desc="QCamera3PicChannel::jpegEvtHandle"
+                                                                            DescSystrace="jpegEvtHandle" />
+        <enumVal Name="CAMSCOPE_HAL3_PIC_CH_REQ"                Value="145" Desc="QCamera3PicChannel::request"
+                                                                            DescSystrace="request" />
+        <enumVal Name="CAMSCOPE_HAL3_PIC_CH_DATA_NOTIFY_CB"     Value="146" Desc="QCamera3PicChannel::dataNotifyCB"
+                                                                            DescSystrace="dataNotifyCB" />
+        <enumVal Name="CAMSCOPE_HAL3_PIC_CH_STRM_CB"            Value="147" Desc="QCamera3PicChannel::streamCbRoutine"
+                                                                            DescSystrace="streamCbRoutine" />
+        <enumVal Name="CAMSCOPE_HAL3_REPROC_CH_REG_BUF"         Value="148" Desc="QCamera3ReprocessChannel::registerBuffer"
+                                                                            DescSystrace="registerBuffer" />
+        <enumVal Name="CAMSCOPE_HAL3_REPROC_CH_START"           Value="149" Desc="QCamera3ReprocessChannel::start"
+                                                                            DescSystrace="start" />
+        <enumVal Name="CAMSCOPE_HAL3_REPROC_CH_STOP"            Value="150" Desc="QCamera3ReprocessChannel::stop"
+                                                                            DescSystrace="stop" />
+        <enumVal Name="CAMSCOPE_HAL3_PPROC_INIT"                Value="151" Desc="QCamera3PostProcessor::init"
+                                                                            DescSystrace="init" />
+        <enumVal Name="CAMSCOPE_HAL3_PPROC_INIT_JPEG"           Value="152" Desc="QCamera3PostProcessor::initJpeg"
+                                                                            DescSystrace="initJpeg" />
+        <enumVal Name="CAMSCOPE_HAL3_PPROC_REL_JPEG_JOB_DATA"   Value="153" Desc="QCamera3PostProcessor::releaseJpegJobData"
+                                                                            DescSystrace="releaseJpegJobData" />
+        <enumVal Name="CAMSCOPE_HAL3_PPROC_REL_PP_JOB_DATA"     Value="154" Desc="QCamera3PostProcessor::releasePPJobData"
+                                                                            DescSystrace="releasePPJobData" />
+        <enumVal Name="CAMSCOPE_HAL3_PPROC_ENCODEDATA"          Value="155" Desc="QCamera3PostProcessor::encodeData"
+                                                                            DescSystrace="encodeData" />
+        <enumVal Name="CAMSCOPE_HAL3_PREVIEW_STRM_CB"           Value="156" Desc="preview_stream_cb_routine" />
+        <enumVal Name="CAMSCOPE_HAL3_STOP_PREVIEW"              Value="157" Desc="stop_preview" />
+        <enumVal Name="CAMSCOPE_HAL3_CAPTURE_CH_CB"             Value="158" Desc="capture_channel_cb_routine" />
+    </enum>
+
+    <struct Name="camscope_base">
+        <var Type="uint32_t"         Name="packet_type"   DataTypeSize="4"  unsigned="true" />
+        <var Type="uint32_t"         Name="size"          DataTypeSize="4"  unsigned="true" />
+    </struct>
+
+    <!-- void camscope_sw_base_log(uint32_t camscope_section, uint32_t camscope_enable_mask,
+                                   uint32_t packet_type, uint32_t event_name) -->
+    <struct Name="camscope_sw_base">
+        <var Type="camscope_base"    Name="base"          DataTypeSize="8"  unsigned="false" />
+        <var Type="struct timeval"   Name="timestamp"     DataTypeSize="8"  unsigned="false" />
+        <var Type="int32_t"          Name="process_id"    DataTypeSize="4"  unsigned="false" />
+        <var Type="uint32_t"         Name="event_name"    DataTypeSize="4"  unsigned="true" />
+    </struct>
+
+    <!-- void camscope_timing_log(uint32_t camscope_section, uint32_t camscope_enable_mask,
+                                  uint32_t packet_type, uint32_t event_name, uint32_t frame_id) -->
+    <struct Name="camscope_timing">
+        <var Type="camscope_sw_base" Name="sw_base"       DataTypeSize="24" unsigned="false" />
+        <var Type="uint32_t"         Name="frame_id"      DataTypeSize="4"  unsigned="true" />
+    </struct>
+
+    <!-- void camscope_in_out_timing_log(uint32_t camscope_section, uint32_t camscope_enable_mask,
+                                         uint32_t packet_type, uint32_t event_name,
+                                         struct timeval in_timestamp, struct timeval out_timestamp,
+                                         uint32_t frame_id) -->
+    <struct Name="camscope_in_out_timing">
+        <var Type="camscope_sw_base" Name="sw_base"       DataTypeSize="24" unsigned="false" />
+        <var Type="struct timeval"   Name="in_timestamp"  DataTypeSize="8"  unsigned="false" />
+        <var Type="struct timeval"   Name="out_timestamp" DataTypeSize="8"  unsigned="false" />
+        <var Type="uint32_t"         Name="frame_id"      DataTypeSize="4"  unsigned="true" />
+    </struct>
+
+    <!-- The mapping used to determine which struct to use with what packet type -->
+    <mapping Name="camscope_mapping">
+        <mapValue enum="CAMSCOPE_BASE"          struct="camscope_base" />
+        <mapValue enum="CAMSCOPE_SOFTWARE_BASE" struct="camscope_sw_base" />
+        <mapValue enum="CAMSCOPE_SYNC_BEGIN"    struct="camscope_sw_base" />
+        <mapValue enum="CAMSCOPE_SYNC_END"      struct="camscope_sw_base" />
+        <mapValue enum="CAMSCOPE_ASYNC_BEGIN"   struct="camscope_timing" />
+        <mapValue enum="CAMSCOPE_ASYNC_END"     struct="camscope_timing" />
+        <mapValue enum="CAMSCOPE_SYNC_EVENT"    struct="camscope_in_out_timing" />
+        <mapValue enum="CAMSCOPE_ASYNC_EVENT"   struct="camscope_in_out_timing" />
+    </mapping>
+
+</scopePacketTypes>

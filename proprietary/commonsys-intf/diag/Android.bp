@@ -1,0 +1,6 @@
+//Generate Diag header library
+cc_library_headers {
+    name: "libdiag_headers",
+    export_include_dirs: ["src","include"],
+    vendor_available: true,
+}

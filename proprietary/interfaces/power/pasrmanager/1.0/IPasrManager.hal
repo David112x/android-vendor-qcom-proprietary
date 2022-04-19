@@ -1,0 +1,21 @@
+/***************************************************************************
+* Copyright (c) 2018 Qualcomm Technologies, Inc.
+* All Rights Reserved.
+* Confidential and Proprietary - Qualcomm Technologies, Inc.
+***************************************************************************/
+
+package vendor.qti.power.pasrmanager@1.0;
+
+interface IPasrManager {
+    /**
+     * attemptOffline() cycles through list of removable memory blocks and attempts to offline them, returns
+     * OFFLINE if at least all offlines succeed, INCOMPLETE_OFFLINE if at least one succeeds
+     */
+    attemptOffline() generates (Status status);
+
+    /**
+     * attemptOnline() cycles through list of removable memory blocks and attempts to online them, returns
+     * ONLINE if at least all onlines succeed, INCOMPLETE_ONLINE if at least one succeeds
+     */
+    attemptOnline() generates (Status status);
+};

@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!--
+Copyright (c) 2018 Qualcomm Technologies, Inc.
+All Rights Reserved.
+Confidential and Proprietary - Qualcomm Technologies, Inc.
+ -->
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal">
+
+    <!-- Left side  -->
+    <LinearLayout
+        android:id="@+id/layout_left"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:background="@drawable/selector_list_item"
+        android:clickable="true"
+        android:orientation="horizontal"
+        android:paddingBottom="@dimen/content_all"
+        android:paddingTop="@dimen/content_all">
+
+        <!-- Sound Model Checkbox  -->
+        <CheckBox
+            android:id="@+id/cb_sm_check"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginLeft="@dimen/body_all"
+            android:layout_marginRight="@dimen/body_all"
+            android:background="@drawable/selector_userlist_checkbox"
+            android:button="@null"
+            android:clickable="false" />
+
+        <!-- sound model name  -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/content_all"
+            android:layout_marginTop="@dimen/content_all"
+            android:gravity="center_vertical"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tv_sm_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="left"
+                android:textAppearance="@style/VoiceWakeup.Font.Listitem.Name" />
+        </LinearLayout>
+    </LinearLayout>
+
+
+    <!-- separator  -->
+    <View
+        android:layout_width="1dp"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="2dp"
+        android:layout_marginTop="2dp"
+        android:background="@color/seperator" />
+
+    <!-- Right side -->
+    <FrameLayout
+        android:id="@+id/layout_right"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:background="@drawable/selector_list_item"
+        android:clickable="true">
+
+        <!-- Right image -->
+        <ImageView
+            android:id="@+id/iv_settings"
+            android:layout_width="60dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:background="@android:color/transparent"
+            android:scaleType="center"
+            android:src="@drawable/btn_gear" />
+
+    </FrameLayout>
+
+</LinearLayout>

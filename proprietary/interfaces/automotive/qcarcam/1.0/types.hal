@@ -1,0 +1,247 @@
+/*
+ * Copyright (c) 2019-2020 Qualcomm Technologies, Inc.
+ * All Rights Reserved.
+ * Confidential and Proprietary - Qualcomm Technologies, Inc.
+ *
+ */
+
+package vendor.qti.automotive.qcarcam@1.0;
+
+/// @brief Return codes
+enum QcarcamError : int32_t
+{
+    QCARCAM_OK = 0,
+    QCARCAM_FAILED,
+    QCARCAM_BADPARAM,
+    QCARCAM_BADSTATE,
+    QCARCAM_NOMEM,
+    QCARCAM_UNSUPPORTED,
+    QCARCAM_TIMEOUT
+};
+
+/// @brief Unique input descriptors. Mapped to physical HW in configuration file.
+enum QcarcamInputDesc : int32_t
+{
+    QCARCAM_INPUT_TYPE_EXT_REAR      = 0,   ///< Rearview
+    QCARCAM_INPUT_TYPE_EXT_FRONT     = 1,   ///< Exterior Front
+    QCARCAM_INPUT_TYPE_EXT_LEFT      = 2,
+    QCARCAM_INPUT_TYPE_EXT_RIGHT     = 3,
+    QCARCAM_INPUT_TYPE_DRIVER        = 4,   ///< Driver monitor
+    QCARCAM_INPUT_TYPE_LANE_WATCH    = 5,
+    QCARCAM_INPUT_TYPE_DIGITAL_MEDIA = 6,
+    QCARCAM_INPUT_TYPE_ANALOG_MEDIA  = 7,
+    QCARCAM_INPUT_TYPE_GESTURE       = 8,
+    QCARCAM_INPUT_TYPE_IRIS          = 9,
+    QCARCAM_INPUT_TYPE_FINGERPRINT   = 10,
+    QCARCAM_INPUT_TYPE_TUNER         = 11,
+    QCARCAM_INPUT_TYPE_TESTPATTERN   = 255,
+    QCARCAM_INPUT_TYPE_USER_DEFINED_START= 256,  ///< User defined IDs may start at this index
+    QCARCAM_INPUT_NUM,                           /// total number of valid parameters
+    QCARCAM_INPUT_MAX = 0x7FFFFFFF
+} ;
+
+/// @brief Resolution
+struct QcarcamResolution
+{
+    uint32_t width;
+    uint32_t height;
+    float fps; ///< Input frame rate per second, maximal and default value
+};
+
+/// @brief Input sources
+struct QcarcamInputInfo
+{
+    QcarcamInputDesc desc;         ///< Unique input identifier
+    string name;
+    string parent_name;
+    QcarcamResolution[10] res;     ///< Array of supported resolutions in pixels
+    int32_t num_res;               ///< Number of supported resolutions
+    uint32_t[5] color_fmt;
+    int32_t num_color_fmt;         ///< Number of supported color formats
+    int32_t flags;
+};
+
+/// @brief Parameter settings
+enum QcarcamStreamParam : int32_t
+{
+    QCARCAM_CB_EVENT_MASK = 1,
+    QCARCAM_COLOR_FMT,            ///< Output color format.
+    QCARCAM_RESOLUTION,           ///< Output resolution.
+    QCARCAM_BRIGHTNESS,
+    QCARCAM_CONTRAST,
+    QCARCAM_MIRROR_H,             ///< Horizontal mirror.
+    QCARCAM_MIRROR_V,             ///< Vertical mirror.
+    QCARCAM_FRAME_RATE,
+    QCARCAM_VID_STD,              ///< Video standard
+    QCARCAM_CURRENT_VID_STD,      ///< Video standard
+    QCARCAM_STATUS,
+    QCARCAM_LATENCY_MAX,
+    QCARCAM_LATENCY_REDUCE_RATE,
+    QCARCAM_PRIVATE_DATA,
+    QCARCAM_INJECTION_START,
+    QCARCAM_EXPOSURE,             ///< exposure setting
+    QCARCAM_HUE,                  ///< hue setting
+    QCARCAM_SATURATION,           ///< saturation setting
+    QCARCAM_GAMMA,                ///< gamma setting
+    QCARCAM_HDR_EXPOSURE,
+    QCARCAM_PARAM_NUM,            /// total number of valid parameters.
+
+    QCARCAM_PARAM_MAX = 0x7FFFFFFF
+};
+
+/// @brief Color formats
+enum QcarcamColorFmt : int32_t
+{
+    QCARCAM_FMT_MIPIRAW_8 = 0x1080000,
+    QCARCAM_FMT_MIPIRAW_10 = 0x10a0000,
+    QCARCAM_FMT_MIPIRAW_12 = 0x10c0000,
+    QCARCAM_FMT_MIPIRAW_14 = 0x10e0000,
+    QCARCAM_FMT_MIPIRAW_16 = 0x1100000,
+    QCARCAM_FMT_MIPIRAW_20 = 0x1140000,
+    QCARCAM_FMT_RGB_888 = 0x7080300,
+    QCARCAM_FMT_UYVY_8 = 0x7080102,
+    QCARCAM_FMT_UYVY_10 = 0x70a0102,
+    QCARCAM_FMT_UYVY_12 = 0x70c0102,
+    QCARCAM_FMT_YUYV_8 = 0x7080100,
+    QCARCAM_FMT_YUYV_10 = 0x70a0100,
+    QCARCAM_FMT_YUYV_12 = 0x70c0100,
+    QCARCAM_FMT_NV12 = 0x7080104,
+    QCARCAM_FMT_NV21 = 0x7080105,
+    QCARCAM_FMT_MAX = 0x7FFFFFFF
+};
+
+/// @brief Exposure mode definition
+enum QcarcamExposureMode : int32_t
+{
+    QCARCAM_EXPOSURE_AUTO,
+    QCARCAM_EXPOSURE_MANUAL,
+    QCARCAM_EXPOSURE_SEMI_AUTO,
+    QCARCAM_EXPOSURE_LUX_IDX
+};
+
+/// @brief structure to hold manual exposure parameters
+struct QcarcamExposureConfig
+{
+    QcarcamExposureMode exposure_mode_type;
+    float exposure_time;   ///< time in ms
+    float gain;            ///< 1.0 to Max supported in senor
+    float target;          ///< for SEMI_AUTO mode
+    float lux_index;       ///< for LUX_IDX mode
+};
+
+/// @brief structure to hold manual exposure parameters
+struct QcarcamHDRExposureConfig
+{
+    QcarcamExposureMode exposure_mode_type;
+    uint32_t hdr_mode;
+    uint32_t num_exposures;
+    float[4] exposure_time;   ///< time in ms
+    float[4] exposure_ratio;
+    float[4] gain;         ///< 1.0 to Max supported in senor
+    float target;          ///< for SEMI_AUTO mode
+    float lux_index;       ///< for LUX_IDX mode
+};
+
+/// @brief Frame drop mode definition
+enum QcarcamFrameDropMode : int32_t {
+    QCARCAM_KEEP_ALL_FRAMES,    ///< Max fps
+    QCARCAM_KEEP_EVERY_2FRAMES, ///< 1/2 Max fps
+    QCARCAM_KEEP_EVERY_3FRAMES, ///< 1/3 Max fps
+    QCARCAM_KEEP_EVERY_4FRAMES, ///< 1/4 Max fps
+    QCARCAM_DROP_ALL_FRAMES,    ///< 0 fps
+    QCARCAM_FRAMEDROP_MANUAL    /// Set period/pattern manually
+};
+
+/// @brief structure to hold frame rate parameters
+struct QcarcamFrameRate
+{
+    QcarcamFrameDropMode frame_drop_mode;
+    uint16_t frame_drop_period;    ///< only effective when frame_drop_mode = RAW_PATTERN_MANUAL, max value 32
+    uint32_t frame_drop_pattern;   ///< only effective when frame_drop_mode = RAW_PATTERN_MANUAL
+};
+
+enum QcarcamMaxGammaTable : uint32_t {
+    QCARCAM_MAX_GAMMA_TABLE = 128
+};
+
+enum QcarcamGammaType : int32_t {
+    QCARCAM_GAMMA_EXPONENT = 0,     ///< set gamma value in a float
+    QCARCAM_GAMMA_KNEEPOINTS,       ///< set a array of gamma parameters
+};
+
+struct QcarcamGammaTable {
+    uint32_t length;              ///< Table size
+    uint32_t[QcarcamMaxGammaTable:QCARCAM_MAX_GAMMA_TABLE] arr_gamma;       ///< gamma settings
+};
+
+union QcarcamGamma {
+    float f_value;
+    QcarcamGammaTable table;
+};
+
+/// @brief structure to hold manual gamma parameters
+struct QcarcamGammaConfig
+{
+    QcarcamGammaType config_type;  /// gamma configure mode
+    QcarcamGamma gamma;
+};
+
+/// @brief Union to hold possible values to p_value in qcarcam_s_param and qcarcam_g_param
+union QcarcamStreamConfigData
+{
+    float float_value;                            ///< float type
+    uint32_t uint_value;                          ///< unsigned int type
+    QcarcamResolution res_value;                  ///< resolution type
+    QcarcamColorFmt color_value;                  ///< color type
+    QcarcamExposureConfig exposure_config;        ///< Exposure settings
+    QcarcamHDRExposureConfig hdr_exposure_config; ///< HDR Exposure settings
+    QcarcamFrameRate frame_rate_config;           ///< Frame rate settings
+    QcarcamGammaConfig gamma_config;              ///< Gamma settings
+    int32_t[32] arr_padding;                      ///< Used to ensure union size won't change
+};
+
+/// @brief Set buffer definition
+struct QcarcamBuffersInfo
+{
+    QcarcamColorFmt color_fmt;
+    uint32_t width;  ///< width in pixels
+    uint32_t height; ///< height in pixels
+    uint32_t stride; ///< stride in bytes
+    uint32_t size;   ///< size in bytes
+    uint32_t flags;
+};
+
+/// @brief Frame field type definition
+enum QcarcamFrameField : int32_t
+{
+    QCARCAM_FIELD_UNKNOWN = 0,
+    QCARCAM_FIELD_ODD,
+    QCARCAM_FIELD_EVEN,
+    QCARCAM_FIELD_ODD_EVEN,
+    QCARCAM_FIELD_EVEN_ODD
+};
+
+/// @brief Frame done payload
+struct QcarcamFrameInfo
+{
+    int32_t idx;               ///< index into the qcarcam_buffers_t buffers table
+    uint32_t flags;
+    uint32_t seq_no;
+    uint64_t timestamp;        ///monotonic timestamp
+    uint64_t timestamp_system; ///system timestamp
+    QcarcamFrameField field_type;
+};
+
+/// @brief Event type definition
+enum QcarcamEvent : int32_t
+{
+    QCARCAM_EVENT_FRAME_READY = 1 << 0,  ///< Frame ready to be dequeued using get_frame API
+    QCARCAM_EVENT_INPUT_SIGNAL = 1 << 1, ///< Payload will contain qcarcam_input_signal_t
+    QCARCAM_EVENT_ERROR = 1 << 2         ///< Error event
+};
+
+/// @brief Union to hold possible values to p_payload in qcarcam_event_callback
+union QcarcamEventPayload
+{
+    uint32_t uint_payload; ///< uint32_t type
+};

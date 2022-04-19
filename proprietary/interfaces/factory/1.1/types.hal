@@ -1,0 +1,25 @@
+/*
+ * Copyright (c) 2019 Qualcomm Technologies, Inc.
+ * All Rights Reserved.
+ * Confidential and Proprietary - Qualcomm Technologies, Inc.
+ */
+
+package vendor.qti.hardware.factory@1.1;
+
+import @1.0::types;
+import vendor.qti.hardware.factory@1.0;
+
+/**
+ * List of Result types supported.
+ */
+enum IResultType_1_1 : @1.0::IResultType {
+    WRONG_PARAMS = 4
+};
+
+/**
+ * FTM Commnand Result.
+ */
+struct FactoryResult {
+  IResultType_1_1 result;
+  string data;
+};

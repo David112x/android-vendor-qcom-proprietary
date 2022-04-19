@@ -1,0 +1,22 @@
+/*********************************************************************
+ Copyright (c) 2019 Qualcomm Technologies, Inc.
+ All Rights Reserved.
+ Confidential and Proprietary - Qualcomm Technologies, Inc.
+**********************************************************************/
+
+package com.qualcomm.qti.uceservice@2.1;
+
+import @2.0::IPresenceListener;
+
+interface IPresenceListener extends @2.0::IPresenceListener {
+
+  /**
+   * Callback function to be invoked by the Presence service to notify the client to send a
+   * publish request.
+   *
+   * @param triggerType      @2.1::PresPublishTriggerType for the network being supported.
+   *
+   */
+  oneway onPublishTrigger_2_1(PresPublishTriggerType triggerType);
+
+};

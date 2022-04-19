@@ -1,0 +1,16 @@
+/*!
+ *
+ * Copyright (c) 2019 Qualcomm Technologies, Inc.
+ * All Rights Reserved.
+ * Confidential and Proprietary - Qualcomm Technologies, Inc.
+ *
+ */
+
+package vendor.qti.spu@1.0;
+
+// Should be implemented by Client side and pass to server side
+// using ISpcomClient::addSSRCallback
+
+interface ISpcomSSREvent {
+    oneway callback();
+};

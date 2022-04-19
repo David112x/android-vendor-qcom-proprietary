@@ -1,0 +1,56 @@
+/*
+ * Copyright (c) 2018 Qualcomm Technologies, Inc.
+ * All Rights Reserved.
+ * Confidential and Proprietary - Qualcomm Technologies, Inc.
+ *
+ */
+
+package com.qualcomm.qti.imscmservice@2.1;
+
+import @2.0::types;
+import @2.0::deviceConfigKeys;
+import @2.0::StatusCode;
+
+enum deviceConfigKeys : @2.0::deviceConfigKeys {
+
+  PLANI = 2019,
+  /* PLANI header value
+   * accepts a string type value
+   */
+};
+
+/*
+ * Autoconfig trigger reason types
+ */
+enum autoconfigTriggerReason : uint32_t {
+
+  AUTOCONFIG_USER_REQUEST = 0,
+  /* Due to user request after version -2 received */
+  AUTOCONFIG_REFRESH_TOKEN = 1,
+  /* Refresh Token  */
+  AUTOCONFIG_INVALID_TOKEN = 2,
+  /* Token becomes invalid */
+  AUTOCONFIG_INVALID_CREDENTIAL = 3,
+  /* Username/password/URL becomes invalid */
+  AUTOCONFIG_CLIENT_CHANGE = 4,
+  /* RCS client has been changed */
+  AUTOCONFIG_DEVICE_UPGRADE = 5,
+  /* Device has been upgraded */
+  AUTOCONFIG_FACTORY_RESET = 6
+  /* Factory reset */
+};
+
+/*
+ * AutoConfig Request Status
+ */
+enum autoconfigRequestStatus : uint32_t {
+
+  AUTOCONFIG_STATUS_OFF = 0,
+  AUTOCONFIG_STATUS_ON = 1
+};
+
+enum StatusCode : @2.0::StatusCode {
+
+  /** Request is not supported. */
+  UNSUPPORTED = -1,
+};

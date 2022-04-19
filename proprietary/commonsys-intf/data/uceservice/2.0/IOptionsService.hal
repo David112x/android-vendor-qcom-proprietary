@@ -1,0 +1,96 @@
+/*********************************************************************
+ Copyright (c) 2017-2018 Qualcomm Technologies, Inc.
+ All Rights Reserved.
+ Confidential and Proprietary - Qualcomm Technologies, Inc.
+**********************************************************************/
+
+package com.qualcomm.qti.uceservice@2.0;
+
+import IOptionsListener;
+
+interface IOptionsService {
+  /**
+   * Adds a listener to the Options service.
+   * @param serviceHandle          received in IOptionsListener.OnOptionsCreated() callback.
+   * @param listener               IOptionsListener object.
+   * @param clientHandle           token from the client.
+   * @return status                status of the request placed.
+   *
+   */
+  addListener(int64_t serviceHandle, IOptionsListener listener,
+      int64_t clientHandle) generates (UceStatus status);
+
+  /**
+   * Removes a listener from the Options service.
+   * @param serviceHandle    received in IOptionsListener.OnOptionsCreated() callback.
+   * @param clientHandle     token from the client used in addListener() API.
+   * @return status          status of the request placed.
+   */
+  removeListener(int64_t serviceHandle, int64_t clientHandle) generates (UceStatus status);
+
+  /**
+   * Sets the capabilities information of the self device.
+   * The final status of the call is received in IOptionsListener.cmdStatus() callback
+   * @param serviceHandle     received in IOptionsListener.OnOptionsCreated() callback.
+   * @param capinfo           capability information to store.
+   * @param userData          client token for the request
+   * @return status           status of the request placed.
+   */
+  setCapabilityInfo(int64_t serviceHandle, CapabilityInfo capinfo,
+      int64_t userData) generates (UceStatus status);
+
+
+  /**
+   * Gets the current capabilities information stored in service.
+   * The Capability information is received in IOptionsListener.cmdStatus() callback
+   * @param serviceHandle     received in IOptionsListener.OnOptionsCreated() callback.
+   *
+   * @param userData          client token for the request
+   * @return status           status of the request placed.
+   */
+  getCapabilityInfo(int64_t serviceHandle, int64_t userData) generates (UceStatus status);
+
+
+  /**
+   * Requests the capabilities information of a remote URI.
+   * the remote party capability is received in IOptionsListener.sipResponseReceived() callback.
+   *
+   * @param serviceHandle     received in IOptionsListener.OnOptionsCreated() callback.
+   * @param remoteUri         URI of the remote contact.
+   *                          This has to to be a SIP URI or TEL uri of the remote contact
+   * @param userData          client token for the request
+   * @return status           status of the request placed.
+   */
+  getContactCapability(int64_t serviceHandle, string remoteUri,
+      int64_t userData) generates (UceStatus status);
+
+  /**
+   * Requests the capabilities information of specified contacts.
+   * For each remote party capability is received in IOptionsListener.sipResponseReceived() callback.
+   * @param serviceHandle     received in IOptionsListener.OnOptionsCreated() callback.
+   * @param remoteUriList     list of remote contact URI's.
+   *                          the URI should be in format of  SIP URI or TEL uri of the remote contact.
+   * @param userData          client token for the request.
+   * @return status           status of the request placed.
+   */
+  getContactListCapability(int64_t serviceHandle, vec<string> remoteUriList,
+      int64_t userData) generates (UceStatus status);
+
+  /**
+   * Generates a Network response with the capabilites to share with remote contact
+   * The incoming Options request is received in IOptionsListener.incomingOptions() callback.
+   * the client needs to share device capabilites currently supported using this network respose request.
+   *
+   * @param serviceHandle         received in IOptionsListener.OnOptionsCreated() callback.
+   * @param tId                   transaction ID received in IOptionsListener.incomingOptions() callback.
+   * @param sipResonseCode        SIP response code the UE needs to share to network.
+   *                              The response code compliant to RFC-3261
+   * @param reasonPhrase          response phrase corresponding to the response code.
+   *                              The response phrase compliant to RFC-3261
+   * @param capInfo               capabilities to share in the resonse to network.
+   * @param isContactinBlackList  1 if the contact is blacklisted, else 0.
+   * @return status               status of the request placed.
+   */
+  responseIncomingOptions(int64_t serviceHandle, int32_t tId, int16_t sipResonseCode,
+      string reasonPhrase, OptionsCapabilityInfo capInfo, int8_t isContactinBlackList) generates (UceStatus status);
+};

@@ -1,0 +1,81 @@
+/*
+ * Copyright (c) 2018 Qualcomm Technologies, Inc.
+ * All Rights Reserved.
+ * Confidential and Proprietary - Qualcomm Technologies, Inc.
+ */
+package vendor.qti.hardware.data.dynamicdds@1.0;
+import ISetAppPreferencesCallback;
+import IGetAppPreferencesCallback;
+import IDddsCallback;
+
+/**
+ * IDynamicSubscriptionManager is an interface used for managing dynamic
+ * designated data subscription switch functionality and managing application
+ * preference upon which designated data subscription switch decision is made.
+ */
+interface ISubscriptionManager{
+    /**
+     * Enable or Disable Dynamic DDS Switch Feature.
+     * Dynamic DDS Feature needs to be enabled for any application
+     * preference changes.
+     *
+     * @param   enable   true enables dynamic DDS Switch Feature
+     *                   and false disables dynamic DDS Switch Feature
+     * @return  status   OK if successful
+     *                   other StatusCode otherwise
+     */
+     @callflow(next={"*"})
+     setDynamicSubscriptionChange(bool enable) generates (StatusCode status);
+
+    /**
+     * Set application preference. New preference
+     * will override previous effective preference if successful and previous
+     * preference remain unchanged if failed. Successfully set preference is
+     * presist.
+     *
+     * @param   preference subscription preference
+     * @param   cb         ISetAppPreferencesCallback to listen to result of
+     *                     setAppPreferences
+     * @return  status     OK if successful, NOT_SUPPORT if dynamic designated
+     *                     data subscription switch function is not enabled,
+     *                     REQUEST_IN_PROCESS if setAppPreferences or getAppPreferences
+     *                     has not received corresponding callback.
+     */
+     @callflow(next={"*"})
+    setAppPreferences(vec<SubscriptionConfig> preference, ISetAppPreferencesCallback cb)
+        generates (StatusCode status);
+
+    /**
+     * Get current application preference.
+     *
+     * @param subConfig Subscription configuration
+     * @param   cb         IGetAppPreferencesCallback to listen to result of
+     *                     getAppPreferences
+     * @return  status     OK if successful, NOT_SUPPORTED if dynamic designated
+     *                     data subscription switch function is not enabled,
+     *
+     */
+     @callflow(next={"*"})
+    getAppPreferences(IGetAppPreferencesCallback cb)
+        generates (StatusCode status);
+
+    /**
+     * Clear application preference
+     *
+     * @return  status     OK if successful, other StatusCode otherwise
+     */
+     @callflow(next={"*"})
+    clearAppPreferences() generates (StatusCode status);
+
+     /**
+     * Register IDynamicDdsCallback to monitor Dynamic Subscription
+     * change feature status and designated data subscription status
+     *
+     * @param   cb IDddsCallback
+     * @return  status   OK if successful
+     *                   other StatusCode otherwise
+     */
+     @callflow(next={"*"})
+    registerForDynamicSubChanges(IDddsCallback cb)
+        generates (StatusCode status);
+};

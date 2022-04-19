@@ -1,0 +1,38 @@
+/*
+ * Copyright (c) 2018 Qualcomm Technologies, Inc.
+ * All Rights Reserved.
+ * Confidential and Proprietary - Qualcomm Technologies, Inc.
+ *
+ */
+
+package vendor.qti.hardware.radio.qtiradio@2.1;
+
+import @2.0::BearerStatus;
+
+enum BearerStatus: @2.0::BearerStatus {
+    MMW_ALLOCATED   =  2,
+};
+
+enum ConfigType: int32_t {
+    INVALID           = -1,
+    NSA_CONFIGURATION =  0,
+    SA_CONFIGURATION  =  1,
+};
+
+enum PlmnInfoListStatus: int32_t {
+    INVALID      = -1,
+    UNAVAILABLE  =  0,
+    AVAILABLE    =  1,
+};
+
+enum UpperLayerIndStatus: int32_t {
+    INVALID           = -1,
+    UNAVAILABLE       =  0,
+    AVAILABLE         =  1,
+};
+
+struct UpperLayerIndInfo {
+    PlmnInfoListStatus  plmnInfoList;
+    UpperLayerIndStatus upplerLayerInd;
+};
+

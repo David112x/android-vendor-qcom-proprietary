@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    Copyright (c) 2019 Qualcomm Technologies, Inc.
+    All Rights Reserved.
+    Confidential and Proprietary - Qualcomm Technologies, Inc.
+-->
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/sim_contact_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <fragment
+        android:id="@+id/sim_contact_fragment"
+        android:name="com.qualcomm.qti.simcontacts.activities.SimContactBrowseListFragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+</FrameLayout>

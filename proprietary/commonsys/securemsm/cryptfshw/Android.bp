@@ -1,0 +1,4 @@
+cc_library_headers {
+    name: "libcryptfshw_hidl_headers",
+    export_include_dirs: ["1.0"],
+}

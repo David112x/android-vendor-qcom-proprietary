@@ -1,0 +1,9 @@
+#Copyright (c) 2019 Qualcomm Technologies, Inc.
+#All Rights Reserved.
+#Confidential and Proprietary - Qualcomm Technologies, Inc.
+
+# this will make sure you have /data ready and then you try to create the dir.
+on post-fs-data
+    # Create directory for Graphics applications
+    mkdir /data/misc/gpu 0770 system system
+

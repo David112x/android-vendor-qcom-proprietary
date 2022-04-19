@@ -1,0 +1,44 @@
+/*********************************************************************
+ Copyright (c) 2019 Qualcomm Technologies, Inc.
+ All Rights Reserved.
+ Confidential and Proprietary - Qualcomm Technologies, Inc.
+**********************************************************************/
+
+package com.qualcomm.qti.uceservice@2.1;
+
+import @2.0::IOptionsListener;
+import @2.0::OptionsSipResponse;
+
+interface IOptionsListener extends @2.0::IOptionsListener {
+  /**
+   * Callback function invoked to inform the client when the response for a Sip Options request
+   * has been received.
+   *
+   * @param uri             URI of the remote entity received in network response.
+   *                        This will be either a SIP URI or Tel URI as supported on network.
+   * @param sipResponse     data of the network response received.
+   * @param capInfo         @2.1::OptionsCapabilityInfo of the remote entity received.
+   *
+   */
+  oneway sipResponseReceived_2_1 (string uri, OptionsSipResponse sipResponse,
+      OptionsCapabilityInfo capInfo);
+
+  /**
+   * Callback function to be invoked to inform the client of the status of an asynchronous call.
+   *
+   * @param commandStatus     @2.1::OptionsCmdStatus status of the request placed.
+   *
+   */
+  oneway cmdStatus_2_1(OptionsCmdStatus commandStatus);
+
+  /**
+   * Callback function invoked to inform the client of an incoming Options request
+   * from the network.
+   *
+   * @param uri        URI of the remote entity received.
+   *                   This will be either a SIP URI or Tel URI as supported on network.
+   * @param capInfo    @2.1::OptionsCapabilityInfo of the remote entity.
+   * @param tID        transation ID of the request received from network.
+   */
+  oneway incomingOptions_2_1(string uri, OptionsCapabilityInfo capInfo, uint16_t tId);
+};

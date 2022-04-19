@@ -1,0 +1,12 @@
+<!--
+/*
+ * Copyright (c) 2018 Qualcomm Technologies, Inc.
+ * All Rights Reserved.
+ * Confidential and Proprietary - Qualcomm Technologies, Inc.
+ *
+ */
+-->
+<resources>
+    <string name="app_name">NrNetworkSettingApp</string>
+    <string name="action_settings">Settings</string>
+</resources>

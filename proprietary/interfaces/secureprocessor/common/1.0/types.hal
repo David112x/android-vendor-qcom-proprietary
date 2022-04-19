@@ -1,0 +1,24 @@
+/*
+ * Copyright (c) 2020 Qualcomm Technologies, Inc.
+ * All Rights Reserved.
+ * Confidential and Proprietary - Qualcomm Technologies, Inc.
+ */
+
+package vendor.qti.hardware.secureprocessor.common@1.0;
+
+/**
+ * Secure Processor error codes.
+ */
+enum ErrorCode : int32_t {
+    SECURE_PROCESSOR_OK = 0,
+    SECURE_PROCESSOR_FAIL,
+    SECURE_PROCESSOR_BAD_VAL,
+    SECURE_PROCESSOR_NEED_CALIBRATE,
+    SECURE_PROCESSOR_CUSTOM_STATUS = (1 << 16)
+};
+
+/**
+ * Secure processor configuration buffer
+ */
+typedef vec<uint8_t> SecureProcessorCfgBuf;
+

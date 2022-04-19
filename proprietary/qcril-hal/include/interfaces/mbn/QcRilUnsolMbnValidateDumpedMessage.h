@@ -1,0 +1,39 @@
+/******************************************************************************
+#  Copyright (c) 2019 Qualcomm Technologies, Inc.
+#  All Rights Reserved.
+#  Confidential and Proprietary - Qualcomm Technologies, Inc.
+#******************************************************************************/
+
+#pragma once
+#include "framework/UnSolicitedMessage.h"
+#include "framework/Message.h"
+#include "framework/add_message_id.h"
+
+class QcRilUnsolMbnValidateDumpedMessage : public UnSolicitedMessage,
+                public add_message_id<QcRilUnsolMbnValidateDumpedMessage> {
+ private:
+  std::string mDumpFile;
+
+ public:
+  static constexpr const char *MESSAGE_NAME =
+        "com.qualcomm.qti.qcril.mbn.mbn_validate_dumped";
+  QcRilUnsolMbnValidateDumpedMessage() = delete;
+  ~QcRilUnsolMbnValidateDumpedMessage() {};
+
+  explicit inline QcRilUnsolMbnValidateDumpedMessage(std::string dumpFile)
+      : UnSolicitedMessage(get_class_message_id()), mDumpFile(dumpFile) {
+    mName = MESSAGE_NAME;
+  }
+
+  std::shared_ptr<UnSolicitedMessage> clone() {
+    return std::make_shared<QcRilUnsolMbnValidateDumpedMessage>(mDumpFile);
+  }
+
+  virtual string dump() {
+    return mName + "{" +  "dump file = " +  mDumpFile + "}";
+  }
+
+  std::string getDumpFile() {
+    return mDumpFile;
+  }
+};

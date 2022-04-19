@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!--
+Copyright (c) 2018 Qualcomm Technologies, Inc.
+All Rights Reserved.
+Confidential and Proprietary - Qualcomm Technologies, Inc.
+ -->
+
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/menu_item_training"
+        android:orderInCategory="1"
+        android:showAsAction="always"
+        android:title="@string/training"
+        android:icon="@drawable/btn_plus_white"/>
+
+    <item
+        android:id="@+id/menu_item_merge_model"
+        android:orderInCategory="100"
+        android:showAsAction="never"
+        android:title="@string/merge_model"/>
+
+    <item
+        android:id="@+id/menu_item_delete_model"
+        android:orderInCategory="101"
+        android:showAsAction="never"
+        android:title="@string/delete_model"/>
+
+    <item
+        android:id="@+id/menu_item_general_settings"
+        android:orderInCategory="102"
+        android:showAsAction="never"
+        android:title="@string/general_settings"/>
+
+    <item
+        android:id="@+id/menu_item_toggle"
+        android:orderInCategory="103"
+        android:showAsAction="never"
+        android:title="@string/toggle_xml_params" />
+
+    <item
+        android:id="@+id/menu_item_version"
+        android:orderInCategory="104"
+        android:showAsAction="never"
+        android:title="@string/version" />
+
+</menu>

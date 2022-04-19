@@ -1,0 +1,13 @@
+/*
+ * Copyright (c) 2018 Qualcomm Technologies, Inc.
+ * All Rights Reserved.
+ * Confidential and Proprietary - Qualcomm Technologies, Inc.
+ */
+
+package vendor.qti.latency@2.0;
+
+/**
+ * Token used for registering death recipient of client
+ * with the service.
+ */
+interface IClientToken{};

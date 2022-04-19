@@ -1,0 +1,80 @@
+/*
+ * Copyright (c) 2019 Qualcomm Technologies, Inc.
+ * All Rights Reserved.
+ * Confidential and Proprietary - Qualcomm Technologies, Inc.
+ */
+
+package vendor.display.color@1.5;
+
+import @1.0::types;
+import @1.4::IDisplayColor;
+
+interface IDisplayColor extends @1.4::IDisplayColor{
+    /**
+     * Get global 3d lut info.
+     *
+     * Clients can get the global 3d lut info.
+     *
+     * @param  ctxHandle is context handle.
+     * @param  disp_id is display ID.
+     * @return result OK on success or error if any parameters are invalid.
+     * @return enable is 3d lut config enable bit.
+     * @return cfg is global 3d lut coefficient.
+     */
+    @callflow(next="*")
+    getGlobal3dLutConfig(Handle ctxHandle,
+                         uint32_t disp_id) generates (Result result,
+                                                      uint32_t enable,
+                                                      lut3dInfo cfg);
+
+    /**
+     * Set global 3d lut info.
+     *
+     * Clients can set the global 3d lut info.
+     *
+     * @param  ctxHandle is context handle.
+     * @param  disp_id is display ID.
+     * @param  enable is 3d lut config control.
+     * @param  cfg is global 3d lut config coefficient.
+     * @return result OK on success or error if any parameter is invalid.
+     */
+    @callflow(next="*")
+    setGlobal3dLutConfig(Handle ctxHandle,
+                         uint32_t disp_id,
+                         uint32_t enable,
+                         lut3dInfo cfg) generates (Result result);
+
+    /**
+     * Get global dither strength config.
+     *
+     * Clients can get the global dither strength config.
+     *
+     * @param  ctxHandle is context handle.
+     * @param  disp_id is display ID.
+     * @return result OK on success or error if any parameters are invalid.
+     * @return enable is the state of mode: 0 = disable, 1 = enable.
+     * @return cfg is the global dither config data.
+     */
+    @callflow(next="*")
+    getGlobalDitherStrengthConfig(Handle ctxHandle,
+                                  uint32_t disp_id) generates (Result result,
+                                                               uint32_t enable,
+                                                               dithercoeffdata cfg);
+
+    /**
+     * Set global dither strength config.
+     *
+     * Clients can set the global dither strength config.
+     *
+     * @param  ctxHandle is context handle.
+     * @param  disp_id is display ID.
+     * @param  enable is the state of mode: 0 = disable, 1 = enable.
+     * @param  cfg is the global dither config data.
+     * @return result OK on success or error if any parameters are invalid.
+     */
+    @callflow(next="*")
+    setGlobalDitherStrengthConfig(Handle ctxHandle,
+                                  uint32_t disp_id,
+                                  uint32_t enable,
+                                  dithercoeffdata cfg) generates (Result result);
+};

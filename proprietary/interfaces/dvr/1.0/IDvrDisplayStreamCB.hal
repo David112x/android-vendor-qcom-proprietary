@@ -1,0 +1,42 @@
+/*
+ * Copyright (c) 2019-2020 Qualcomm Technologies, Inc.
+ * All Rights Reserved.
+ * Confidential and Proprietary - Qualcomm Technologies, Inc.
+ *
+ */
+
+package vendor.qti.dvr@1.0;
+
+import types;
+
+/**
+ * Implemented on client side to receive asynchronous event deliveries.
+ */
+interface IDvrDisplayStreamCB {
+    /**
+     * Receives calls from the HAL to initialize display.
+     *
+     * Returns error status.
+     */
+    display_init() generates (int32_t error);
+
+    /**
+     * Receives calls from the HAL to  display the buffer.
+     *
+     * Returns error status.
+     */
+    display_buffer(uint32_t index) generates (int32_t error);
+
+    /**
+     * Receives calls from the HAL to get display buffer index.
+     *
+     * Returns display buffer index.
+     */
+    get_display_buf_index() generates (uint32_t index);
+
+    /**
+     * Receives calls from the HAL to deinitialize display.
+     */
+    oneway display_deinit();
+
+};

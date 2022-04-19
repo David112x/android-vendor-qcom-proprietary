@@ -1,0 +1,25 @@
+/*********************************************************************
+ Copyright (c) 2018 Qualcomm Technologies, Inc.
+ All Rights Reserved.
+ Confidential and Proprietary - Qualcomm Technologies, Inc.
+**********************************************************************/
+
+package vendor.qti.hardware.data.dynamicdds@1.0;
+
+/**
+ * Callback providing Dynamic Subscription change feature status
+ * and designated data subscription status
+ */
+interface IDddsCallback {
+    /**
+     * Called when dynamic DDS feature is enabled or disabled
+     * @param available true if feature is enabled; false if feature is disabled
+     */
+    oneway onFeatureAvailable(bool available);
+
+    /**
+     * Called when subscription dynamically changed
+     * @param slotId    current dds subscription sim slot
+     */
+    oneway onSubChanged(uint32_t slotId);
+};

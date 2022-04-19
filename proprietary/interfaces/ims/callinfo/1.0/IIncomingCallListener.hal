@@ -1,0 +1,22 @@
+/*
+ * Copyright (c) 2018 Qualcomm Technologies, Inc.
+ * All Rights Reserved.
+ * Confidential and Proprietary - Qualcomm Technologies, Inc.
+ *
+ */
+
+package vendor.qti.ims.callinfo@1.0;
+
+interface IIncomingCallListener {
+    /**
+     *  Callback notifying the SIP invite header for an incoming IMS call.
+     *  This usually arrives ahead of the incoming call notification.
+     *
+     *  @param iccId ICC identifier of the subscription on which SIP
+     *         invite is received.
+     *  @param sipHeader Headers of the SIP invite in SIP header: <header
+     *         value> pairs. Headers and values are specified in RFC 3261.
+     *
+     */
+    oneway onSipInviteAvailable(string iccId, vec<string> sipHeader);
+};

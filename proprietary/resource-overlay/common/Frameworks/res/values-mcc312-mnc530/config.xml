@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--Copyright (c) 2018, Qualcomm Technologies, Inc.
+    All Rights Reserved.
+    Confidential and Proprietary - Qualcomm Technologies, Inc.
+-->
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <!-- Do not translate. Defines the slots is Two Digit Number for dialing normally not USSD -->
+    <string-array name="config_twoDigitNumberPattern">
+        <item>"0"</item>
+        <item>"00"</item>
+        <item>"*2"</item>
+    </string-array>
+</resources>

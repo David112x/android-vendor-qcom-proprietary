@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+/*
+ * Copyright (c) 2019, Qualcomm Technologies, Inc.
+ * All Rights Reserved.
+ * Confidential and Proprietary - Qualcomm Technologies, Inc.
+ */
+-->
+
+<CapabilityStore version="1">
+   <namespace name="audio">
+     <capability key="config3" value="good"/>
+     <capability key="config4" value="bad"/>
+   </namespace>
+</CapabilityStore>

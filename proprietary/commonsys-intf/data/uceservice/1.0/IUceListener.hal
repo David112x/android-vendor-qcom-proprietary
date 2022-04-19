@@ -1,0 +1,21 @@
+/*********************************************************************
+ Copyright (c) 2017 Qualcomm Technologies, Inc.
+ All Rights Reserved.
+ Confidential and Proprietary - Qualcomm Technologies, Inc.
+**********************************************************************/
+
+package com.qualcomm.qti.uceservice@1.0;
+
+interface IUceListener {
+
+  /**
+   *  Notifies Uce Service status for respective SubId
+   *  UceStatus.SERVICE_UP
+   *  UceStatus.SERVICE_DOWN
+   *
+   *  if subID == 0xFFFF, indicates the service
+   *  status.
+   */
+  oneway onStatusChange(UceStatus status, uint32_t subId);
+
+};

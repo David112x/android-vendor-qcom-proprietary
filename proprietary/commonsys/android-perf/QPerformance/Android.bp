@@ -1,0 +1,20 @@
+java_library {
+    name: "QPerformance",
+    installable: true,
+    srcs: [
+        "**/*.java",
+        "src/**/I*.aidl",
+    ],
+    owner: "qti",
+    optimize: {
+        enabled: false,
+    },
+}
+
+// ====  permissions ========================
+prebuilt_etc {
+    name: "com.qualcomm.qti.Performance.xml",
+    src: "com.qualcomm.qti.Performance.xml",
+    // This will install the file in /system/etc/permissions
+    sub_dir: "permissions",
+}

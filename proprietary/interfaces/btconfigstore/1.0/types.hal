@@ -1,0 +1,57 @@
+/*
+ * Copyright (c) 2019 Qualcomm Technologies, Inc.
+ * All Rights Reserved.
+ * Confidential and Proprietary - Qualcomm Technologies, Inc.
+ */
+
+package vendor.qti.hardware.btconfigstore@1.0;
+
+/*
+ * Constants are used by btconfigstore HAL.
+ */
+enum Result : int32_t {
+    SUCCESS,
+    FAILED,
+    UNKNOWN_ERROR,
+    INTERNAL_ERROR,
+    INVALID_ARGUMENTS,
+    NOT_SUPPORTED,
+};
+
+/**
+ * Vendor Property is treated as struct.
+ */
+struct VendorProperty
+{
+    /**
+     * Type of property
+     */
+    uint32_t type;
+    /**
+     * Value of property
+     */
+    string value;
+};
+
+/**
+ * Add On features List is treated as struct.
+ */
+struct AddOnFeaturesList
+{
+    /**
+     * Product Id
+     */
+    uint16_t product_id;
+    /**
+     * Response version
+     */
+    uint16_t rsp_version;
+    /**
+     * features mask length
+     */
+    uint8_t feat_mask_len;
+    /**
+     * Array of features
+     */
+    uint8_t[8] features;
+};

@@ -1,0 +1,6 @@
+cb4a5f568e56976ccb2c40affe03eedf7c290f059b4320e707e226a22f785856 vendor.qti.hardware.data.dynamicdds@1.0::types
+02fcfd5b85f2a376e2cb4fa334caf4dfa492c75a4d57ceb58f0ec72e5c5b24d4 vendor.qti.hardware.data.dynamicdds@1.0::IDddsCallback
+db93ea8c6840ccecb4f68da8966f8d4358589a5b156d682249918a01a90eed41 vendor.qti.hardware.data.dynamicdds@1.0::IGetAppPreferencesCallback
+2a1954cb49149f6def7a8e4e35fdebd669743a201bd545efac565a81cfa22883 vendor.qti.hardware.data.dynamicdds@1.0::ISetAppPreferencesCallback
+e0c015ab55f86e018d4c630170a154d31e9b6e4cd2cb9ac62aaff76472760d5f vendor.qti.hardware.data.dynamicdds@1.0::ISubscriptionManager
+a0dc04185bbdc2f53bebe3e107d6dc830e14c9de6ab13485992cf2196461aba4 vendor.qti.hardware.data.dynamicdds@1.0::IToken

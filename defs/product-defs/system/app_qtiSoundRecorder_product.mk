@@ -1,0 +1,1 @@
+../../../../codeaurora/commonsys/packages/apps/SoundRecorder/app_qtiSoundRecorder_system_product.mk

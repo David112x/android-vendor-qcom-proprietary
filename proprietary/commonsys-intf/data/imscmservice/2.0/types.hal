@@ -1,0 +1,418 @@
+/*
+ * Copyright (c) 2017-2018 Qualcomm Technologies, Inc.
+ * All Rights Reserved.
+ * Confidential and Proprietary - Qualcomm Technologies, Inc.
+ *
+ */
+
+package com.qualcomm.qti.imscmservice@2.0;
+
+/*
+ * Service Handle Definition
+ * mapped as a void pointer
+ */
+typedef uint64_t IMSCM_SERVICE_HANDLE;
+
+/*
+ * Connection Handle definition
+ * mapped to a void pointer
+ */
+typedef uint64_t IMSCM_CONNECTION_HANDLE;
+
+
+struct keyValuePairStringType {
+  uint32_t key;
+  string value;
+};
+
+struct keyValuePairBufferType {
+  uint32_t key;
+  vec<uint8_t> value;
+};
+
+/*
+ * IMS CM Status codes
+ */
+enum StatusCode : uint32_t {
+
+  SUCCESS,
+  /**< Request was processed successfully. */
+  FAILURE,
+  /**< Request was processed unsuccessfully. */
+  MEMORY_ERROR,
+  /**< Error in memory allocation. */
+  INVALID_LISTENER,
+  /**< Provided listener is not valid. */
+  INVALID_PARAM,
+  /**< Invalid parameter(s). */
+  SERVICE_NOTALLOWED,
+  /**< Service is not allowed. */
+  SERVICE_UNAVAILABLE,
+  /**< Service is not available. */
+  INVALID_FEATURE_TAG,
+  /**< Invalid feature tag. */
+  DNSQUERY_PENDING,
+  /**< DNS query pending. */
+  DNSQUERY_FAILURE,
+  /**< DNS query failed. */
+  SERVICE_DIED,
+  /**< Android native service stopped working. */
+  MESSAGE_NOTALLOWED,
+  /**< SIP Message not allowed. */
+  DISPATCHER_SEND_SUCCESS,
+  /**< This value is for internal use only. Should not be part of the document */
+  INVALID_MAX,
+  /* Max */
+};
+
+
+/*
+ * Service Status enums
+ */
+enum ServiceStatus : uint32_t {
+  STATUS_DEINIT,
+  /**< Status is NULL. */
+  STATUS_INIT_IN_PROGRESS,
+  /**< Service is being brought up.*/
+  STATUS_SUCCESS,
+  /**< Service initialization was successful.*/
+  STATUS_FAILURE,
+  /**< Service initialization failed.*/
+  STATUS_SERVICE_DIED,
+  /**< Android native service stopped working. */
+  STATUS_SERVICE_CLOSING,
+  STATUS_SERVICE_CLOSED,
+  /**< Android native service is closing state */
+  STATUS_SERVICE_RESTARTED,
+  /**< Android native service is restarted */
+  STATUS_SERVICE_NOT_SUPPORTED,
+  STATUS_SERVICE_UNKNOWN,
+};
+
+
+/*
+ * Configuration Data Type
+ */
+enum ConfigType : uint32_t {
+  USER_CONFIG,
+  DEVICE_CONFIG,
+  AUTO_CONFIG,
+};
+
+/*
+ * Supported IP type Enums
+ */
+enum ipTypeEnum : uint32_t {
+  /** Unknown IP type. */
+  UNKNOWN,
+  /** IPv4. */
+  IPV4,
+  /** IPv6. */
+  IPV6,
+};
+
+
+enum userConfigKeys : uint32_t {
+
+  UEClientPort = 1001,
+  /* UE client port.
+   * accepts a string type value
+   */
+  UEServerPort = 1002,
+  /* UE server port.
+   * accepts a string type value
+   */
+  AssociatedURI = 1003,
+  /* Associated URI value.
+   * accepts a string type value
+   */
+  UEPublicIPAddress = 1004,
+  /* Recieved UE public IP address.
+   * accepts a string type value
+   */
+  UEPublicPort = 1005,
+  /* UE public IP port.
+   * accepts a string type value
+   */
+  SipPublicUserId = 1006,
+  /* User public ID.
+   * accepts a string type value
+   */
+  SipPrivateUserId = 1008,
+  /* Private user ID.
+   * accepts a string type value
+   */
+  SipHomeDomain = 1009,
+  /* Home domain address.
+   * accepts a string type value
+   */
+  UEPubGruu = 1010,
+  /* UE public GRUU.
+   * accepts a string type value
+   */
+  LocalHostIPAddress = 1011,
+  /* UE public IP address.
+   * accepts a string type value
+   */
+  IpType = 1012,
+  /* UE IP type. of type ipTypeEnum
+   * accepts a string type value
+   */
+  IMEIStr = 1013,
+  /* UE IMEI value.
+   * accepts a string type value
+   */
+  UEOldSAClientPort = 1014,
+  /* IPSec old SA UE client port.
+   * accepts a string type value
+   */
+};
+
+/*
+ * User Config Data type
+ */
+struct userConfig {
+  vec<keyValuePairStringType> data;
+};
+
+enum deviceConfigKeys : uint32_t {
+
+  UEBehindNAT = 2001,
+  /* Indicates whether the UE is behind NAT.
+   * accepts a string type value
+   */
+  IpSecEnabled = 2002,
+  /* Indicates whether IPSec is enabled.
+   * accepts a string type value
+   */
+  CompactFormEnabled  = 2003,
+  /* Indicates whether compact form is enabled.
+   * accepts a string type value
+   */
+  KeepAliveEnableStatus = 2004,
+  /* Indicates whether keep alive is enabled.
+   * accepts a string type value
+   */
+  GruuEnabled  = 2005,
+  /* Indicates whether GRUU is enabled.
+   * accepts a string type value
+   */
+  StrSipOutBoundProxyName = 2006,
+  /* Outbound SIP proxy name/IP.
+   * accepts a string type value
+   */
+  SipOutBoundProxyPort = 2007,
+  /* Outbound SIP proxy port.
+   * accepts a string type value
+   */
+  PCSCFClientPort = 2008,
+  /* P-CSCF client port.
+   * accepts a string type value
+   */
+  PCSCFServerPort = 2009,
+  /* P-CSCF server port.
+   * accepts a string type value
+   */
+  ArrAuthChallenge = 2010,
+  /* Authentication header.
+   * accepts a string type value
+   */
+  ArrNC = 2011,
+  /* Nonce count.
+   * accepts a string type value
+   */
+  ServiceRoute = 2012,
+  /* Service route value.
+   * accepts a string type value
+   */
+  SecurityVerify = 2013,
+  /* Security verify value.
+   * accepts a string type value
+   */
+  PCSCFOldSAClientPort = 2014,
+  /* IPSec old SA PCSCF client port.
+   * accepts a string type value
+   */
+  TCPThresholdValue = 2015,
+  /* Configured TCP Threshold Value for SIP
+   * accepts a string type value
+   */
+  PANI = 2016,
+  /* PANI header value.
+   * accepts a string type value
+   */
+  PATH  = 2017,
+  /* Path header value from IMS registration.
+   * accepts a string type value
+   */
+  UriUserPart = 2018,
+  /* URI user part in contact header
+   * accepts a string type value
+   */
+};
+
+/*
+ * Device Config Data Type
+ */
+struct deviceConfig {
+  vec<keyValuePairStringType> data;
+};
+
+/*
+ * AutoConfig Definition Type
+ */
+enum AutoConfigRequestType : uint32_t {
+  SERVER_UPDATE,
+  CLIENT_REQUEST
+};
+
+/*
+ * AutoConfig Data Type
+ */
+struct autoConfig {
+  /* AutoConfigRequestType */
+  uint32_t autoConfigRequestType;
+  string autoConfigXml;
+};
+
+
+/*
+ * Configuration Data Type
+ * object used in onConfigurationChange()
+ * callback
+ */
+struct configData {
+  userConfig userConfigData;
+  deviceConfig deviceConfigData;
+  autoConfig autoConfigData;
+};
+
+
+enum methodResponseDataKeys : uint32_t {
+  method = 3001,
+  /* SIP Method for which we got error response or timer B/F is fired
+   * accepts a string type value
+   */
+  responseCode = 3002,
+  /* response code for the above SIP method
+   * accepts a string type value
+   */
+};
+
+/* Method Response data */
+struct methodResponseData {
+  vec<keyValuePairStringType> data;
+};
+
+
+/****************************************************************/
+/*    Connection Data Types                                     */
+/****************************************************************/
+
+
+/*
+ * Connection Event definitions
+ */
+enum connectionEvent : uint32_t {
+
+  /** Service is not registered. */
+  SERVICE_NOTREGISTERED,
+  /** Service was registered successfully. */
+  SERVICE_REGISTERED,
+  /** Service is allowed. */
+  SERVICE_ALLOWED,
+  /** Service is not allowed. */
+  SERVICE_NOTALLOWED,
+  /** Service is forcefully closed. */
+  SERVICE_FORCEFUL_CLOSE,
+  /** Service has received HO Terminate event from HO Manager. */
+  SERVICE_TERMINATE_CONNECTION,
+  /** Service is created successfully. */
+  SERVICE_CREATED,
+};
+
+struct connectionEventData {
+  /* connectionEvent */
+  uint32_t eEvent;
+  string featureTag;
+};
+
+enum outgoingMessageKeys : uint32_t {
+
+  /** Outbound proxy name.
+   * accepts a string type value
+   */
+  OutboundProxy = 4001,
+  /** Remote port where the message has to be sent
+   * accepts a string type value
+   */
+  RemotePort = 4002,
+  /** Protocol used in the SIP message.
+   * accepts a string type value
+   */
+  Protocol = 4003,
+  /** Message type
+   * accepts a string type value
+   */
+  MessageType = 4004,
+  /** Call ID.
+   * accepts a string type value
+   */
+  CallId = 4005,
+  /** Message content.
+   * accepts a buffer type value
+   */
+  Message = 4006,
+};
+/*
+ * outgoing Message Data Type
+ */
+struct outgoingMessage {
+  vec<keyValuePairStringType> data;
+  vec<keyValuePairBufferType> bufferData;
+};
+
+
+enum incomingMessageKeys : uint32_t {
+
+  /** Message contents ( complete received SIP message).
+   * accepts a buffer type value
+   */
+  Message = 5001,
+  /** Address from where the SIP message is received.
+   * accepts a string type value
+   */
+  recdAddr = 5002,
+};
+/*
+ * incoming Message Data Type
+ */
+struct incomingMessage {
+  vec<keyValuePairStringType> data;
+  vec<keyValuePairBufferType> bufferData;
+};
+
+/*
+ * Supported Protocol Type
+ */
+enum sipProtocolType : uint32_t {
+
+  UDP,
+  /* SIP message sent over UDP/via header has UDP. */
+  TCP,
+  /* SIP message sent over TCP/via header has TCP. */
+  INVALID_MAX
+};
+
+/*
+ * Message Type
+ */
+enum messageType : uint32_t {
+
+  TYPE_REQUEST,
+  /* SIP REQUEST MESSAGE IDENTIFIER */
+  TYPE_RESPONSE,
+  /* SIP RESPONSE MESSAGE IDENTIFIER */
+  TYPE_INVALID_MAX
+  /* MAX INVALID VALUE */
+};

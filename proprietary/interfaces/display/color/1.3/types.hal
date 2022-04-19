@@ -1,0 +1,48 @@
+/*
+ * Copyright (c) 2019 Qualcomm Technologies, Inc.
+ * All Rights Reserved.
+ * Confidential and Proprietary - Qualcomm Technologies, Inc.
+ */
+
+package vendor.display.color@1.3;
+
+import @1.0::types;
+
+/*
+ * Trapezoid edge types
+ */
+@export(name="", value_prefix="DISP_TRAPEZOID_EDGE_")
+enum TrapezoidEdgeType : int32_t {
+    LEFT_EDGE_SHARP_RIGHT_EDGE_SHARP = 0,
+    LEFT_EDGE_SLOPE_RIGHT_EDGE_SHARP = 1,
+    LEFT_EDGE_SHARP_RIGHT_EDGE_SLOPE = 2,
+    LEFT_EDGE_SLOPE_RIGHT_EDGE_SLOPE = 3,
+};
+
+/*
+ * Display six zone threshold struct
+ */
+struct sixZoneThres {
+  uint32_t flags;
+  Range sat;
+  Range value;
+  uint32_t sat_offset;
+  uint32_t value_offset;
+  TrapezoidEdgeType val_edge_type;
+  TrapezoidEdgeType sat_edge_type;
+};
+
+/*
+* Display six zone config struct
+*/
+struct sixZoneConfigData {
+    double hue;
+    double saturation;
+    double value;
+};
+
+struct sixZoneConfig {
+    uint32_t flags;
+    uint32_t num_entries;
+    vec<sixZoneConfigData> entries;
+};

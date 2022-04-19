@@ -1,0 +1,43 @@
+/*
+ * Copyright (c) 2018 Qualcomm Technologies, Inc.
+ * All Rights Reserved.
+ * Confidential and Proprietary - Qualcomm Technologies, Inc.
+ */
+
+package vendor.qti.gnss@2.1;
+
+import @2.1::types;
+import @1.0::types;
+
+interface ILocHidlWiFiDBProviderCallback {
+    struct LocHidlApScanData {
+        uint64_t mac_R48b;
+        int16_t  rssi;
+        uint64_t age_usec;
+        int8_t   channel_id;
+        string   ssid;
+        uint8_t  ssid_valid_byte_count;
+    };
+
+    struct LocHidlApCellInfo {
+        uint8_t  cell_type;
+        uint32_t cell_id1;
+        uint32_t cell_id2;
+        uint32_t cell_id3;
+        uint32_t cell_id4;
+    };
+
+    struct LocHidlApObsData {
+        uint64_t scanTimestamp_ms;
+        LocHidlUlpLocation gpsLoc;
+        bool bUlpLocValid;
+        LocHidlApCellInfo cellInfo;
+        uint32_t ap_scan_info_size;
+        vec<LocHidlApScanData> ap_scan_info;
+    };
+
+    apObsLocDataUpdateCallback(vec<LocHidlApObsData> apObsLocDataList, int32_t apObsLocDataListSize,
+            LocHidlWifiDBListStatus apListStatus);
+    serviceRequestCallback();
+    attachVmOnCallback();
+};

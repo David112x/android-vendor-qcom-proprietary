@@ -1,0 +1,45 @@
+/*!
+ * @file types.hal
+ *
+ * @cr
+ * Copyright (c) 2018 Qualcomm Technologies, Inc.
+ * All Rights Reserved.
+ * Confidential and Proprietary - Qualcomm Technologies, Inc.
+ *
+ * @services Defines the external interface for VPP library.
+ */
+
+package vendor.qti.hardware.vpp@1.2;
+
+import @1.1::types;
+
+struct VppCtrlFrcSegment {
+    HqvFrcMode mode;
+    HqvFrcLevel level;
+    HqvFrcInterp interp;
+    uint64_t ts_start;
+    bool frame_copy_on_fallback;
+    bool frame_copy_input;
+};
+
+struct VppCtrlFrc {
+    vec<VppCtrlFrcSegment> segments;
+};
+
+struct VppControl_1_2 {
+    HqvMode mode;
+    HqvControlType ctrlType;
+    union Control {
+        HqvCtrlCade cade;
+        HqvCtrlTnr tnr;
+        HqvCtrlCnr cnr;
+        HqvCtrlAie aie;
+        HqvCtrlDi di;
+        HqvCtrlEar ear;
+        HqvCtrlQbr qbr;
+        HqvCtrlMeas meas;
+        HqvCtrlCustom custom;
+        HqvCtrlGlobalDemo demo;
+    } u;
+    VppCtrlFrc frc;
+};

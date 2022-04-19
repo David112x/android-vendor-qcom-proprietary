@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!--
+Copyright (c) 2018 Qualcomm Technologies, Inc.
+All Rights Reserved.
+Confidential and Proprietary - Qualcomm Technologies, Inc.
+ -->
+
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/menu_item_training"
+        android:orderInCategory="1"
+        android:showAsAction="always"
+        android:title="@string/training"
+        android:icon="@drawable/btn_plus_white"/>
+
+    <item
+        android:id="@+id/menu_item_tutorial"
+        android:orderInCategory="100"
+        android:showAsAction="never"
+        android:title="@string/tutorial"/>
+
+    <item
+        android:id="@+id/menu_item_version"
+        android:orderInCategory="101"
+        android:showAsAction="never"
+        android:title="@string/version" />
+
+    <item
+        android:id="@+id/menu_item_debug_mode"
+        android:orderInCategory="102"
+        android:showAsAction="never"
+        android:title="@string/debug_mode" />
+
+</menu>

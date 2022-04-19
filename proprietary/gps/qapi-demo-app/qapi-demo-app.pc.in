@@ -1,0 +1,10 @@
+prefix=@prefix@
+exec_prefix=@exec_prefix@
+libdir=@libdir@
+includedir=@includedir@
+
+Name: qapi-demo-app
+Description: QTI QAPI Demo App
+Version: @VERSION@
+Libs: -L${libdir}
+Cflags: -I${includedir} -I${includedir}/qapi-demo-app

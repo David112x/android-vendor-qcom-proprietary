@@ -1,0 +1,16 @@
+/*
+ * Copyright (c) 2019-2020 Qualcomm Technologies, Inc.
+ * All Rights Reserved.
+ * Confidential and Proprietary - Qualcomm Technologies, Inc.
+ *
+ */
+
+package vendor.qti.dvr@1.0;
+
+/// @brief Display Info
+struct DvrDisplayInfo {
+    uint32_t width;
+    uint32_t height;
+    uint32_t format;
+    uint32_t buf_size;
+};

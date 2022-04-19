@@ -1,0 +1,37 @@
+/*!
+ *
+ * Copyright (c) 2018 Qualcomm Technologies, Inc.
+ * All Rights Reserved.
+ * Confidential and Proprietary - Qualcomm Technologies, Inc.
+ *
+ */
+package vendor.qti.hardware.cvp@1.0;
+
+interface ICvpOpticalFlow_Callbacks{
+/// @brief
+///    The optical flow has been processed by the CVP system, and the
+///    output is ready to be consumed. This callback is used to notify the
+///    application. The application sends the image using the
+///    cvpOpticalFlow_Async call.
+///
+/// @param eStatus
+///    CVP status for the current process.
+/// @param pOutput
+///    Pointer to the motion engine output structure.
+/// @param hOpticFlow
+///    Handle for the motion engine that was passed in the
+///    cvpOpticalFlow_Async function.
+/// @param pSessionUserData
+///    User-data that was set in the cvpConfigOpticalFlow structure.
+/// @param pTaskUserData
+///    User-data that was passed in the cvpOpticalFlow_Async function
+///    which corresponds to this callback.
+///
+/// @ingroup cvp_object_detection
+//------------------------------------------------------------------------------
+oneway cvpHalOpticalFlowCb(cvpHalStatus             eStatus,
+                           cvpHalOpticalFlowOutput  cvpHalOpticalFlowOutput,
+                           cvpHalHandle             hOpticFlow,
+                           uint64_t                 pSessionUserData,
+                           uint64_t                 pTaskUserData);
+};

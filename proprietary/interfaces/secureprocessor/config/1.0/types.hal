@@ -1,0 +1,174 @@
+/*
+ * Copyright (c) 2020 Qualcomm Technologies, Inc.
+ * All Rights Reserved.
+ * Confidential and Proprietary - Qualcomm Technologies, Inc.
+ *
+ * Not a Contribution.
+ *
+ * Copyright (C) 2017 The Android Open Source Project
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+package vendor.qti.hardware.secureprocessor.config@1.0;
+
+/**
+ * The concept for configuration classification is borrowed from AOSP Camera
+ * HAL. Reference - /platform/hardware/interfaces/camera/metadata
+ *
+ */
+
+/**
+ * Secure processor config datatypes.
+ */
+enum ConfigType : uint32_t {
+    /**
+     * Unsigned 8-bit integer (uint8_t)
+     */
+    BYTE = 0,
+
+    /**
+     * Signed 32-bit integer (int32_t)
+     */
+    INT32 = 1,
+
+    /**
+     * Signed 64-bit integer (int64_t)
+     */
+    INT64 = 2
+};
+
+/**
+ * Secure processor config sections
+ *   Secure processor configs are classified into following three
+ *   sections -
+ *   1. Image configs: These configs are applicable to associated image
+ *                     and can change from image to image like timestamp,
+ *                     frame_number, exposure_time etc.
+ *   2. Session configs: These configs are applied to requested session.
+ *   3. Custom configs: Clients are allows to add custom configs which
+ *                      are transparent to secure processor interface.
+ *                      The custom config (tag) definitions shall start
+ *                      from SECURE_PROCESSOR_CUSTOM_CONFIG_START.
+ */
+enum ConfigSection : uint32_t {
+    /**
+     * Image specific configuration section.
+     */
+    SECURE_PROCESSOR_IMAGE_CONFIG,
+
+    /**
+     * Session sepecific configuration section.
+     */
+    SECURE_PROCESSOR_SESSION_CONFIG,
+
+    /**
+     * Custom config section - all configurations defined in this section are
+     * transparent to interface.
+     */
+    SECURE_PROCESSOR_CUSTOM_CONFIG,
+};
+
+enum ConfigSectionStart : uint32_t {
+    SECURE_PROCESSOR_IMAGE_CONFIG_START = ConfigSection:SECURE_PROCESSOR_IMAGE_CONFIG << 16,
+
+    SECURE_PROCESSOR_SESSION_CONFIG_START = ConfigSection:SECURE_PROCESSOR_SESSION_CONFIG << 16,
+
+    SECURE_PROCESSOR_CUSTOM_CONFIG_START = ConfigSection:SECURE_PROCESSOR_CUSTOM_CONFIG << 16,
+};
+
+/**
+ * Secure processor config tag definitions
+ *   A config consists of <tag, value> pair.
+ *
+ */
+enum ConfigTag : uint32_t {
+
+    /**
+     * Image config: Camera identifier
+     * Type: int32_t
+     * Mandatory image configuration.
+     */
+    SECURE_PROCESSOR_IMAGE_CONFIG_CAMERA_ID = ConfigSectionStart:SECURE_PROCESSOR_IMAGE_CONFIG_START + 1,
+
+    /**
+     * Image config: Frame number
+     * Type: int64_t
+     * Mandatory image configuration.
+     */
+    SECURE_PROCESSOR_IMAGE_CONFIG_FRAME_NUMBER,
+
+    /**
+     * Image config: Frame timestamp
+     * Type: int64_t
+     * Mandatory image configuration.
+     */
+    SECURE_PROCESSOR_IMAGE_CONFIG_TIMESTAMP,
+
+    /**
+     * Image config: Frame buffer width
+     * Type: int32_t
+     * Mandatory image configuration.
+     */
+    SECURE_PROCESSOR_IMAGE_CONFIG_FRAME_BUFFER_WIDTH,
+
+    /**
+     * Image config: Frame buffer height
+     * Type: int32_t
+     * Mandatory image configuration.
+     */
+    SECURE_PROCESSOR_IMAGE_CONFIG_FRAME_BUFFER_HEIGHT,
+
+    /**
+     * Image config: Frame buffer stride
+     * Type: int32_t
+     * Mandatory image configuration.
+     */
+    SECURE_PROCESSOR_IMAGE_CONFIG_FRAME_BUFFER_STRIDE,
+
+    /**
+     * Image config: Frame buffer format (expects android_pixel_format_t)
+     * Type: int32_t
+     * Mandatory image configuration.
+     */
+    SECURE_PROCESSOR_IMAGE_CONFIG_FRAME_BUFFER_FORMAT,
+
+    SECURE_PROCESSOR_IMAGE_CONFIG_END,
+
+    /**
+     * Session config: Num sensors required in usecase
+     * Type: int32_t
+     * Optional session configuration (default: 1)
+     * This configuration ensures that number of requested camera sensors are
+     * streaming in secure state before allowing any data-processing on secure
+     * data processor (aka secure destination).
+     */
+    SECURE_PROCESSOR_SESSION_CONFIG_NUM_SENSOR = ConfigSectionStart:SECURE_PROCESSOR_SESSION_CONFIG_START,
+
+    /**
+     * Session config: Usecase identifier
+     * Type: int8_t[]
+     * Mandatory session configuration.
+     * It identifies the entities to be run/interact on secure destination for
+     * secure data consumption/processing.
+     */
+    SECURE_PROCESSOR_SESSION_CONFIG_USECASE_IDENTIFIER,
+
+    SECURE_PROCESSOR_SESSION_CONFIG_END,
+
+    /**
+     * Custom config definitions to start from
+     * SECURE_PROCESSOR_CUSTOM_CONFIG_START
+     */
+    SECURE_PROCESSOR_CUSTOM_CONFIG_START = ConfigSectionStart:SECURE_PROCESSOR_CUSTOM_CONFIG_START,
+};

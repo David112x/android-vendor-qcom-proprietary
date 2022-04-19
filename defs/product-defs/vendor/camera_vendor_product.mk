@@ -1,0 +1,1 @@
+../../../proprietary/mm-camera/mm-camera2/configs/camera_vendor_product.mk

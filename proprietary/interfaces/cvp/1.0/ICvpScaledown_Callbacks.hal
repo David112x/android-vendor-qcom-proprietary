@@ -1,0 +1,39 @@
+/*!
+ *
+ * Copyright (c) 2018 Qualcomm Technologies, Inc.
+ * All Rights Reserved.
+ * Confidential and Proprietary - Qualcomm Technologies, Inc.
+ *
+ */
+package vendor.qti.hardware.cvp@1.0;
+
+interface ICvpScaledown_Callbacks{
+//------------------------------------------------------------------------------
+/// @brief
+///    Image downscaling has been processed by the CVP system, and the
+///    output is ready to be consumed. This callback is used to notify the
+///    application. The application sends the image using the
+///    cvpScaledown_Async call.
+///
+/// @param eStatus
+///    CVP status for the current process.
+/// @param pDst
+///    Pointer to the downscaled output image.
+/// @param hScaledown
+///    Handle for the downscaling that was passed in the
+///    cvpScaledown_Async function.
+/// @param pSessionUserData
+///    User-data that was set in the cvpInitScaledown structure.
+/// @param pTaskUserData
+///    User-data that was passed in the cvpScaledown_Async function
+///    which corresponds to this callback.
+///
+/// @ingroup cvp_image_transform
+//------------------------------------------------------------------------------
+oneway cvpHalScaledownCb (cvpHalStatus             eStatus,
+                          cvpHalImage              pOutput,
+                          cvpHalHandle             hScaledown,
+                          uint64_t                 pSessionUserData,
+                          uint64_t                 pTaskUserData);
+
+};

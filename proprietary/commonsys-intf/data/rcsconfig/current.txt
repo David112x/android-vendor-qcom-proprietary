@@ -1,0 +1,8 @@
+cf0783008d2156d5f01be73fea5adc028da3c7d70bf09d9e60c4bd182b568531 vendor.qti.ims.rcsconfig@1.0::types
+8ad508ddeabe0973d6eeb8189014d6bb01c67768cedbfcefa012c8de48664ef5 vendor.qti.ims.rcsconfig@1.0::IRcsConfig
+5e070667ee8d0286b82a37435718f2d4f13fbc9361fbb778d4a34c51a7eedd98 vendor.qti.ims.rcsconfig@1.0::IRcsConfigListener
+654e016769b888a717c3fc3fc7a5b1a3325d3334364777987ce14fa0a1602554 vendor.qti.ims.rcsconfig@1.0::ISetConfigCb
+7677a6d01b709743fd3c694db0c8ac4e54f44987183b0b7d8de0caf85b355d2d vendor.qti.ims.rcsconfig@1.1::types
+6ae0523b3aa0a3fb6e86f3f94e3374e5f74285befb19ff687639a36f9bed61fa vendor.qti.ims.rcsconfig@1.1::IGetSettingsCb
+ed58ed0e97dfcd30924e16f6459cad748fb326292fded54ef055775d9d221f7b vendor.qti.ims.rcsconfig@1.1::IRcsConfig
+9e8ab2bd6d9cb9b5fdd2078e8275197d9cb0b7c04e9eaa734bd32b1773b10471 vendor.qti.ims.rcsconfig@1.1::ISettingsChangeCb

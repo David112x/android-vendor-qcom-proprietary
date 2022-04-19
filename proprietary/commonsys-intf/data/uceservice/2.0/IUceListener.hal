@@ -1,0 +1,21 @@
+/*********************************************************************
+ Copyright (c) 2017-2018 Qualcomm Technologies, Inc.
+ All Rights Reserved.
+ Confidential and Proprietary - Qualcomm Technologies, Inc.
+**********************************************************************/
+
+package com.qualcomm.qti.uceservice@2.0;
+
+interface IUceListener {
+
+  /**
+   *  Notifies Uce Service status for respective iccId/subscription.
+   *
+   * @param status        Status of the service.
+   * @param iccId         iccId related to the subscription.
+   *
+   *
+   */
+  oneway onStatusChange(UceStatus status, string iccId);
+
+};

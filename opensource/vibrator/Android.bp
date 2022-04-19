@@ -1,0 +1,23 @@
+cc_binary {
+    name: "vendor.qti.hardware.vibrator@1.2-service",
+    relative_install_path: "hw",
+    init_rc: ["vendor.qti.hardware.vibrator@1.2-service.rc"],
+    srcs: ["service.cpp", "Vibrator.cpp"],
+    cflags: [
+        "-Wall",
+        "-Werror",
+    ],
+    shared_libs: [
+        "libhidlbase",
+        "libcutils",
+        "libhidltransport",
+        "liblog",
+        "libhwbinder",
+        "libutils",
+        "libhardware",
+        "android.hardware.vibrator@1.0",
+        "android.hardware.vibrator@1.1",
+        "android.hardware.vibrator@1.2",
+    ],
+    vendor: true,
+}

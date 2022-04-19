@@ -1,0 +1,46 @@
+/*
+ * Copyright (c) 2019 Qualcomm Technologies, Inc.
+ * All Rights Reserved.
+ * Confidential and Proprietary - Qualcomm Technologies, Inc.
+ *
+ */
+
+package com.qualcomm.qti.imscmservice@2.2;
+
+import @2.1::IImsCmServiceListener;
+import @2.0::configData;
+import @2.2::AutoConfigResponse;
+
+interface IImsCmServiceListener extends @2.1::IImsCmServiceListener{
+
+    /**
+     * Callback function to notify the clients of a configuration
+     * change event.
+     *
+     * @param[in] config data structure (User or device config)
+     * @param[in] userData    user data/request ID per client
+     *
+     * @return
+     *   None.
+     *
+     * @dependencies
+     *   None.
+     */
+     oneway onConfigurationChange_2_2(configData config, uint32_t userdata);
+
+    /**
+     * Unsolicited indication to client when service receives a response
+     * for Auto Config request to server that requires additional
+     * handling from the client.
+     *
+     * @param[in] sip response of the ACS request
+     *
+     * @return
+     *   None.
+     *
+     * @dependencies
+     *   None.
+     */
+    oneway onAutoConfigResponse(AutoConfigResponse acsResponse);
+
+};

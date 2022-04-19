@@ -1,0 +1,341 @@
+/*!
+ *
+ * Copyright (c) 2018 Qualcomm Technologies, Inc.
+ * All Rights Reserved.
+ * Confidential and Proprietary - Qualcomm Technologies, Inc.
+ *
+ */
+package vendor.qti.hardware.scve.objecttracker@1.0;
+
+
+//------------------------------------------------------------------------------
+/// @brief
+///    ObjectTracker_Precision structure is used for obtaining tracking results
+///    from the Object-Tracker (both through Sync and Async varieties)
+///
+/// @ingroup scveObjectTracker
+//------------------------------------------------------------------------------
+enum ObjectTracker_Precision : uint32_t{
+   /// High precision mode - High processing load, but results are more precise
+   SCVE_OBJECTTRACKER_PRECISION_HIGH     = 0,
+   /// Low precision mode  - Low processing load, but results are less precise
+   SCVE_OBJECTTRACKER_PRECISION_LOW      = 1,
+};
+
+//------------------------------------------------------------------------------
+//------------------------------------------------------------------------------
+enum ObjectTracker_RegistrationFlags : uint32_t
+{
+   /// Sets defaults options
+   SCVE_OBJECTTRACKER_REGFLAG_DEFAULT    = 0,
+   /// Marks the point as a new point
+   SCVE_OBJECTTRACKER_REGFLAG_NEW_POINT  = (1<<0),
+   /// Tries to return an object immediately with information provided until
+   /// that point.
+   SCVE_OBJECTTRACKER_REGFLAG_IMM_RETURN = (1<<1),
+   /// Enables generation of Saliency Map
+   SCVE_OBJECTTRACKER_REGFLAG_SAL_MAP    = (1<<2),
+};
+
+//------------------------------------------------------------------------------
+/// @brief
+///    OperationMode enum defines modes which could be optionally assigned
+///    to every Context object during it's initialization.
+///
+/// @see Context::newInstance()
+///
+/// @ingroup scveContext
+//------------------------------------------------------------------------------
+enum OperationMode : uint32_t
+{
+   /// Default mode in which a Context will be initialized.
+   SCVE_MODE_DEFAULT            = 0,
+   /// Performance mode, where the fastest implementation is selected for all
+   /// SCVE features initialized under the context.
+   SCVE_MODE_PERFORMANCE        = 1,
+   /// CPU Offload mode, where preference is given to offload the implementation
+   /// to any available hardware / dsp.
+   SCVE_MODE_CPU_OFFLOAD        = 2,
+   /// Power Save mode, where preference is given to an implementation that
+   /// draws least power.
+   SCVE_MODE_LOW_POWER          = 3,
+};
+
+//------------------------------------------------------------------------------
+/// @brief
+///    Definition of Status type used in SCVE. Wherever appropriate, functions
+///    in SCVE APIs return the Status of function execution. This the common
+///    Status type used in all SCVE features.
+///
+/// @ingroup scveTypes
+//------------------------------------------------------------------------------
+typedef int32_t Status;
+
+
+//------------------------------------------------------------------------------
+/// @brief
+///    Enumeration of Base Error codes of all SCVE features. For specific error
+///    codes, please refer the specific header file of the feature.
+///
+/// @ingroup scveTypes
+//------------------------------------------------------------------------------
+enum StatusCodes : uint32_t
+{
+   /// Universal success status for all SCVE features
+   SCVE_SUCCESS                                         = 0x00000000,
+   /// Represents a state when a feature is expecting more input from the user
+   /// or if waiting for an internal state to change.
+   SCVE_PENDING                                         = 0x00000001,
+
+   //Generic error codes
+   /// Unspecified internal error occurred
+   SCVE_ERROR_INTERNAL                                  = 0xF0000001,
+   /// Internal memory allocation failed
+   SCVE_ERROR_OUT_OF_MEMORY                             = 0xF0000002,
+   /// Invalid input/output parameter supplied
+   SCVE_ERROR_INVALID_PARAM                             = 0xF0000003,
+   /// Color Format used is not supported
+   SCVE_ERROR_UNSUPPORTED_FORMAT                        = 0xF0000004,
+   /// Async function called without callback being registed
+   SCVE_ERROR_CALLBACK_NOT_REGISTERED                   = 0xF0000005,
+   /// File operation failure
+   SCVE_ERROR_FILE_OPERATION_FAILURE                    = 0xF0000006,
+
+   //Base error codes for different features
+   /// Base error code for Object-Tracker
+   SCVE_OBJECTTRACKER_ERROR                             = 0xF0000100,
+   /// Base error code for Face Detection
+   SCVE_FACEDETECT_ERROR                                = 0xF0000200,
+   /// Base error code for Image Cloning
+   SCVE_IMAGECLONING_ERROR                              = 0xF0002000,
+   /// Base error code for Image Removal
+   SCVE_IMAGEREMOVAL_ERROR                              = 0xF0004000,
+   /// Base error code for Blob Descriptor
+   SCVE_BLOBDESCRIPTOR_ERROR                            = 0xF0008000,
+   /// Base error code for Panorama
+   SCVE_PANORAMA_ERROR                                  = 0xF0010000,
+   /// Base error code for Object Segmentation
+   SCVE_OBJECTSEGMENTATION_ERROR                        = 0xF0020000,
+   /// Base error code for Object Matting
+   SCVE_OBJECT_MATTING_ERROR                            = 0xF0080000,
+   /// Base error code for Text Recognition
+   SCVE_TEXT_RECO_ERROR                                 = 0xF0100000,
+   /// Base error code for Face Recognition
+   SCVE_FACERECOGNITION_ERROR                           = 0xF0200000,
+   /// Base error code for Image Correction
+   SCVE_IMAGE_CORRECTION_ERROR            = 0xF0400000,
+   /// Base error code for Face Landmarks
+   SCVE_FACELANDMARKS_ERROR                             = 0xF0800000,
+   /// Base error code for Video Summary
+   SCVE_VIDEO_SUMMARY_ERROR                             = 0xF0000400,
+   /// Base error code for Scan3D
+   SCVE_SCAN3D_ERROR                                    = 0xF0000800,
+   /// Base error code for Scan3D
+   SCVE_MOTION_TRACKER_ERROR                            = 0xF0001000
+};
+
+//------------------------------------------------------------------------------
+/// @brief
+///    Error codes specific to ObjectTracker
+///
+/// @ingroup scveObjectTracker
+//------------------------------------------------------------------------------
+enum StatusCodes_ObjectTracker : uint32_t
+{
+   /// Returned by TrackObjects functions if there are no objects registered to
+   /// track.
+   SCVE_OBJECTTRACKER_ERROR_NO_OBJECTS               = 0xF0000100 + 1,
+   /// Returned by Registration functions if the number of objects being tracked
+   /// is already at the maximum allowed.
+   SCVE_OBJECTTRACKER_ERROR_TOO_MANY_OBJECTS         = 0xF0000100 + 2,
+   /// Returned by Registration functions if the object registraction failed.
+   SCVE_OBJECTTRACKER_ERROR_OBJ_REG_FAILED           = 0xF0000100 + 3,
+   /// Returned by TrackObjects functions when the size of the result array is
+   /// smaller than number of objects registered with the tracker.
+   SCVE_OBJECTTRACKER_ERROR_INSUFFCIENT_RESULT_ARRAY = 0xF0000100 + 4,
+   /// Returned by TrackObjectsExt function when one or more of the indices
+   /// provided are not of valid registered objects. If it was a valid object
+   /// before, it might have been unregistered by the time the function is called.
+   SCVE_OBJECTTRACKER_ERROR_INVALID_OBJECT_INDEX     = 0xF0000100 + 5,
+   /// Returned by Async functions when there are too many concurrent Async
+   /// requests. If this error is returned, please wait for the Tracker to send a
+   /// callback for the corresponding function before queuing another request.
+   SCVE_OBJECTTRACKER_ERROR_TOO_MANY_REQUESTS        = 0xF0000100 + 6,
+   /// Returned by GetSaliencyMap function when Saliency Map function is disabled.
+   /// This could happen if the object-ids provided not have Saliency Map enabled
+   /// on them while registration, or if the color format used is not YUV.
+   SCVE_OBJECTTRACKER_ERROR_SALIENCY_MAP_DISABLED    = 0xF0000100 + 7,
+};
+
+//------------------------------------------------------------------------------
+/// @brief
+///    Enumeration representing several Color Formats supported throughout SCVE.
+///
+/// @ingroup scveTypes
+//------------------------------------------------------------------------------
+enum ColorFormat : uint32_t
+{
+   /// 8-bit Greyscale format, with 8 bits-per-pixel
+   SCVE_COLORFORMAT_GREY_8BIT                  = 0,
+   /// NV21 YUV format, with 12 bits-per-pixel
+   SCVE_COLORFORMAT_YUV_NV21                   = 1,
+   /// NV12 YUV format, with 12 bits-per-pixel
+   SCVE_COLORFORMAT_YUV_NV12                   = 2,
+   /// RGB-565 format, with 16 bits-per-pixel
+   SCVE_COLORFORMAT_RGB_565                    = 3,
+   /// RGB-888 format, with 24 bits-per-pixel
+   SCVE_COLORFORMAT_RGB_888                    = 4,
+   /// RGBA-8888 format, with 32 bits-per-pixel
+   SCVE_COLORFORMAT_RGBA_8888                  = 5,
+   /// YUV format with 12 bits-per-pixel. Contains three planes - 8-bit
+   /// Y plane followed by 2x2 sub-sampled V plane and then 2x2 sub-sampled
+   /// U plane.
+   SCVE_COLORFORMAT_YVU_420_PLANAR             = 6,
+   /// YUV format with 12 bits-per-pixel. Contains three planes - 8-bit
+   /// Y plane followed by 2x2 sub-sampled U plane and then 2x2 sub-sampled
+   /// V plane.
+   SCVE_COLORFORMAT_YUV_420_PLANAR             = 7,
+};
+
+//------------------------------------------------------------------------------
+/// @brief
+///    Structure representing dimension of an image.
+///
+/// @param nWidth
+///    Width of the Image
+///
+/// @param nHeight
+///    Height of the Image
+///
+/// @deprecated nStride
+///    Stride length of the image in bytes. Number of bytes from beginning of
+///    one line of the image to the next.
+///
+/// @param nStrides
+///    Array of stride values. Represent strides of each planes in the order
+///    that they appear in the respective formats.
+///
+/// @param nPadLength
+///    Array of padding lengths, each representing number of padding bytes
+///    between two planes. Example - nPadLength[0] = padding between Plane0 and
+///    Plane1, nPadLength[1] = padding between Plane1 and Plane2.
+///
+/// @ingroup scveTypes
+//------------------------------------------------------------------------------
+struct ImageDimension_hal {
+   uint32_t   nWidth;
+   uint32_t   nHeight;
+   uint32_t   nStride;
+   uint32_t[3]   nStrides;
+   uint32_t[2]   nPadLength;
+};
+
+//------------------------------------------------------------------------------
+/// @brief
+///    Structure representing an image.
+///
+/// @param pPtr
+///    Pointer to the memory location with contains the raw image data.
+///
+/// @param sDim
+///    Structure representing the dimension of the image.
+///
+/// @param sFormat
+///    Enum representing the color format of the image.
+///
+/// @ingroup scveTypes
+//------------------------------------------------------------------------------
+struct Image_hal {
+   handle         pPtr;
+   uint32_t       nBytes;
+   ImageDimension_hal   sDim;
+   ColorFormat      sFormat;
+   uint32_t         nChannels;
+};
+
+//------------------------------------------------------------------------------
+/// @brief
+///    Structure representing a Point.
+///
+/// @param nLocX
+///    X co-ordinate
+///
+/// @param nLocY
+///    Y co-ordinate
+///
+/// @ingroup scveTypes
+//------------------------------------------------------------------------------
+struct Point_hal {
+   int32_t nLocX;
+   int32_t nLocY;
+};
+
+//------------------------------------------------------------------------------
+/// @brief
+///    Structure representing a Rectangle.
+///
+/// @param nLocX
+///    X co-ordinates of the top-left corner of the Rectangle
+///
+/// @param nLocY
+///    Y co-ordinates of the top-left corner of the Rectangle
+///
+/// @param nWidth
+///    Width of the Rectangle
+///
+/// @param nHeight
+///    Height of the Rectangle
+///
+/// @ingroup scveTypes
+//------------------------------------------------------------------------------
+struct Rect_hal {
+   int32_t  nLocX;
+   int32_t  nLocY;
+   uint32_t nWidth;
+   uint32_t nHeight;
+};
+
+
+//------------------------------------------------------------------------------
+/// @brief
+///    Structure representing a Bounding Box.
+///
+/// @param topLeft
+///    co-ordinates of the top-left corner of the Bounding Box
+///
+/// @param topRight
+///    co-ordinates of the top-right corner of the Bounding Box
+///
+/// @param botLeft
+///    co-ordinates of the bottom-left corner of the Bounding Box
+///
+/// @param botRight
+///    co-ordinates of the bottom-right corner of the Bounding Box
+///
+/// @ingroup scveTypes
+//------------------------------------------------------------------------------
+struct BoundingBox_hal {
+   Point_hal topLeft;
+   Point_hal topRight;
+   Point_hal botLeft;
+   Point_hal botRight;
+};
+
+//------------------------------------------------------------------------------
+/// @brief
+///    ObjectTrackerResult structure is used for obtaining tracking results from
+///    the Object-Tracker (both through Sync and Async varieties)
+/// @param sROI
+///    ROI - current location and size of the object being tracked.
+/// @param nConfidence
+///    Confidence (0 to 100).
+/// @param nObjectIndex
+///    Index of the object whose tracking results are represented.
+///
+/// @ingroup scveObjectTracker
+//------------------------------------------------------------------------------
+struct ObjectTrackerResult_hal{
+   Rect_hal         sROI;
+   uint32_t           nConfidence;
+   uint32_t           nObjectIndex;
+};

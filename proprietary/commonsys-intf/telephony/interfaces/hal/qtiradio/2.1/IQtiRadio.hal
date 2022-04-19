@@ -1,0 +1,28 @@
+/*
+ * Copyright (c) 2018 Qualcomm Technologies, Inc.
+ * All Rights Reserved.
+ * Confidential and Proprietary - Qualcomm Technologies, Inc.
+ *
+ */
+
+package vendor.qti.hardware.radio.qtiradio@2.1;
+
+import @2.0::IQtiRadio;
+
+interface IQtiRadio extends @2.0::IQtiRadio {
+    /*
+     * @param serial to match request/response. Responses must include the same token as requests.
+     *
+     * Response callback is IQtiRadioResponse.onUpperLayerIndInfoResponse()
+     */
+    oneway queryUpperLayerIndInfo(int32_t serial);
+
+    /*
+     * @param serial to match request/response. Responses must include the same token as requests.
+     *
+     * Response callback is IQtiRadioResponse.on5gConfigInfoResponse()
+     *
+     */
+    oneway query5gConfigInfo(int32_t serial);
+
+};

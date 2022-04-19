@@ -1,0 +1,23 @@
+cc_library_static {
+    name: "libbt-sbc-encoder_qti",
+    defaults: ["fluoride_defaults_qti"],
+    srcs: [
+        "srce/sbc_analysis.c",
+        "srce/sbc_dct.c",
+        "srce/sbc_dct_coeffs.c",
+        "srce/sbc_enc_bit_alloc_mono.c",
+        "srce/sbc_enc_bit_alloc_ste.c",
+        "srce/sbc_enc_coeffs.c",
+        "srce/sbc_encoder.c",
+        "srce/sbc_packing.c",
+    ],
+    local_include_dirs: [
+        "include",
+        "srce",
+    ],
+    include_dirs: [
+        "vendor/qcom/opensource/commonsys/system/bt",
+        "vendor/qcom/opensource/commonsys/system/bt/internal_include",
+        "vendor/qcom/opensource/commonsys/system/bt/stack/include",
+    ],
+}

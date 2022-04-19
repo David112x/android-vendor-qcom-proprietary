@@ -1,0 +1,1 @@
+../../../proprietary/commonsys-intf/telephony/build/telephony-noship_system_product.mk

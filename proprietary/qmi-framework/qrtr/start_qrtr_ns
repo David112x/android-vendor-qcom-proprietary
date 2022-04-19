@@ -1,0 +1,26 @@
+# Copyright (c)2018 Qualcomm Technologies, Inc.
+# All Rights Reserved.
+# Confidential and Proprietary - Qualcomm Technologies, Inc.
+#! /bin/sh
+
+set -e
+
+case "$1" in
+start)
+    echo -n "Starting qrtr-ns: "
+    /usr/bin/qrtr-ns
+    echo "done"
+    ;;
+  stop)
+    echo "done"
+    ;;
+  restart)
+    echo "done"
+    ;;
+  *)
+    echo "Usage qrtr-ns{ start | stop | restart }" >&2
+    exit 1
+    ;;
+esac
+
+exit 0

@@ -1,0 +1,33 @@
+/*
+ * Copyright (c) 2018 Qualcomm Technologies, Inc.
+ * All Rights Reserved.
+ * Confidential and Proprietary - Qualcomm Technologies, Inc.
+ */
+
+package vendor.qti.hardware.seccam@1.0;
+
+/** Secure camera hal interface */
+interface ISecCam {
+
+    /*
+     * request struct
+     * @member msg_id identifier for the operation to be performed
+     * @member fd buffer fd passed for translating to hyp_handle
+     * @member data arbitrary size data, to be typecast as per msg_id
+     */
+    struct msg_req{
+        uint32_t msg_id;
+        handle fd;
+        vec<uint8_t> data;
+    };
+
+    /**
+     * send a command to this service
+     *
+     * @param req request struct containing msg_id and vector data
+     * @param rspLen size of the response buffer
+     * @return status status of the call, 0 on success, errorcode otherwise
+     * @return rsp the response to this command
+     */
+    sendCommand(msg_req req, uint32_t rspLen) generates(int32_t status, vec<uint8_t> rsp);
+};

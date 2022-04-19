@@ -1,0 +1,66 @@
+cc_library_shared {
+
+    srcs: [
+        "XmlParser.cpp",
+        "EventQueue.cpp",
+        "EventDataPool.cpp"
+    ],
+
+    header_libs: [
+        "libcutils_headers",
+    ],
+
+    shared_libs: [
+        "libcutils",
+        "libdl",
+        "libutils",
+        "libxml2",
+        "liblog",
+    ],
+
+    include_dirs: [
+        "external/libxml2/include",
+    ],
+
+    cflags: [
+        "-Wall",
+        "-DQC_DEBUG=0",
+    ],
+
+    name: "libqti-util",
+    proprietary: true,
+
+}
+
+cc_library_shared {
+
+    srcs: [
+        "XmlParser.cpp",
+        "EventQueue.cpp",
+        "EventDataPool.cpp"
+    ],
+
+    header_libs: [
+        "libcutils_headers",
+    ],
+
+    shared_libs: [
+        "libcutils",
+        "libdl",
+        "libutils",
+        "libxml2",
+        "liblog",
+    ],
+
+    include_dirs: [
+        "external/libxml2/include",
+    ],
+
+    cflags: [
+        "-Wall",
+        "-DQTI_DEBUG=0",
+    ],
+
+    name: "libqti-util_system",
+
+}

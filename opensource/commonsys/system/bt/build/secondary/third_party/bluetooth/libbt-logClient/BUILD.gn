@@ -1,0 +1,15 @@
+shared_library("libbt-logClient") {
+  sources = [
+    "src/bt_vendor_logc.c",
+  ]
+
+  include_dirs = [
+    "//",
+    "//include",
+    "//third_party/system/core/include",
+  ]
+
+  deps = [
+    "//third_party/libchrome:base",
+  ]
+}

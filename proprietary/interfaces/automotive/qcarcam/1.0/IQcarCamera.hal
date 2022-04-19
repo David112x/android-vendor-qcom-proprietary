@@ -1,0 +1,41 @@
+/*
+ * Copyright (c) 2019 Qualcomm Technologies, Inc.
+ * All Rights Reserved.
+ * Confidential and Proprietary - Qualcomm Technologies, Inc.
+ *
+ */
+
+package vendor.qti.automotive.qcarcam@1.0;
+
+import types;
+import IQcarCameraStream;
+
+/**
+ * Represents a automotive camera interfaces.
+ */
+interface IQcarCamera {
+
+    /**
+     * Returns supported cameras info.
+     *
+     * Returns the vector of QcarcamInputInfo. Contains all supported input
+     * informations
+     */
+    getInputStreamList() generates (QcarcamError Error, vec<QcarcamInputInfo> inputs);
+
+    /**
+     * Request opening of reqiured input stream.
+     *
+     * Returns the Error status and Handle to opened stream.
+     */
+    openStream(QcarcamInputDesc Desc) generates (IQcarCameraStream camStream, QcarcamError Error);
+
+    /**
+     * Request closing of reqiured input stream.
+     *
+     * Returns the Error status and Handle to closed stream.
+     */
+    closeStream(IQcarCameraStream camStream) generates (QcarcamError Error);
+
+};
+

@@ -1,0 +1,1 @@
+../../../../nxp/opensource/halimpl/nfc_vendor_product.mk

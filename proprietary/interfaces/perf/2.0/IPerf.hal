@@ -1,0 +1,21 @@
+/*
+ * Copyright (c) 2019 Qualcomm Technologies, Inc.
+ * All Rights Reserved.
+ * Confidential and Proprietary - Qualcomm Technologies, Inc.
+ */
+
+package vendor.qti.hardware.perf@2.0;
+interface IPerf {
+
+    perfLockAcquire(int32_t pl_handle, uint32_t duration, vec<int32_t> boostsList, vec<int32_t> reserved) generates (int32_t ret);
+    perfLockRelease(int32_t pl_handle, vec<int32_t> reserved);
+    perfHint(uint32_t hint, string userDataStr, int32_t userData1, int32_t userData2, vec<int32_t> reserved) generates (int32_t ret);
+    perfProfile(int32_t pl_handle, int32_t profile, int32_t reserved) generates (int32_t ret);
+    perfLockCmd(int32_t cmd, int32_t reserved);
+    perfGetProp(string propName, string defaultVal) generates (string ret);
+    perfSetProp(string propName, string value) generates (int32_t ret);
+    perfAsyncRequest(int32_t cmd, string userDataStr, vec<int32_t> params) generates (int32_t ret);
+    perfSyncRequest(int32_t cmd, string userDataStr, vec<int32_t> params) generates (string ret);
+
+};
+

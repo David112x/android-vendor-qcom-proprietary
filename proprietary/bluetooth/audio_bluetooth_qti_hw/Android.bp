@@ -1,0 +1,27 @@
+// The format of the name is audio.<type>.<hardware/etc>.so
+
+cc_library_shared {
+    name: "audio.bluetooth_qti.default",
+    vendor: true,
+    relative_install_path: "hw",
+    proprietary: true,
+    srcs: [
+        "audio_bluetooth_hw.cc",
+    ],
+    header_libs: ["libhardware_headers"],
+    shared_libs: [
+        "libbluetooth_audio_session_qti",
+        "libbase",
+        "libcutils",
+        "libfmq",
+        "libhidlbase",
+        "libhidltransport",
+        "liblog",
+        "libutils",
+    ],
+    cflags: [
+        "-Wall",
+        "-Werror",
+        "-Wno-unused-parameter",
+    ],
+}

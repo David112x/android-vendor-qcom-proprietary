@@ -1,0 +1,1 @@
+../../../proprietary/cv/fastcv/cv_vendor_product.mk

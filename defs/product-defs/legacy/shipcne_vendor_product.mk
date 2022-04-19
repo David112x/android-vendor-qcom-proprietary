@@ -1,0 +1,1 @@
+../../../proprietary/cne/shipcne_vendor_product.mk

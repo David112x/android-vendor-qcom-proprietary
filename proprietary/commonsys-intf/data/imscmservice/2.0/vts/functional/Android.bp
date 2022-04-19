@@ -1,0 +1,20 @@
+cc_test {
+    name: "VtsIImsCmServiceV2_0Test",
+    srcs: [
+      "VtsIImsCmServiceV2_0Test.cpp",
+    ],
+    shared_libs: [
+      "liblog",
+      "libhidlbase",
+      "libhidltransport",
+      "libutils",
+      "com.qualcomm.qti.imscmservice@2.0",
+    ],
+    static_libs: [
+      "VtsHalHidlTargetTestBase",
+    ],
+    cflags: [
+      "-O0",
+      "-g",
+    ],
+}

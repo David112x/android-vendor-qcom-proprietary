@@ -1,0 +1,1 @@
+../../../proprietary/securemsm/config/gp_vendor_proprietary_product.mk

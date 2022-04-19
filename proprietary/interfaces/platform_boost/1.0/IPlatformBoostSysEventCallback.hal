@@ -1,0 +1,20 @@
+/*
+ * Copyright (c) 2019 Qualcomm Technologies, Inc.
+ * All Rights Reserved.
+ * Confidential and Proprietary - Qualcomm Technologies, Inc.
+ */
+
+package vendor.qti.platform_boost@1.0;
+
+interface IPlatformBoostSysEventCallback{
+
+    /**
+     *  Callback notifying platform boost Server for some system events.
+     *
+     *  @param event the system event which listen.
+     *
+     *  @param value value of the system event.
+     *
+     */
+    oneway onEvent(string event, string value);
+};

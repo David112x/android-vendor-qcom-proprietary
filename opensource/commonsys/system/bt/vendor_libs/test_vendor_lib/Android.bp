@@ -1,0 +1,104 @@
+// simulation library for testing virtual devices
+// ========================================================
+cc_library_static {
+    name: "libbt-rootcanal_qti",
+    proprietary: true,
+    srcs: [
+        "src/acl_packet.cc",
+        "src/async_manager.cc",
+        "src/beacon.cc",
+        "src/beacon_swarm.cc",
+        "src/broken_adv.cc",
+        "src/bt_address.cc",
+        "src/classic.cc",
+        "src/command_packet.cc",
+        "src/connection.cc",
+        "src/device.cc",
+        "src/device_factory.cc",
+        "src/dual_mode_controller.cc",
+        "src/event_packet.cc",
+        "src/keyboard.cc",
+        "src/packet.cc",
+        "src/packet_stream.cc",
+        "src/sco_packet.cc",
+        "src/test_channel_transport.cc",
+    ],
+    cflags: [
+        "-fvisibility=hidden",
+        "-Wall",
+        "-Wextra",
+        "-Werror",
+        "-DHAS_NO_BDROID_BUILDCFG",
+    ],
+    local_include_dirs: [
+        "include",
+    ],
+    export_include_dirs: ["include"],
+    header_libs: [
+        "libbluetooth_headers",
+    ],
+    include_dirs: [
+        "vendor/qcom/opensource/commonsys/system/bt",
+        "vendor/qcom/opensource/commonsys/system/bt/utils/include",
+        "vendor/qcom/opensource/commonsys/system/bt/hci/include",
+        "vendor/qcom/opensource/commonsys/system/bt/internal_include",
+        "vendor/qcom/opensource/commonsys/system/bt/stack/include",
+    ],
+    shared_libs: [
+        "libbase",
+        "libchrome",
+        "liblog",
+    ],
+    static_libs: [
+        "libbluetooth-types",
+    ]
+}
+
+// test-vendor unit tests for host
+// ========================================================
+cc_test_host {
+    name: "test-vendor_test_host_qti",
+    srcs: [
+        "src/async_manager.cc",
+        "src/bt_address.cc",
+        "src/command_packet.cc",
+        "src/event_packet.cc",
+        "src/packet.cc",
+        "src/packet_stream.cc",
+        "src/l2cap_packet.cc",
+        "src/l2cap_sdu.cc",
+        "test/async_manager_unittest.cc",
+        "test/bt_address_unittest.cc",
+        "test/packet_stream_unittest.cc",
+        "test/l2cap_test.cc",
+        "test/l2cap_sdu_test.cc",
+    ],
+    local_include_dirs: [
+        "include",
+    ],
+    include_dirs: [
+        "vendor/qcom/opensource/commonsys/system/bt",
+        "vendor/qcom/opensource/commonsys/system/bt/utils/include",
+        "vendor/qcom/opensource/commonsys/system/bt/hci/include",
+        "vendor/qcom/opensource/commonsys/system/bt/stack/include",
+    ],
+    shared_libs: [
+        "liblog",
+        "libchrome",
+    ],
+    static_libs: [
+        "libbluetooth-types",
+    ],
+    cflags: [
+        "-fvisibility=hidden",
+        "-Wall",
+        "-Wextra",
+        "-Werror",
+        "-DLOG_NDEBUG=1",
+    ],
+    target: {
+        darwin: {
+            enabled: false,
+        }
+    },
+}

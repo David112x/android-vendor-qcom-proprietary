@@ -1,0 +1,38 @@
+/*!
+ *
+ * Copyright (c) 2018 Qualcomm Technologies, Inc.
+ * All Rights Reserved.
+ * Confidential and Proprietary - Qualcomm Technologies, Inc.
+ *
+ */
+package vendor.qti.hardware.cvp@1.0;
+
+interface ICvpNcc_Callbacks{
+//------------------------------------------------------------------------------
+/// @brief
+///    The NCC has been processed by the CVP system, and the
+///    output is ready to be consumed. This callback is used to notify the
+///    application. The application sends the image using the
+///    cvpNcc_Async call.
+///
+/// @param eStatus
+///    CVP status for the current process.
+/// @param pOutput
+///    Pointer to the NCC output structure.
+/// @param hNcc
+///    Handle for the NCC that was passed in the cvpNcc_Async function.
+/// @param pSessionUserData
+///    User-data that was set in the cvpInitNcc structure.
+/// @param pTaskUserData
+///    User-data that was passed in the cvpNcc_Async function
+///    which corresponds to this callback.
+///
+/// @ingroup cvp_object_detection
+//------------------------------------------------------------------------------
+oneway cvpHalNccCb (cvpHalStatus             eStatus,
+                    cvpHalNccOutput          pOutput,
+                    cvpHalHandle             hNcc,
+                    uint64_t                 pSessionUserData,
+                    uint64_t                 pTaskUserData);
+
+};

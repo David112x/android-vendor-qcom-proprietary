@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright (C) 2007 The Android Open Source Project
+
+     Licensed under the Apache License, Version 2.0 (the "License");
+     you may not use this file except in compliance with the License.
+     You may obtain a copy of the License at
+
+          http://www.apache.org/licenses/LICENSE-2.0
+
+     Unless required by applicable law or agreed to in writing, software
+     distributed under the License is distributed on an "AS IS" BASIS,
+     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     See the License for the specific language governing permissions and
+     limitations under the License.
+-->
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+ <string name="defaultname">Carkit</string>
+    <!-- Do not translate. android:process of this application. -->
+    <string name="process" translate="false"><xliff:g id="x" /></string>
+    <string name="bluetooth_remember_choice">Always Allow</string>
+    <!-- DUN -->
+    <string name="dun_notif_ticker">Bluetooth DUN request</string>
+    <!-- Notification title when a Bluetooth device wants to pair with us -->
+    <string name="dun_notif_title">Session Key Request for DUN</string>
+    <!-- Notification message when a Bluetooth device wants to pair with us -->
+    <string name="dun_notif_message">"Touch to connect to \u0022<xliff:g id="device_name">%1$s</xliff:g>\u0022."</string>
+    <string name="dun_acceptance_timeout_message">There was time out to accept connection with %1$s</string>
+    <!-- Activity label of BluetoothDunPermissionActivity, also used as Strings in the permission dialog [CHAR LIMIT=none] -->
+    <string name="bluetooth_dun_request">"DUN request"</string>
+    <!-- Bluetooth DUN permission Alert Activity text [CHAR LIMIT=none] -->
+    <string name="bluetooth_dun_acceptance_dialog_text">%1$s would like to use DUN. Give access to %2$s?</string>
+    <string name="dun_notification_group">"Dial Up Network"</string>
+</resources>

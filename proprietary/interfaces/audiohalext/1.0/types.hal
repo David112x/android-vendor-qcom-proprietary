@@ -1,0 +1,93 @@
+/***************************************************************************
+* Copyright (c) 2019 Qualcomm Technologies, Inc.
+* All Rights Reserved.
+* Confidential and Proprietary - Qualcomm Technologies, Inc.
+***************************************************************************/
+
+package vendor.qti.hardware.audiohalext@1.0;
+
+struct OptionalBool {
+    bool specified;
+    bool value;
+};
+
+struct OptionalInt32 {
+    bool specified;
+    int32_t value;
+};
+
+struct OptionalUInt32 {
+    bool specified;
+    uint32_t value;
+};
+
+struct OptionalInt64 {
+    bool specified;
+    int64_t value;
+};
+
+struct OptionalUInt64 {
+    bool specified;
+    uint64_t value;
+};
+
+struct OptionalString {
+    bool specified;
+    string value;
+};
+
+struct ApmValues {
+    bool     audio_offload_video;
+    bool     audio_offload_disable;
+    bool     audio_deepbuffer_media;
+    bool     audio_av_streaming_offload_enable;
+    bool     audio_offload_track_enable;
+    bool     audio_offload_multiple_enabled;
+    bool     voice_dsd_playback_conc_disabled;
+    bool     audio_sva_conc_enabled;
+    bool     audio_va_concurrency_enabled;
+    bool     audio_rec_playback_conc_disabled;
+    bool     voice_path_for_pcm_voip;
+    bool     voice_playback_conc_disabled;
+    bool     voice_record_conc_disabled;
+    bool     voice_voip_conc_disabled;
+    uint32_t audio_offload_min_duration_secs;
+    string   voice_conc_fallbackpath;
+    bool     audio_extn_hdmi_spk_enabled;
+    bool     audio_extn_formats_enabled;
+    bool     audio_extn_afe_proxy_enabled;
+    bool     compress_voip_enabled;
+    bool     fm_power_opt;
+    bool     voice_concurrency;
+    bool     record_play_concurrency;
+    bool     use_xml_audio_policy_conf;
+};
+
+struct ApmConfigs {
+    bool specified;
+    ApmValues value;
+};
+
+struct AVValues {
+    bool     audio_use_sw_alac_decoder;
+    bool     audio_use_sw_ape_decoder;
+    bool     audio_use_sw_mpegh_decoder;
+    bool     audio_flac_sw_decoder_24bit;
+    bool     audio_hw_aac_encoder;
+    string   audio_debug_sf_noaudio;
+    uint32_t audio_record_aggregate_buffer_duration;
+    bool     aac_adts_offload_enabled;
+    bool     alac_offload_enabled;
+    bool     ape_offload_enabled;
+    bool     flac_offload_enabled;
+    bool     pcm_offload_enabled_16;
+    bool     pcm_offload_enabled_24;
+    bool     qti_flac_decoder;
+    bool     vorbis_offload_enabled;
+    bool     wma_offload_enabled;
+};
+
+struct AVConfigs {
+    bool specified;
+    AVValues value;
+};

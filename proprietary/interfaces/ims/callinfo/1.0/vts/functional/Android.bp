@@ -1,0 +1,21 @@
+cc_test {
+    name: "VtsCallInfoV1_0Test",
+    srcs: [
+      "VtsCallInfoV2_0Test.cpp",
+    ],
+    shared_libs: [
+      "liblog",
+      "libbase",
+      "libhidlbase",
+      "libhidltransport",
+      "libutils",
+      "vendor.qti.ims.callinfo@1.0",
+    ],
+    static_libs: [
+      "VtsHalHidlTargetTestBase",
+    ],
+    cflags: [
+      "-O0",
+      "-g",
+    ],
+}

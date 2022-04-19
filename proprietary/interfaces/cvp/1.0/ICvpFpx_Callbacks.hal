@@ -1,0 +1,39 @@
+/*!
+ *
+ * Copyright (c) 2018 Qualcomm Technologies, Inc.
+ * All Rights Reserved.
+ * Confidential and Proprietary - Qualcomm Technologies, Inc.
+ *
+ */
+package vendor.qti.hardware.cvp@1.0;
+
+interface ICvpFpx_Callbacks{
+//------------------------------------------------------------------------------
+/// @brief
+///    The feature point has been processed by the CVP system, and the
+///    output is ready to be consumed. This callback is used to notify the
+///    application. The application sends the image using the
+///    cvpFeaturePoint_Async call.
+///
+/// @param eStatus
+///    CVP status for the current process.
+/// @param pOutput
+///    Pointer to the feature point ouput structure.
+/// @param hFpx
+///    Handle for the feature point extraction that was passed in the
+///    cvpFeaturePoint_Async function.
+/// @param pSessionUserData
+///    User-data that was set in the cvpInitFeaturePoint structure.
+/// @param pTaskUserData
+///    User-data that was passed in the cvpFeaturePoint_Async function
+///    which corresponds to this callback.
+///
+/// @ingroup cvp_feature_detection
+//------------------------------------------------------------------------------
+oneway cvpHalFpxCb (cvpHalStatus             eStatus,
+                    cvpHalFeaturePointOutput pOutput,
+                    cvpHalHandle             hFpx,
+                    uint64_t                 pSessionUserData,
+                    uint64_t                 pTaskUserData);
+
+};

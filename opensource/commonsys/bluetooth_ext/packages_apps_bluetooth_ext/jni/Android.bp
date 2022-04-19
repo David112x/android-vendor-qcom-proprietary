@@ -1,0 +1,30 @@
+cc_defaults {
+    name: "libbluetoothqti_jni_default",
+    // KEYSTONE(I999cc7985b32bae2db80bcfcede22d37b8e62ff5,b/141267953)
+    header_libs: ["libbluetooth_headers", "libnativehelper_header_only"],
+    include_dirs: [
+        "system/bt/types",
+        "packages/apps/Bluetooth/jni",
+        "vendor/qcom/opensource/commonsys/bluetooth_ext/vhal/include",
+        "vendor/qcom/opensource/commonsys/bluetooth_ext/system_bt_ext/btconfigstore",
+        "vendor/qcom/opensource/commonsys-intf/bluetooth/include",
+    ],
+    shared_libs: [
+        "libandroid_runtime",
+        "libbtconfigstore",
+    ],
+}
+
+// BTA static library for target
+// ========================================================
+cc_library_static {
+    name: "libbluetoothqti_jni",
+    defaults: ["libbluetoothqti_jni_default"],
+    srcs: [
+        "com_android_bluetooth_btservice_vendor.cpp",
+        "com_android_bluetooth_btservice_vendor_socket.cpp",
+        "com_android_bluetooth_avrcp_ext.cpp",
+        "com_android_bluetooth_ba.cpp",
+        "com_android_bluetooth_hf_vendor.cpp",
+    ],
+}

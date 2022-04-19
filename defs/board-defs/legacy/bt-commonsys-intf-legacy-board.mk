@@ -1,0 +1,1 @@
+../../../opensource/commonsys-intf/bluetooth/bt-commonsys-intf-legacy-board.mk

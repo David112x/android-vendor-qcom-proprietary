@@ -1,0 +1,72 @@
+/*
+ * Copyright (c) 2017-2018 Qualcomm Technologies, Inc.
+ * All Rights Reserved.
+ * Confidential and Proprietary - Qualcomm Technologies, Inc.
+ *
+ */
+
+package com.qualcomm.qti.imscmservice@2.0;
+
+interface IImsCmServiceListener {
+
+/**
+ * Callback function to notify the client upon successful service
+ * creation.
+ *
+ * @param[in] connectionManager     Service Handle
+ * @param[in] userdata              request ID passed in InitializeService()
+ * @param[in] eStatus               STATUS_SUCCESS if Subsciption supported,
+ *                                  else STATUS_SERVICE_NOT_SUPPORTED
+ *
+ * @return
+ *   None.
+ *
+ * @dependencies
+ *   None.
+ */
+oneway onServiceReady (IMSCM_SERVICE_HANDLE connectionManager, uint32_t userdata, uint32_t eStatus);
+
+/**
+ * Callback function to return the status of the connection manager.
+ *
+ * @param[in] eStatus Status as defined in StatusCode enum.
+ *
+ * @return
+ *   None.
+ *
+ * @dependencies
+ *   None.
+ */
+oneway onStatusChange (uint32_t eStatus);
+
+
+/**
+ * Callback function to notify the clients of a configuration
+ * change event.
+ *
+ * @param[in] config data structure (User or device config)
+ *
+ * @return
+ *   None.
+ *
+ * @dependencies
+ *   None.
+ */
+oneway onConfigurationChange (configData config, uint32_t userdata);
+
+/**
+ * Callback function to notify the clients the status of request
+ * placed.
+ *
+ * @param[in] Userdata/request ID passed while placing a request
+ * @param[in] status of the request, as defined in StatuCode enum.
+ *
+ * @return
+ *   None.
+ *
+ * @dependencies
+ *   None.
+ */
+oneway onCommandStatus(uint32_t userdata, uint32_t status);
+
+};

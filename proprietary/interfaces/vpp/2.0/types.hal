@@ -1,0 +1,386 @@
+/*!
+ * @file types.hal
+ *
+ * @cr
+ * Copyright (c) 2020 Qualcomm Technologies, Inc.
+ * All Rights Reserved.
+ * Confidential and Proprietary - Qualcomm Technologies, Inc.
+ *
+ * @services Defines the external interface for VPP Service.
+ */
+
+package vendor.qti.hardware.vpp@2.0;
+
+enum VppCadeConsts : int32_t {
+    VPP_CADE_LEVEL_MIN = 0,
+    VPP_CADE_LEVEL_MAX = 100,
+    VPP_CADE_CONTRAST_MIN = -50,
+    VPP_CADE_CONTRAST_MAX = 50,
+    VPP_CADE_SATURATION_MIN = -50,
+    VPP_CADE_SATURATION_MAX = 50,
+};
+
+enum VppTnrConsts : int32_t {
+    VPP_TNR_LEVEL_MIN = 0,
+    VPP_TNR_LEVEL_MAX = 100,
+};
+
+enum VppMcnrConsts : int32_t {
+    VPP_MCNR_LEVEL_MIN = 0,
+    VPP_MCNR_LEVEL_MAX = 100,
+};
+
+enum VppAieConsts : int32_t {
+    VPP_AIE_CADE_LEVEL_MIN = 0,
+    VPP_AIE_CADE_LEVEL_MAX = 100,
+    VPP_AIE_LTM_LEVEL_MIN = 0,
+    VPP_AIE_LTM_LEVEL_MAX = 100,
+    VPP_AIE_LTM_SAT_GAIN_MIN = 0,
+    VPP_AIE_LTM_SAT_GAIN_MAX = 100,
+    VPP_AIE_LTM_SAT_OFFSET_MIN = 0,
+    VPP_AIE_LTM_SAT_OFFSET_MAX = 100,
+    VPP_AIE_LTM_ACE_STR_MIN = 0,
+    VPP_AIE_LTM_ACE_STR_MAX = 100,
+    VPP_AIE_LTM_ACE_BRI_L_MIN = 0,
+    VPP_AIE_LTM_ACE_BRI_L_MAX = 100,
+    VPP_AIE_LTM_ACE_BRI_H_MIN = 0,
+    VPP_AIE_LTM_ACE_BRI_H_MAX = 100,
+};
+
+enum VppSplitScreenConsts : int32_t {
+    VPP_SPLIT_PERCENT_MIN = 0,
+    VPP_SPLIT_PERCENT_MAX = 100,
+    VPP_SPLIT_PERCENT_DEFAULT = 100,
+};
+
+enum VppResConsts : int32_t {
+    VPP_RES_SD_MAX_W = 800,
+    VPP_RES_SD_MAX_H = 600,
+    VPP_RES_HD_MAX_W = 1366,
+    VPP_RES_HD_MAX_H = 768,
+    VPP_RES_FHD_MAX_W = 1920,
+    VPP_RES_FHD_MAX_H = 1088,
+    VPP_RES_UHD_4K_MAX_W = 4096,
+    VPP_RES_UHD_4K_MAX_H = 2176,
+    VPP_RES_UHD_8K_MAX_W = 8192,
+    VPP_RES_UHD_8K_MAX_H = 4352,
+};
+
+enum VppError : int32_t {
+    VPP_OK = 0,
+    VPP_ERR,
+    VPP_PENDING,
+    VPP_ERR_STATE,
+    VPP_ERR_INVALID_CFG,
+    VPP_ERR_PARAM,
+    VPP_ERR_NO_MEM,
+    VPP_ERR_RESOURCES,
+    VPP_ERR_HW,
+    VPP_ERR_FATAL,
+};
+
+enum VppResolution : int32_t {
+    VPP_RESOLUTION_SD,
+    VPP_RESOLUTION_HD,
+    VPP_RESOLUTION_FHD,
+    VPP_RESOLUTION_UHD_4K,
+    VPP_RESOLUTION_UHD_8K,
+};
+
+enum VppMode : int32_t {
+    VPP_MODE_OFF,
+    VPP_MODE_AUTO,
+    VPP_MODE_MANUAL,
+};
+
+enum VppDiMode : int32_t {
+    VPP_DI_MODE_OFF,
+    VPP_DI_MODE_VIDEO_1F,
+    VPP_DI_MODE_VIDEO_3F,
+    VPP_DI_MODE_AUTO,
+};
+
+enum VppHueMode : int32_t {
+    VPP_HUE_MODE_OFF,
+    VPP_HUE_MODE_ON,
+};
+
+enum VppSplitDirection : int32_t {
+    VPP_SPLIT_LEFT_TO_RIGHT,
+    VPP_SPLIT_RIGHT_TO_LEFT,
+    VPP_SPLIT_TOP_TO_BOTTOM,
+    VPP_SPLIT_BOTTOM_TO_TOP,
+};
+
+enum VppFrcMode : int32_t {
+    VPP_FRC_MODE_OFF,
+    VPP_FRC_MODE_SMOOTH_MOTION,
+    VPP_FRC_MODE_SLOMO,
+};
+
+enum VppFrcLevel : int32_t {
+    VPP_FRC_LEVEL_OFF,
+    VPP_FRC_LEVEL_LOW,
+    VPP_FRC_LEVEL_MED,
+    VPP_FRC_LEVEL_HIGH,
+};
+
+enum VppFrcInterp : int32_t {
+    VPP_FRC_INTERP_1X,
+    VPP_FRC_INTERP_2X,
+    VPP_FRC_INTERP_3X,
+    VPP_FRC_INTERP_4X,
+};
+
+enum VppQbrMode : int32_t {
+    VPP_QBR_MODE_OFF,
+    VPP_QBR_MODE_ON,
+};
+
+enum VppEarMode : int32_t {
+    VPP_EAR_MODE_OFF,
+    VPP_EAR_MODE_BYPASS,
+    VPP_EAR_MODE_LOW,
+    VPP_EAR_MODE_MEDIUM,
+    VPP_EAR_MODE_HIGH,
+    VPP_EAR_MODE_STREAM_ADAPTIVE,
+    VPP_EAR_MODE_FRAME_ADAPTIVE,
+};
+
+enum VppCodecType : int32_t {
+    VPP_CODEC_TYPE_UNKNOWN,
+    VPP_CODEC_TYPE_AVC,
+    VPP_CODEC_TYPE_DIVX4,
+    VPP_CODEC_TYPE_DIVX,
+    VPP_CODEC_TYPE_DIVX311,
+    VPP_CODEC_TYPE_MPEG4,
+    VPP_CODEC_TYPE_MPEG2,
+    VPP_CODEC_TYPE_VC1,
+    VPP_CODEC_TYPE_WMV,
+    VPP_CODEC_TYPE_H263,
+    VPP_CODEC_TYPE_HEVC,
+    VPP_CODEC_TYPE_VP8,
+    VPP_CODEC_TYPE_VP9,
+};
+
+enum VidPropType : int32_t {
+    VID_PROP_CODEC,
+    VID_PROP_NON_REALTIME,
+    VID_PROP_OPERATING_RATE,
+};
+
+enum VppSessionFlags : int32_t {
+    VPP_SESSION_SECURE = (1 << 0),
+    VPP_SESSION_NON_REALTIME = (1 << 1),
+};
+
+enum VppColorFormat : int32_t {
+    VPP_COLOR_FORMAT_NV12_VENUS,
+    VPP_COLOR_FORMAT_NV21_VENUS,
+    VPP_COLOR_FORMAT_P010,
+    VPP_COLOR_FORMAT_UBWC_NV12,
+    VPP_COLOR_FORMAT_UBWC_NV21,
+    VPP_COLOR_FORMAT_UBWC_TP10,
+    VPP_COLOR_FORMAT_RGBA8,
+    VPP_COLOR_FORMAT_BGRA8,
+    VPP_COLOR_FORMAT_UBWC_RGBA8,
+    VPP_COLOR_FORMAT_UBWC_BGRA8,
+    VPP_COLOR_FORMAT_UBWC_RGB565,
+    VPP_COLOR_FORMAT_UBWC_BGR565,
+};
+
+enum VppPort : int32_t {
+    VPP_PORT_INPUT,
+    VPP_PORT_OUTPUT,
+};
+
+enum VppEventType : int32_t {
+    VPP_EVENT_FLUSH_DONE = (1 << 0),
+    VPP_EVENT_RECONFIG_DONE = (1 << 1),
+    VPP_EVENT_DRAIN_DONE = (1 << 2),
+    VPP_EVENT_ERROR = (1 << 3),
+};
+
+enum VppBufferFlag : int32_t {
+    VPP_BUFFER_FLAG_EOS            = (1 << 0),
+    VPP_BUFFER_FLAG_DATACORRUPT    = (1 << 1),
+    VPP_BUFFER_FLAG_SYNCFRAME      = (1 << 2),
+    VPP_BUFFER_FLAG_READONLY       = (1 << 3),
+    VPP_BUFFER_FLAG_EXTRADATA      = (1 << 4),
+    VPP_BUFFER_FLAG_B_FRAME        = (1 << 5),
+    VPP_BUFFER_FLAG_P_FRAME        = (1 << 6),
+    VPP_BUFFER_FLAG_PENDING_OUTPUT = (1 << 7),
+};
+
+struct VppCtrlCade {
+    VppMode mode;
+    /*! Range: VPP_CADE_LEVEL_MIN - VPP_CADE_LEVEL_MAX */
+    uint32_t cadeLevel;
+    /*! Range: VPP_CADE_CONTRAST_MIN - VPP_CADE_CONTRAST_MAX */
+    int32_t contrast;
+    /*! Range: VPP_CADE_SATURATION_MIN - VPP_CADE_SATURATION_MAX */
+    int32_t saturation;
+};
+
+struct VppCtrlTnr {
+    VppMode mode;
+    /*! Range: VPP_TNR_LEVEL_MIN - VPP_TNR_LEVEL_MAX */
+    uint32_t level;
+};
+
+struct VppCtrlAie {
+    VppMode mode;
+    VppHueMode hueMode;
+    /*! Range: VPP_AIE_CADE_LEVEL_MIN - VPP_AIE_CADE_LEVEL_MAX */
+    uint32_t cadeLevel;
+    /*! Range: VPP_AIE_LTM_LEVEL_MIN - VPP_AIE_LTM_LEVEL_MAX */
+    uint32_t ltmLevel;
+    /*! Range: VPP_AIE_LTM_SAT_GAIN_MIN - VPP_AIE_LTM_SAT_GAIN_MAX */
+    uint32_t ltmSatGain;
+    /*! Range: VPP_AIE_LTM_SAT_OFFSET_MIN - VPP_AIE_LTM_SAT_OFFSET_MAX */
+    uint32_t ltmSatOffset;
+    /*! Range: VPP_AIE_LTM_ACE_STR_MIN - VPP_AIE_LTM_ACE_STR_MAX */
+    uint32_t ltmAceStr;
+    /*! Range: VPP_AIE_LTM_ACE_BRI_L_MIN - VPP_AIE_LTM_ACE_BRI_L_MAX */
+    uint32_t ltmAceBriL;
+    /*! Range: VPP_AIE_LTM_ACE_BRI_H_MIN - VPP_AIE_LTM_ACE_BRI_H_MAX */
+    uint32_t ltmAceBriH;
+};
+
+struct VppCtrlMcnr {
+     VppMode mode;
+    /*! Range: VPP_MCNR_LEVEL_MIN - VPP_MCNR_LEVEL_MAX */
+    uint32_t level;
+};
+struct VppCtrlDi {
+    VppDiMode mode;
+};
+
+struct VppCtrlFrcSegment {
+    VppFrcMode mode;
+    VppFrcLevel level;
+    VppFrcInterp interp;
+    /*! Start of a new segment, in terms of timestamp of the input buffer */
+    uint64_t tsStart;
+    /*! Valid values: true, false */
+    bool frameCopyOnFallback;
+    /*! Valid values: true, false */
+    bool frameCopyInput;
+};
+
+struct VppCtrlFrc {
+    vec<VppCtrlFrcSegment> segments;
+};
+
+struct VppCtrlQbr {
+    VppQbrMode mode;
+};
+
+struct VppCtrlEar {
+    VppEarMode mode;
+};
+
+struct VppCtrlMeas {
+    /*! Valid values: 0, 1 */
+    bool enable;
+};
+
+struct VppCtrlSplitScreen {
+    /*! Range: VPP_SPLIT_PERCENT_MIN - VPP_SPLIT_PERCENT_MAX */
+    uint32_t processPercent;
+    VppSplitDirection processDirection;
+};
+
+struct VppPortParam {
+    uint32_t height;
+    uint32_t width;
+    uint32_t stride;
+    uint32_t scanlines;
+    VppColorFormat fmt;
+};
+
+struct VppReqInt {
+    string key;
+    int32_t val;
+};
+
+struct VppReqDouble {
+    string key;
+    double val;
+};
+
+struct VppReqFloat {
+    string key;
+    float val;
+};
+
+struct VppReqString {
+    string key;
+    string val;
+};
+
+struct VppRequirements {
+    VppError eResult;
+    vec<VppReqInt> vppReqInt;
+    vec<VppReqDouble> vppReqDouble;
+    vec<VppReqFloat> vppReqFloat;
+    vec<VppReqString> vppReqString;
+};
+
+struct FlushDone {
+    /*! The port that completed flushing */
+    VppPort port;
+};
+
+struct ReconfigDone {
+    /*!
+     * Status of the reconfigure. If this is set to error, then the
+     * client should bypass the VPP.
+     */
+    uint32_t reconfigStatus;
+};
+
+struct VppMemBuffer {
+    /*! File descriptor of the buffer. */
+    handle handleFd;
+    /*! Offset of the buffer from the base address, in bytes */
+    int32_t offset;
+    /*! Physically allocated buffer length, in bytes */
+    uint32_t allocLen;
+    /*! Filled buffer length, in bytes */
+    uint32_t filledLen;
+    /*!
+     * The number of bytes that *may* contain data.
+     *
+     * In the typical scenario where there is both pixel data and extra data in
+     * the buffer, this field shall describe the valid data length of each
+     * section. That is, for the pixel region, valid_data_len will describe
+     * the maximum number of bytes that can be occupied by pixel data, and for
+     * the extra data region, valid_data_len will describe the maximum number
+     * of bytes that can be occupied by the extra data. In such a case,
+     * alloc_len shall be equal for both the pixel data and the extra data
+     * regions.
+     *
+     * In the case where a single physical buffer contains multiple buffers,
+     * this field is used to describe just the memory region that is being
+     * described by this structure. As an example, if there are multiple extra
+     * data buffers in one physical buffer, the valid_data_len for each extra
+     * data buffer shall equal the maximum number of bytes that a specific
+     * extra data region data may occupy in that buffer. In this case, the
+     * alloc_len for each buffer segment in the extradata buffer will be equal.
+     */
+    uint32_t validDataLen;
+};
+
+struct VppBuffer {
+    VppMemBuffer pixel;
+    VppMemBuffer extradata;
+    /*! Buffer flags, as defined by enum vpp_buffer_flag */
+    uint32_t flags;
+    /*! Timestamp in microseconds */
+    uint64_t timestamp;
+    /*! Cookie to be copied from the input buffer to the output buffer. */
+    uint64_t cookieInToOut;
+    /*! cookie associated with this buffer*/
+    uint64_t cookie;
+};

@@ -1,0 +1,83 @@
+/*********************************************************************
+ Copyright (c) 2017-2018 Qualcomm Technologies, Inc.
+ All Rights Reserved.
+ Confidential and Proprietary - Qualcomm Technologies, Inc.
+**********************************************************************/
+
+package com.qualcomm.qti.uceservice@2.0;
+
+/* import IPresenceService; */
+
+interface IPresenceListener {
+
+  /**
+   * Callback invoked for IUceService.createPresenceService() API Call
+   * @param serviceHandle     a token to identify the client.
+   *
+   */
+  oneway onPresenceCreated(int64_t serviceHandle);
+
+  /**
+   * Callback function to be invoked by the Presence service to notify the listener of service
+   * availability.
+   * @param status     as service availability.
+   *
+   */
+  oneway serviceAvailable(UceStatusCode status);
+
+  /**
+   * Callback function to be invoked by the Presence service to notify the listener of service
+   * unavailability.
+   * @param status       as service unAvailability.
+   *
+   */
+  oneway serviceUnAvailable(UceStatusCode status);
+
+  /**
+   * Callback function to be invoked by the Presence service to notify the client to send a
+   * publish request.
+   * @param triggerType      Publish trigger for the network being supported.
+   *
+   */
+  oneway onPublishTrigger(PresPublishTriggerType triggerType);
+
+  /**
+   * Callback function to be invoked to inform the client of the status of an asynchronous call.
+   * @param commandStatus     command status of the request placed.
+   */
+  oneway cmdStatus (PresCmdStatus commandStatus);
+
+  /**
+   * Callback function to be invoked to inform the client when the response for a SIP message,
+   * such as PUBLISH or SUBSCRIBE, has been received.
+   * @param sipResponse   network response received for the request placed.
+   *
+   */
+  oneway onSipResponseReceived(PresSipResponse sipResponse);
+
+  /**
+   * Callback function to be invoked to inform the client when the NOTIFY message carrying a
+   * single contact's capabilities information is received.
+   * @param presentityUri    URI of the remote entity the request was placed.
+   *                         This will be either a SIP URI or Tel URI as supported on network.
+   * @param tupleinfoArr     array of capability information the remote entity supports.
+   *
+   */
+  oneway onCapInfoReceived(string presentityUri, vec<PresTupleInfo> tupleinfoArr);
+
+  /**
+   * Callback function to be invoked to inform the client when the NOTIFY message carrying
+   * contact's capabilities information is received.
+   * @param rlmiInfo       resource infomation received from network.
+   * @param resInfoArr     array of capabilities received from network for the list of remore URI.
+   *
+   */
+  oneway onListCapInfoReceived(PresRlmiInfo rlmiInfo, vec<PresResInfo> resInfoArr);
+
+  /**
+   * Callback function to be invoked to inform the client when Unpublish message
+   * is sent to network.
+   */
+  oneway onUnpublishSent();
+
+};

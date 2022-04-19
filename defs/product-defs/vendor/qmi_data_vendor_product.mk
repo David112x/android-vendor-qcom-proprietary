@@ -1,0 +1,1 @@
+../../../proprietary/qmi/qmi_data_vendor_product.mk

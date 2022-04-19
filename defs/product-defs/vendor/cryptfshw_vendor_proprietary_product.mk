@@ -1,0 +1,1 @@
+../../../proprietary/securemsm/config/cryptfshw_vendor_proprietary_product.mk

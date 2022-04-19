@@ -1,0 +1,7 @@
+<!-- Copyright (c) 2020 Qualcomm Technologies, Inc.
+     All Rights Reserved.
+     Confidential and Proprietary - Qualcomm Technologies, Inc.
+-->
+<resources>
+    <integer name="config_initMode">0</integer>
+</resources>

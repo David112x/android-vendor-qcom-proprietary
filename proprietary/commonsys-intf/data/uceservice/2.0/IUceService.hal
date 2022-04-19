@@ -1,0 +1,86 @@
+/*********************************************************************
+ Copyright (c) 2017-2018 Qualcomm Technologies, Inc.
+ All Rights Reserved.
+ Confidential and Proprietary - Qualcomm Technologies, Inc.
+**********************************************************************/
+
+
+package com.qualcomm.qti.uceservice@2.0;
+
+import IUceListener;
+import IPresenceService;
+import IPresenceListener;
+import IOptionsService;
+import IOptionsListener;
+
+interface IUceService {
+
+
+  /**
+   * Add a IUceListener to the service
+   *
+   * @param uceListener IUceListener object
+   * @return status
+   *
+   */
+  addUceListener(IUceListener listener) generates (UceStatus status);
+
+  /**
+   * Places a request to create Presence Service.
+   * upon successful, the application should expect to receive
+   * IPresenceListener.OnPresenceCreated() callback
+   *
+   * Note: Customer needs to create unique listener for each subscription/Iccid
+   *
+   * @param listener        IPresenceListener object
+   * @param clientHandle    a token from the client
+   * @param iccid           ICCID of the subscription to work on.
+   * @return status
+   */
+  createPresenceService(IPresenceListener listener, int64_t clientHandle,
+      string iccid) generates (UceStatus status);
+
+  /**
+   * Get the Presence Service Instance
+   * @param serviceHandle    received in IPresenceListener.OnPresenceCreated()
+   * @return service         Instance of IPresenceService
+   */
+  getPresenceService(int64_t serviceHandle) generates (IPresenceService service);
+
+  /**
+   * Delete the instance of Presence Service
+   * @param serviceHandle     received in IPresenceListener.OnPresenceCreated() callback
+   * @return none
+   */
+  destroyPresenceService(int64_t serviceHandle);
+
+  /**
+   * Places a request to create Options Service.
+   * upon successful, the application should expect to receive
+   * IOptionsListener.OnOptionsCreated() callback
+   *
+   * Note: Customer needs to create unique listener for each subscription/iccid
+   *
+   * @param listener        IOptionsListener object
+   * @param clientHandle    a token from the client
+   * @param iccid           ICCID of the subscription to work on.
+   * @return status
+   */
+  createOptionsService(IOptionsListener listener, int64_t clientHandle,
+      string iccid) generates (UceStatus status);
+
+  /**
+   * Get the Options Service Instance
+   * @param serviceHandle    received in IOptionsListener.OnOptionsCreated()
+   * @return service         Instance of IOptionsService
+   */
+  getOptionsService(int64_t serviceHandle) generates (IOptionsService service);
+
+  /**
+   * Delete the instance of Option Service
+   * @param serviceHandle     received in IOptionsListener.OnOptionsCreated() callback
+   * @return none
+   */
+  destroyOptionsService(int64_t serviceHandle);
+
+};

@@ -1,0 +1,1 @@
+../../../proprietary/securemsm/config/cpz_vendor_proprietary_product.mk

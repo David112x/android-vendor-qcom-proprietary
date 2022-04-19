@@ -1,0 +1,1419 @@
+/*!
+ *
+ * Copyright (c) 2018 Qualcomm Technologies, Inc.
+ * All Rights Reserved.
+ * Confidential and Proprietary - Qualcomm Technologies, Inc.
+ *
+ */
+package vendor.qti.hardware.cvp@1.0;
+
+import ICvp_Callbacks;
+import ICvpDfs_Callbacks;
+import ICvpFpx_Callbacks;
+import ICvpOpticalFlow_Callbacks;
+import ICvpDnC_Callbacks;
+import ICvpNcc_Callbacks;
+import ICvpPyramid_Callbacks;
+import ICvpPyramidImage_Callbacks;
+import ICvpScaledown_Callbacks;
+
+interface ICvp{
+//------------------------------------------------------------------------------
+/// @brief
+///   Retrieves version of CVP library.
+/// @retval pVersion
+///   [Output] return CVP version structure.
+///
+/// @retval CVP_SUCCESS
+///    If successful.
+/// @retval CVP_EBADPARAM
+///    If pVersion is NULL
+///
+/// @ingroup cvp_types
+//------------------------------------------------------------------------------
+cvpHalGetVersion() generates (cvpHalVersion pVersion, cvpHalStatus cvpGetVersionRet);
+
+//------------------------------------------------------------------------------
+/// @brief
+///    Create CVP session
+/// @param fnCb
+///    [Input] Callback Function for Asynchronous Error Event.
+/// @param fd_pSessionUserData , size_pSessionUserData
+///    [Input] A private pointer that can be set by user, with this session, and this
+///    pointer will be provided as parameter to all Asynchronous Error Event callback
+///    functions originating from the current session. This could be used to associate a
+///    callback to this session. This can only be set once while creating
+///    the session. This value will not/cannot-be changed for life
+///    of a session. For this provide the handle and size of the data.
+///
+/// @retval CVP session handle.
+///    If successful.
+/// @retval NULL
+///    If creation failed.
+///
+/// @ingroup cvp_types
+//------------------------------------------------------------------------------
+cvpHalCreateSession(ICvp_Callbacks fnCB, uint64_t pSessionUserData) generates (cvpHalSession cvpCreateSessionRet);
+
+//------------------------------------------------------------------------------
+/// @brief
+///    Delete CVP session
+/// @param hSession
+///    [Input] CVP session handle.
+///
+/// @retval CVP_SUCCESS
+///    If successful.
+///
+/// @ingroup cvp_types
+//------------------------------------------------------------------------------
+cvpHalDeleteSession(cvpHalSession hSession) generates (cvpHalStatus status);
+
+//------------------------------------------------------------------------------
+/// @brief
+///    Start CVP session
+/// @details
+///    CVP will set firmware clock based on all initialization CVP API.
+///    After starting the session, client can start calling the synchronous or
+///    asynchronous CVP API.
+/// @param hSession
+///    [Input] CVP session handle.
+///
+/// @retval CVP_SUCCESS
+///    If successful.
+///
+/// @ingroup cvp_types
+//------------------------------------------------------------------------------
+cvpHalStartSession(cvpHalSession hSession) generates (cvpHalStatus status);
+
+//------------------------------------------------------------------------------
+/// @brief
+///    Stop CVP session
+/// @details
+///    After stopping the session, client can start reinitialize (deinit and init)
+///    the CVP API with new configuration.
+/// @param hSession
+///    [Input] CVP session handle.
+///
+/// @retval CVP_SUCCESS
+///    If successful.
+///
+/// @ingroup cvp_types
+//------------------------------------------------------------------------------
+cvpHalStopSession(cvpHalSession hSession) generates (cvpHalStatus status);
+
+//------------------------------------------------------------------------------
+/// @brief
+///    Allocates aligned memory for CVP process.
+/// @details
+///    Allocates aligned memory that can be shared among sessions.
+///    Once done, users need to call cvpMemFree().
+/// @param hSession
+///    [Input] CVP session handle.
+/// @param nBytes
+///    [Input] Number of bytes.
+/// @return
+///    SUCCESS: pointer to aligned memory
+///    FAILURE: 0
+///
+/// @ingroup cvp_mem_management
+//------------------------------------------------------------------------------
+cvpHalMemAlloc(cvpHalSession hSession, uint32_t nBytes) generates (cvpHalMallocOut ret);
+
+//------------------------------------------------------------------------------
+/// @brief
+///    Frees memory allocated by cvpMemAlloc().
+/// @param hSession
+///    [Input] CVP session handle.
+/// @param ptr
+///    [Input] Pointer to memory.
+///
+/// @ingroup cvp_mem_management
+//------------------------------------------------------------------------------
+cvpHalMemFree(cvpHalSession hSession, uint64_t pPtrIndx) generates (cvpHalStatus cvpMemFreeRet);
+
+//------------------------------------------------------------------------------
+/// @brief
+///    Register memory that has been allocated to CVP session.
+/// @param hSession
+///    [Input] CVP session handle.
+/// @param nBufferFD
+///    [Input] Buffer file descriptor (fd).
+/// @param pVirtualAddr
+///    [Input] Pointer to virtual address.
+/// @param nBufferSize
+///    [Input] Buffer size.
+///
+/// @ingroup cvp_mem_management
+//------------------------------------------------------------------------------
+cvpHalRegisterBuffer(cvpHalSession hSession,
+                     handle        nBufferFD,
+                     uint32_t      nBufferSize) generates (uint64_t pIndex, cvpHalStatus status);
+
+//------------------------------------------------------------------------------
+/// @brief
+///    Deregister memory from CVP session.
+/// @param hSession
+///    [Input] CVP session handle.
+/// @param nBufferFD
+///    [Input] Buffer file descriptor (fd).
+/// @param pVirtualAddr
+///    [Input] Pointer to virtual address.
+/// @param nBufferSize
+///    [Input] Buffer size.
+///
+/// @ingroup cvp_mem_management
+//------------------------------------------------------------------------------
+cvpHalDeregisterBuffer(cvpHalSession hSession,
+                       uint64_t      pIndex,
+                       uint32_t      nBufferSize) generates (cvpHalStatus status);
+
+/*******************************************************************************
+
+                Optical Flow
+
+*******************************************************************************/
+//------------------------------------------------------------------------------
+/// @brief
+///    Initialize optical flow using CVP
+/// @param hSession
+///    [Input] CVP session handle
+/// @param pConfig
+///    [Input] Pointer to the optical flow configuration.
+/// @param pAdvConfig
+///    [Input] Pointer to the optical flow configuration - Advanced. This is
+///    optional and can be set to NULL. When set to NULL, the constituent elements
+//     will be assigned default values.
+/// @param pOutMemReq
+///    [Output] Pointer to the output memory requirement.
+/// @param nFps
+///    [Input] CVP Frames per Second.
+/// @param fnCb
+///    [Input] Callback function for the asynchronous API
+///    Setting to NULL will result in initializing for synchronous API
+/// @param pSessionUserData
+///    [Input] A private pointer that user can set with this session, and this
+///    pointer will be provided as parameter to all callback functions
+///    originated from the current session. This could be used to associate a
+///    callback to this session. This can only be set once while initializing
+///    the handle. This value will not/cannot-be changed for life
+///    of a session.
+///
+/// @retval optical flow handle
+///    If successful.
+/// @retval NULL
+///    If initialization failed.
+///
+/// @ingroup cvp_object_detection
+//------------------------------------------------------------------------------
+cvpHalInitOpticalFlow(cvpHalSession                     hSession,
+                      cvpHalConfigOpticalFlow           pConfig,
+                      cvpHalAdvConfigOpticalFlow        pAdvConfig,
+                      uint32_t                          nFps,
+                      ICvpOpticalFlow_Callbacks         fnCB,
+                      uint64_t                          pSessionUserData) generates
+                     (cvpHalOpticalFlowOutBuffReq       pOutMemReq,
+                      cvpHalHandle                      hOpticalFlow);
+
+//------------------------------------------------------------------------------
+/// @brief
+///    Deinitialize optical flow
+/// @param hOpticalFlow
+///    [Input] optical flow handle.
+///
+/// @retval CVP_SUCCESS
+///    If deinit is successful.
+///
+/// @ingroup cvp_object_detection
+//------------------------------------------------------------------------------
+cvpHalDeInitOpticalFlow(cvpHalHandle hOpticalFlow) generates (cvpHalStatus status);
+
+//------------------------------------------------------------------------------
+/// @brief
+///    Register optical flow image buffer to the optical flow handle.
+/// @details
+///    This API will register the image buffer and prepare any necessary scratch
+///    buffer associated with this image.
+/// @param hOpticalFlow
+///    [Input] optical flow handle.
+/// @param pImage
+///    [Input] Pointer to the image.
+///
+/// @retval CVP_SUCCESS
+///    If registering is successful.
+///
+/// @ingroup cvp_object_detection
+//------------------------------------------------------------------------------
+cvpHalRegisterOpticalFlowImageBuf(cvpHalHandle hOpticalFlow, cvpHalImage pImage) generates (cvpHalStatus status);
+
+//------------------------------------------------------------------------------
+/// @brief
+///    Deregister optical flow image buffer from the optical flow handle.
+/// @details
+///    This API will deregister the image buffer and free any necessary scratch
+///    buffer associated with this image.
+/// @param hOpticalFlow
+///    [Input] optical flow handle.
+/// @param pImage
+///    [Input] Pointer to the image.
+///
+/// @retval CVP_SUCCESS
+///    If deregistering is successful.
+///
+/// @ingroup cvp_object_detection
+//------------------------------------------------------------------------------
+cvpHalDeregisterOpticalFlowImageBuf(cvpHalHandle hOpticalFlow, cvpHalImage pImage) generates (cvpHalStatus status);
+
+//------------------------------------------------------------------------------
+/// @brief
+///    Optical Flow.
+/// @details
+///    Synchronous (blocking) function that will do optical flow.
+/// @param hOpticalFlow
+///    [Input] Handle for the optical flow.
+/// @param pRefImage
+///    [Input] Pointer to the reference image.
+/// @param pCurImage
+///    [Input] Pointer to the current image.
+/// @param bNewRefImg
+///    [Input] Flag to indicate if the reference image is new and has never been passed to
+///    this API previously. Setting it to true will trigger cvp to prepare necessary
+///    preprocessing step in calculating optical flow. Setting it to false will notify
+///    cvp to reuse the previous preprocessing associated with this image.
+/// @param bNewCurImg
+///    [Input] Flag to indicate if the current image is new and has never been passed to
+///    this API previously. Setting it to true will trigger cvp to prepare necessary
+///    preprocessing step in calculating optical flow. Setting it to false will notify
+///    cvp to reuse the previous preprocessing associated with this image.
+/// @param pOutput
+///    [Output] Pointer to the optical flow ouput structure. The required output
+///    to be allocated depends on cvpOpticalFlowDirection chosen at cvpInitOpticalFlow.
+///    If CVP_OPTICALFLOW_UNIDIRECTIONAL, it's only one cvpOpticalFlowOutput structure.
+///    If CVP_OPTICALFLOW_BIDRECTIONAL, pOutput[0] is for the forward optical flow and
+///    pOutput[1] is for the backward optical flow.
+///
+/// @retval CVP_SUCCESS
+///    If the image is successfully pushed to the queue. It will be processed
+///    immediately.
+/// @retval CVP_EBADPARAM
+///    If there is any bad parameter.
+///
+/// @ingroup cvp_object_detection
+//------------------------------------------------------------------------------
+cvpHalOpticalFlow_Sync(cvpHalHandle                  hOpticalFlow,
+                       cvpHalImage                   pRefImage,
+                       cvpHalImage                   pCurImage,
+                       bool                          bNewRefImg,
+                       bool                          bNewCurImg,
+                       cvpHalOpticalFlowOutput       pOFOutput) generates
+                      (cvpHalOpticalFlowOutput       pOutput,
+                       cvpHalStatus status);
+
+//------------------------------------------------------------------------------
+/// @brief
+///    optical flow.
+/// @details
+///    Asynchronous function that will queue the image and return almost
+///    immediately. In the background, it will do optical flow.
+///    Once the output is ready, it will notify the user through the callback
+///    function and user can queue another image using the same buffer.
+/// @param hOpticalFlow
+///    [Input] Handle for the optical flow.
+/// @param pRefImage
+///    [Input] Pointer to the reference image.
+/// @param pCurImage
+///    [Input] Pointer to the current image.
+/// @param bNewRefImg
+///    [Input] Flag to indicate if the reference image is new and has never been passed to
+///    this API previously. Setting it to true will trigger cvp to prepare necessary
+///    preprocessing step in calculating optical flow. Setting it to false will notify
+///    cvp to reuse the previous preprocessing associated with this image.
+/// @param bNewCurImg
+///    [Input] Flag to indicate if the current image is new and has never been passed to
+///    this API previously. Setting it to true will trigger cvp to prepare necessary
+///    preprocessing step in calculating optical flow. Setting it to false will notify
+///    cvp to reuse the previous preprocessing associated with this image.
+/// @param pOutput
+///    [Output] Pointer to the optical flow ouput structure which
+///    corresponds to the callback. The required output
+///    to be allocated depends on cvpOpticalFlowDirection chosen at cvpInitOpticalFlow.
+///    If CVP_OPTICALFLOW_UNIDIRECTIONAL, it's only one cvpOpticalFlowOutput structure.
+///    If CVP_OPTICALFLOW_BIDRECTIONAL, pOutput[0] is for the forward optical flow and
+///    pOutput[1] is for the backward optical flow.
+/// @param pTaskUserData
+///    [Input] User-data which will correspond to the callback.
+///
+/// @retval CVP_SUCCESS
+///    If the image is successfully pushed to the queue. It will be processed
+///    immediately.
+/// @retval CVP_EBADPARAM
+///    If there is any bad parameter.
+/// @retval CVP_EUNSUPPORTED
+///    If the handle is initialized for synchronous API.
+///
+/// @ingroup cvp_object_detection
+//------------------------------------------------------------------------------
+cvpHalOpticalFlow_Async(cvpHalHandle                  hOpticalFlow,
+                        cvpHalImage                   pRefImage,
+                        cvpHalImage                   pCurImage,
+                        bool                          bNewRefImg,
+                        bool                          bNewCurImg,
+                        cvpHalOpticalFlowOutput       pOFOutput,
+                        uint64_t                      pTaskUserData) generates
+                       (cvpHalOpticalFlowOutput       pOutput,
+                        cvpHalStatus                  status);
+
+/*******************************************************************************
+
+                CVP Utility
+
+*******************************************************************************/
+//------------------------------------------------------------------------------
+/// @brief
+///    Query image information based on the color format, width, and height.
+/// @param eFormat
+///    [Input] Enum representing the color format of the image.
+/// @param nWidth
+///    [Input] Width of the Image.
+/// @param nHeight
+///    [Input] Height of the Image.
+/// @param sImageInfo
+///    [Output] structure of the image information.
+///
+/// @retval CVP_SUCCESS
+///    If successfully.
+/// @retval CVP_EBADPARAM
+///    If there is any bad parameter.
+///
+/// @ingroup cvp_utils
+//------------------------------------------------------------------------------
+cvpHalQueryImageInfo(cvpHalColorFormat eFormat, uint32_t nWidth, uint32_t nHeight) generates (cvpHalImageInfo  pImageInfo, cvpHalStatus cvpQueryImageInfoRet);
+
+//------------------------------------------------------------------------------
+/// @brief
+///    Convert UBWC to Linear (OR) Linear to UBWC.
+/// @param imgSrc
+///    Input pointer of source buffer.
+///        NOTE: data should be 4096-bytes aligned.
+///              And, DMA HW processing happens in tiles of 32x8.
+///              So, allocate memory for source buffer with size of 'srcStride x height' in multiples of 32x8 respectively.
+/// @param width
+///    Frame Width of the Image.
+/// @param height
+///    Frame Height of the Image.
+/// @param srcStride
+///    Frame stride of the Image.
+///        NOTE: Frame Stride should be multiple of 32-bytes.
+/// @param srcFormat
+///    Source data Format CVP_COLORFORMAT_GRAY_8BIT or CVP_COLORFORMAT_GRAY_UBWC. Refer to enum 'cvpColorFormat'.
+
+/// @param imgDst
+///    Output pointer of destination buffer.
+///        NOTE: data should be 4096-bytes aligned.
+///              And, DMA HW processing happens in tiles of 32x8.
+///              So, allocate memory for destination buffer with size of 'dstStride x height' in multiples of 32x8 respectively.
+/// @param dstStride
+///    Destination stride. Frame Stride should be multiple of 32-bytes.
+///        NOTE: Currently, make sure dstStride equal to srcStride.
+/// @param dstFormat
+///    Destination data Format CVP_COLORFORMAT_GRAY_8BIT or CVP_COLORFORMAT_GRAY_UBWC. Refer to enum 'cvpColorFormat'.
+
+///
+/// @retval CVP_SUCCESS
+///    If successful.
+/// @retval CVP_EBADPARAM
+///    If there is any bad parameter.
+/// @retval CVP_EFAIL
+///    If failed.
+///
+/// @ingroup cvp_utils
+//------------------------------------------------------------------------------
+
+cvpHalImgConvert(uint64_t indexSrc,
+                 uint32_t width,
+                 uint32_t height,
+                 uint32_t srcStride,
+                 cvpHalColorFormat srcFormat,
+                 uint64_t indexDst,
+                 uint32_t dstStride,
+                 cvpHalColorFormat dstFormat) generates
+                (uint64_t pOutput,
+                 cvpHalStatus status);
+
+//--------------------------------
+//ImageConvert with fd
+//--------------------------------
+cvpHalImgConvert_fd(handle  imgSrc_fd,
+                    uint32_t width,
+                    uint32_t height,
+                    uint32_t srcStride,
+                    uint32_t srcSize,
+                    cvpHalColorFormat srcFormat,
+                    handle  imgDst_fd,
+                    uint32_t dstStride,
+                    uint32_t dstSize,
+                    cvpHalColorFormat dstFormat) generates
+                   (cvpHalStatus status);
+
+/*******************************************************************************
+
+                Depth From Stereo (DFS)
+
+*******************************************************************************/
+
+//------------------------------------------------------------------------------
+/// @brief
+///    Initialize CVP - Depth From Stereo (DFS).
+/// @param hSession
+///    [Input] CVP session handle
+/// @param pConfig
+///    [Input] Pointer to the DFS configuration.
+/// @param pOutMemReq
+///    [Output] Pointer to the output memory requirement.
+/// @param nFps
+///    [Input] CVP Frames per Second.
+/// @param fnCb
+///    [Input] Callback function for the asynchronous API
+///    Setting to NULL will result in initializing for synchronous API
+/// @param pSessionUserData
+///    [Input] A private pointer the user can set with this session, and this
+///    pointer will be provided as parameter to all callback functions
+///    originated from the current session. This could be used to associate a
+///    callback to this session. This can only be set once while initializing
+///    the handle. This value will not/cannot-be changed for life
+///    of a session.
+///
+/// @retval CVP handle for DFS.
+///    If successful.
+/// @retval NULL
+///    If initialization failed.
+///
+/// @ingroup cvp_3D_reconstruction
+//------------------------------------------------------------------------------
+cvpHalInitDfs(cvpHalSession                     hSession,
+              cvpHalConfigDfs                   pConfig,
+              uint32_t                          nFps,
+              ICvpDfs_Callbacks                 fnCB,
+              uint64_t                          pSessionUserData) generates
+             (cvpHalDfsOutBuffReq               pOutMemReq,
+              cvpHalHandle                      hDfs);
+
+//------------------------------------------------------------------------------
+/// @brief
+///    Deinitialize CVP - Depth From Stereo (DFS).
+/// @param hDfs
+///    [Input] CVP handle for DFS.
+///
+/// @retval CVP_SUCCESS
+///    If deinit is successful.
+///
+/// @ingroup cvp_3D_reconstruction
+//------------------------------------------------------------------------------
+cvpHalDeInitDfs(cvpHalHandle hDfs) generates (cvpHalStatus status);
+
+//------------------------------------------------------------------------------
+/// @brief
+///    Depth From Stereo (DFS).
+/// @details
+///    Synchronous (blocking) function that will do DFS.
+/// @param hDfs
+///    [Input] Handle for the DFS.
+/// @param pLeftImage
+///    [Input] Pointer to the left image. The width and height for both left and
+///    right images must be the same.
+/// @param pRightImage
+///    [Input] Pointer to the right image. The width and height for both left and
+///    right images must be the same.
+/// @param nOcclusionThreshold
+///    [Input] Occlusion cost threshold, range [0-100], recommended range 50-75.
+/// @param pOutput
+///    [Output] Pointer to the DFS ouput structure.
+///
+/// @retval CVP_SUCCESS
+///    If the image is successfully pushed to the queue. It will be processed
+///    immediately.
+/// @retval CVP_EBADPARAM
+///    If there is any bad parameter.
+///
+/// @ingroup cvp_3D_reconstruction
+//------------------------------------------------------------------------------
+cvpHalDfs_Sync(cvpHalHandle         hDfs,
+               cvpHalImage          pLeftImage,
+               cvpHalImage          pRightImage,
+			   uint32_t             nOcclusionMinThreshold,
+               uint32_t             nOcclusionThreshold,
+               cvpHalDfsOutput      pInput) generates
+              (cvpHalDfsOutput      pOutput,
+               cvpHalStatus         status);
+
+//------------------------------------------------------------------------------
+/// @brief
+///    Depth From Stereo (DFS).
+/// @details
+///    Asynchronous function that will queue the image and return almost
+///    immediately. In the background, it will do DFS.
+///    Once the output is ready, it will notify the user through the callback
+///    function and user can queue another image using the same buffer.
+/// @param hDfs
+///    [Input] Handle for the DFS.
+/// @param pLeftImage
+///    [Input] Pointer to the left image. The width and height for both left and
+///    right images must be the same.
+/// @param pRightImage
+///    [Input] Pointer to the right image. The width and height for both left and
+///    right images must be the same.
+/// @param nOcclusionThreshold
+///    [Input] Occlusion cost threshold, range [0-100], recommended range 50-75.
+/// @param pOutput
+///    [Output] Pointer to the DFS ouput structure which corresponds to the
+///    callback.
+/// @param pTaskUserData
+///    [Input] Pointer to user-data buffer which corresponds to the callback.
+///
+/// @retval CVP_SUCCESS
+///    If the image is successfully pushed to the queue. It will be processed
+///    immediately.
+/// @retval CVP_EBADPARAM
+///    If there is any bad parameter.
+/// @retval CVP_EUNSUPPORTED
+///    If the handle is initialized for the synchronous API.
+///
+/// @ingroup cvp_3D_reconstruction
+//------------------------------------------------------------------------------
+cvpHalDfs_Async(cvpHalHandle         hDfs,
+                cvpHalImage          pLeftImage,
+                cvpHalImage          pRightImage,
+				uint32_t             nOcclusionMinThreshold,
+                uint32_t             nOcclusionThreshold,
+                cvpHalDfsOutput      pInput,
+                uint64_t             pTaskUserData) generates
+               (cvpHalDfsOutput      pOutput,
+                cvpHalStatus         status);
+
+/*******************************************************************************
+
+                Feature Point Extraction (FPX)
+
+*******************************************************************************/
+//------------------------------------------------------------------------------
+/// @brief
+///    Initialize CVP - Feature Point Extraction (FPX).
+/// @param hSession
+///    [Input] CVP session handle
+/// @param pConfig
+///    [Input] Pointer to the configuration structure
+///    [Output] sZoneConfig (nZoneWidth and nZoneHeight) will be adjusted based
+///    on the valid range.
+/// @param pOutMemReq
+///    [Output] Pointer to the output memory requirement structure
+/// @param nFps
+///    [Input] CVP Frames per Second.
+/// @param fnCb
+///    [Input] Callback function for the asynchronous API
+///    Setting to NULL will result in initializing for synchronous API
+/// @param pSessionUserData
+///    [Input] A private pointer that user can set with this session, and this
+///    pointer will be provided as parameter to all callback functions
+///    originated from the current session. This could be used to associate a
+///    callback to this session. This can only be set once while initializing
+///    the FPX handle. This value will not/cannot-be changed for life
+///    of a session.
+///
+/// @retval CVP handle for Feature Point Extraction (FPX).
+///    If successful.
+/// @retval NULL
+///    If initialization failed.
+///
+/// @ingroup cvp_feature_detection
+//------------------------------------------------------------------------------
+cvpHalInitFeaturePoint(cvpHalSession                 hSession,
+                       cvpHalConfigFpx               pConfig,
+                       uint32_t                      nFps,
+                       ICvpFpx_Callbacks             fnCb,
+                       uint64_t                      pSessionUserData) generates
+                      (cvpHalFeaturePointOutBuffReq  pOutMemReq,
+                       cvpHalHandle                  hFpx);
+
+//------------------------------------------------------------------------------
+/// @brief
+///    Deinitialize CVP - Feature Point Extraction (FPX).
+/// @param hFpx
+///    [Input] CVP handle for Feature Point Extraction (FPX).
+///
+/// @retval CVP_SUCCESS
+///    If deinit is successful.
+///
+/// @ingroup cvp_feature_detection
+//------------------------------------------------------------------------------
+cvpHalDeInitFeaturePoint(cvpHalHandle hFpx) generates (cvpHalStatus status);
+
+//------------------------------------------------------------------------------
+/// @brief
+///    Feature Point Extraction (FPX).
+/// @details
+///    Synchronous (blocking) function that will do Feature Point Extraction (FPX).
+/// @param hFpx
+///    [Input] Handle for the Feature Point Extraction (FPX).
+/// @param pImage
+///    [Input] Pointer to the CVP image.
+/// @param nFpxScoreShift
+///    [Input] FPX score shift value. This value can be calculated by calling
+///    cvpGetFpxScoreShift() using the previous result in
+///    pOutput->nMaxFpxScore. It's suggested to set to 8 for the first call.
+/// @param nThreshold
+///    [Input] Threshold to filter the feature point extraction score.
+/// @param pOutput
+///    [Output] Pointer to the Feature Point Extraction (FPX) output structure.
+///
+/// @retval CVP_SUCCESS
+///    If the image is successfully pushed to the queue. It will be processed
+///    immediately.
+/// @retval CVP_EBADPARAM
+///    If there is any bad parameter.
+///
+/// @ingroup cvp_feature_detection
+//------------------------------------------------------------------------------
+cvpHalFeaturePoint_Sync(cvpHalHandle             hFpx,
+                        cvpHalImage              pImage,
+                        uint32_t                 nFpxScoreShift,
+                        uint32_t                 nThreshold,
+                        cvpHalFeaturePointOutput pInput) generates
+                       (cvpHalFeaturePointOutput pOutput,
+                        cvpHalStatus             status);
+
+//------------------------------------------------------------------------------
+/// @brief
+///    Feature Point Extraction (FPX).
+/// @details
+///    Asynchronous function that will queue the image and returns almost
+///    immediately. In the background, it will do Feature Point Extraction (FPX).
+///    Once the output is ready, it will notify the user through the callback
+///    function and user can queue another image using the same buffer.
+/// @param hFpx
+///    [Input] Handle for the Feature Point Extraction (FPX).
+/// @param pImage
+///    [Input] Pointer to the CVP image.
+/// @param nFpxScoreShift
+///    [Input] FPX score shift value. This value can be calculated by calling
+///    cvpGetFpxScoreShift() using the previous result in
+///    pOutput->nMaxFpxScore. It's suggested to set to 8 for the first call.
+/// @param nThreshold
+///    [Input] Threshold to filter the feature point extraction score.
+/// @param pOutput
+///    [Output] Pointer to the Feature Point Extraction (FPX) ouput structure
+///    which corresponds to the callback.
+/// @param pTaskUserData
+///    [Input] User-data which corresponds to the callback.
+///
+/// @retval CVP_SUCCESS
+///    If the image is successfully pushed to the queue. It will be processed
+///    immediately.
+/// @retval CVP_EBADPARAM
+///    If there is any bad parameter.
+/// @retval CVP_EUNSUPPORTED
+///    If the handle is initialized for the synchronous API.
+///
+/// @ingroup cvp_feature_detection
+//------------------------------------------------------------------------------
+cvpHalFeaturePoint_Async(cvpHalHandle             hFpx,
+                         cvpHalImage              pImage,
+                         uint32_t                 nFpxScoreShift,
+                         uint32_t                 nThreshold,
+                         cvpHalFeaturePointOutput pInput,
+                         uint64_t                 pTaskUserData) generates
+                        (cvpHalFeaturePointOutput pOutput,
+                         cvpHalStatus             status);
+
+//------------------------------------------------------------------------------
+/// @brief
+///    Calculate feature point score shift based on maximum FPX score from
+///    previous frame.
+/// @param nMaxFpxScore
+///    [Input] Previous maximum FPX score.
+///
+/// @retval nFpxScoreShift
+///
+/// @ingroup cvp_feature_detection
+//------------------------------------------------------------------------------
+cvpHalGetFpxScoreShift(uint32_t nMaxFpxScore) generates (uint32_t val);
+
+//------------------------------------------------------------------------------
+/// @brief
+///    Calculate the adjusted zone width and zone height based on CVP Hardware
+///    requirements.
+/// @param pZoneConfig
+///    [Input] / [Output] User to set initial values for ConfigFpxZone.
+///    These will be adjusted based on CVP Hardware requirements.
+/// @param nFrameWidthIn
+///    [Input] Frame Width.
+/// @param nFrameHeightIn
+///    [Input] Frame Height.
+///
+/// @retval CVP_SUCCESS
+///    If the operation is successful
+/// @retval CVP_EBADPARAM
+///    If there is any bad parameter.
+///
+/// @ingroup cvp_feature_detection
+//------------------------------------------------------------------------------
+cvpHalFpxAdjustZoneDim(cvpHalConfigFpxZone   pinZoneConfig,
+                       uint32_t              nFrameWidthIn,
+                       uint32_t              nFrameHeightIn) generates
+                      (cvpHalConfigFpxZone   poutZoneConfig,
+                       cvpHalStatus          status);
+
+/*******************************************************************************
+
+                CVP Detection and Classification
+
+*******************************************************************************/
+
+//------------------------------------------------------------------------------
+/// @brief
+///    Initialize CVP - Feature Point Extraction, Detector, Classifier pipeline.
+/// @param hSession
+///    [Input] CVP session handle
+/// @param pConfig
+///    [Input] Pointer to the configuration.
+/// @param pOutMemReq
+///    [Output] Pointer to the output memory requirement.
+/// @param nFps
+///    [Input] CVP Frames per Second.
+/// @param fnCb
+///    [Input] Callback function for the asynchronous API
+///    Setting to NULL will result in initializing for synchronous API
+/// @param pSessionUserData
+///    [Input] A private pointer the user can set with this session, and this
+///    pointer will be provided as parameter to all callback functions
+///    originated from the current session. This could be used to associate a
+///    callback to this session. This can only be set once while initializing
+///    the handle. This value will not/cannot-be changed for life
+///    of a session.
+///
+/// @retval CVP handle for Detection Classification pipeline
+///    If successful.
+/// @retval NULL
+///    If initialization failed.
+///
+/// @ingroup cvp_feature_detection, cvp_object_detection, cvp_machine_learning
+//------------------------------------------------------------------------------
+cvpHalInitDetectionClassification(cvpHalSession                           hSession,
+                                  cvpHalConfigDetectorClassifier          pConfig,
+                                  uint32_t                                nFps,
+                                  ICvpDnC_Callbacks                       fnCb,
+                                  uint64_t                                pSessionUserData) generates
+                                 (cvpHalDetectionClassificationOutBuffReq pOutMemReq,
+                                  cvpHalHandle                            hDetectorClassifier);
+
+//------------------------------------------------------------------------------
+/// @brief
+///    Deinitialize CVP - Feature Point Extraction, Detector, Classifier pipeline.
+/// @param hDetectorClassifier
+///    [Input] CVP handle for Detection Classification pipeline
+///
+/// @retval CVP_SUCCESS
+///    If deinit is successful.
+///
+/// @ingroup cvp_feature_detection, cvp_object_detection, cvp_machine_learning
+//------------------------------------------------------------------------------
+cvpHalDeInitDetectionClassification(cvpHalHandle hDetectorClassifier) generates (cvpHalStatus status);
+
+//------------------------------------------------------------------------------
+/// @brief
+///    Feature Point Extraction, Detector, Classifier pipeline.
+/// @details
+///    Synchronous (blocking) function that will do Detection Classification pipeline.
+/// @param hDetectorClassifier
+///    [Input] Handle for the Detection Classification pipeline.
+/// @param pImage
+///    [Input] Pointer to the CVP image.
+/// @param nFpxScoreShift
+///    [Input] FPX measure shift value. This value can be calculated by calling
+///    cvpGetFpxMeasureShift() using pOutput->sFpxOut.nMaxFpxMeasure in
+///    previous result. It's suggested to set to 8 for the first call.
+/// @param nFpxThreshold
+///    [Input] Threshold to filter the feature point measurement.
+/// @param pClassifierInfo
+///    [Input] Pointer to the Classifier packet information.
+///    If NULL, Classifier will be skipped.
+/// @param pOutput
+///    [Output] Pointer to the pipeline ouput structure.
+///
+/// @retval CVP_SUCCESS
+///    If the image is successfully pushed to the queue. It will be processed
+///    immediately.
+/// @retval CVP_EBADPARAM
+///    If there is any bad parameter.
+///
+/// @ingroup cvp_feature_detection, cvp_object_detection, cvp_machine_learning
+//------------------------------------------------------------------------------
+cvpHalDetectionClassification_Sync(cvpHalHandle             hDetectorClassifier,
+                                   cvpHalImage              pImage,
+                                   uint32_t                 nFpxScoreShift,
+                                   uint32_t                 nFpxThreshold,
+                                   cvpHalClassifierPacket      pClassifierInfo,
+                                   cvpHalDetectionClassificationOutput pInput) generates
+                                  (cvpHalDetectionClassificationOutput pOutput,
+                                   cvpHalStatus             status);
+
+//------------------------------------------------------------------------------
+/// @brief
+///    Feature Point Extraction, Detector, Classifier pipeline.
+/// @details
+///    Asynchronous function that will queue the image and return almost
+///    immediately. In the background, it will do Detection Classification pipeline.
+///    Once the output is ready, it will notify the user through the callback
+///    function and user can queue another image using the same buffer.
+/// @param hDetectorClassifier
+///    [Input] Handle for the Detection Classification pipeline.
+/// @param pImage
+///    [Input] Pointer to the CVP image.
+/// @param nFpxScoreShift
+///    [Input] FPX measure shift value. This value can be calculated by calling
+///    cvpGetFpxMeasureShift() using pOutput->sFpxOut.nMaxFpxMeasure in
+///    previous result. It's suggested to set to 8 for the first call.
+/// @param nFpxThreshold
+///    [Input] Threshold to filter the feature point measurement.
+/// @param pClassifierInfo
+///    [Input] Pointer to the Classifier packet information.
+///    If NULL, Classifier will be skipped.
+/// @param pOutput
+///    [Output] Pointer to the pipeline ouput structure which corresponds
+///    to the callback.
+/// @param pTaskUserData
+///    [Input] User-data which corresponds to the callback.
+///
+/// @retval CVP_SUCCESS
+///    If the image is successfully pushed to the queue. It will be processed
+///    immediately.
+/// @retval CVP_EBADPARAM
+///    If there is any bad parameter
+/// @retval CVP_EUNSUPPORTED
+///    If the handle is initialized for synchronous API.
+///
+/// @ingroup cvp_feature_detection, cvp_object_detection, cvp_machine_learning
+//------------------------------------------------------------------------------
+cvpHalDetectionClassification_Async(cvpHalHandle             hDetectorClassifier,
+                                    cvpHalImage              pImage,
+                                    uint32_t                 nFpxScoreShift,
+                                    uint32_t                 nFpxThreshold,
+                                    cvpHalClassifierPacket      pClassifierInfo,
+                                    cvpHalDetectionClassificationOutput pInput,
+                                    uint64_t                 pTaskUserData) generates
+                                   (cvpHalDetectionClassificationOutput pOutput,
+                                    cvpHalStatus             status);
+
+/*******************************************************************************
+
+                Normalized Cross Correlation (NCC)
+
+*******************************************************************************/
+
+//------------------------------------------------------------------------------
+/// @brief
+///    Initialize CVP - NCC.
+/// @param hSession
+///    [Input] CVP session handle
+/// @param pConfig
+///    [Input] Pointer to the configuration.
+/// @param pOutMemReq
+///    [Output] Pointer to the output memory requirement.
+/// @param nFps
+///    [Input] CVP Frames per Second.
+/// @param fnCb
+///    [Input] Callback function for the asynchronous API
+///    Setting to NULL will result in initializing for the synchronous API
+/// @param pSessionUserData
+///    [Input] A private pointer that user can set with this session, and this
+///    pointer will be provided as parameter to all callback functions
+///    originated from the current session. This could be used to associate a
+///    callback to this session. This can only be set once while initializing
+///    the handle. This value will not/cannot-be changed for life
+///    of a session.
+///
+/// @retval CVP handle for NCC.
+///    If successful.
+/// @retval NULL
+///    If initialization failed.
+///
+/// @ingroup cvp_object_detection
+//------------------------------------------------------------------------------
+cvpHalInitNcc(cvpHalSession                           hSession,
+              cvpHalConfigNcc                         pConfig,
+              uint32_t                                nFps,
+              ICvpNcc_Callbacks                       fnCb,
+              uint64_t                                pSessionUserData) generates
+             (cvpHalNccOutBuffReq                     pOutMemReq,
+              cvpHalHandle                            hNcc);
+
+//------------------------------------------------------------------------------
+/// @brief
+///    Deinitialize CVP - NCC.
+/// @param hNcc
+///    [Input] CVP handle for NCC.
+///
+/// @retval CVP_SUCCESS
+///    If deinit is successful.
+///
+/// @ingroup cvp_object_detection
+//------------------------------------------------------------------------------
+cvpHalDeInitNcc(cvpHalHandle hNcc) generates (cvpHalStatus status);
+
+//------------------------------------------------------------------------------
+/// @brief
+///    NCC.
+/// @details
+///    Synchronous (blocking) function that will do NCC.
+/// @param hNcc
+///    [Input] Handle for the NCC.
+/// @param pReferenceImage
+///    [Input] Pointer to the reference image. Max resolution is 1920x1080.
+/// @param pTemplateBuffer
+///    [Input] Pointer to 8x8 templates. It's 1 byte per pixel.
+///    Size of buffer is nNccRequests * 8 * 8 bytes.
+/// @param pSearchWindows
+///    [Input] Pointer to the search windows structure.
+///    Size of buffer is nNccRequests * sizeof(cvpNccWindows) bytes.
+///    For each template and each search window, there will be 11*11 searches.
+/// @param nNccRequests
+///    [Input] Number of NCC requests. Max is 750.
+/// @param pOutput
+///    [Output] Pointer to the NCC ouput structure.
+///
+/// @retval CVP_SUCCESS
+///    If the image is successfully pushed to the queue. It will be processed
+///    immediately.
+/// @retval CVP_EBADPARAM
+///    If there is any bad parameter.
+///
+/// @ingroup cvp_object_detection
+//------------------------------------------------------------------------------
+cvpHalNcc_Sync(cvpHalHandle             hNcc,
+               cvpHalImage              pImage,
+               uint64_t                 pIndexTemplateBuffer,
+               vec<cvpHalNccWindows>    pSearchWindows,
+               uint32_t                 nNccRequests,
+               cvpHalNccOutput          pInput) generates
+              (cvpHalNccOutput          pOutput,
+               cvpHalStatus             status);
+
+//------------------------------------------------------------------------------
+/// @brief
+///    NCC.
+/// @details
+///    Asynchronous function that will queue the image and return almost
+///    immediately. In the background, it will do NCC.
+///    Once the output is ready, it will notify the user through the callback
+///    function and user can queue another image using the same buffer.
+/// @param hNcc
+///    [Input] Handle for the NCC.
+/// @param pReferenceImage
+///    [Input] Pointer to the reference image. Max resolution is 1920x1080.
+/// @param pTemplateBuffer
+///    [Input] Pointer to 8x8 templates. It's 1 byte per pixel.
+///    Size of buffer is nNccRequests * 8 * 8 bytes.
+/// @param pSearchWindows
+///    [Input] Pointer to the search windows structure.
+///    Size of buffer is nNccRequests * sizeof(cvpNccWindows) bytes.
+///    For each template and each search window, there will be 11*11 searches.
+/// @param nNccRequests
+///    [Input] Number of NCC requests. Max is 750.
+/// @param pOutput
+///    [Output] Pointer to the NCC ouput structure which  corresponds to
+///    the callback.
+/// @param pTaskUserData
+///    [Input] User-data which corresponds to the callback.
+///
+/// @retval CVP_SUCCESS
+///    If the image is successfully pushed to the queue. It will be processed
+///    immediately.
+/// @retval CVP_EBADPARAM
+///    If there is any bad parameter.
+/// @retval CVP_EUNSUPPORTED
+///    If the handle is initialized for the synchronous API.
+///
+/// @ingroup cvp_object_detection
+//------------------------------------------------------------------------------
+cvpHalNcc_Async(cvpHalHandle             hNcc,
+                cvpHalImage              pImage,
+                uint64_t                 pIndexTemplateBuffer,
+                vec<cvpHalNccWindows>    pSearchWindows,
+                uint32_t                 nNccRequests,
+                cvpHalNccOutput          pInput,
+                uint64_t                 pTaskUserData) generates
+               (cvpHalNccOutput          pOutput,
+                cvpHalStatus             status);
+
+/*******************************************************************************
+
+                CVP Pyramid
+
+*******************************************************************************/
+
+//------------------------------------------------------------------------------
+/// @brief
+///    Initialize pyramid image.
+/// @param hSession
+///    [Input] CVP session handle
+/// @param pConfig
+///    [Input] Pointer to the pyramid image configuration.
+/// @param pOutMemReq
+///    [Output] Pointer to the output memory requirement.
+/// @param nFps
+///    [Input] CVP Frames per Second.
+/// @param fnCb
+///    [Input] Callback function for the asynchronous API
+///    Setting to NULL will result in initializing for synchronous API
+/// @param pSessionUserData
+///    [Input] A private pointer that user can set with this session, and this
+///    pointer will be provided as parameter to all callback functions
+///    originated from the current session. This could be used to associate a
+///    callback to this session. This can only be set once while initializing
+///    the handle. This value will not/cannot-be changed for life
+///    of a session.
+///
+/// @retval CVP_SUCCESS.
+///    If successful.
+/// @retval CVP_ENORES
+///    If there is no enough memory.
+///
+/// @ingroup cvp_image_transform
+//------------------------------------------------------------------------------
+cvpHalInitPyramidImage(cvpHalSession                           hSession,
+                       cvpHalConfigPyramidImage                pConfig,
+                       uint32_t                                nFps,
+                       ICvpPyramidImage_Callbacks              fnCb,
+                       uint64_t                                pSessionUserData) generates
+                      (cvpHalPyramidImageOutBuffReq            pOutMemReq,
+                       cvpHalHandle                            hPyramidImage);
+
+//------------------------------------------------------------------------------
+/// @brief
+///    Deinitialize CVP - Pyramid Image
+/// @param hPyramidImage
+///    [Input] CVP handle for pyramid image.
+///
+/// @retval CVP_SUCCESS
+///    If deinit is successful.
+///
+/// @ingroup cvp_image_transform
+//------------------------------------------------------------------------------
+cvpHalDeInitPyramidImage(cvpHalHandle hPyramidImage) generates (cvpHalStatus status);
+
+//------------------------------------------------------------------------------
+/// @brief
+///    Pyramid Image.
+/// @details
+///    Synchronous (blocking) function that will do pyramid image.
+/// @param hPyramiImage
+///    [Input] Handle for the pyramid image.
+/// @param pImage
+///    [Input] Pointer to the CVP image.
+/// @param pOutput
+///    [Output] Pointer to the Pyramid Image output structure.
+///    There is no memcpy involved for level 0. pOutput->pImage[0] will be set
+///    as pImage.
+///
+/// @retval CVP_SUCCESS
+///    If the image is successfully pushed to the queue. It will be processed
+///    immediately.
+/// @retval CVP_EBADPARAM
+///    If there is any bad parameter.
+///
+/// @ingroup cvp_image_transform
+//------------------------------------------------------------------------------
+cvpHalPyramidImage_Sync(cvpHalHandle             hPyramidImage,
+                        cvpHalImage              pImage,
+                        cvpHalPyramidImage       pInput) generates
+                       (cvpHalPyramidImage       pOutput,
+                        cvpHalStatus             status);
+
+//------------------------------------------------------------------------------
+/// @brief
+///    Pyramid Image
+/// @details
+///    Asynchronous function that will queue the image and return almost
+///    immediately. In the background, it will do pyramid image. Once the output
+///    is ready, it will notify the user through the callback function and
+///    user can queue another image using the same buffer.
+/// @param hPyramiImage
+///    [Input] Handle for the pyramid image.
+/// @param pImage
+///    [Input] Pointer to the CVP image.
+/// @param pOutput
+///    [Output] Pointer to the Pyramid Image output structure.
+///    There is no memcpy involved for level 0. pOutput->pImage[0] will be set
+///    as pImage.
+/// @param pTaskUserData
+///    [Input] User-data which will correspond to the callback.
+///
+/// @retval CVP_SUCCESS
+///    If the image is successfully pushed to the queue. It will be processed
+///    immediately.
+/// @retval CVP_EBADPARAM
+///    If there is any bad parameter.
+/// @retval CVP_EUNSUPPORTED
+///    If the handle is initialized for the synchronous API.
+///
+/// @ingroup cvp_image_transform
+//------------------------------------------------------------------------------
+cvpHalPyramidImage_Async(cvpHalHandle             hPyramidImage,
+                         cvpHalImage              pImage,
+                         cvpHalPyramidImage       pInput,
+                         uint64_t                 pTaskUserData) generates
+                        (cvpHalPyramidImage       pOutput,
+                         cvpHalStatus             status);
+
+//------------------------------------------------------------------------------
+/// @brief
+///    Initialize pyramid image and pyramid Feature Point Extraction.
+/// @param hSession
+///    [Input] CVP session handle
+/// @param pConfig
+///    [Input] Pointer to the pyramid configuration struct
+///    [Output] sZoneConfig (nZoneWidth and nZoneHeight) will be adjusted based
+///    on the valid range.
+/// @param pOutMemReq
+///    [Output] Pointer to the output memory requirement.
+/// @param nFps
+///    [Input] CVP Frames per Second
+/// @param fnCb
+///    [Input] Callback function for the asynchronous API
+///    Setting to NULL will result in initializing for the synchronous API
+/// @param pSessionUserData
+///    [Input] A private pointer that user can set with this session, and this
+///    pointer will be provided as parameter to all callback functions
+///    originated from the current session. This could be used to associate a
+///    callback to this session. This can only be set once while initializing
+///    the handle. This value will not/cannot-be changed for life
+///    of a session.
+///
+/// @retval pyramid handle
+///    If successful.
+/// @retval NULL
+///    If initialization failed.
+///
+/// @ingroup cvp_image_transform, cvp_feature_detection
+//------------------------------------------------------------------------------
+cvpHalInitPyramid(cvpHalSession                           hSession,
+                  cvpHalConfigPyramid                     pConfig,
+                  uint32_t                                nFps,
+                  ICvpPyramid_Callbacks                   fnCb,
+                  uint64_t                                pSessionUserData) generates
+                 (cvpHalPyramidOutBuffReq                 pOutMemReq,
+                  cvpHalHandle                            hPyramid);
+
+//------------------------------------------------------------------------------
+/// @brief
+///    Deinitialize CVP - Pyramid Image and Pyramid Feature Point Extraction
+/// @param hPyramid
+///    [Input] CVP handle for pyramid.
+///
+/// @retval CVP_SUCCESS
+///    If deinit is successful.
+///
+/// @ingroup cvp_image_transform, cvp_feature_detection
+//------------------------------------------------------------------------------
+cvpHalDeInitPyramid(cvpHalHandle hPyramid) generates (cvpHalStatus status);
+
+//------------------------------------------------------------------------------
+/// @brief
+///    Pyramid Image and Pyramid Feature Point Extraction.
+/// @details
+///    Synchronous (blocking) function that will do pyramid image and/or
+///    feature point extraction.
+/// @param hPyramid
+///    [Input] Handle for the pyramid image and pyramid Feature Point Extraction.
+/// @param pImage
+///    [Input] Pointer to the CVP image.
+/// @param nFpxScoreShift
+///    [Input] FPX score shift value. This value can be calculated by calling
+///    cvpGetFpxScoreShift() using the previous result in the pyramid base line of pOutput->sFpx.nMaxFpxScore.
+///    It's suggested to set to 8 for the first call.
+/// @param nFpxThreshold
+///    [Input] Threshold to filter the Feature Point Extraction scores.
+/// @param pOutput
+///    [Output] Pointer to the pyramid ouput structure.
+///    There is no memcpy involved for level 0 image output. pOutput->sImage.pImage[0]
+///    will be set as pImage.
+///
+/// @retval CVP_SUCCESS
+///    If the image is successfully pushed to the queue. It will be processed
+///    immediately.
+/// @retval CVP_EBADPARAM
+///    If there is any bad parameter.
+///
+/// @ingroup cvp_image_transform, cvp_feature_detection
+//------------------------------------------------------------------------------
+cvpHalPyramid_Sync(cvpHalHandle             hPyramid,
+                   cvpHalImage              pImage,
+                   uint32_t                 nFpxScoreShift,
+                   uint32_t                 nFpxThreshold,
+                   cvpHalPyramidOutput      pInput) generates
+                  (cvpHalPyramidOutput      pOutput,
+                   cvpHalStatus             status);
+
+//------------------------------------------------------------------------------
+/// @brief
+///    Pyramid Image and Pyramid Feature Point Extraction.
+/// @details
+///    Asynchronous function that will queue the image and return almost
+///    immediately. In the background, it will do pyramid image and/or pyramid
+///    fpx. Once the output is ready, it will notify the user through the
+///    callback function and user can queue another image using the same buffer.
+/// @param hPyramid
+///    [Input] Handle for the pyramid image and pyramid Feature Point Extraction.
+/// @param pImage
+///    [Input] Pointer to the CVP image.
+/// @param nFpxScoreShift
+///    [Input] FPX score shift value. This value can be calculated by calling
+///    cvpGetFpxScoreShift() using the previous result in the pyramid base line of
+///    pOutput->sFpx.nMaxFpxScore.
+///    It's suggested to set to 8 for the first call.
+/// @param nFpxThreshold
+///    [Input] Threshold to filter the Feature Point Extraction scores.
+/// @param pOutput
+///    [Output] Pointer to the pyramid ouput structure.
+///    There is no memcpy involved for level 0 image output. pOutput->sImage.pImage[0]
+///    will be set as pImage.
+/// @param pTaskUserData
+///    [Input] User-data which corresponds to the callback.
+///
+/// @retval CVP_SUCCESS
+///    If the image is successfully pushed to the queue. It will be processed
+///    immediately.
+/// @retval CVP_EBADPARAM
+///    If there is any bad parameter.
+/// @retval CVP_EUNSUPPORTED
+///    If the handle is initialized for the synchronous API.
+///
+/// @ingroup cvp_image_transform, cvp_feature_detection
+//------------------------------------------------------------------------------
+cvpHalPyramid_Async(cvpHalHandle             hPyramid,
+                    cvpHalImage              pImage,
+                    uint32_t                 nFpxScoreShift,
+                    uint32_t                 nFpxThreshold,
+                    cvpHalPyramidOutput      pInput,
+                    uint64_t                 pTaskUserData) generates
+                   (cvpHalPyramidOutput      pOutput,
+                    cvpHalStatus             status);
+
+/*******************************************************************************
+
+                CVP Scale Down
+
+*******************************************************************************/
+
+//------------------------------------------------------------------------------
+/// @brief
+///    Initialize CVP - Scaledown.
+/// @param hSession
+///    [Input] CVP session handle
+/// @param nFps
+///    [Input] CVP Frames per Second.
+/// @param fnCb
+///    [Input] Callback function for the asynchronous API
+///    Setting to NULL will result in initializing for synchronous API
+/// @param pSessionUserData
+///    [Input] A private pointer that user can set with this session, and this
+///    pointer will be provided as parameter to all callback functions
+///    originated from the current session. This could be used to associate a
+///    callback to this session. This can only be set once while initializing
+///    the handle. This value will not/cannot-be changed for life
+///    of a session.
+///
+/// @retval CVP handle for Scaledown
+///    If successful.
+/// @retval NULL
+///    If initialization failed.
+///
+/// @ingroup cvp_image_transform
+//------------------------------------------------------------------------------
+cvpHalInitScaledown(cvpHalSession                           hSession,
+                    uint32_t                                nFps,
+                    ICvpScaledown_Callbacks                 fnCb,
+                    uint64_t                                pSessionUserData) generates
+                   (cvpHalHandle                            hScaledown);
+
+//------------------------------------------------------------------------------
+/// @brief
+///    Deinitialize CVP - Scaledown.
+/// @param hScaledown
+///    [Input] CVP handle for Scaledown
+///
+/// @retval CVP_SUCCESS
+///    If deinit is successful.
+///
+/// @ingroup cvp_image_transform
+//------------------------------------------------------------------------------
+cvpHalDeInitScaledown(cvpHalHandle hScaledown) generates (cvpHalStatus status);
+
+//------------------------------------------------------------------------------
+/// @brief
+///    Scaledown
+/// @details
+///    Synchronous (blocking) function that will do image downscaling
+/// @param hScaledown
+///    [Input] Handle for the downscaling.
+/// @param nScaleDownInterpolation
+///    [Input] This parameter controls the scaler interpolation strength.
+///    Lower values result in sharper output images. Valid range is 0 to 3.
+/// @param pSrc
+///    [Input] Pointer to the CVP input image.
+/// @param pDst
+///    [Output] Pointer to the CVP output image. The output width, height,
+///    and stride are based on this structure.
+///
+/// @retval CVP_SUCCESS
+///    If the image is successfully pushed to the queue. It will be processed
+///    immediately.
+/// @retval CVP_EBADPARAM
+///    If there is any bad parameter.
+///
+/// @ingroup cvp_image_transform
+//------------------------------------------------------------------------------
+cvpHalScaledown_Sync(cvpHalHandle             hScaledown,
+                     uint32_t                 nScaleDownInterpolation,
+                     cvpHalImage              pSrc,
+                     cvpHalImage              pDst) generates
+                    (cvpHalImage              pOutput,
+                     cvpHalStatus             status);
+
+//------------------------------------------------------------------------------
+/// @brief
+///    Scaledown
+/// @details
+///    Asynchronous function that will queue the image and returns almost
+///    immediately. In the background, it will do downscaling.
+///    Once the output is ready, it will notify the user through the callback
+///    function and user can queue another image using the same buffer.
+/// @param hScaledown
+///    [Input] Handle for the downscaling.
+/// @param nScaleDownInterpolation
+///    [Input] This parameter controls the scaler interpolation strength.
+///    Lower values result in sharper output images. Valid range is 0 to 3.
+/// @param pSrc
+///    [Input] Pointer to the CVP input image.
+/// @param pDst
+///    [Output] Pointer to the CVP output image. The output width, height,
+///    and stride are based on this structure.
+/// @param pTaskUserData
+///    [Input] User-data which corresponds to the callback.
+///
+/// @retval CVP_SUCCESS
+///    If the image is successfully pushed to the queue. It will be processed
+///    immediately.
+/// @retval CVP_EBADPARAM
+///    If there is any bad parameter.
+/// @retval CVP_EUNSUPPORTED
+///    If the handle is initialized for the synchronous API.
+///
+/// @ingroup cvp_image_transform
+//------------------------------------------------------------------------------
+cvpHalScaledown_Async(cvpHalHandle             hScaledown,
+                      uint32_t                 nScaleDownInterpolation,
+                      cvpHalImage              pSrc,
+                      cvpHalImage              pDst,
+                      uint64_t                 pTaskUserData) generates
+                     (cvpHalImage              pOutput,
+                      cvpHalStatus             status);
+};

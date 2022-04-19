@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+Copyright (c) 2019 Qualcomm Technologies, Inc.
+All Rights Reserved.
+Confidential and Proprietary - Qualcomm Technologies, Inc.
+-->
+<voice-interaction-service xmlns:android="http://schemas.android.com/apk/res/android"
+    android:sessionService="com.qualcomm.qti.sva.service.WakeupService"
+    android:recognitionService="com.qualcomm.qti.sva.service.WakeupService"
+    android:supportsAssist="true"
+    android:supportsLocalInteraction="true" />

@@ -1,0 +1,1 @@
+../../../proprietary/cne/cne-test_vendor_product.mk

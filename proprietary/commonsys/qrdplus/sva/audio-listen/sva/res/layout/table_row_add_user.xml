@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!--
+Copyright (c) 2018 Qualcomm Technologies, Inc.
+All Rights Reserved.
+Confidential and Proprietary - Qualcomm Technologies, Inc.
+ -->
+
+<TableRow xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="50dp">
+
+    <LinearLayout
+        android:id="@+id/layout_add_user"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/setting_item_height"
+        android:layout_marginStart="@dimen/setting_item_left_margin"
+        android:clickable="true"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:id="@+id/iv_add_user"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_gravity="center_vertical"
+            android:background="@android:color/transparent"
+            android:src="@drawable/btn_add" />
+
+        <TextView
+            android:id="@+id/tv_add_user"
+            style="@style/VoiceWakeup.Layout.Settings.Name2"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginStart="10dp"
+            android:gravity="center_vertical"
+            android:text="@string/add_user" />
+
+    </LinearLayout>
+
+</TableRow>

@@ -1,0 +1,322 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!--
+Copyright (c) 2018 Qualcomm Technologies, Inc.
+All Rights Reserved.
+Confidential and Proprietary - Qualcomm Technologies, Inc.
+ -->
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <!-- CONTENTS are packed by scroll view -->
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            style="@style/VoiceWakeup.Layout.Section"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <!-- CONFIDENCE LEVELS -->
+            <TextView
+                style="@style/VoiceWakeup.Layout.Settings.Title"
+                android:text="@string/confidence_levels" />
+
+            <View style="@style/VoiceWakeup.Layout.SeparatorH.bold" />
+
+            <!-- 1st STAGE KEY PHRASE CONFIDENCE THRESHOLD -->
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    style="@style/VoiceWakeup.Layout.Settings.Name"
+                    android:layout_width="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:layout_marginTop="10dp"
+                    android:text="@string/first_stage_keyphrase" />
+
+                <EditText
+                    android:id="@+id/et_first_stage_keyphrase"
+                    android:layout_width="55dp"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:gravity="center_vertical|right"
+                    android:inputType="numberSigned" />
+            </RelativeLayout>
+
+            <!-- CNN KEY PHRASE CONFIDENCE THRESHOLD -->
+            <RelativeLayout
+                android:id="@+id/layout_second_stage_keyphrase_confidence_level"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    style="@style/VoiceWakeup.Layout.Settings.Name"
+                    android:layout_width="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:layout_marginTop="10dp"
+                    android:text="@string/second_stage_keyphrase" />
+
+                <EditText
+                    android:id="@+id/et_second_stage_keyphrase"
+                    android:layout_width="55dp"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:gravity="center_vertical|right"
+                    android:inputType="numberSigned" />
+            </RelativeLayout>
+
+            <!-- GMM USER CONFIDENCE THRESHOLD -->
+            <RelativeLayout
+                android:id="@+id/layout_first_stage_user_confidence_level"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    style="@style/VoiceWakeup.Layout.Settings.Name"
+                    android:layout_marginTop="10dp"
+                    android:text="@string/first_stage_user" />
+
+                <EditText
+                    android:id="@+id/et_first_stage_user"
+                    android:layout_width="55dp"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:gravity="center_vertical|right"
+                    android:inputType="numberSigned" />
+            </RelativeLayout>
+
+            <!-- VOP USER CONFIDENCE THRESHOLD -->
+            <RelativeLayout
+                android:id="@+id/layout_second_stage_user_confidence_level"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    style="@style/VoiceWakeup.Layout.Settings.Name"
+                    android:layout_marginTop="10dp"
+                    android:text="@string/second_stage_user" />
+
+                <EditText
+                    android:id="@+id/et_second_stage_user"
+                    android:layout_width="55dp"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:gravity="center_vertical|right"
+                    android:inputType="numberSigned" />
+            </RelativeLayout>
+
+            <!-- Session OPTIONS -->
+            <TextView
+                style="@style/VoiceWakeup.Layout.Settings.Title"
+                android:layout_marginTop="20dp"
+                android:text="@string/session_options" />
+
+            <View style="@style/VoiceWakeup.Layout.SeparatorH.bold" />
+
+            <!-- set user verification section -->
+            <RelativeLayout
+                android:id="@+id/layout_user_verification"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/setting_item_height"
+                android:clickable="true">
+
+                <TextView
+                    style="@style/VoiceWakeup.Layout.Settings.Name2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:layout_centerVertical="true"
+                    android:text="@string/user_verification" />
+
+                <Switch
+                    android:id="@+id/switch_user_verification"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:clickable="false" />
+            </RelativeLayout>
+
+            <!-- Separator -->
+            <View
+                android:id="@+id/separator_under_user_verification"
+                style="@style/VoiceWakeup.Layout.SeparatorH" />
+
+            <!-- Voice Requests  -->
+            <RelativeLayout
+                android:id="@+id/layout_voice_requests"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:background="@drawable/selector_list_item"
+                android:clickable="true">
+
+                <TextView
+                    style="@style/VoiceWakeup.Layout.Settings.Name2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:layout_centerVertical="true"
+                    android:text="@string/voice_requests_non_comma" />
+
+                <Switch
+                    android:id="@+id/switch_voice_requests"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:clickable="false" />
+            </RelativeLayout>
+
+            <View style="@style/VoiceWakeup.Layout.SeparatorH" />
+
+            <!-- VOICE REQUEST LENGTH -->
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    style="@style/VoiceWakeup.Layout.Settings.Name"
+                    android:layout_width="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:layout_centerVertical="true"
+                    android:text="@string/voice_requests_len" />
+
+                <Spinner
+                    android:id="@+id/spinner_voice_requests_len"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_gravity="center"
+                    android:background="@android:drawable/btn_default"
+                    android:gravity="end"
+                    android:spinnerMode="dropdown" />
+
+            </RelativeLayout>
+
+            <View style="@style/VoiceWakeup.Layout.SeparatorH" />
+
+            <!-- Opaque data transfer -->
+            <RelativeLayout
+                android:id="@+id/layout_opaque_data_transfer"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:background="@drawable/selector_list_item"
+                android:clickable="true">
+
+                <TextView
+                    style="@style/VoiceWakeup.Layout.Settings.Name2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:layout_centerVertical="true"
+                    android:text="@string/opaque_data_transfer" />
+
+                <Switch
+                    android:id="@+id/switch_opaque_data_transfer"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:clickable="false" />
+            </RelativeLayout>
+
+            <View style="@style/VoiceWakeup.Layout.SeparatorH" />
+
+            <!-- hist buffer time -->
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:background="@drawable/selector_list_item"
+                android:clickable="true">
+
+                <TextView
+                    style="@style/VoiceWakeup.Layout.Settings.Name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:layout_centerVertical="true"
+                    android:text="@string/hist_buff_time" />
+
+                <EditText
+                    android:id="@+id/et_hist_buffer_time"
+                    android:layout_width="55dp"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:gravity="center_vertical|right"
+                    android:inputType="number"
+                    android:text="@string/default_histBuffTime" />
+            </RelativeLayout>
+
+            <View
+                android:id="@+id/separator_below_hist_buffer_time"
+                style="@style/VoiceWakeup.Layout.SeparatorH" />
+
+            <!-- pre-roll duration -->
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:background="@drawable/selector_list_item"
+                android:clickable="true">
+
+                <TextView
+                    style="@style/VoiceWakeup.Layout.Settings.Name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:layout_centerVertical="true"
+                    android:text="@string/pre_roll_duration" />
+
+                <EditText
+                    android:id="@+id/et_pre_roll_duration"
+                    android:layout_width="55dp"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:inputType="number"
+                    android:gravity="center_vertical|right"
+                    android:text="@string/default_preRollDuration" />
+            </RelativeLayout>
+
+            <View
+                android:id="@+id/separator_below_pre_roll_duration"
+                style="@style/VoiceWakeup.Layout.SeparatorH" />
+
+            <!-- Sound Model Operations -->
+            <LinearLayout
+                android:id="@+id/layout_sm_operations"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    style="@style/VoiceWakeup.Layout.Settings.Title"
+                    android:layout_marginTop="20dp"
+                    android:text="@string/sound_model_operations" />
+
+                <View style="@style/VoiceWakeup.Layout.SeparatorH.bold" />
+
+            </LinearLayout>
+
+            <!-- Sound model users & keyphrase -->
+            <LinearLayout
+                android:id="@+id/layout_sm_info"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical" />
+
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

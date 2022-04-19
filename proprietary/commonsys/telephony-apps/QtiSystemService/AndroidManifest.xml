@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Copyright (c) 2017, 2019 Qualcomm Technologies, Inc.
+  All Rights Reserved.
+  Confidential and Proprietary - Qualcomm Technologies, Inc.
+-->
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.qualcomm.qti.qtisystemservice"
+    coreApp="true"
+    android:sharedUserId="android.uid.system">
+
+    <uses-sdk android:minSdkVersion="28"
+        android:targetSdkVersion="28"/>
+
+    <permission
+        android:name="android.permission.QTI_SYSTEM_SERVICE"
+        android:protectionLevel="signature|system"/>
+
+    <application
+        android:process="system">
+
+        <!--
+            "neverallow system_server data_file_type:file no_x_file_perms" is applied,
+             so simplifying implementation as running in Phone.
+        -->
+        <service android:name=".SystemService"
+            android:process="com.android.phone"
+            android:permission="android.permission.QTI_SYSTEM_SERVICE"
+            android:exported="true"/>
+
+        <service android:name=".TelecomCallService"
+            android:permission="android.permission.QTI_SYSTEM_SERVICE"
+            android:exported="true"/>
+
+    </application>
+
+</manifest>

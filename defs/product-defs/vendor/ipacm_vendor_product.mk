@@ -1,0 +1,1 @@
+../../../opensource/data-ipa-cfg-mgr/ipacm_vendor_product.mk

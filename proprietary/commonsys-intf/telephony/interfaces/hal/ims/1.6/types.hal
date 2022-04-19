@@ -1,0 +1,129 @@
+/*
+ * Copyright (c) 2019 Qualcomm Technologies, Inc.
+ * All Rights Reserved.
+ * Confidential and Proprietary - Qualcomm Technologies, Inc.
+ *
+ */
+
+package vendor.qti.hardware.radio.ims@1.6;
+
+import @1.0::CallDomain;
+import @1.0::CallModifyFailCause;
+import @1.0::CallState;
+import @1.0::CallType;
+import @1.0::ConfigFailureCause;
+import @1.0::Extra;
+import @1.0::HandoverType;
+import @1.0::RadioTechType;
+import @1.0::RegState;
+import @1.0::RttMode;
+import @1.0::ServiceType;
+import @1.0::StatusType;
+import @1.3::VerstatInfo;
+import @1.4::MultiIdentityLineInfoHal;
+import @1.5::CallFailCause;
+import @1.5::CallFailCauseResponse;
+import @1.5::ConfigItem;
+import @1.5::TirMode;
+
+enum ConfigItem : @1.5::ConfigItem {
+    CONFIG_ITEM_SET_AUTO_REJECT_CALL_MODE_CONFIG,
+};
+
+struct ConfigInfo {
+    ConfigItem item;
+    bool hasBoolValue;
+    bool boolValue;
+    uint32_t intValue;
+    string stringValue;
+    ConfigFailureCause errorCause;
+};
+
+enum RadioTechType : @1.0::RadioTechType {
+    RADIO_TECH_NR5G,
+};
+
+struct RegistrationInfo {
+    RegState state;
+    uint32_t errorCode;
+    string errorMessage;
+    RadioTechType radioTech;
+    string pAssociatedUris;
+};
+
+struct StatusForAccessTech {
+    RadioTechType networkMode;
+    StatusType status;
+    uint32_t restrictCause;
+    bool hasRegistration;
+    RegistrationInfo registration;
+};
+
+struct ServiceStatusInfo {
+    bool hasIsValid;
+    bool isValid;
+    ServiceType type;
+    CallType callType;
+    StatusType status;
+    vec<uint8_t> userdata;
+    uint32_t restrictCause;
+    vec<StatusForAccessTech> accTechStatus;
+    RttMode rttMode;
+};
+
+struct CallDetails {
+    CallType callType;
+    CallDomain callDomain;
+    uint32_t extrasLength;
+    vec<string> extras;
+    vec<ServiceStatusInfo> localAbility;
+    vec<ServiceStatusInfo> peerAbility;
+    uint32_t callSubstate;
+    uint32_t mediaId;
+    uint32_t causeCode;
+    RttMode rttMode;
+    string sipAlternateUri;
+};
+
+struct CallInfo {
+    CallState state;
+    uint32_t index;
+    uint32_t toa;
+    bool hasIsMpty;
+    bool isMpty;
+    bool hasIsMT;
+    bool isMT;
+    MultiIdentityLineInfoHal mtMultiLineInfo;
+    uint32_t als;
+    bool hasIsVoice;
+    bool isVoice;
+    bool hasIsVoicePrivacy;
+    bool isVoicePrivacy;
+    string number;
+    uint32_t numberPresentation;
+    string name;
+    uint32_t namePresentation;
+    bool hasCallDetails;
+    CallDetails callDetails;
+    bool hasFailCause;
+    CallFailCauseResponse failCause;
+    bool hasIsEncrypted;
+    bool isEncrypted;
+    bool hasIsCalledPartyRinging;
+    bool isCalledPartyRinging;
+    string historyInfo;
+    bool hasIsVideoConfSupported;
+    bool isVideoConfSupported;
+    VerstatInfo verstatInfo;
+    TirMode tirMode;
+};
+
+struct HandoverInfo {
+    HandoverType type;
+    RadioTechType srcTech;
+    RadioTechType targetTech;
+    bool hasHoExtra;
+    Extra hoExtra;
+    string errorCode;
+    string errorMessage;
+};

@@ -1,0 +1,16 @@
+/*
+ * Copyright (c) 2018 Qualcomm Technologies, Inc.
+ * All Rights Reserved.
+ * Confidential and Proprietary - Qualcomm Technologies, Inc.
+ */
+
+package vendor.qti.hardware.data.connection@1.0;
+
+interface IDataConnectionIndication {
+    /**
+     * Indicates that the bearer allocation changed.
+     *
+     * @param bearersList Updated list of bearers for all calls
+     */
+    oneway onBearerAllocationUpdate(vec<AllocatedBearers> bearersList);
+};

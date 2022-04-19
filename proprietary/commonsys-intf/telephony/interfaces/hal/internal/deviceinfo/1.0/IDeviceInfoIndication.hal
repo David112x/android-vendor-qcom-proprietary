@@ -1,0 +1,36 @@
+/*
+ * Copyright (c) 2019 Qualcomm Technologies, Inc.
+ * All Rights Reserved.
+ * Confidential and Proprietary - Qualcomm Technologies, Inc.
+ *
+ */
+
+package vendor.qti.hardware.radio.internal.deviceinfo@1.0;
+
+interface IDeviceInfoIndication {
+
+    /**
+     * Indicates that modem has enabled/disabled reporting of device power
+     * info. The indication also gives us the battery capacity threshold
+     * values array containing values in percentage (0 – 100)
+     *
+     * @param reportDevicePowerInfo - true/false to indicate APPS should start/stop reporting device
+     * power info.
+     *
+     * @param thresholdArray - Array containing threshold values defined by the consumer requesting
+     * such data. This will be an array containing discrete values (0-100) that define the range
+     * for each threshold. e.g, we could get 15 30 60 80 which would map to 5 indices - 0 (0-15),
+     * 1 (16-30), 2(31-60), 3(61-80), 4(81-100). See DevicePowerInfo#batteryLevelIndex
+     */
+    onPowerInfoReportingChanged(bool reportDevicePowerInfo, vec<uint32_t> thresholdArray);
+
+    /**
+     * Indication from RIL that indicates that modem has enabled/disabled reporting of device
+     * interactive state info
+     *
+     * @param reportDeviceInteractiveInfo - true/false to indicate APPS should start/stop reporting
+     * device interactive state info.
+     */
+    onDeviceInfoReportingChanged(bool reportDeviceInteractiveInfo);
+};
+

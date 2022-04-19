@@ -1,0 +1,19 @@
+/*
+ * Copyright (c) 2018 Qualcomm Technologies, Inc.
+ * All Rights Reserved.
+ * Confidential and Proprietary - Qualcomm Technologies, Inc.
+ */
+
+package vendor.qti.hardware.capabilityconfigstore@1.0;
+import CommandResult;
+import Result;
+
+interface ICapabilityConfigStore {
+
+    /*
+     * query the value via area  and key which is any string
+     * @param area, key
+     * @return value: return value as string, return type SUCESS if value is returned else NOT_FOUND
+     */
+    getConfig(string area, string key) generates (CommandResult result);
+};

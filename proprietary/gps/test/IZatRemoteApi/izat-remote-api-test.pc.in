@@ -1,0 +1,10 @@
+prefix=@prefix@
+exec_prefix=@exec_prefix@
+libdir=@libdir@
+includedir=@includedir@
+
+Name: Izat remote api test
+Description: QTI GPS Test app for izat remote api
+Version: @VERSION
+Libs:
+Cflags:

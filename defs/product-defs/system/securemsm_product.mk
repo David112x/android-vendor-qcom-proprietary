@@ -1,0 +1,1 @@
+../../../proprietary/commonsys/securemsm/securemsm_system_product.mk

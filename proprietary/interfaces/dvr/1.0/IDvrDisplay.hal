@@ -1,0 +1,38 @@
+/*
+ * Copyright (c) 2019-2020 Qualcomm Technologies, Inc.
+ * All Rights Reserved.
+ * Confidential and Proprietary - Qualcomm Technologies, Inc.
+ *
+ */
+
+package vendor.qti.dvr@1.0;
+
+import types;
+import IDvrDisplayStreamCB;
+
+/**
+ * Represents a DVR preview interface.
+ */
+interface IDvrDisplay {
+    /**
+     * Returns display resolution and format info.
+     *
+     * Returns custome structure containing display info
+     */
+    getDisplayInfo() generates (int32_t error, DvrDisplayInfo info);
+
+    /**
+     * Registers callback object on the HIDL service.
+     *
+     * Returns the Error status.
+     */
+    registerCallback(IDvrDisplayStreamCB streamObj) generates (int32_t error);
+
+    /**
+     * Registers display buffers on HIDL service.
+     *
+     * Returns the Error status.
+     */
+    setDisplayBuffers(handle hidl) generates (int32_t error);
+
+};

@@ -1,0 +1,54 @@
+#===============================================================================
+#
+# QWES Mink Lib
+#
+# Copyright (c) 2018-2019 Qualcomm Technologies, Inc.
+# All Rights Reserved.
+# Confidential and Proprietary - Qualcomm Technologies, Inc.
+#
+#-------------------------------------------------------------------------------
+#
+#  $Header: //components/dev/core.tx/4.0/rwaltman.core.tx.4.0.tls_kw_promoted_65075/securemsm/ship/mink/build/mink.api#1 $
+#  $DateTime: 2018/11/21 13:10:22 $
+#  $Author: rwaltman $
+#  $Change: 17677894 $
+#                      EDIT HISTORY FOR FILE
+#
+#  This section contains comments describing changes made to the module.
+#  Notice that changes are listed in reverse chronological order.
+#
+#   when        who     what, where, why
+#   --------    -----   --------------------------------------------------------
+#   09/21/18    ask     Update for LE/TX re-org
+#===============================================================================
+# Import SCons Environment
+Import('env')
+env = env.Clone()
+
+env.PublishPublicApi('MINK', [
+    "${INC_ROOT}/core/securemsm/ship/mink/inc/interface",
+    "${INC_ROOT}/core/securemsm/ship/mink/inc/uid",
+])
+
+# Ship only supported files
+ALL_MINK_FILES = env.FindFiles(
+  ['*'],
+  '../')
+
+MY_MINK_SCONS_FILES = env.FindFiles(
+  ['mink.api'],
+  '../build/')
+
+MY_MINK_INC_FILES = env.FindFiles(
+  ['IAppController.h', 'IAppLoader.h', 'IKeymasterApp.h', 'object.h'],
+  '../inc/interface/')
+
+MY_MINK_UID_FILES = env.FindFiles(
+  ['CAppLoader.h', 'CKeymasterApp.h'],
+  '../inc/uid/')
+
+PACK_MINK_FILES = list(set(ALL_MINK_FILES) - set(MY_MINK_SCONS_FILES) - set(MY_MINK_INC_FILES) - set(MY_MINK_UID_FILES))
+env.CleanPack(['CORE', 'CORE_APPS'], PACK_MINK_FILES)
+
+# Search for additional APIs
+env.LoadAPIUnits()

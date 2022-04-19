@@ -1,0 +1,38 @@
+/*!
+ *
+ * Copyright (c) 2018 Qualcomm Technologies, Inc.
+ * All Rights Reserved.
+ * Confidential and Proprietary - Qualcomm Technologies, Inc.
+ *
+ */
+package vendor.qti.hardware.cvp@1.0;
+
+interface ICvpDfs_Callbacks{
+//------------------------------------------------------------------------------
+/// @brief
+///    The DFS has been processed by the CVP system, and the
+///    output is ready to be consumed. This callback is used to notify the
+///    application. The application sends the image using the
+///    cvpDfs_Async call.
+///
+/// @param eStatus
+///    CVP status for the current process.
+/// @param pOutput
+///    Pointer to the DFS ouput structure.
+/// @param hDfs
+///    Handle for the DFS that was passed in the cvpDfs_Async function.
+/// @param pSessionUserData
+///    User-data that was set in the cvpInitDfs structure.
+/// @param pTaskUserData
+///    User-data that was passed in the cvpDfs_Async function
+///    which corresponds to this callback.
+///
+/// @ingroup cvp_3D_reconstruction
+//------------------------------------------------------------------------------
+oneway cvpHalDfsCb (cvpHalStatus             eStatus,
+                    cvpHalDfsOutput          pOutput,
+                    cvpHalHandle             hDfs,
+                    uint64_t                 pSessionUserData,
+                    uint64_t                 pTaskUserData);
+
+};

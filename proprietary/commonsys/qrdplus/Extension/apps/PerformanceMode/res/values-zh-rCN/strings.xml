@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    Copyright (c) 2019 Qualcomm Technologies, Inc.
+    All Rights Reserved.
+    Confidential and Proprietary - Qualcomm Technologies, Inc.
+-->
+
+<resources>
+    <string name="app_name">"性能模式"</string>
+    <string name="turn_on_now">"立即开启"</string>
+    <string name="turn_off_now">"立即关闭"</string>
+    <string name="help_resource">"该模式下会提升系统性能但可能会带来部分额外的功耗。"</string>
+
+    <string name="turn_on_fail">"开启性能模式失败!"</string>
+    <string name="turn_off_fail">"关闭性能模式失败!"</string>
+    <string name="turn_off_invalid_handle">"参数无效!"</string>
+</resources>

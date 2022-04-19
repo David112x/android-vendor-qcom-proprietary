@@ -1,0 +1,36 @@
+/*
+ * Copyright (c) 2018 Qualcomm Technologies, Inc.
+ * All Rights Reserved.
+ * Confidential and Proprietary - Qualcomm Technologies, Inc.
+ *
+ */
+
+package vendor.qti.ims.callinfo@1.0;
+
+import IIncomingCallListener;
+
+
+interface IService {
+
+    /**
+     * IMS Call Info Service Status codes
+     */
+    enum StatusCode : uint32_t {
+        OK            = 0,
+        FAIL          = 1,
+        NOT_SUPPORTED = 2
+    };
+
+    /**
+     * Registers a listener for incoming call supplemental information.
+     * Client must delete this instance when it no longer wants to listen.
+     *
+     * @param incomingCallListener  instance of listener.
+     *
+     * @return status OK on success else FAIL
+     *
+     */
+    registerForIncomingCallData(IIncomingCallListener incomingCallListener)
+                                generates (StatusCode status);
+
+};

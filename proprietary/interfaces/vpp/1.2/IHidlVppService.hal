@@ -1,0 +1,19 @@
+/*!
+ * @file IHidlVppService.hal
+ *
+ * @cr
+ * Copyright (c) 2018 Qualcomm Technologies, Inc.
+ * All Rights Reserved.
+ * Confidential and Proprietary - Qualcomm Technologies, Inc.
+ *
+ * @services Defines the external interface for VPP library.
+ */
+
+package vendor.qti.hardware.vpp@1.2;
+
+import @1.1::IHidlVppService;
+import @1.2::IHidlVpp;
+
+interface IHidlVppService extends @1.1::IHidlVppService {
+    getNewVppSession_1_2(uint32_t flags) generates (IHidlVpp vppInstance);
+};

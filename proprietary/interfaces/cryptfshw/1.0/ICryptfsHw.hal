@@ -1,0 +1,45 @@
+/*
+ * Copyright (c) 2019 Qualcomm Technologies, Inc.
+ * All Rights Reserved.
+ * Confidential and Proprietary - Qualcomm Technologies, Inc.
+ */
+
+package vendor.qti.hardware.cryptfshw@1.0;
+
+/** Cryptfs hal interface */
+interface ICryptfsHw {
+
+    /**
+     * Set encryption key into crypto engine
+     *
+     * @param password token to tie encryption key
+     * @param mode data encryption mode to be used
+     * @return ret encryption key index if call succeeds or failure value if failed
+     */
+    setKey(string password, string mode) generates(int32_t ret);
+
+    /**
+     * Set inline crypto engine parameter for data encryption/decryption
+     *
+     * @param flag start/stop data encryption/decryption
+     * @return ret result of call
+     */
+    setIceParam(uint32_t flag) generates(int32_t ret);
+
+    /**
+     * Tie the crypto engine encryption key with new token
+     *
+     * @param oldPassword old token
+     * @param newPassword new token
+     * @param mode data encryption mode to be used
+     * @return ret encryption key index if cal succeeds or failure value if failed
+     */
+    updateKey(string oldPassword, string newPassword, string mode) generates(int32_t ret);
+
+    /**
+     * Clear the crypto engine encryption key
+     *
+     * @return ret call status
+     */
+    clearKey() generates(int32_t ret);
+};

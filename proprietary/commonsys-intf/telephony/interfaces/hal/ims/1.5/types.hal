@@ -1,0 +1,219 @@
+/*
+ * Copyright (c) 2018-2019 Qualcomm Technologies, Inc.
+ * All Rights Reserved.
+ * Confidential and Proprietary - Qualcomm Technologies, Inc.
+ *
+ *  Not a Contribution.
+ *
+ * Copyright (C) 2016 The Android Open Source Project
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+package vendor.qti.hardware.radio.ims@1.5;
+
+import @1.0::CallDetails;
+import @1.0::CallState;
+import @1.0::CallType;
+import @1.0::SipErrorInfo;
+import @1.2::ImsSmsSendFailureReason;
+import @1.2::ImsSmsDeliverStatusResult;
+import @1.3::CallFailCause;
+import @1.3::VerstatInfo;
+import @1.4::MultiIdentityLineInfoHal;
+import @1.0::ConfigFailureCause;
+import @1.0::ConfigItem;
+
+enum CallFailCause : @1.3::CallFailCause {
+    CALL_FAIL_REJECTED_ELSEWHERE,
+    CALL_FAIL_USER_REJECTED_SESSION_MODIFICATION,
+    CALL_FAIL_USER_CANCELLED_SESSION_MODIFICATION,
+    CALL_FAIL_SESSION_MODIFICATION_FAILED,
+    CALL_FAIL_SIP_METHOD_NOT_ALLOWED,
+    CALL_FAIL_SIP_PROXY_AUTHENTICATION_REQUIRED,
+    CALL_FAIL_SIP_REQUEST_ENTITY_TOO_LARGE,
+    CALL_FAIL_SIP_REQUEST_URI_TOO_LARGE,
+    CALL_FAIL_SIP_EXTENSION_REQUIRED,
+    CALL_FAIL_SIP_INTERVAL_TOO_BRIEF,
+    CALL_FAIL_SIP_CALL_OR_TRANS_DOES_NOT_EXIST,
+    CALL_FAIL_SIP_LOOP_DETECTED,
+    CALL_FAIL_SIP_TOO_MANY_HOPS,
+    CALL_FAIL_SIP_AMBIGUOUS,
+    CALL_FAIL_SIP_REQUEST_PENDING,
+    CALL_FAIL_SIP_UNDECIPHERABLE,
+    CALL_FAIL_RETRY_ON_IMS_WITHOUT_RTT,
+};
+
+enum EmergencyServiceCategory : int32_t {
+    /**
+     * General emergency call, all categories
+     */
+    UNSPECIFIED = 0,
+    POLICE = 1 << 0,
+    AMBULANCE = 1 << 1,
+    FIRE_BRIGADE = 1 << 2,
+    MARINE_GUARD = 1 << 3,
+    MOUNTAIN_RESCUE = 1 << 4,
+    /**
+     * Manually Initiated eCall (MIeC)
+     */
+    MIEC = 1 << 5,
+    /**
+     * Automatically Initiated eCall (AIeC)
+     */
+    AIEC = 1 << 6,
+};
+
+enum TirMode : int32_t {
+    INVALID,
+    TEMPORARY,
+    PERMANENT,
+};
+
+enum EmergencyCallRoute : int32_t {
+    UNKNOWN = 0,
+    EMERGENCY = 1,
+    NORMAL = 2,
+};
+
+enum UssdModeType : int32_t {
+    NOTIFY,        /* USSD-Notify, no further user action required */
+    REQUEST,       /* USSD-Request, further user action required */
+    NW_RELEASE,    /* Session terminated by network */
+    LOCAL_CLIENT,  /* other local client (eg, SIM Toolkit) has responded */
+    NOT_SUPPORTED, /* Operation not supported */
+    NW_TIMEOUT,    /* Network timeout */
+};
+
+enum ImsSmsSendFailureReason : @1.2::ImsSmsSendFailureReason {
+    /** Failed because FDN is enabled. */
+    RESULT_ERROR_FDN_CHECK_FAILURE,
+    /** Failed because the radio was not available. */
+    RESULT_RADIO_NOT_AVAILABLE,
+    /** Failed because of network rejection. */
+    RESULT_NETWORK_REJECT,
+    /** Failed because of invalid arguments. */
+    RESULT_INVALID_ARGUMENTS,
+    /** Failed because of an invalid state. */
+    RESULT_INVALID_STATE,
+    /** Failed because there is no memory. */
+    RESULT_NO_MEMORY,
+    /** Failed because the sms format is not valid. */
+    RESULT_INVALID_SMS_FORMAT,
+    /** Failed because of a system error. */
+    RESULT_SYSTEM_ERROR,
+    /** Failed because of a modem error. */
+    RESULT_MODEM_ERROR,
+    /** Failed because of a network error. */
+    RESULT_NETWORK_ERROR,
+    /** Failed because of an encoding error. */
+    RESULT_ENCODING_ERROR,
+    /** Failed because of an invalid smsc address. */
+    RESULT_INVALID_SMSC_ADDRESS,
+    /** Failed because the operation is not allowed. */
+    RESULT_OPERATION_NOT_ALLOWED,
+    /* Failed because of an internal error. */
+    RESULT_INTERNAL_ERROR,
+    /** Failed because there are no resources. */
+    RESULT_NO_RESOURCES,
+    /** Failed because the operation was cancelled. */
+    RESULT_CANCELLED,
+    /** Failed because the request is not supported. */
+    RESULT_REQUEST_NOT_SUPPORTED,
+};
+
+enum ImsSmsDeliverStatusResult : @1.2::ImsSmsDeliverStatusResult {
+    /** Message was not delivered due to lack of memory. */
+    DELIVER_STATUS_ERROR_NO_MEMORY,
+    /** Message was not delivered as the request is not supported. */
+    DELIVER_STATUS_ERROR_REQUEST_NOT_SUPPORTED,
+};
+
+struct CallFailCauseResponse {
+    CallFailCause failCause;
+    vec<uint8_t> errorinfo;
+    string networkErrorString;
+    bool hasErrorDetails;
+    SipErrorInfo errorDetails;
+};
+
+struct CallInfo {
+    CallState state;
+    uint32_t index;
+    uint32_t toa;
+    bool hasIsMpty;
+    bool isMpty;
+    bool hasIsMT;
+    bool isMT;
+    MultiIdentityLineInfoHal mtMultiLineInfo;
+    uint32_t als;
+    bool hasIsVoice;
+    bool isVoice;
+    bool hasIsVoicePrivacy;
+    bool isVoicePrivacy;
+    string number;
+    uint32_t numberPresentation;
+    string name;
+    uint32_t namePresentation;
+    bool hasCallDetails;
+    CallDetails callDetails;
+    bool hasFailCause;
+    CallFailCauseResponse failCause;
+    bool hasIsEncrypted;
+    bool isEncrypted;
+    bool hasIsCalledPartyRinging;
+    bool isCalledPartyRinging;
+    string historyInfo;
+    bool hasIsVideoConfSupported;
+    bool isVideoConfSupported;
+    VerstatInfo verstatInfo;
+    TirMode tirMode;
+};
+
+struct AutoCallRejectionInfo {
+    /**Mandatory */
+    CallType callType;
+    CallFailCause autoRejectionCause;
+    uint16_t sipErrorCode;
+    /**Optional */
+    string number;
+};
+
+enum ConfigItem : @1.0::ConfigItem {
+    CONFIG_ITEM_VOICE_OVER_WIFI_ROAMING_MODE,
+};
+
+struct ConfigInfo {
+    ConfigItem item;
+    bool hasBoolValue;
+    bool boolValue;
+    uint32_t intValue;
+    string stringValue;
+    ConfigFailureCause errorCause;
+};
+
+enum Result: int32_t {
+    SUCCESS,
+    FAILURE,
+};
+
+struct CallForwardStatus {
+    uint32_t reason; /* CFU, CFB, CFNRc, CFNRy */
+    Result status;
+    SipErrorInfo errorDetails; /* Present if status is FAILURE */
+};
+
+struct CallForwardStatusInfo {
+    SipErrorInfo errorDetails;
+    vec<CallForwardStatus> status; /* Present only for CF_All and CF_ALL_CONDITIONAL */
+};

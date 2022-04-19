@@ -1,0 +1,63 @@
+/*
+ * Copyright (c) 2019 Qualcomm Technologies, Inc.
+ * All Rights Reserved.
+ * Confidential and Proprietary - Qualcomm Technologies, Inc.
+ */
+
+package vendor.display.color@1.3;
+
+import @1.0::types;
+import @1.2::IDisplayColor;
+
+interface IDisplayColor extends @1.2::IDisplayColor{
+    /**
+     * Set global six zone thresholds.
+     *
+     * Clients can set the global six zone thresholds for display spcified by id.
+     *
+     * @param  ctxHandle is context handle.
+     * @param  disp_id is display ID.
+     * @param  threshold is global six zone thresholds
+     * @return result OK on success or BAD_VALUE if any parameters are invalid.
+     */
+    @callflow(next="*")
+    setGlobalSixZoneThresholds(Handle ctxHandle,
+                               uint32_t disp_id,
+                               sixZoneThres threshold) generates (Result result);
+
+    /**
+     * Set global six zone config.
+     *
+     * Clients can set the global six zone config for display spcified by id.
+     *
+     * @param  ctxHandle is context handle.
+     * @param  disp_id is display ID.
+     * @param  enable config control
+     * @param  config is global six zone config
+     * @return result OK on success or BAD_VALUE if any parameters are invalid.
+     */
+    @callflow(next="*")
+    setGlobalSixZoneConfig(Handle ctxHandle,
+                          uint32_t disp_id,
+                          uint32_t enable,
+                          sixZoneConfig config) generates (Result result);
+
+    /**
+     * Set global six zone protection.
+     *
+     * Clients can set the global six zone protection for display spcified by id.
+     *
+     * @param  ctxHandle is context handle.
+     * @param  disp_id is display ID.
+     * @param  enable is six color zone protection controls enable.
+     * @param  level is six color zone protection levels.
+     * @param  flag is six color zone protection updated flag.
+     * @return result OK on success or BAD_VALUE if any parameters are invalid.
+     */
+    @callflow(next="*")
+    setGlobalSixZoneProtection(Handle ctxHandle,
+                               uint32_t disp_id,
+                               uint32_t enable,
+                               uint32_t level,
+                               uint32_t flag) generates (Result result);
+};

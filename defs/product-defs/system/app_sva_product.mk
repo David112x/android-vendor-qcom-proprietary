@@ -1,0 +1,1 @@
+../../../proprietary/commonsys/qrdplus/sva/app_sva_system_product.mk

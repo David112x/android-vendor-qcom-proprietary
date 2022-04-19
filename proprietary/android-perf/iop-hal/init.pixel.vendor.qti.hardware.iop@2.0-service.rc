@@ -1,0 +1,16 @@
+#   @file    init.pixel.vendor.qti.hardware.iop@2.0-service.rc
+#   @brief   Defination to disable iop service
+#
+#   DESCRIPTION
+#    ---------------------------------------------------------------------------
+#        Copyright (c) 2011-2017,2019 Qualcomm Technologies, Inc.
+#        All Rights Reserved.
+#        Confidential and Proprietary - Qualcomm Technologies, Inc.
+#    ---------------------------------------------------------------------------
+
+service iop-hal-2-0 /vendor/bin/hw/vendor.qti.hardware.iop@2.0-service
+    override
+    class hal
+    user root
+    disabled
+    group root readproc

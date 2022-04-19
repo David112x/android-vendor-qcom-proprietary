@@ -1,0 +1,22 @@
+cc_library_shared {
+    name: "vendor.qti.hardware.secureprocessor.common@1.0-helper",
+    vendor_available: true,
+    defaults: ["hidl_defaults"],
+    srcs: [
+        "SecureProcessorConfig.cpp",
+        "SecureProcessorUtils.cpp"
+     ],
+     cflags: [
+         "-Werror",
+         "-Wextra",
+         "-Wall",
+     ],
+     shared_libs: [
+         "liblog",
+         "libutils",
+         "vendor.qti.hardware.secureprocessor.common@1.0",
+         "vendor.qti.hardware.secureprocessor.config@1.0",
+         "vendor.qti.hardware.secureprocessor.device@1.0",
+     ],
+     export_include_dirs : ["include"]
+}

@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    Copyright (c) 2019 Qualcomm Technologies, Inc.
+    All Rights Reserved.
+    Confidential and Proprietary - Qualcomm Technologies, Inc.
+-->
+<resources>
+    <color name="primary_color">#2a56c6</color>
+    <color name="primary_color_dark">#1c3aa9</color>
+    <color name="colorAccent">#FF4081</color>
+    <color name="primary_text_color">#363636</color>
+    <color name="secondary_text_color">#737373</color>
+
+    <!-- The text color of contacts item's label. -->
+    <color name="contact_label_text_color">#91000000</color>
+
+    <!-- contact multiple selection.  -->
+    <color name="search_view_edit_text_color">#db000000</color>
+    <color name="search_view_edit_hint_text_color">#42000000</color>
+    <color name="action_bar_select_button_text_color">#FFFFFFFF</color>
+    <color name="selection_bar_action_list_background">#FFFFFFFF</color>
+    <!-- Horizontal separator line should be 10% dark in the light theme. -->
+    <color name="divider_line_color">#1A000000</color>
+
+    <!-- Confirm or disable button's text-colors in multi-pick. -->
+    <color name="ok_or_clear_button_disable_color">#44000000</color>
+    <color name="ok_or_clear_button_normal_color">@color/primary_color</color>
+
+    <!--######################################################################################-->
+    <!-- Color of action bar text. Ensure this stays in sync with packages/Telephony phone_settings_actionbar_text_color-->
+    <color name="actionbar_text_color">#ffffff</color>
+
+    <!-- 87% black for actionbar text -->
+    <color name="actionbar_text_color_black">#DF000000</color>
+
+    <!-- Color of image view placeholder. -->
+    <color name="image_placeholder">#DDDDDD</color>
+
+    <!-- Contact section index's text-color. -->
+    <color name="contact_section_index_color">#8C000000</color>
+
+    <!-- Text color for section header. -->
+    <color name="section_header_text_color">@color/dialtacts_theme_color</color>
+
+    <!-- Color of the theme of the Dialer app -->
+    <color name="dialtacts_theme_color">#2a56c6</color>
+
+    <array name="letter_tile_colors">
+        <item>#DB4437</item>
+        <item>#E91E63</item>
+        <item>#9C27B0</item>
+        <item>#673AB7</item>
+        <item>#3F51B5</item>
+        <item>#4285F4</item>
+        <item>#039BE5</item>
+        <item>#0097A7</item>
+        <item>#009688</item>
+        <item>#0F9D58</item>
+        <item>#689F38</item>
+        <item>#EF6C00</item>
+        <item>#FF5722</item>
+        <item>#757575</item>
+    </array>
+
+    <!-- Darker versions of letter_tile_colors, two shades darker. These colors are used
+    for settings secondary activity colors. -->
+    <array name="letter_tile_colors_dark">
+        <item>#C53929</item>
+        <item>#C2185B</item>
+        <item>#7B1FA2</item>
+        <item>#512DA8</item>
+        <item>#303F9F</item>
+        <item>#3367D6</item>
+        <item>#0277BD</item>
+        <item>#006064</item>
+        <item>#00796B</item>
+        <item>#0B8043</item>
+        <item>#33691E</item>
+        <item>#E65100</item>
+        <item>#E64A19</item>
+        <item>#424242</item>
+    </array>
+
+    <!-- The default color used for tinting photos when no color can be extracted via Palette,
+        this is Blue Grey 500 -->
+    <color name="quickcontact_default_photo_tint_color">#607D8B</color>
+    <!-- The default secondary color when no color can be extracted via Palette,
+            this is Blue Grey 700 -->
+    <color name="quickcontact_default_photo_tint_color_dark">#455A64</color>
+
+    <color name="letter_tile_default_color">#cccccc</color>
+
+    <color name="letter_tile_font_color">#ffffff</color>
+
+    <color name="contextual_selection_bar_color">#f6f6f6</color>
+    <!-- Color of the status bar above the contextual selection bar. -->
+    <color name="contextual_selection_bar_status_bar_color">#bababa</color>
+
+    <!-- 54% black -->
+    <color name="quantum_black_secondary_text">#89000000</color>
+
+    <color name="quantum_black_hint_text">#61000000</color>
+
+    <color name="action_bar_button_text_color">#FFFFFF</color>
+
+    <color name="editor_disabled_text_color">#40000000</color>
+
+    <!-- Background color for an EntryCard -->
+    <color name="entry_card_background_color">#ffffff</color>
+
+    <!-- Color of the margin for cards -->
+    <color name="card_margin_color">#f4f4f4</color>
+
+    <color name="divider_line_color_light">#e0e0e0</color>
+</resources>

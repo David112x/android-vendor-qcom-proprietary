@@ -1,0 +1,96 @@
+/*
+ * Copyright (c) 2018 Qualcomm Technologies, Inc.
+ * All Rights Reserved.
+ * Confidential and Proprietary - Qualcomm Technologies, Inc.
+ *
+ * Not a Contribution.
+ * Apache license notifications and license are retained
+ * for attribution purposes only.
+ */
+
+/*
+ * Copyright (C) 2016 The Android Open Source Project
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+package vendor.qti.hardware.radio.ims@1.2;
+
+import @1.1::IImsRadio;
+
+interface IImsRadio extends @1.1::IImsRadio {
+
+    /**
+     * MessageId.REQUEST_HANGUP
+     *
+     * @param token Id to match request/response. Response must include same token.
+     * @param hangup Payload for the hangup request. It consists of connection index,
+     *              is_multiparty, connetion URI, conference Id, fail cause.
+     *
+     */
+    oneway hangup_1_2(int32_t token, HangupRequestInfo hangup);
+
+     /**
+     *
+     * MessageId.REQUEST_SEND_IMS_SMS
+     *
+     * @param token Id to match request/response. Response must include same token.
+     * @param imsSms ImsSmsMessage as defined in types.hal
+     *
+     * Response function is IImsRadioResponse.sendImsSmsResponse()
+     *
+     */
+    oneway sendImsSms(int32_t token, ImsSmsMessage imsSms);
+
+     /**
+     * MessageId.REQUEST_ACKNOWLEDGE_IMS_SMS
+     *
+     * @param token Id to match request/response. Response must include same token.
+     * @messageRef the message reference or -1 of unavailable.
+     * @smsResult result of delivering the message. Valid values are defined in types.hal.
+     *
+     */
+    oneway acknowledgeSms(int32_t token, uint32_t messageRef, ImsSmsDeliverStatusResult smsResult);
+
+     /**
+     * MessageId.REQUEST_ACKNOWLEDGE_IMS_SMS_REPORT
+     *
+     * @param token Id to match request/response. Response must include same token.
+     * @messageRef the message reference or -1 of unavailable.
+     * @smsResult result of delivering the message. Valid values are defined in types.hal.
+     *
+     */
+    oneway acknowledgeSmsReport(int32_t token, uint32_t messageRef,
+        ImsSmsStatusReportResult smsReport);
+
+     /**
+     *
+     * MessageId.REQUEST_IMS_SMS_FORMAT
+     *
+     * @return the format of the message. Valid values are {SmsMessage#FORMAT_3GPP} and
+     * {SmsMessage#FORMAT_3GPP2}.
+     *
+     */
+    getSmsFormat() generates (string format);
+
+     /**
+     * MessageId.REQUEST_SEND_GEOLOCATION_INFO
+     *
+     * @param token to match request/response. Responses must include the same token as requests.
+     * @param lat - Latitude location coordinate
+     * @param lon - Longitude location coordinate
+     * @param addesssInfo - the struct containing the reverse-geocoded address information.
+     *
+     */
+    oneway sendGeolocationInfo_1_2(int32_t token, double lat, double lon, AddressInfo addressInfo);
+};

@@ -1,0 +1,24 @@
+/*
+ * Copyright (c) 2018 Qualcomm Technologies, Inc.
+ * All Rights Reserved.
+ * Confidential and Proprietary - Qualcomm Technologies, Inc.
+ */
+
+package vendor.qti.gnss@2.1;
+
+import @1.0::types;
+
+@export(name="", value_prefix="LOC_HIDL_WIFIDB_LISTSTATUS_")
+enum LocHidlWifiDBListStatus : uint32_t {
+    E_STD_CONT    = 0,
+    E_STD_FINAL   = 1,
+    E_SCAN_FINAL  = 2,
+    E_LOOKUP      = 3,
+};
+
+struct LocHidlUlpLocation {
+    uint8_t         size;
+    LocHidlLocation gpsLocation;
+    uint16_t        position_source;
+    uint16_t        tech_mask;
+};

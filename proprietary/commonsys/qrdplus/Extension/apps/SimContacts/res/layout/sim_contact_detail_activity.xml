@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    Copyright (c) 2019 Qualcomm Technologies, Inc.
+    All Rights Reserved.
+    Confidential and Proprietary - Qualcomm Technologies, Inc.
+-->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:cardview="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <FrameLayout
+        android:layout_weight="1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/photo_view"
+            android:clickable="false"
+            android:scaleType="centerCrop"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+        <android.support.v7.widget.Toolbar
+            android:layout_width="wrap_content"
+            android:layout_gravity="end|top"
+            android:layout_height="?android:attr/actionBarSize"
+            android:background="#00000000"
+            android:id="@+id/toolbar"/>
+
+        <TextView
+            android:id="@+id/label"
+            android:textSize="30sp"
+            android:maxLines="1"
+            android:layout_marginStart="12dp"
+            android:layout_marginEnd="12dp"
+            android:layout_marginBottom="12dp"
+            android:textColor="@android:color/white"
+            android:layout_gravity="bottom"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+    </FrameLayout>
+
+    <LinearLayout
+        android:layout_weight="2"
+        android:orientation="vertical"
+        android:background="@color/card_margin_color"
+        android:paddingTop="@dimen/first_card_marginTop"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <com.qualcomm.qti.simcontacts.widget.ContactCardView
+            style="@style/ExpandingEntryCardStyle"
+            android:visibility="gone"
+            android:id="@+id/no_contact_data_card"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            cardview:cardCornerRadius="@dimen/entry_card_card_corner_radius"/>
+
+        <com.qualcomm.qti.simcontacts.widget.ContactCardView
+            style="@style/ExpandingEntryCardStyle"
+            android:visibility="gone"
+            android:id="@+id/contact_data_card"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            cardview:cardCornerRadius="@dimen/entry_card_card_corner_radius"/>
+
+    </LinearLayout>
+
+
+</LinearLayout>

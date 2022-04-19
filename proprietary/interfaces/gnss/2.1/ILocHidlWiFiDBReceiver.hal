@@ -1,0 +1,18 @@
+/*
+ * Copyright (c) 2017-18 Qualcomm Technologies, Inc.
+ * All Rights Reserved.
+ * Confidential and Proprietary - Qualcomm Technologies, Inc.
+ */
+
+package vendor.qti.gnss@2.1;
+
+import @1.1::ILocHidlWiFiDBReceiver;
+import @1.0::ILocHidlWiFiDBReceiver;
+
+interface ILocHidlWiFiDBReceiver extends @1.1::ILocHidlWiFiDBReceiver {
+    sendScanListRequest();
+
+    pushAPWiFiDB_2_1(vec<LocHidlApLocationData> apLocationDataList, int16_t apLocationDataListSize,
+                     vec<LocHidlApSpecialInfo> apSpecialInfoList, int16_t apSpecialInfoListSize,
+                     int32_t daysValid, bool isLookup);
+};

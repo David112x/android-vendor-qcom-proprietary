@@ -1,0 +1,146 @@
+The following are the changes in the 8.0.12 release of the Snapdragon LLVM
+ARM C/C++ Toolchain over the 8.0.11 release.
+
+1. Fix code generation issues for corner cases, when ASAN is enabled
+2. Disable auto-vectorization when ASAN is enabled
+
+The following are the changes in the 8.0.11 release of the Snapdragon LLVM
+ARM C/C++ Toolchain over the 8.0.10 release.
+
+1. Fix corner case bug in Global Offset Table (GOT) processing
+
+The following are the changes in the 8.0.10 release of the Snapdragon LLVM
+ARM C/C++ Toolchain over the 8.0.8 release.
+
+1. Fix corner cases in auto-vectorizer code generation
+2. Discard more specfic versions of section name .gnu.linkonce.* sections
+   in glibc
+3. Security fix for code generation for stack protection code for functions
+   with large stack
+4. Emit __gnu_d2h_ieee compiler runtime library call for double to half 
+   precision floating point conversion for GNU ABI
+5. Fix linking with a linker script that specifies the address of a Thumb
+   symbol
+6. Fix for veneer in Thumb mode
+
+The following are the changes in the 8.0.8 release of the Snapdragon LLVM
+ARM C/C++ Toolchain over the 8.0.7 release.
+
+1.  Fix post-process script to correctly blacklist bugs when generating for
+    individual components
+2.  Ensure correct debug info is generated for assembly files
+3.  Fix handling of __builtin_constant_p intrinsic
+4.  Support for HWASAN
+5.  Binary logging support for Android using the __builtin_binary_log
+    intrinsic, which prints information on the type passed as arguments.
+6.  Disable exception handling for baremetal libcxx build
+7.  Extend support for pragma assume_safety to auto-vectorize more loops
+8.  Fix auto-vectorizer runtime overflow check
+9.  Fix Thumb relocation type for global symbols
+10. Fix linker garbage collection issue with section start/stop markers 
+11. Add intrinsic support for _ReadStatusReg/_WriteStatusReg for Windows
+    ARM64 target
+
+The following are the changes in the 8.0.7 release of the Snapdragon LLVM
+ARM C/C++ Toolchain over the 8.0.6 release.
+
+1. Code-size optimizations for ARM 32-bit mode to reduce size of 32-bit images
+   in memory constrained targets
+2. Bug fix to Auto-vectorizer for issues discovered during Windows target
+   testing
+3. Fix corner case in register allocation where the allocator was running out
+   of registers
+
+The following are the changes in the 8.0.6 release of the Snapdragon LLVM
+ARM C/C++ Toolchain over the 8.0.5 release.
+
+1. Add support for Android Debugging with LTO
+2. Add support for ARMv8.2-A ISA extensions
+3. Fix clang --version output
+4. Disable NEON vectorizer warning on AArch64
+5. Windows ARM64 Structured Exception Handling (SEH) fixes
+6. Clang driver fixes for Windows ARM64
+
+The following are the changes in the 8.0.5 release of the Snapdragon LLVM
+ARM C/C++ Toolchain over the 8.0.4 release.
+
+1. Fix corner case where an incorrect ARM symbol table entry is generated
+
+The following are the changes in the 8.0.4 release of the Snapdragon LLVM
+ARM C/C++ Toolchain over the 8.0.3 release.
+
+1. Add support for AArch64 "-execute-only" flag
+
+The following are the changes in the 8.0.3 release of the Snapdragon LLVM
+ARM C/C++ Toolchain over the 8.0.2 release.
+
+1. Fix infinite compile time corner case
+2. Update COFF support for Windows ARM64
+3. Remove LLVM's addr2line utility from distribution.  The Android prebuilt
+   version of addr2line should be used for Android debugging.
+
+The following are the changes in the 8.0.2 release of the Snapdragon LLVM
+ARM C/C++ Toolchain over the 8.0.1 release.
+
+1. Bring in Google fixes for sanitize flags
+2. Bring in Google fixes for Implicit Integer Conversion Sanitizer
+
+The following are the changes in the 8.0.1 release of the Snapdragon LLVM
+ARM C/C++ Toolchain over the 8.0 release.
+
+1. Disable value profiling by default to match community org behavior
+2. Support for __builtin_constant_p intrinsic
+3. Disable vectorization of half float type
+4. Fix load time failure in Android libraries enabled with profile generation
+
+This is the release of Snapdragon LLVM ARM C/C++ Compiler toolchain version
+8.0. This is a cross toolchain built to run on x86 64-bit Ubuntu Linux
+(versions 14.04 and later) and Windows platform (Windows 7 64-bit and later).
+The Snapdragon LLVM ARM Compiler will only generate code for ARM targets and
+will not generate code for any of the other targets supported by the AOSP LLVM
+compiler.
+
+Version 8.0 of the Snapdragon LLVM ARM toolchain includes all changes in the
+llvm.org 8.0 mainline and additionally includes patches that are post-7.0
+llvm.org release. The Snapdragon LLVM ARM toolchain 8.0 release includes
+proprietary features and optimizations that are not available in the llvm.org
+8.0 mainline or in the AOSP LLVM compiler.
+
+The Snapdragon LLVM ARM Compiler uses the integrated assembler for assembling
+and includes a full featured proprietary linker (QC Linker) for linking.
+
+The following link contains all the new features in the llvm.org 7.0 release.
+http://releases.llvm.org/7.0.0/tools/clang/docs/ReleaseNotes.html
+
+The Snapdragon LLVM ARM 8.0 toolchain contains all the above features, and
+additionally contains the following key features compared to the Snapdragon
+LLVM ARM 6.0 toolchain:
+
+1. Code size optimizations
+   - Tuning of optimizations such as inlining, unrolling, etc., for better
+     code size
+   - Thumb-1 specific size optimizations
+   - Tuning of auto-vectorizer for improved code size
+
+2. Performance optimizations
+   - Optimizations to improve the performance of Baremetal kernels and code
+     patterns for Thumb-1
+   - Improved ThinLTO optimizations
+   - Auto-vectorization optimization for certain camera kernels
+
+3. New linker support
+   - Support for the LLD linker that is enabled for Android
+
+4. Support for Windows ARM64
+   - Full support for code generation for Windows ARM64 target
+   - Full support for C++ exception handling and structured exception handling
+   - Full support for Microsoft ABI for Windows ARM64
+   - Support for commonly used Microsoft intrinsics for ARM64
+
+This version of the Snapdragon LLVM ARM toolchain may generate additional
+front-end warnings compared to the SDLLVM 6.0 version.  However, we expect
+it to perform better than the 6.0 release.  We recommend using this
+version for performance critical components (where possible).
+
+Please contact your QTI (Qualcomm Technologies, Inc) Android support POC for
+more details or documentation.

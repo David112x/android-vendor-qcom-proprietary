@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Copyright (c) 2017, 2019 Qualcomm Technologies, Inc.
+  All Rights Reserved.
+  Confidential and Proprietary - Qualcomm Technologies, Inc.
+-->
+
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.qualcomm.qti.callfeaturessetting" >
+
+    <uses-sdk android:minSdkVersion="23"
+        android:targetSdkVersion="28"/>
+
+    <uses-permission android:name="android.permission.CALL_PHONE" />
+    <uses-permission android:name="android.permission.CALL_PRIVILEGED" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
+
+    <application
+        android:label="@string/app_name"
+        android:allowBackup="false" >
+        <activity
+            android:name=".cdma.CdmaCallForwardWaiting.CdmaCallForwardOptions"
+            android:configChanges="orientation|screenSize|keyboardHidden"
+            android:label="@string/labelCF" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <action android:name="org.codeaurora.settings.CDMA_CALL_FORWARDING" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".cdma.CdmaCallForwardWaiting.CdmaCallWaitingOptions"
+            android:configChanges="orientation|screenSize|keyboardHidden"
+            android:label="@string/labelCW" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <action android:name="org.codeaurora.settings.CDMA_CALL_WAITING" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+    </application>
+</manifest>

@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+      coreApp="true"
+      package="org.codeaurora.ims"
+      android:sharedUserId="android.uid.phone"
+      android:versionCode="1"
+      android:versionName="1.0">
+
+    <uses-sdk android:minSdkVersion="23"
+        android:targetSdkVersion="29"/>
+
+    <protected-broadcast android:name="org.codeaurora.VOIP_VOPS_SSAC_STATUS" />
+    <protected-broadcast android:name=
+        "com.android.internal.intent.action.ACTION_FORBIDDEN_NO_SERVICE_AUTHORIZATION" />
+
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.READ_PRECISE_PHONE_STATE" />
+    <uses-permission android:name="android.permission.INTERACT_ACROSS_USERS" />
+    <uses-permission android:name="android.permission.INTERACT_ACROSS_USERS_FULL" />
+    <uses-permission android:name="android.permission.SUBSTITUTE_NOTIFICATION_APP_NAME" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+
+    <uses-permission android:name="android.permission.CAMERA"/>
+    <uses-permission android:name="com.qti.permission.DIAG"/>
+    <uses-permission android:name="com.qti.permission.AUDIO"/>
+
+    <permission android:name="com.qti.permission.DIAG"
+                android:protectionLevel="signatureOrSystem" />
+    <permission android:name="com.qti.permission.AUDIO"
+                android:protectionLevel="signatureOrSystem" />
+    <permission android:name="com.qti.permission.BIND_QTI_IMS_SERVICE"
+                android:protectionLevel="signatureOrSystem" />
+
+    <application android:directBootAware="true">
+      <service android:name=".ImsService"
+               android:exported="true"
+               android:enabled="true"
+               android:persistent="true"
+               android:singleUser="true"
+               android:permission="android.permission.BIND_IMS_SERVICE"
+               android:process="com.android.phone">
+               <meta-data android:name="android.telephony.ims.MMTEL_FEATURE" android:value="true" />
+               <meta-data android:name="android.telephony.ims.EMERGENCY_MMTEL_FEATURE"
+                   android:value="true" />
+               <intent-filter>
+                   <action android:name="android.telephony.ims.ImsService" />
+               </intent-filter>
+      </service>
+      <service android:name=".QtiImsExtService"
+               android:exported="true"
+               android:enabled="true"
+               android:singleUser="true"
+               android:permission="com.qti.permission.BIND_QTI_IMS_SERVICE"
+               android:process="com.android.phone">
+      </service>
+      <uses-library android:name="qti-telephony-hidl-wrapper" />
+      <uses-library android:name="qti-telephony-utils" />
+      <uses-library android:name="ims-ext-common"/>
+    </application>
+</manifest>

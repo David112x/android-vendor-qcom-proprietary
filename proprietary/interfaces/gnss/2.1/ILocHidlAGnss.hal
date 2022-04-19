@@ -1,0 +1,23 @@
+/*
+ * Copyright (c) 2018 Qualcomm Technologies, Inc.
+ * All Rights Reserved.
+ * Confidential and Proprietary - Qualcomm Technologies, Inc.
+ */
+
+package vendor.qti.gnss@2.1;
+
+import @1.1::ILocHidlAGnss;
+
+import ILocHidlAGnssCallback;
+
+interface ILocHidlAGnss extends @1.1::ILocHidlAGnss {
+    /**
+     * Opens the AGNSS interface and provides the callback routines to the
+     * implementation of this interface.
+     *
+     * @param callback Handle to the AGNSS status callback interface.
+     */
+    setCallbackExt(ILocHidlAGnssCallback callback);
+
+};
+

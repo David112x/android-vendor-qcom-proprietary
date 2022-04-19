@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!--
+Copyright (c) 2018 Qualcomm Technologies, Inc.
+All Rights Reserved.
+Confidential and Proprietary - Qualcomm Technologies, Inc.
+ -->
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/layout_bottom_bar"
+    android:layout_width="match_parent"
+    android:layout_height="55dp"
+    android:layout_alignParentBottom="true"
+    android:background="@color/u.bg.bottombar">
+
+    <TextView
+        android:id="@+id/tv_back"
+        style="@style/UserTheme.Layout.BottomBarButton"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_alignParentStart="true"
+        android:clickable="true"
+        android:gravity="center_vertical"
+        android:onClick="onBackOrNextClicked"
+        android:paddingLeft="25dp"
+        android:paddingRight="25dp"
+        android:text="@string/back" />
+
+    <TextView
+        android:id="@+id/tv_next"
+        style="@style/UserTheme.Layout.BottomBarButton"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_alignParentEnd="true"
+        android:clickable="true"
+        android:gravity="center_vertical"
+        android:onClick="onBackOrNextClicked"
+        android:paddingLeft="25dp"
+        android:paddingRight="25dp"
+        android:text="@string/next" />
+</RelativeLayout>

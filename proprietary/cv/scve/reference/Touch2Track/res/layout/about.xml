@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+ *
+ * Copyright (c) 2010-2011 Qualcomm Technologies, Inc.
+ * All Rights Reserved.
+ * Confidential and Proprietary - Qualcomm Technologies, Inc.
+ *
+-->
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+ <PreferenceScreen
+  android:title="@string/appName_text"
+  android:summary="@string/appName">
+ </PreferenceScreen>
+ <PreferenceScreen
+  android:title="@string/versionNumber_text"
+  android:summary="@string/versionNumber">
+ </PreferenceScreen>
+ <PreferenceScreen
+  android:title="@string/releaseDate_text"
+  android:summary="@string/releaseDate">
+ </PreferenceScreen>
+</PreferenceScreen>

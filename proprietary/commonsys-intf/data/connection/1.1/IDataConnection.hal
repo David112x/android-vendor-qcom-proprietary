@@ -1,0 +1,21 @@
+/*
+ * Copyright (c) 2019 Qualcomm Technologies, Inc.
+ * All Rights Reserved.
+ * Confidential and Proprietary - Qualcomm Technologies, Inc.
+ */
+
+package vendor.qti.hardware.data.connection@1.1;
+
+import @1.0::IDataConnection;
+
+interface IDataConnection extends @1.0::IDataConnection {
+    /**
+     * Allows the client to query the vendor property value
+     * via key
+     *
+     * @param key: property name
+     * @param currentConfig: default key value
+     * @return result: property value
+     */
+    getConfig(string key, string defaultValue) generates (string result);
+};

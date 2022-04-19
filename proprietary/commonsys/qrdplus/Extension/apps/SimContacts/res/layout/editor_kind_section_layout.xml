@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    Copyright (c) 2019 Qualcomm Technologies, Inc.
+    All Rights Reserved.
+    Confidential and Proprietary - Qualcomm Technologies, Inc.
+-->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <ImageView
+        android:id="@+id/kind_icon"
+        style="@style/EditSelectorIconStyle"/>
+
+    <EditText
+        android:id="@+id/kind_editor"
+        android:maxLines="1"
+        android:textColorHint="@color/editor_disabled_text_color"
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:layout_height="@dimen/editor_min_line_item_height" />
+
+    <ImageView
+        android:id="@+id/delete_button"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/editor_min_line_item_height"
+        android:layout_gravity="center_vertical"
+        android:visibility="invisible"
+        android:duplicateParentState="true"
+        android:background="?android:attr/selectableItemBackground"
+        android:src="@drawable/quantum_ic_close_vd_theme_24"
+        android:tint="@color/quantum_black_hint_text"
+        android:paddingLeft="@dimen/editor_round_button_padding_left"
+        android:paddingRight="@dimen/editor_round_button_padding_right"
+        android:paddingStart="@dimen/editor_round_button_padding_left"
+        android:paddingEnd="@dimen/editor_round_button_padding_right"
+        android:paddingTop="@dimen/editor_round_button_padding_top"
+        android:paddingBottom="@dimen/editor_round_button_padding_bottom" />
+</LinearLayout>

@@ -1,0 +1,37 @@
+/*
+ * Copyright (c) 2018 Qualcomm Technologies, Inc.
+ * All Rights Reserved.
+ * Confidential and Proprietary - Qualcomm Technologies, Inc.
+ */
+
+package vendor.qti.hardware.data.connection@1.0;
+
+enum StatusCode : uint32_t {
+    OK,
+    NOT_SUPPORTED
+};
+
+enum ErrorReason : uint32_t {
+    NO_ERROR,
+    CALL_NOT_AVAILABLE,
+    HARDWARE_ERROR
+};
+
+enum RatType : uint32_t {
+    UNSPECIFIED = 0,
+    RAT_4G      = 1 << 0,
+    RAT_5G      = 1 << 1
+};
+
+struct BearerInfo {
+    int32_t bearerId;
+    bitfield<RatType> uplink;
+    bitfield<RatType> downlink;
+};
+
+struct AllocatedBearers {
+    int32_t cid;
+    string apn;
+    /** List of allocated bearers for this call */
+    vec<BearerInfo> bearers;
+};

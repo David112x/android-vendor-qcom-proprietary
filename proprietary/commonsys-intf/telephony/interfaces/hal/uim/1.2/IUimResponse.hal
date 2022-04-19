@@ -1,0 +1,66 @@
+/*
+ * Copyright (c) 2019 Qualcomm Technologies, Inc.
+ * All Rights Reserved.
+ * Confidential and Proprietary - Qualcomm Technologies, Inc.
+ *
+ */
+
+package vendor.qti.hardware.radio.uim@1.2;
+
+import @1.1::IUimResponse;
+
+interface IUimResponse extends @1.1::IUimResponse {
+    /**
+     * UIM_GBA_INIT_RESPONSE
+     *
+     * @param token
+     *   It matches req-resp. Value must match the one in req.
+     *
+     * @param gbaStatus
+     *   It tells the status of the request
+     *   Futher information of the response makes sense only when
+     *   status is success
+     *
+     * @param isKsNafEncrypted
+     *   Tells whether KsNaf is in encrypted state
+     *
+     * @param ksNaf
+     *   KsNaf value
+     *
+     * @param b_Tid
+     *   B_TID value
+     *
+     * @param key_lifetime
+     *   key_lifetime value
+     */
+    oneway uimGbaInitResponse(uint32_t      token,
+                              UimGbaStatus  gbaStatus,
+                              bool          isKsNafEncrypted,
+                              vec<uint8_t>  ksNaf,
+                              string        b_Tid,
+                              string        key_lifetime);
+
+    /**
+     * UIM_GET_IMPI_RESPONSE
+     *
+     * @param token Id
+     *   It matches req-resp. Value must match the one in req.
+     *
+     * @param response Remote simlock response
+     *
+     * @param gbaStatus
+     *   It tells the status of the request
+     *   Futher information of the response makes sense only when
+     *   status is success
+     *
+     * @param isImpiEncrypted
+     *   Tells whether IMPI value is encrypted
+     *
+     * @param impi
+     *   IMPI value
+     */
+    oneway uimGbaGetImpiResponse(uint32_t      token,
+                                 UimGbaStatus  gbaStatus,
+                                 bool          isImpiEncrypted,
+                                 vec<uint8_t>  impi);
+};

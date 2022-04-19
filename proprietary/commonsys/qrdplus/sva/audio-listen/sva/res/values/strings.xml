@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Copyright (c) 2013-2018 Qualcomm Technologies, Inc.
+  All Rights Reserved.
+  Confidential and Proprietary - Qualcomm Technologies, Inc.
+-->
+
+<resources>
+    <string name="app_name">Voice Activation</string>
+
+    <!-- used for missing permission dialog -->
+    <string name="help">Help</string>
+    <string name="missing_permission_msg">This application can\'t work without required permissions. Please grant the permissions in Settings.</string>
+    <string name="quit">Quit</string>
+    <string name="settings">Settings</string>
+
+    <!-- used for SVA active notification -->
+    <string name="channel_name">SVA App</string>
+    <string name="channel_description">SVA Voice Wakeup</string>
+    <string name="notification_title">SVA</string>
+    <string name="notification_text">"SVA" detection is running.</string>
+
+    <!-- main activity menu items -->
+    <string name="training">Training</string>
+    <string name="tutorial">Tutorial</string>
+    <string name="version">Version</string>
+    <string name="debug_mode">Debug Mode</string>
+
+    <!-- main activity -->
+    <string name="usage_info">You phone will listen for the keyphrases which are switched on.Saying one of those keyphrases will wakeup your phone and optionally launch the selected app.</string>
+    <string name="action">Action:</string>
+    <string name="user_verification_colon">User Verification:</string>
+    <string name="model">Model:</string>
+    <string name="friendly_tips">Friendly Tips</string>
+    <string name="close_session_first">Need close this SVA session first, Are you sure to close?</string>
+    <string name="confirm">Confirm</string>
+    <string name="keyphrase_recognized">Keyphrase recognized</string>
+    <string name="no_app_specified">No app specified</string>
+    <string name="establish_session_fail_code">establish session failure code</string>
+    <string name="terminate_session_fail_code">terminate session failure code</string>
+    <string name="establish_session_ongoing">Establish session is ongoing</string>
+    <string name="terminate_session_ongoing">Terminate session is ongoing</string>
+    <string name="close_all_sessions_first">Need close all SVA sessions first, Are you sure to close?</string>
+
+    <!-- used for general alert dialog -->
+    <string name="cancel">Cancel</string>
+    <string name="version_number">Version number:</string>
+
+    <!-- debug main activity -->
+    <string name="sound_model">Sound Model</string>
+    <string name="select_a_sound_model">Select A Sound Model</string>
+    <string name="advanced_detail">ADVANCED DETAIL</string>
+    <string name="detections">Detections:</string>
+    <string name="zero">0</string>
+    <string name="keyphrase">Keyphrase: </string>
+    <string name="user">User: </string>
+    <string name="voice_requests">Voice Requests:</string>
+    <string name="session">Session </string>
+    <string name="no_voice_request">No Voice Requests Yet</string>
+    <string name="load_sm_fail">Loud Sound Model Failed</string>
+    <string name="start_recognition_fail">Start Recognition Failed</string>
+    <string name="unload_sm_fail">UnLoud Sound Model Failed</string>
+    <string name="stop_recognition_fail">Stop Recognition Failed</string>
+    <string name="detected_count_txt">detected: </string>
+    <string name="confidence_level_txt">level: </string>
+
+    <!-- debug model list activity -->
+    <string name="load">Load</string>
+    <string name="start">Start</string>
+    <string name="stop">Stop</string>
+    <string name="unload">Unload</string>
+    <string name="sound_models">Sound Models</string>
+    <string name="load_success">Loaded successfully</string>
+    <string name="load_un_success">Loading unsuccessful</string>
+    <string name="start_success">Started successfully</string>
+    <string name="start_un_success">Starting unsuccessful</string>
+    <string name="stop_success">Stopped successfully</string>
+    <string name="stop_un_success">Stopping unsuccessful</string>
+    <string name="unload_success">Unloaded successfully</string>
+    <string name="unload_un_success">Unloading unsuccessful</string>
+    <string name="cannot_checked_one_more">Cannot select more than 1 sound model at a time.</string>
+    <string name="select_one_model">Please select one sound model first</string>
+    <string name="merge_model">Merge Model</string>
+    <string name="delete_model">Delete Model</string>
+    <string name="general_settings">General Settings</string>
+    <string name="toggle_xml_params">Toggle XML Params</string>
+    <string name="params_from_xml">Get params from XML</string>
+    <string name="params_not_from_xml">Do not get params from XML</string>
+
+    <!-- Keyphrase Settings Activity -->
+    <string name="keyphrase_settings">Keyphrase Settings</string>
+    <string name="set_action">Set Action</string>
+    <string name="none">None</string>
+    <string name="user_verification">User Verification</string>
+    <string name="add_user">Add User</string>
+    <string name="user_name">User name</string>
+
+    <!-- Select Action Activity -->
+    <string name="select_action_instruction">After waking up the phone, which app should be launched?</string>
+    <string name="select_action">Select Action</string>
+
+    <!-- General Settings Activity -->
+    <string name="default_confidence_levels">Default Confidence Levels</string>
+    <string name="first_stage_keyphrase">First Stage Keyphrase</string>
+    <string name="second_stage_keyphrase">Second Stage Keyphrase</string>
+    <string name="first_stage_user">First Stage User</string>
+    <string name="second_stage_user">Second Stage User</string>
+    <string name="gmm_training">GMM Training</string>
+    <string name="options">Options</string>
+    <string name="detection_tone">Detection Tone</string>
+    <string name="advanced_details">Advanced Details</string>
+    <string name="sound_model_3_4">Sound Model 3.0/4.0</string>
+    <string name="sound_model_3">Sound Model 3.0</string>
+    <string name="sound_model_2">Sound Model 2.0</string>
+    <string name="sound_model_general">General</string>
+
+    <!-- Model Settings Activity -->
+    <string name="model_settings">Model Settings</string>
+    <string name="confidence_levels">Confidence Levels</string>
+    <string name="session_options">Session Options</string>
+    <string name="voice_requests_non_comma">Voice Requests</string>
+    <string name="voice_requests_len">Voice Requests Length (S)</string>
+    <string name="opaque_data_transfer">Opaque Data Transfer</string>
+    <string name="hist_buff_time">Hist Buff Time (ms)</string>
+    <string name="default_histBuffTime">2000</string>
+    <string name="sound_model_operations">Keyphrase-User Operations</string>
+    <string name="keyphrase_name">Keyphrase name</string>
+    <string name="pre_roll_duration">Pre-roll Duration (ms)</string>
+    <string name="default_preRollDuration">500</string>
+
+    <!-- Training related -->
+    <string name="create_your_own">Create your own...</string>
+    <string name="create_your_own_3_0">Create your own 3.0 model</string>
+    <string name="create_your_own_4_0">Create your own 4.0 model</string>
+    <string name="select_one_keyphrase">Select One Keyphrase</string>
+    <string name="next">NEXT</string>
+    <string name="select_one_item_first">Please select one item first!</string>
+    <string name="new_keyphrase_dialog_title">New Keyphrase</string>
+    <string name="new_keyphrase_dialog_message">Please enter one new keyphrase:</string>
+    <string name="new_sm_dialog_title">New Model Name</string>
+    <string name="new_sm_dialog_message">Please enter the name for new sound model:</string>
+    <string name="sm_name_empty">Sound model name cannot be empty!</string>
+    <string name="keyphrase_empty">Keyphrase cannot be empty!</string>
+    <string name="name_conflict_message">This name is already taken. Please input another name!</string>
+    <string name="add_user_dialog_title">Add User</string>
+    <string name="add_user_dialog_message">Please enter user name:</string>
+    <string name="train">TRAIN</string>
+    <string name="user_name_empty">User name cannot be empty!</string>
+    <string name="keyphrase_conflict_message">This keyphrase is not allowed. Please input another keyphrase!</string>
+
+    <string name="unknown_user">Unknown User</string>
+    <string name="training_tips">To help me learn to recognize your voice, please record yourself saying the key phrase five times.</string>
+    <string name="recording_tips_title">RECORDING TIPS</string>
+    <string name="training_one">1.</string>
+    <string name="training_two">2.</string>
+    <string name="training_three">3.</string>
+    <string name="recording_tip1"> Hold the phone in front of you at arm\'s length away from your mouth.</string>
+    <string name="recording_tip2"> Record in a quiet place with minimal background noise.</string>
+    <string name="recording_tip3"> Speak clearly, loudly and in a commanding style.</string>
+    <string name="training_tap_mic">Tap the mic button to start</string>
+    <string name="keyphrase_message">Hey Snapdragon</string>
+    <string name="recording_good">Perfect!\nKeep saying it like that!</string>
+    <string name="recording_bad">There was a problem with your recording. Please try again.</string>
+    <string name="training_continue">Continue</string>
+    <string name="recording">RECORDING...</string>
+    <string name="processing">PROCESSING...</string>
+    <string name="complete">COMPLETE!</string>
+    <string name="create_sm_failure">We were unable to create your personalized sound model. Please try again.</string>
+    <string name="ok">OK</string>
+    <string name="terminate_training">All current training recordings will be erased.</string>
+    <string name="cannot_add_user">User number reached max value, please delete user first if continue to add new user.</string>
+    <string name="delete_user">Are you sure to delete user</string>
+    <string name="delete_udk_user">This is UDK model, delete user means delete this UDK model, are you sure?</string>
+    <string name="user_delete_failed">User delete failed!</string>
+    <string name="delete_keyphrase">Are you sure to delete keyphrase</string>
+    <string name="delete_udk_keyphrase">This is UDK model, delete keyphrase means delete this UDK model, are you sure?</string>
+    <string name="keyphrase_delete_failed">Keyphrase delete failed!</string>
+    <string name="delete_single_keyphrase_sm">Delete keyphrase means delete this sound model, are you sure?</string>
+    <string name="merge">MERGE</string>
+    <string name="merge_sm_failure">Merge sound model failure, error code is</string>
+    <string name="delete">DELETE</string>
+    <string name="merge_success">Merge sound model success!</string>
+
+    <!-- Tutorial Activity -->
+    <string name="tutorial_one_title">Welcome</string>
+    <string name="tutorial_one_top">When voice activation for one keyphrase is turned on, your phone will listen for your voice even if the screen has gone to sleep.</string>
+    <string name="tutorial_one_bottom">You can say one of your keyphrase(s) to wake up your phone and launch an app.</string>
+    <string name="tutorial_two_title">Voice Activation On and Off</string>
+    <string name="tutorial_two_body">If you like, you can keep voice activation for keyphrase(s) on all of the time.\n\nOr, you can choose to turn voice activation on and off based on the times when you want voice activation to listen.\n</string>
+    <string name="tutorial_three_title">Add You Own Keyphrase</string>
+    <string name="tutorial_three_top">At any time, you can add a new keyphrase and choose your own wording.\n</string>
+    <string name="tutorial_three_bottom">\nTo create your own keyphrase, select the \"+\" icon from the top of the main screen and follow the instructions. You will be asked to repeat the keyphrase several times so that Voice Activation can learn to recognize your voice.</string>
+    <string name="tutorial_four_title">Try it!</string>
+    <string name="tutorial_four_top">You can create more than one keyphrase and launch a different application with each one.</string>
+    <string name="tutorial_four_bottom">For example, you can create a keyphrase that launches your camera and another keyphrase that launches your favorite messaging app.</string>
+    <string name="back">BACK</string>
+    <string name="done">DONE</string>
+
+    <!-- Progress Dialog -->
+    <string name="creating">Creating...</string>
+</resources>

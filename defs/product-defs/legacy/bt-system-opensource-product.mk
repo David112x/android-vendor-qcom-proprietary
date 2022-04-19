@@ -1,0 +1,1 @@
+../../../opensource/commonsys-intf/bluetooth/bt-system-opensource-product.mk

@@ -1,0 +1,1 @@
+../../../proprietary/gps-release/gps_vendor_product.mk

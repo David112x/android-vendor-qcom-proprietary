@@ -1,0 +1,120 @@
+<!--
+/*
+ * Copyright (c) 2013,2015, The Linux Foundation. All rights reserved.
+ *
+ * Redistribution and use in source and binary forms, with or without
+ * modification, are permitted provided that the following conditions are met:
+ *        * Redistributions of source code must retain the above copyright
+ *            notice, this list of conditions and the following disclaimer.
+ *        * Redistributions in binary form must reproduce the above copyright
+ *            notice, this list of conditions and the following disclaimer in the
+ *            documentation and/or other materials provided with the distribution.
+ *        * Neither the name of The Linux Foundation nor
+ *            the names of its contributors may be used to endorse or promote
+ *            products derived from this software without specific prior written
+ *            permission.
+ *
+ * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+ * AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+ * IMPLIED WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+ * NON-INFRINGEMENT ARE DISCLAIMED.    IN NO EVENT SHALL THE COPYRIGHT OWNER OR
+ * CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
+ * EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
+ * PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS;
+ * OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
+ * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR
+ * OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF
+ * ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+ */
+-->
+<resources>
+
+    <item type="id" name="dialpad_button" />
+    <item type="id" name="dialpad_button_pos" />
+
+<!--
+<string name=""></string>
+-->
+    <!-- General -->
+    <string name="app_name">BTTestApp</string>
+    <string name="blank"></string>
+    <string name="cancel">Cancel</string>
+
+    <!-- HID -->
+    <string name="btn_label">Execute</string>
+    <string name="txt_hint_btaddress">BD Address</string>
+    <string name="txt_hint_command">HID Command</string>
+
+    <!-- Main -->
+    <string name="services_header">Available services</string>
+    <string name="select_device">Select</string>
+    <string name="showCoverArt">Cover Art</string>
+    <string name="showHidHost">Hid host qualification</string>
+    <string name="discover_services">Discover</string>
+    <string name="clear">Clear</string>
+    <string name="list_empty">No records found!</string>
+    <string name="a2dp_source">A2DP Source</string>
+    <string name="a2dp_sink">A2DP Sink</string>
+    <string name="a2dp_role">A2DP Role</string>
+
+    <!-- Titles -->
+    <string name="title_avrcp_test">AVRCP Test</string>
+
+
+    <!-- Toast messages -->
+    <string name="msg_connection_success">Device has been connected.</string>
+    <string name="msg_disconnection_success">Device has been disconnected.</string>
+
+       <!-- AVRCP -->
+    <string name="showavrcp">Show Avrcp Activity</string>
+    <string name="config">Set Values</string>
+    <string name="base_values">Set default values</string>
+    <string name="avrcp_cover_art">Cover Art</string>
+    <string name="max_size">Max Size</string>
+    <string name="encode">Encode</string>
+    <string name="type">Type</string>
+    <string name="width">Width</string>
+    <string name="height">Height</string>
+    <string-array name="array_image_type">
+        <item>Image</item>
+        <item>Thumbnail</item>
+    </string-array>
+    <string-array name="array_image_encode">
+        <item>JPEG</item>
+        <item>PNG</item>
+    </string-array>
+    <string-array name="array_image_width">
+        <item>100</item>
+        <item>200</item>
+        <item>300</item>
+        <item>400</item>
+        <item>500</item>
+        <item>600</item>
+        <item>700</item>
+        <item>800</item>
+        <item>900</item>
+        <item>1000</item>
+        <item>1100</item>
+        <item>1200</item>
+    </string-array>
+    <string-array name="array_image_height">
+        <item>100</item>
+        <item>200</item>
+        <item>300</item>
+        <item>400</item>
+        <item>500</item>
+        <item>600</item>
+        <item>700</item>
+        <item>800</item>
+        <item>900</item>
+        <item>1000</item>
+        <item>1100</item>
+        <item>1200</item>
+    </string-array>
+    <string-array name="array_image_max_size">
+        <item>50000</item>
+        <item>100000</item>
+        <item>200000</item>
+        <item>400000</item>
+    </string-array>
+</resources>

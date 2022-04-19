@@ -1,0 +1,16 @@
+/*
+ * Copyright (c) 2017-18 Qualcomm Technologies, Inc.
+ * All Rights Reserved.
+ * Confidential and Proprietary - Qualcomm Technologies, Inc.
+ */
+
+package vendor.qti.gnss@2.1;
+
+import @1.2::ILocHidlWWANDBReceiver;
+import ILocHidlWWANDBReceiverCallback;
+
+interface ILocHidlWWANDBReceiver extends @1.2::ILocHidlWWANDBReceiver {
+
+    init_2_1(ILocHidlWWANDBReceiverCallback callback) generates (bool success);
+    registerWWANDBUpdater_2_1(ILocHidlWWANDBReceiverCallback callback);
+};

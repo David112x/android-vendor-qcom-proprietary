@@ -1,0 +1,20 @@
+/*
+ * Copyright (c) 2019 Qualcomm Technologies, Inc.
+ * All Rights Reserved.
+ * Confidential and Proprietary - Qualcomm Technologies, Inc.
+ *
+ */
+
+package vendor.qti.automotive.qcarcam@1.0;
+
+/**
+ * Implemented on client side to receive asynchronous event deliveries.
+ */
+interface IQcarCameraStreamCB {
+
+    /**
+     * Receives calls from the HAL for each asynchronous camera events.
+     */
+    oneway qcarcam_event_callback(QcarcamEvent EventType, QcarcamEventPayload Payload);
+};
+

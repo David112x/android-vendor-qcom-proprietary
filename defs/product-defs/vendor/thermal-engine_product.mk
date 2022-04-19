@@ -1,0 +1,1 @@
+../../../proprietary/coretech-config-vendor/thermal-engine/thermal-engine_product.mk

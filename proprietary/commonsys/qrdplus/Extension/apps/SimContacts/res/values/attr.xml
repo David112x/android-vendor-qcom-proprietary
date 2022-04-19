@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    Copyright (c) 2019 Qualcomm Technologies, Inc.
+    All Rights Reserved.
+    Confidential and Proprietary - Qualcomm Technologies, Inc.
+-->
+<resources>
+    <attr name="sectionDrawable" format="reference" />
+    <attr name="deletable" format="boolean" />
+    <attr name="editorHint" format="reference" />
+    <attr name="editorInputType">
+        <enum name="text" value="1" />
+        <enum name="phone" value="3" />
+    </attr>
+
+    <declare-styleable name="EditorKindSectionView">
+        <attr name="sectionDrawable" />
+        <attr name="deletable" />
+        <attr name="editorHint" />
+        <attr name="editorInputType" />
+    </declare-styleable>
+</resources>

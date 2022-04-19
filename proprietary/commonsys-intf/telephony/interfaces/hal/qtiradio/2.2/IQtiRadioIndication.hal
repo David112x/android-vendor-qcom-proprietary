@@ -1,0 +1,25 @@
+/*
+ * Copyright (c) 2019 Qualcomm Technologies, Inc.
+ * All Rights Reserved.
+ * Confidential and Proprietary - Qualcomm Technologies, Inc.
+ *
+ */
+
+package vendor.qti.hardware.radio.qtiradio@2.2;
+
+import @2.1::IQtiRadioIndication;
+
+/*
+ * Interface declaring unsolicited qtiradio indications
+ */
+interface IQtiRadioIndication extends @2.1::IQtiRadioIndication {
+
+    /*
+     * Unsol msg to indicate changes in 5G Icon Type.
+     *
+     * @param NrIconType as per types.hal to indicate 5G icon - NONE(Non-5G) or
+     *         5G BASIC or 5G UWB shown on the UI.
+     *
+     */
+    oneway onNrIconTypeChange(NrIconType iconType);
+};

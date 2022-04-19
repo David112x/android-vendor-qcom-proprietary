@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    Copyright (c) 2019 Qualcomm Technologies, Inc.
+    All Rights Reserved.
+    Confidential and Proprietary - Qualcomm Technologies, Inc.
+-->
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/default_contacts_item_height"
+    android:descendantFocusability="blocksDescendants"
+    android:minHeight="?android:attr/listPreferredItemHeight">
+
+    <TextView
+        android:id="@+id/section_index"
+        android:layout_width="@dimen/contact_section_index_width"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_centerVertical="true"
+        android:layout_marginStart="16dp"
+        android:textColor="@color/contact_section_index_color"
+        android:textSize="@dimen/contact_section_text_size"
+        android:visibility="gone" />
+
+    <ImageView
+        android:id="@+id/contact_list_item_photo"
+        android:layout_width="@dimen/contact_browser_list_item_photo_size"
+        android:layout_height="@dimen/contact_browser_list_item_photo_size"
+        android:layout_centerVertical="true"
+        android:layout_marginStart="@dimen/default_linear_layout_padding"
+        android:layout_toRightOf="@+id/section_index" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_centerVertical="true"
+        android:layout_marginStart="@dimen/default_linear_layout_padding"
+        android:layout_toEndOf="@+id/contact_list_item_photo"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center_vertical"
+            android:orientation="vertical"
+            android:paddingEnd="@dimen/default_linear_layout_padding">
+
+            <TextView
+                android:id="@+id/contact_list_item_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignTop="@+id/section_index"
+                android:layout_toEndOf="@+id/contact_list_item_photo"
+                android:ellipsize="end"
+                android:singleLine="true"
+                android:textColor="@color/contacts_or_name_text_color"
+                android:textSize="@dimen/contacts_text_size" />
+
+            <TextView
+                android:id="@+id/contact_list_item_number"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:singleLine="true"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:textColor="@color/contact_label_text_color"
+                android:textSize="@dimen/phone_or_number_text_size" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/contact_list_item_label"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginEnd="@dimen/default_linear_layout_padding"
+            android:gravity="center"
+            android:singleLine="true"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:textColor="@color/contact_label_text_color"
+            android:textSize="@dimen/contact_label_text_size" />
+
+        <CheckBox
+            android:id="@+id/contact_list_item_checkbox"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="38dip"
+            android:clickable="false"/>
+    </LinearLayout>
+
+</RelativeLayout>

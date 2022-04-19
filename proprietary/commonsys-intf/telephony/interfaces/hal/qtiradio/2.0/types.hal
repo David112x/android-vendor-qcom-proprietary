@@ -1,0 +1,55 @@
+/*
+ * Copyright (c) 2018 Qualcomm Technologies, Inc.
+ * All Rights Reserved.
+ * Confidential and Proprietary - Qualcomm Technologies, Inc.
+ *
+ */
+
+package vendor.qti.hardware.radio.qtiradio@2.0;
+
+enum Status: int32_t {
+    INVALID = -1,
+    FAILURE =  0,
+    SUCCESS =  1,
+};
+
+enum EnableStatus: int32_t {
+    INVALID  = -1,
+    DISABLED =  0,
+    ENABLED  =  1,
+};
+
+enum BearerStatus: int32_t {
+    INVALID       = -1,
+    NOT_ALLOCATED =  0,
+    ALLOCATED     =  1,
+};
+
+enum EndcAvailableType: int32_t {
+    INVALID          = -1,
+    ENDC_UNAVAILABLE =  0,
+    ENDC_AVAILABLE   =  1,
+};
+
+enum RestrictDcnrType: int32_t {
+    INVALID           = -1,
+    DCNR_RESTRICTED   =  0,
+    DCNR_UNRESTRICTED =  1,
+};
+
+struct DcParam {
+    EndcAvailableType endc;
+    RestrictDcnrType dcnr;
+};
+
+struct SignalStrength {
+    int32_t rsrp;        // Current RSRP in dBm as measured by L1
+                         // Range: -44 to -140 (-44 means -44 dBm, -140 means -140 dBm).
+                         // Invalid (e.g. least in int16 = -32768) means no more sending
+                         // report.
+
+    int32_t snr;         // SNR level as a scaled integer in units of 0.1 dB
+                         // e.g., -16 dB has a value of -160 and 24.6 dB has a value of 246.
+                         // Invalid (e.g. least in int16 = -32768) means no more sending
+                         // report.
+};

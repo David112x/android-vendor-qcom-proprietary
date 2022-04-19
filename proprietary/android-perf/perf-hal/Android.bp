@@ -1,0 +1,75 @@
+bootstrap_go_package {
+    name: "soong-perfHal",
+    pkgPath: "android/soong/perfHal",
+    deps: [
+        "blueprint",
+    "blueprint-pathtools",
+    "soong",
+    "soong-android",
+    "soong-cc",
+    ],
+    srcs: [
+        "perfHal.go",
+    ],
+    pluginFor: ["soong_build"],
+}
+
+perfHaldefaults {
+    name: "perfHaldefaults"
+}
+
+cc_library_shared {
+    name: "libperfgluelayer",
+    proprietary: true,
+
+    srcs: [
+        "PerfGlueLayer.cpp"
+    ],
+
+    cflags: [
+        "-DQC_DEBUG=0",
+    ],
+
+    header_libs: [
+        "libcutils_headers",
+    ],
+
+    shared_libs: [
+        "libutils",
+        "liblog",
+        "libcutils",
+    ],
+
+    include_dirs: ["vendor/qcom/proprietary/android-perf/mp-ctl"],
+}
+
+cc_library_shared {
+    name: "libperfconfig",
+    proprietary: true,
+
+    srcs: [
+        "PerfConfig.cpp"
+    ],
+
+    defaults: ["perfHaldefaults"],
+
+    cflags: [
+        "-DQC_DEBUG=0",
+    ],
+
+    header_libs: [
+        "libcutils_headers",
+    ],
+
+    shared_libs: [
+        "libutils",
+        "liblog",
+        "libcutils",
+        "libxml2",
+        "libqti-util",
+    ],
+
+    include_dirs: ["vendor/qcom/proprietary/android-perf/mp-ctl" ,
+                   "external/libxml2/include" ,
+                   "vendor/qcom/proprietary/commonsys-intf/android-perf/perf-util"],
+}

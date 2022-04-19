@@ -1,0 +1,55 @@
+/*
+ * Copyright (c) 2017 Qualcomm Technologies, Inc.
+ * All Rights Reserved.
+ * Confidential and Proprietary - Qualcomm Technologies, Inc.
+ */
+
+package vendor.qti.hardware.factory@1.0;
+
+/**
+ * List of Result types supported.
+ * ERROR = 1 FFBM diag cmd result value
+ * OPEN_ERROR = 2 FFBM diag cmd result value
+ * NOT_EXIST_ERR = 3 FFBM diag cmd result value
+ */
+enum IResultType : int32_t {
+  FAILED = -1,
+  SUCCESS = 0,
+  ERROR = 1,
+  OPEN_ERROR = 2,
+  NOT_EXIST_ERR = 3
+};
+/**
+ * FTM Commnand Result.
+ */
+struct FactoryResult {
+  IResultType result;
+  string data;
+};
+/**
+ * WRITE FILE REQUEST
+ */
+struct WriteFileReq {
+  uint8_t append_data;
+  uint16_t i_size;
+  string data;
+  string file_name;
+};
+/**
+ * READ FILE REQUEST
+ */
+struct ReadFileReq {
+  uint32_t offset;
+  uint16_t max_size;
+  string file_name;
+};
+/**
+ * READ FILE RESULT
+ */
+struct ReadFileResult {
+  IResultType result_type;
+  uint32_t file_size;
+  uint32_t offset;
+  uint16_t size;
+  vec<uint8_t> data;
+};

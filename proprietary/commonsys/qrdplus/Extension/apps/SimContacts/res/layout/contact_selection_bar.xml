@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    Copyright (c) 2019 Qualcomm Technologies, Inc.
+    All Rights Reserved.
+    Confidential and Proprietary - Qualcomm Technologies, Inc.
+-->
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/navigation_bar"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal">
+
+    <FrameLayout
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="end|center"
+            android:src="@drawable/expand_more"
+            android:tint="@android:color/white" />
+
+        <Button
+            android:id="@+id/selection_menu"
+            style="?android:attr/actionButtonStyle"
+            android:layout_width="@dimen/action_bar_select_button_width"
+            android:layout_height="match_parent"
+            android:background="?android:attr/selectableItemBackgroundBorderless"
+            android:divider="?android:attr/listDividerAlertDialog"
+            android:gravity="center_vertical|left"
+            android:maxLines="1"
+            android:paddingEnd="@dimen/action_bar_select_button_padding_end"
+            android:textAppearance="?android:attr/textAppearanceLargePopupMenu"
+            android:textColor="@color/action_bar_select_button_text_color" />
+    </FrameLayout>
+</LinearLayout>

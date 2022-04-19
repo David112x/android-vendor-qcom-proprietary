@@ -1,0 +1,19 @@
+/*
+ * Copyright (c) 2019 Qualcomm Technologies, Inc.
+ * All Rights Reserved.
+ * Confidential and Proprietary - Qualcomm Technologies, Inc.
+ *
+ */
+
+package vendor.qti.hardware.radio.uim_remote_client@1.1;
+
+import @1.0::IUimRemoteServiceClientIndication;
+
+interface IUimRemoteServiceClientIndication extends @1.0::IUimRemoteServiceClientIndication {
+    /**
+     * Uim remote client service indication
+     *
+     * @param status true - service is up, false - service is down
+     */
+    oneway UimRemoteServiceClientServiceInd(bool status);
+};

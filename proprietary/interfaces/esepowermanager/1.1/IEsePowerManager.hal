@@ -1,0 +1,21 @@
+/***************************************************************************
+* Copyright (c) 2020 Qualcomm Technologies, Inc.
+* All Rights Reserved.
+* Confidential and Proprietary - Qualcomm Technologies, Inc.
+***************************************************************************/
+
+package vendor.qti.esepowermanager@1.1;
+
+import @1.0::IEsePowerManager;
+
+interface IEsePowerManager extends @1.0::IEsePowerManager {
+    /**
+     * Performs general Input Output ioctl operations.
+     *
+     * Based on the ioctlNum, input data bytes are processed
+     * and output data bytes are generated.
+     *
+     * @return output data as eseData
+     */
+    eseIoctl(uint64_t ioctlNum, eseData inputEseData) generates (eseData outputEseData);
+};

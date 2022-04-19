@@ -1,0 +1,78 @@
+/*
+ * Copyright (c) 2020 Qualcomm Technologies, Inc.
+ * All Rights Reserved.
+ * Confidential and Proprietary - Qualcomm Technologies, Inc.
+ */
+
+package vendor.qti.hardware.sidekickutility@1.0;
+
+typedef uint32_t SidekickSensorID;
+
+enum Status : uint32_t {
+    OK,
+    FAIL,                  // Some unforeseen problem that can't be described accurately
+    BAD_VALUE,             // Some parameter is invalid or not acceptable by sidekick
+};
+/*
+ * AlarmInfo provides alarm information to sidekick.
+ */
+struct AlarmInfo {
+    uint32_t id;               // Unique alarm ID for sidekick
+    AlarmType alarmType;       // Sidekick alarm Type
+    int64_t msSinceMidnight;   // Msec since midnight to ring
+    int64_t recurenceDays;     // Each bit representing the day to repeat the alarm
+    uint32_t ringId;           // Refer to the ringtone to play, 0 indicates no ringtone to play
+    uint32_t vibratorId;       // Refer to the vibrator to play, 0 indicates no vibration
+    uint32_t buttonSnooze;     // Button ID for snooze button
+    uint32_t buttonDismiss;    // Button ID for dismiss button
+    uint32_t msSnoozePeriod;   // Snooze period in mSec
+    uint32_t[4] dispId;        // Which display asset(s) to draw, drawableInfo.id
+};
+
+enum AlarmType : uint32_t {
+    /** Sidekick Alarm Type as ALARM */
+    ALARM,
+    /** Sidekick Alarm Type as REMINDER */
+    REMINDER
+};
+
+/*
+ * RingToneInfo ringtone information to sidekick
+ * for playing alarm.
+ */
+struct RingToneInfo {
+    uint32_t id;               // Unique ringtone ID for sidekick
+    uint16_t totalDuration;    // Total Duration of ring tone
+    uint32_t repeat;           // Number of repeat
+    vec<uint8_t> ringToneBuf;  // Ringtone data buffer
+};
+
+/*
+ * VibratorPattern provides pattern of the vibrator
+ * to sidekick and sidekick knows how to play vibrator
+ */
+struct VibratorPattern {
+    uint32_t id;               // Unique vibrator pattern ID for sidekick
+    uint16_t onDuration;       // ON duration of vibrator pattern
+    uint16_t offDuration;      // OFF duration of vibrator pattern
+    uint16_t totalDuration;    // Total duration of vibrator pattern
+};
+
+/*
+ * SidekickSensorInfo provides sensor information to sidekick.
+ */
+struct SidekickSensorInfo  {
+    SidekickSensorID id;
+    string name;
+    string format;
+    uint32_t refreshRate;
+};
+
+/*
+ * SidekickSensorData helps to read sensor data from sidekick.
+ */
+struct SidekickSensorData {
+    SidekickSensorID id;       // ID of SidekickSensor
+    int64_t timestamp;         // Timestamp of SidekickSensor event data
+    vec<uint8_t>  eventBuf;    // Event data of SidekickSensor
+};

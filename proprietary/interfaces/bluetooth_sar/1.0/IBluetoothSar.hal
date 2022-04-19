@@ -1,0 +1,17 @@
+/*
+ * Copyright (c) 2019 Qualcomm Technologies, Inc.
+ * All Rights Reserved.
+ * Confidential and Proprietary - Qualcomm Technologies, Inc.
+ */
+
+package vendor.qti.hardware.bluetooth_sar@1.0;
+
+interface IBluetoothSar {
+    /**
+     * Set the maximum Bluetooth transmit power. This is useful for optimizing
+     * the performance of other wireless technologies in SAR scenarios. The
+     * value of cap is in units of 0.25 dBm. The typical range is between 0
+     * and 80 units (i.e. 0 to 20 dBm).
+     */
+    oneway setBluetoothTxPowerCap(int8_t cap);
+};

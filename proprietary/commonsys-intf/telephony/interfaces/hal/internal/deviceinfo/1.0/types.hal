@@ -1,0 +1,66 @@
+/*
+ * Copyright (c) 2019 Qualcomm Technologies, Inc.
+ * All Rights Reserved.
+ * Confidential and Proprietary - Qualcomm Technologies, Inc.
+ *
+ */
+
+package vendor.qti.hardware.radio.internal.deviceinfo@1.0;
+
+/**
+ * Struct containing the battery statistics – charging state of device,
+ * type of charger, battery capacity (current and total), power save mode
+ * enabled, etc.
+ */
+struct DevicePowerInfo {
+
+    /**
+     * Bit mask containing the type of charger connected to the device
+     * corresponding to values of the "plugged" field in the
+     * ACTION_BATTERY_CHANGED intent
+     * Will have values from enum ChargerType in the bit mask
+     */
+    uint64_t chargingMode;
+
+    // Total battery capacity in microampere-hours
+    uint32_t totalBatteryCapacity;
+
+    // Current battery level as a percentage (0-100)
+    uint8_t batteryLevel;
+
+    // Current battery level index in the range 0-10.
+    // If threshold is 20, 50, 80, this will be 0 for 19, 1 for 21 etc.
+    uint8_t batteryLevelIndex;
+
+    /**
+     * True if the device is currently in power save mode, false otherwise.
+     * Monitored via PowerManager#ACTION_POWER_SAVE_MODE_CHANGED
+     */
+    bool powerSaveMode;
+};
+
+enum ChargerType : uint64_t {
+     /**
+      * Indicates there is no power source
+      */
+     NONE = 0,
+     /**
+      * Indicates power source is an AC charger.
+      */
+     AC = 1 << 0,
+     /**
+      * Indicates power source is a USB port.
+      */
+     USB = 1 << 1,
+     /**
+      * Indicates power source is wireless.
+      */
+     WIRELESS = 1 << 2
+};
+
+enum DeviceState : int32_t {
+    INVALID,
+    NON_INTERACTIVE,
+    INTERACTIVE
+};
+

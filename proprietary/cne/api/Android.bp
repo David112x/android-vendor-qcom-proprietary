@@ -1,0 +1,7 @@
+cc_library_headers {
+    name: "libcneapiclient_headers",
+    vendor: true,
+    shared_libs: [ "libandroid_net" ],
+    export_shared_lib_headers: [ "libandroid_net" ] ,
+    export_include_dirs: ["."],
+}

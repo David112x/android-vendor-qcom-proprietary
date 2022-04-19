@@ -1,0 +1,84 @@
+/*
+ * Copyright (c) 2017 Qualcomm Technologies, Inc.
+ * All Rights Reserved.
+ * Confidential and Proprietary - Qualcomm Technologies, Inc.
+ */
+
+package vendor.qti.hardware.factory@1.0;
+
+interface IFactory {
+
+    /**
+     * Start binary with specified param
+     *
+     * @param input binary name
+     * @param input param
+     * @return result
+     */
+    runApp(string name,string params,bool isStart) generates (FactoryResult result);
+
+    /**
+     * Get smb status(seconds)
+     *
+     * @return result the smb status string
+     */
+    getSmbStatus() generates (FactoryResult result);
+
+    /**
+     * Enter ship mode
+     *
+     * @return result 0 on success, -1 on failure
+     */
+    enterShipMode() generates (bool success);
+
+    /**
+     * Enable / Disable Charger
+     *
+     * @param enable
+     * @return result
+     */
+    chargerEnable(bool enable) generates (bool success);
+
+    /**
+     * Enable / Disable Wifi
+     *
+     * @param enable
+     * @return result
+     */
+    wifiEnable(bool enable) generates (bool success);
+
+    /**
+     * Erase All Files
+     *
+     * @param fileName
+     * @return result
+     */
+    eraseAllFiles(string path) generates (IResultType result);
+
+    /**
+     * dir List FileName To File
+     *
+     * @param filePath:/mnt/vendor/persist/FTM_AP/
+     * @param fileName: directory.txt
+     * @return result
+     */
+    dirListFileNameToFile(string path, string name) generates (IResultType result);
+
+    /**
+     * Write File
+     *
+     * @param filePath:/mnt/vendor/persist/FTM_AP/
+     * @param WriteFileReq
+     * @return result
+     */
+    writeFile(string path, WriteFileReq req) generates (IResultType result);
+
+    /**
+     * Read File
+     *
+     * @param filePath:/mnt/vendor/persist/FTM_AP/
+     * @param ReadFileReq
+     * @return ReadFileResult
+     */
+    readFile(string path, ReadFileReq req) generates (ReadFileResult result);
+};

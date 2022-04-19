@@ -1,0 +1,32 @@
+/*
+ * Copyright (c) 2019 Qualcomm Technologies, Inc.
+ * All Rights Reserved.
+ * Confidential and Proprietary - Qualcomm Technologies, Inc.
+ */
+
+package vendor.qti.platform_boost@1.0;
+
+/**
+ * Result types for boost.
+ */
+enum PlatformBoostResult : int32_t {
+    UNSUPPORTED = -2,
+    FAILED = -1,
+    SUCCESS = 0,
+};
+
+/**
+ * State types for query APIs.
+ */
+enum PlatformBoostQueryState : int32_t {
+    UNSUPPORTED = -1,
+    SUCCESS = 0,
+};
+
+/**
+ * State types for restore API.
+ */
+enum PlatformBoostRestoreState : int32_t {
+    BOOST_RESTORE_SYS_DEFAULT = 1,
+    BOOST_RESTORE_USER_PREVIOUS = 2,
+};

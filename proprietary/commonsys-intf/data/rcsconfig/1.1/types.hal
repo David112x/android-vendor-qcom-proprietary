@@ -1,0 +1,212 @@
+/********************************:*************************************
+Copyright (c) 2019 Qualcomm Technologies, Inc.
+All Rights Reserved.
+Confidential and Proprietary - Qualcomm Technologies, Inc.
+**********************************************************************/
+
+package vendor.qti.ims.rcsconfig@1.1;
+
+import @1.0::types;
+
+enum SettingsId : uint32_t {
+    PRESENCE_CONFIG,
+    STANDALONE_MESSAGING_CONFIG,
+    USER_AGENT_STRING,
+    IMS_SERVICE_ENABLE_CONFIG
+};
+
+struct KeyValuePairTypeBool{
+    uint32_t key;
+    bool value;
+};
+
+struct KeyValuePairTypeInt{
+    uint32_t key;
+    uint64_t value;
+};
+
+struct KeyValuePairTypeString {
+    uint32_t key;
+    string value;
+};
+
+/** Properties that can be set using PRESENCE_CONFIG */
+enum PresenceConfigKeys : uint32_t {
+
+    /** This key expects uint32_t value */
+    PUBLISH_TIMER_KEY = 100,
+
+    /** This key expects uint32_t value */
+    PUBLISH_EXTENDED_TIMER_KEY,
+
+    /** This key expects uint32_t value */
+    PUBLISH_SRC_THROTTLE_TIMER_KEY,
+
+    /** This key expects uint32_t value */
+    PUBLISH_ERROR_RECOVERY_TIMER_KEY,
+
+    /** This key expects uint32_t value */
+    LIST_SUBSCRIPTION_EXPIRY_KEY,
+
+    /** This key expects uint32_t value */
+    CAPABILITES_CACHE_EXPIRY_KEY,
+
+    /** This key expects uint32_t value */
+    AVAILABILITY_CACHE_EXPIRY_KEY,
+
+    /** This key expects uint32_t value */
+    CAPABILITY_POLL_INTERVAL_KEY,
+
+    /** This key expects uint32_t value */
+    MAX_ENTIES_IN_LIST_SUBSCRIBE_KEY,
+
+    /** This key expects uint8_t value, expects 0 or 1 */
+    CAPABILITY_DISCOVERY_ENABLED_KEY,
+
+    /** This key expects uint8_t value, expects 0 or 1 */
+    GZIP_ENABLED_KEY,
+
+    /** This key expects string value */
+    USER_AGENT_KEY
+};
+
+/**
+ * Properties that can be set using STANDALONE_MESSAGING_CONFIG
+ */
+enum StandaloneMessagingConfigKeys : uint32_t {
+
+    /** This key expects uint8_t value */
+    DEFAULT_SMS_APP_KEY = 300,
+
+    /** This key expects uint8_t value */
+    DEFAULT_VVM_APP_KEY,
+
+    /** This key expects string value */
+    AUTO_CONFIG_USER_AGENT_KEY,
+
+    /** This key expects string value */
+    XDM_CLIENT_USER_AGENT_KEY,
+
+    /** This key expects string value */
+    CLIENT_VENDOR_KEY,
+
+    /** This key expects string value */
+    CLIENT_VERSION_KEY,
+
+    /** This key expects string value */
+    TERMINAL_VENDOR_KEY,
+
+    /** This key expects string value */
+    TERMINAL_MODEL_KEY,
+
+    /** This key expects string value */
+    TERMINAL_SW_VERSION_KEY,
+
+    /** This key expects string value */
+    RCS_VERSION_KEY,
+
+    /** This key expects string value */
+    PROVISIONING_VERSION_KEY,
+
+    /** This key expects string value */
+    FRIENDLY_DEVICE_NAME_KEY,
+
+    /** This key expects string value */
+    RCS_PROFILE_KEY,
+
+    /** This key expects string value */
+    BOT_VERSION_KEY
+
+};
+
+/**
+ * Properties that can be set using USER_AGENT_STRING
+ */
+enum UserAgentStringKeys : uint32_t {
+
+    /** This key expects string value */
+    IMS_USER_AGENT_KEY = 200
+};
+
+/**
+ * Properties that can be set using IMS_SERVICE_ENABLE_CONFIG
+ */
+enum ImsServiceEnableConfigKeys : uint32_t {
+
+    /** This key expects uint8_t value, expects 0 or 1 */
+    VOLTE_ENABLED_KEY = 400,
+
+    /** This key expects uint8_t value, expects 0 or 1 */
+    VIDEOTELEPHONY_ENABLED_KEY,
+
+    /** This key expects uint8_t value, expects 0 or 1 */
+    MOBILE_DATA_ENABLED_KEY,
+
+    /** This key expects uint8_t value, expects 0 or 1 */
+    WIFI_CALLING_ENABLED_KEY,
+
+    /** This key expects uint8_t value, expects 0 or 1 */
+    WIFI_CALLING_IN_ROAMING_ENABLED_KEY,
+
+    /** This key expects uint8_t value, expects 0 or 1 */
+    IMS_SERVICE_ENABLED_KEY,
+
+    /** This key expects uint8_t value, expects 0 or 1 */
+    UT_ENABLED_KEY,
+
+    /** This key expects uint8_t value, expects 0 or 1 */
+    SMS_ENABLED_KEY,
+
+    /** This key expects uint8_t value, expects 0 or 1 */
+    DAN_ENABLED_KEY,
+
+    /** This key expects uint8_t value, expects 0 or 1 */
+    USSD_ENABLED_KEY,
+
+    /** This key expects uint8_t value, expects 0 or 1 */
+    MWI_ENABLED_KEY,
+
+    /** This key expects uint8_t value, expects 0 or 1 */
+    PRESENCE_ENABLED_KEY,
+
+    /** This key expects uint8_t value, expects 0 or 1 */
+    AUTOCONFIG_ENABLED_KEY,
+
+    /** This key expects uint8_t value, expects 0 or 1 */
+    XDM_CLIENT_ENABLED_KEY,
+
+    /** This key expects uint8_t value, expects 0 or 1 */
+    RCS_MESSAGING_ENABLED_KEY,
+
+    /** This key expects uint8_t value, expects 0 or 1 */
+    CALL_MODE_PREF_ROAM_ENABLED_KEY,
+
+    /** This key expects uint8_t value, expects 0 or 1 */
+    RTT_ENABLED_KEY,
+
+    /** This key expects uint8_t value, expects 0 or 1 */
+    CARRIER_CONFIG_ENABLED_KEY,
+
+    /** This key expects string value */
+    WIFI_PROVISIONING_ID_KEY,
+
+    /** This key expects uint32_t value */
+    CALL_MODE_PREFERENCE_KEY,
+
+    /** This key expects uint32_t value */
+    CALL_MODE_ROAM_PREFERENCE_KEY,
+
+    /** This key expects uint64_t value */
+    SERVICE_MASK_BY_NETWORK_ENABLED_KEY
+};
+
+struct SettingsValues {
+    vec<KeyValuePairTypeBool>    boolData;
+    vec<KeyValuePairTypeInt>     intData;
+    vec<KeyValuePairTypeString>  stringData;
+};
+
+struct SettingsData {
+    SettingsId settingsId;
+    SettingsValues settingsValues;
+};

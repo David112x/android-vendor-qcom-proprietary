@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+ *
+ * Copyright (c) 2010-2011 Qualcomm Technologies, Inc.
+ * All Rights Reserved.
+ * Confidential and Proprietary - Qualcomm Technologies, Inc.
+ *
+-->
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+   <PreferenceCategory
+         android:title="T2T Mode">
+      <ListPreference
+         android:title="T2T Mode"
+         android:summary="Selects which mode to run T2T with"
+         android:key="T2TMode"
+         android:defaultValue="0"
+         android:entries="@array/DisplayT2TModesArray"
+         android:entryValues="@array/DisplayT2TModesValueArray" />
+   </PreferenceCategory>
+
+   <PreferenceCategory
+         android:title="API Type">
+      <ListPreference
+         android:title="API Type"
+         android:summary="Selects which API type (Sync or Async) to use"
+         android:key="APIType"
+         android:defaultValue="1"
+         android:entries="@array/APITypeArray"
+         android:entryValues="@array/APITypeValueArray" />
+   </PreferenceCategory>
+
+   <PreferenceCategory
+         android:title="Enable Fixed Aspect Ratio">
+      <ListPreference
+         android:title="Toggle Fixed Aspect Ratio"
+         android:summary="Enables disables Fixed Aspect Ratio"
+         android:key="FixedAspectRatioEnable"
+         android:defaultValue="0"
+         android:entries="@array/FixedAspectRatioOnOffArray"
+         android:entryValues="@array/FixedAspectRatioOnOffValueArray" />
+   </PreferenceCategory>
+
+   <PreferenceCategory
+         android:title="Enable Color Input">
+      <ListPreference
+         android:title="Enable/Disable Color Input"
+         android:summary="When enabled uses NV21 format, otherwise uses Grey Scale"
+         android:key="ColorYUVEnable"
+         android:defaultValue="1"
+         android:entries="@array/EnableColorYUVOnOffArray"
+         android:entryValues="@array/EnableColorYUVOnOffValueArray" />
+   </PreferenceCategory>
+
+</PreferenceScreen>

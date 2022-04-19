@@ -1,0 +1,26 @@
+/*
+ * Copyright (c) 2019 Qualcomm Technologies, Inc.
+ * All Rights Reserved.
+ * Confidential and Proprietary - Qualcomm Technologies, Inc.
+ */
+
+package vendor.qti.hardware.factory@1.1;
+
+import @1.0::IFactory;
+
+interface IFactory extends @1.0::IFactory {
+
+    /**
+     * Execute command with value.
+     *
+     * @param cmd:
+     * @param value:
+     * @return result
+     *
+     * Support commands and value:
+     * 1. Set property : cmd = "setprop" value = "aaa.bbb.ccc=xxxx"
+     * 2. Get property : cmd = "getprop" value = "aaa.bbb.ccc"
+     *
+     */
+    delegate(string cmd,string value) generates (@1.1::FactoryResult result);
+};

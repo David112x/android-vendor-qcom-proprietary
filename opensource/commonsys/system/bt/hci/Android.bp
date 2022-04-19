@@ -1,0 +1,90 @@
+cc_defaults {
+    name: "libbt-hci_defaults_qti",
+    defaults: ["fluoride_defaults_qti"],
+    shared_libs: [
+        "android.hardware.bluetooth@1.0",
+        "libhidlbase",
+        "libhidltransport",
+        "libhwbinder",
+    ],
+}
+
+// HCI static library for target
+// ========================================================
+cc_library_static {
+    name: "libbt-hci_qti",
+    defaults: ["libbt-hci_defaults_qti"],
+    srcs: [
+        "src/btsnoop.cc",
+        "src/btsnoop_mem.cc",
+        "src/btsnoop_net.cc",
+        "src/buffer_allocator.cc",
+        "src/hci_inject.cc",
+        "src/hci_layer.cc",
+        "src/hci_layer_android.cc",
+        "src/hci_packet_factory.cc",
+        "src/hci_packet_parser.cc",
+        "src/packet_fragmenter.cc",
+    ],
+    local_include_dirs: [
+        "include",
+    ],
+    include_dirs: [
+        "vendor/qcom/opensource/commonsys/system/bt",
+        "vendor/qcom/opensource/commonsys/system/bt/internal_include",
+        "vendor/qcom/opensource/commonsys/system/bt/btcore/include",
+        "vendor/qcom/opensource/commonsys/system/bt/stack/include",
+        "vendor/qcom/opensource/commonsys/system/bt/utils/include",
+        "vendor/qcom/opensource/commonsys/system/bt/bta/include",
+        "vendor/qcom/opensource/commonsys/system/bt/device/include",
+        "vendor/qcom/opensource/commonsys-intf/bluetooth/include",
+        "system/libhwbinder/include",
+    ],
+
+    arch: {
+        arm: {
+            cflags: [
+                "-DARCH_ARM_32"
+            ],
+       },
+   },
+}
+
+// HCI unit tests for target
+// ========================================================
+cc_test {
+    name: "net_test_hci_qti",
+    test_suites: ["device-tests"],
+    defaults: ["libbt-hci_defaults_qti"],
+    local_include_dirs: [
+        "include",
+    ],
+    include_dirs: [
+        "vendor/qcom/opensource/commonsys/system/bt",
+        "vendor/qcom/opensource/commonsys/system/bt/internal_include",
+        "vendor/qcom/opensource/commonsys/system/bt/btcore/include",
+        "vendor/qcom/opensource/commonsys/system/bt/osi/test",
+        "vendor/qcom/opensource/commonsys/system/bt/stack/include",
+        "vendor/qcom/opensource/commonsys/system/bt/utils/include",
+        "vendor/qcom/opensource/commonsys/system/bt/device/include",
+        "vendor/qcom/opensource/commonsys-intf/bluetooth/include",
+        "system/libhwbinder/include",
+    ],
+    srcs: [
+        "test/packet_fragmenter_test.cc",
+    ],
+    shared_libs: [
+        "liblog",
+        "libdl",
+        "libprotobuf-cpp-lite",
+    ],
+    static_libs: [
+        "libbt-hci_qti",
+        "libosi_qti",
+        "libosi-AlarmTestHarness_qti",
+        "libosi-AllocationTestHarness_qti",
+        "libcutils",
+        "libbtcore_qti",
+        "libbt-protos_qti",
+    ],
+}

@@ -1,0 +1,1 @@
+../../../proprietary/securemsm/config/smcinvoke_vendor_proprietary_product.mk

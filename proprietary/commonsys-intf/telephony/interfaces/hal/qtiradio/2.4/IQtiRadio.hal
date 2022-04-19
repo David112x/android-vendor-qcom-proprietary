@@ -1,0 +1,26 @@
+/*
+ * Copyright (c) 2019 Qualcomm Technologies, Inc.
+ * All Rights Reserved.
+ * Confidential and Proprietary - Qualcomm Technologies, Inc.
+ *
+ */
+
+package vendor.qti.hardware.radio.qtiradio@2.4;
+
+import @2.3::IQtiRadio;
+
+interface IQtiRadio extends @2.3::IQtiRadio {
+    /**
+     * Provide Carrier specific information to the modem that must be used to
+     * encrypt the IMSI and IMPI. Sent by the framework during boot, carrier
+     * switch and everytime the framework receives a new certificate.
+     *
+     * @param serial Serial number of request.
+     * @param message ImsiEncryptionInfo as defined in types.hal.
+     *
+     *
+     * Response callback is
+     * IQtiRadioResponse.setCarrierInfoForImsiEncryptionResponse()
+     */
+    oneway setCarrierInfoForImsiEncryption(int32_t serial, ImsiEncryptionInfo imsiEncryptionInfo);
+};

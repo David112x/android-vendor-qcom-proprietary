@@ -1,0 +1,1 @@
+../../../proprietary/commonsys/cne/cne_commonsys_system_product.mk

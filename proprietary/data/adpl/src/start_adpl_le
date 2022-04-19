@@ -1,0 +1,34 @@
+#! /bin/sh
+#
+#Copyright (c) 2012-2014,2018 Qualcomm Technologies, Inc.
+#All Rights Reserved.
+#Confidential and Proprietary - Qualcomm Technologies, Inc.
+
+
+# adpl   init.d script to start the Data Software's adpl daemon
+
+set -e
+
+case "$1" in
+  start)
+        echo -n "Starting adpl: "
+        echo "ADPL:start" > /dev/kmsg
+        start-stop-daemon -S -b --exec /usr/bin/adpl
+        echo "done"
+        ;;
+  stop)
+        echo -n "Stopping adpl: "
+        start-stop-daemon -K -n adpl
+        echo "done"
+        ;;
+  restart)
+        $0 stop
+        $0 start
+        ;;
+  *)
+        echo "Usage adpl { start | stop | restart}" >&2
+        exit 1
+        ;;
+esac
+
+exit 0

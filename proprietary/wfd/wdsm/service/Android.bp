@@ -1,0 +1,20 @@
+//=============================================
+//  Wfd Common lib for service and client
+//=============================================
+java_library {
+    name: "WfdCommon",
+    installable: true,
+
+    srcs: [
+        "src/com/qualcomm/wfd/WfdEnums.java",
+        "src/com/qualcomm/wfd/WfdStatus.java",
+        "src/com/qualcomm/wfd/WfdDevice.java",
+        "src/com/qualcomm/wfd/service/*.aidl",
+        "src/com/qualcomm/compat/New/ExtendedRemoteDisplay.java",
+    ],
+
+    aidl: {
+        include_dirs: ["frameworks/native/aidl/gui"],
+    },
+
+}

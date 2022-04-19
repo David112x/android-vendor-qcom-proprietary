@@ -1,0 +1,8 @@
+cc_library_headers {
+    name: "libqdp_headers",
+    sanitize:{
+	integer_overflow: true,
+    }, 
+    vendor: true,
+    export_include_dirs: ["inc"],
+}

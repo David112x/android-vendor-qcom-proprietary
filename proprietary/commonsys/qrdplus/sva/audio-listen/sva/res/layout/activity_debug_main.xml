@@ -1,0 +1,238 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!--
+Copyright (c) 2018 Qualcomm Technologies, Inc.
+All Rights Reserved.
+Confidential and Proprietary - Qualcomm Technologies, Inc.
+ -->
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/layout_root"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg.home"
+    android:orientation="vertical">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <!-- Select a sound model section -->
+            <LinearLayout
+                style="@style/VoiceWakeup.Layout.Section"
+                android:background="@color/bg.content"
+                android:orientation="vertical">
+
+                <TextView
+                    style="@style/VoiceWakeup.Layout.Section.Title"
+                    android:text="@string/sound_model" />
+
+                <LinearLayout
+                    android:id="@+id/layout_select_sound_model"
+                    style="@style/VoiceWakeup.Layout.Stroke"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <RelativeLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="5dp">
+
+                        <ImageView
+                            android:id="@+id/image_microphone"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:scaleType="fitCenter"
+                            android:src="@drawable/mic_off" />
+
+                        <View
+                            android:layout_width="50dp"
+                            android:layout_height="50dp"
+                            android:layout_centerInParent="true"
+                            android:background="@drawable/bg_home_mic_effect" />
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            android:id="@+id/tv_select_model"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentStart="true"
+                            android:layout_alignParentTop="true"
+                            android:paddingStart="3dp"
+                            android:text="@string/select_a_sound_model"
+                            android:textSize="25sp"
+                            android:textStyle="bold" />
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_margin="5dp">
+
+                        <ImageView
+                            android:id="@+id/image_triangle_dropdown"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentBottom="true"
+                            android:layout_alignParentEnd="true"
+                            android:background="@android:color/transparent"
+                            android:scaleType="fitXY"
+                            android:src="@drawable/list_arrow" />
+                    </RelativeLayout>
+                </LinearLayout>
+            </LinearLayout>
+
+            <!-- Advanced detail section -->
+            <LinearLayout
+                android:id="@+id/layout_advanced_details"
+                style="@style/VoiceWakeup.Layout.FooterBar"
+                android:orientation="vertical"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp">
+
+                <!-- Advanced detail heading and reset detections -->
+                <RelativeLayout
+                    style="@style/VoiceWakeup.Layout.FooterBar.Content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentStart="true"
+                        android:layout_centerVertical="true"
+                        android:text="@string/advanced_detail"
+                        android:textSize="20sp"
+                        android:textStyle="bold" />
+
+                    <FrameLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:foregroundGravity="center">
+
+                        <ImageView
+                            android:id="@+id/image_reset_detections"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:background="@android:color/transparent"
+                            android:src="@drawable/popup_close" />
+                    </FrameLayout>
+                </RelativeLayout>
+
+                <!-- Advanced detail: Detection Counts -->
+                <RelativeLayout
+                    style="@style/VoiceWakeup.Layout.FooterBar.Content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/detections_flag"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentStart="true"
+                        android:layout_marginEnd="3dp"
+                        android:text="@string/detections"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/tv_detection_count"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_toEndOf="@id/detections_flag"
+                        android:text="@string/zero" />
+
+                    <TextView
+                        android:id="@+id/keyphrase_flag"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginEnd="3dp"
+                        android:text="@string/keyphrase"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/tv_keyphrase_count"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_toEndOf="@+id/keyphrase_flag"
+                        android:text="@string/zero" />
+
+                    <TextView
+                        android:id="@+id/tv_user_count"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:text="@string/zero" />
+
+                    <TextView
+                        android:id="@+id/user_flag"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="3dp"
+                        android:layout_toStartOf="@id/tv_user_count"
+                        android:text="@string/user"
+                        android:textStyle="bold" />
+                </RelativeLayout>
+
+                <!-- Advanced Detail: Voice Requests -->
+                <RelativeLayout
+                    style="@style/VoiceWakeup.Layout.FooterBar.Content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/voice_request_flag"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentStart="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginEnd="3dp"
+                        android:text="@string/voice_requests"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/tv_voice_request_count"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_toEndOf="@id/voice_request_flag"
+                        android:text="@string/zero" />
+
+                    <FrameLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="25dp"
+                        android:layout_alignParentEnd="true"
+                        android:clickable="true"
+                        android:foregroundGravity="center"
+                        android:onClick="playLastVoiceRequest">
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:background="@android:color/transparent"
+                            android:scaleType="centerCrop"
+                            android:src="@drawable/play_small" />
+                    </FrameLayout>
+                </RelativeLayout>
+
+
+                <!-- Advanced Detail: dynamic session info -->
+                <LinearLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:id="@+id/layout_session_info"
+                    android:orientation="vertical"/>
+
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

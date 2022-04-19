@@ -1,0 +1,10 @@
+prefix=@prefix@
+exec_prefix=@exec_prefix@
+libdir=@libdir@
+includedir=@includedir@
+
+Name: qmi-framework-vendor
+Description: QMI Framework Tools
+Version: @VERSION@
+Libs: -L${libdir} -lqrtr -lqsocket
+Cflags: -I${includedir}/qmi-framework-vendor

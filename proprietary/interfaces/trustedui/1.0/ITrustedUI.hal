@@ -1,0 +1,116 @@
+/*
+ * Copyright (c) 2019 Qualcomm Technologies, Inc.
+ * All Rights Reserved.
+ * Confidential and Proprietary - Qualcomm Technologies, Inc.
+ */
+
+package vendor.qti.hardware.trustedui@1.0;
+import ITrustedInput;
+import ITrustedUICallback;
+
+
+/**
+ * Trusted UI HAL
+ *
+ * ITrustedUI provides services for handling secure user interactions for usecases such as
+ * -# secure payment
+ * -# secure confirmation
+ *
+ * ITrustedUI includes methods to create and start a secure display session and attach a secure way
+ * of delivering user input to the session. The interface provides means to configure a layout of
+ * the client's choice to be rendered on the screen, as well as a configurable way of accepting user
+ * input (touch, keyboard etc).
+ */
+interface ITrustedUI {
+    /**
+     * This method initializes a new session and sets up the trusted entity on the trusted Execute
+     * Engine(trustedEE) for secure execution.
+     * Client must implement ITrustedInput interface to open/close/read secure user-events and
+     * ITrustedUICallback to receive async notifications from the HAL.
+     *
+     * @param inParams Session creation parameters. Refer TUICreateParams in types.hal for the
+     *                 description of the parameters.
+     *
+     * @param input ITrustedInput interface (to open/close/read secure user-events)
+     *
+     * @param cb Client Callback to report the session result on input handling complete or
+     *           on error.
+     *
+     * @return status - TUI_SUCCESS on success
+     *                - TUI_FAILURE General Failure
+     *
+     * @return sessionId Session identifier. Valid in case of success and should be
+     *                   ignored in case of an error.
+     **/
+    createSession(TUICreateParams inParams, ITrustedInput input, ITrustedUICallback cb)
+        generates (Response status, uint32_t sessionId);
+
+    /**
+     * This method allows the client to send custom commands to the trustedEE. This call will
+     * synchronously deliver the command in commandData to the trustedEE and return the
+     * response. To successfully use this method, the caller must ensure to indicate the maximum
+     * size of commandData and response in the minSharedMemSize(Refer to TUICreateParams in
+     * types.hal).
+     *
+     * @param sessionId Session identifier returned by a successful call to createSession(..)
+     *
+     * @param commandId A unique identifier for the command.
+     *
+     * @param commandData Command payload to be sent to the trustedEE
+     *
+     * @return status  - TUI_SUCCESS on success
+     *                 - TUI_FAILURE on error, or any other error.
+     *
+     * @return response response payload from the trustedEE
+     **/
+    sendCommand(uint32_t sessionId, uint16_t commandId, vec<uint8_t> commandData)
+        generates (Response status, vec<uint8_t> response);
+
+    /**
+     * This method starts a secure UI session by switching display, input device to secure mode and
+     * starts handling user inputs asynchronously. For session to start successfully, secure input
+     * device initialization should be successful when requested by HAL. When this call returns,
+     * the intended screen layout (user dialog as set in TUIConfig) is displayed on the screen and
+     * secure input events can be delivered to HAL with appropriate payload, which are then passed
+     * to the trustedEE.
+     * Based on the trustedEE's response, the registered callback (set during the 'createSession')
+     * notifies the response/error to the client.
+     *
+     * The Trusted session completes on successful user interaction completion.
+     *
+     * In case the startSession returns error, the client should not expect a callback from the HAL.
+     *
+     * @param sessionId Session identifier returned by a successful call to createSession(..)
+     *
+     * @param cfg List of config parameters required to set up the session. Refer TUIConfig in
+     *            types.hal for the description of the parameters.
+     *
+     * @return status - TUI_SUCCESS on success
+     *                - TUI_ALREADY_RUNNING if a session is already active with the given cfg
+     *                - TUI_FAILURE on error, or any other error.
+     **/
+    startSession(uint32_t sessionId, TUIConfig cfg) generates (Response status);
+
+    /**
+     * Stops the active Trusted UI session by switching the display and trusted input device back
+     * to non-secure mode.
+     * In case the session was actively handling input at the time of this call(abort scenario),
+     * session will be stopped and the callback will report error to the client.
+     *
+     * @param sessionId Session identifier returned by a successful call to createSession(..)
+     *
+     * @return status - TUI_SUCCESS on success
+     *                - TUI_FAILURE on error, or any other error.
+     **/
+    stopSession(uint32_t sessionId) generates (Response status);
+
+    /**
+     * This method shuts down the session and unloads the associated trusted handler.
+     *
+     * @param sessionId Id of the session to be closed.
+     *
+     * @return status - TUI_SUCCESS on success
+     *                - TUI_FAILURE on error, or any other error.
+     **/
+    deleteSession(uint32_t sessionId) generates (Response status);
+};

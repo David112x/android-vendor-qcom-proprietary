@@ -1,0 +1,12 @@
+/*
+ * Copyright (c) 2019 Qualcomm Technologies, Inc.
+ * All Rights Reserved.
+ * Confidential and Proprietary - Qualcomm Technologies, Inc.
+ */
+
+package vendor.qti.gnss@3.0;
+
+interface ILocHidlIzatConfigCallback {
+
+    izatConfigCallback(string izatConfigContent);
+};

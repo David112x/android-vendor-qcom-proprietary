@@ -1,0 +1,1 @@
+../../../proprietary/commonsys/cne/cne_system_product_noship.mk

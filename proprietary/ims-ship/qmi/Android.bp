@@ -1,0 +1,9 @@
+cc_library_headers {
+    name: "libimsqmiservices_headers",
+    sanitize:{
+        integer_overflow: true,
+    },
+    vendor: true,
+    host_supported: true,
+    export_include_dirs: ["."],
+}

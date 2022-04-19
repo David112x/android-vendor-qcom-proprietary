@@ -1,0 +1,26 @@
+/*
+ * Copyright (c) 2019 Qualcomm Technologies, Inc.
+ * All Rights Reserved.
+ * Confidential and Proprietary - Qualcomm Technologies, Inc.
+ */
+
+package vendor.qti.data.slm@1.0;
+
+/**
+ * Return values for ISlmService requests
+ */
+enum ReturnCode : uint64_t {
+    OK,
+    INVALID_ARGUMENTS,
+    UNKNOWN_ERROR
+};
+
+/**
+ * Enum which holds the SLM Preference
+ * OPTIMIZE_LATENCY - Link Selection
+ * OPTIMIZE_TPUT - Link Aggregation
+ */
+enum Preference : uint8_t {
+    OPTIMIZE_LATENCY = 1,
+    OPTIMIZE_TPUT = 2
+};

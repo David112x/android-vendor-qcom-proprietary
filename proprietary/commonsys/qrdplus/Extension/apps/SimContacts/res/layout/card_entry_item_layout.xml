@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    Copyright (c) 2019 Qualcomm Technologies, Inc.
+    All Rights Reserved.
+    Confidential and Proprietary - Qualcomm Technologies, Inc.
+-->
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/SelectableItem"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingStart="@dimen/entry_card_item_padding_start"
+    android:paddingEnd="@dimen/entry_card_item_padding_end"
+    android:paddingTop="@dimen/entry_card_item_padding_top"
+    android:paddingBottom="@dimen/entry_card_item_padding_bottom">
+
+    <ImageView
+        android:id="@+id/icon"
+        android:layout_width="@dimen/entry_card_item_icon_height"
+        android:layout_height="@dimen/entry_card_item_icon_width"
+        android:layout_alignParentStart="true"
+        android:layout_marginEnd="@dimen/entry_card_item_image_spacing"
+        android:scaleType="fitCenter"
+        android:layout_centerVertical="true"/>
+
+    <TextView
+        android:id="@+id/header"
+        android:textSize="@dimen/entry_card_title_text_size"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_toEndOf="@+id/icon"
+        android:layout_toStartOf="@+id/third_icon"
+        android:textAlignment="viewStart" />
+
+    <ImageView
+        android:id="@+id/third_icon"
+        android:layout_width="@dimen/default_clickable_icon_size"
+        android:layout_height="@dimen/default_clickable_icon_size"
+        android:layout_alignParentEnd="true"
+        android:visibility="invisible"
+        android:background="?android:attr/selectableItemBackgroundBorderless"
+        android:paddingTop="@dimen/entry_card_item_icon_margin_top"
+        android:paddingBottom="@dimen/entry_card_item_icon_margin_bottom"
+        android:paddingLeft="@dimen/entry_card_item_icon_margin_left"
+        android:paddingRight="@dimen/entry_card_item_icon_margin_right"/>
+
+</RelativeLayout>

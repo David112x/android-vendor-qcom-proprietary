@@ -1,0 +1,14 @@
+/*
+ * Copyright (c) 2019 Qualcomm Technologies, Inc.
+ * All Rights Reserved.
+ * Confidential and Proprietary - Qualcomm Technologies, Inc.
+ *
+ */
+
+package vendor.qti.hardware.radio.qtiradio@2.3;
+
+enum EndcStatus: int32_t {
+    INVALID  = -1,
+    DISABLED =  0,
+    ENABLED  =  1,
+};

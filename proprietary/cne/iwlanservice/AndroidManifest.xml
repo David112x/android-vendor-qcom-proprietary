@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!---/******************************************************************************
+* @file    AndrooidManifest.xml
+* @brief   Gets generated when creating any activity using android sdk
+           Provides the permissions required by the activity and activity name
+*
+*  Copyright (c) 2018 Qualcomm Technologies, Inc.
+*  All Rights Reserved.
+*  Confidential and Proprietary - Qualcomm Technologies, Inc.
+*  *****************************************************************************-->
+
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+   package="vendor.qti.iwlan"
+   android:sharedUserId="android.uid.phone"
+   android:versionCode="1"
+   android:versionName="1.0" >
+
+   <uses-sdk android:minSdkVersion="10" android:targetSdkVersion="28" />
+   <uses-permission android:name="android.permission.WAKE_LOCK" />
+
+   <application android:allowBackup="false"
+                android:directBootAware="true"
+                android:process=".qtidataservices">
+      <service android:name=".IWlanDataService"
+         android:permission="android.permission.BIND_TELEPHONY_DATA_SERVICE"
+         android:enabled="true"
+         android:exported="true" >
+         <intent-filter>
+               <action android:name="android.telephony.data.DataService" />
+         </intent-filter>
+      </service>
+      <service android:name=".IWlanNetworkService"
+         android:permission="android.permission.BIND_TELEPHONY_NETWORK_SERVICE"
+         android:enabled="true"
+         android:exported="true" >
+         <intent-filter>
+               <action android:name="android.telephony.NetworkService" />
+         </intent-filter>
+      </service>
+      <service android:name=".QualifiedNetworksServiceImpl"
+         android:permission="android.permission.BIND_TELEPHONY_QUALIFIED_NETWORKS_SERVICE"
+         android:enabled="true"
+         android:exported="true" >
+         <intent-filter>
+               <action android:name="android.telephony.data.QualifiedNetworksService" />
+         </intent-filter>
+      </service>
+   </application>
+</manifest>

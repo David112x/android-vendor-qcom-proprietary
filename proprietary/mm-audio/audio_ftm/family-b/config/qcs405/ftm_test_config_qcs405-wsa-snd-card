@@ -1,0 +1,489 @@
+tc 1
+#Left Speaker
+!Playback
+Rxdevice:0
+
+enable
+WSA_CDC_DMA_RX_0 Audio Mixer MultiMedia1:1
+WSA_CDC_DMA_RX_0 Channels:One
+WSA RX0 MUX:AIF1_PB
+WSA_RX0 INP0:RX0
+WSA_RX0 Digital Volume:84
+WSA_COMP1 Switch:1
+SpkrLeft COMP Switch:1
+SpkrLeft BOOST Switch:1
+SpkrLeft VISENSE Switch:1
+SpkrLeft SWR DAC_Port Switch:1
+
+disable
+WSA_CDC_DMA_RX_0 Audio Mixer MultiMedia1:0
+SpkrLeft BOOST Switch:0
+SpkrLeft VISENSE Switch:0
+WSA RX0 MUX:ZERO
+WSA_RX0 INP0:ZERO
+WSA_COMP1 Switch:0
+SpkrLeft COMP Switch:0
+SpkrLeft SWR DAC_Port Switch:0
+
+tc 2
+#Right Speaker
+!Playback
+Rxdevice:0
+
+enable
+WSA_CDC_DMA_RX_0 Audio Mixer MultiMedia1:1
+WSA_CDC_DMA_RX_0 Channels:One
+WSA RX1 MUX:AIF1_PB
+WSA_RX1 INP0:RX1
+WSA_RX1 Digital Volume:84
+WSA_COMP2 Switch:1
+SpkrRight COMP Switch:1
+SpkrRight BOOST Switch:1
+SpkrRight VISENSE Switch:1
+SpkrRight SWR DAC_Port Switch:1
+
+disable
+WSA_CDC_DMA_RX_0 Audio Mixer MultiMedia1:0
+SpkRight BOOST Switch:0
+SpkrRight VISENSE Switch:0
+WSA RX1 MUX:ZERO
+WSA_RX1 INP0:ZERO
+WSA_COMP2 Switch:0
+SpkrRight COMP Switch:0
+SpkrRight SWR DAC_Port Switch
+
+tc 6
+#Line Out1
+!Playback
+Rxdevice:0
+
+enable
+SLIMBUS_0_RX Audio Mixer MultiMedia1:1
+SLIM RX0 MUX:AIF_MIX1_PB
+SLIM_0_RX Channels:One
+RX INT3_1 MIX1 INP0:RX0
+COMP3 Switch:1
+
+disable
+SLIMBUS_0_RX Audio Mixer MultiMedia1:0
+SLIM RX0 MUX:ZERO
+RX INT3_1 MIX1 INP0:ZERO
+COMP3 Switch:0
+
+tc 7
+#Line Out2
+!Playback
+Rxdevice:0
+
+enable
+SLIMBUS_0_RX Audio Mixer MultiMedia1:1
+SLIM RX1 MUX:AIF_MIX1_PB
+SLIM_0_RX Channels:One
+RX INT4_1 MIX1 INP0:RX1
+COMP4 Switch:1
+
+disable
+SLIMBUS_0_RX Audio Mixer MultiMedia1:0
+SLIM RX1 MUX:ZERO
+RX INT4_1 MIX1 INP0:ZERO
+COMP4 Switch:0
+
+tc 12
+#AMIC3
+!Capture
+Txdevice:0
+
+enable
+MultiMedia1 Mixer SLIM_0_TX:1
+SLIM_0_TX Channels:One
+AIF1_CAP Mixer SLIM TX0:1
+SLIM TX0 MUX:DEC0
+ADC MUX0:AMIC
+AMIC MUX0:ADC3
+
+disable
+MultiMedia1 Mixer SLIM_0_TX:0
+AIF1_CAP Mixer SLIM TX0:0
+SLIM TX0 MUX:ZERO
+AMIC MUX0:ZERO
+
+tc 13
+#AMIC4
+!Capture
+Txdevice:0
+
+enable
+MultiMedia1 Mixer SLIM_0_TX:1
+SLIM_0_TX Channels:One
+AIF1_CAP Mixer SLIM TX1:1
+SLIM TX1 MUX:DEC1
+ADC MUX1:AMIC
+AMIC MUX1:ADC4
+
+disable
+MultiMedia1 Mixer SLIM_0_TX:0
+AIF1_CAP Mixer SLIM TX1:0
+SLIM TX1 MUX:ZERO
+AMIC MUX1:ZERO
+
+tc 16
+#DMIC1
+!Capture
+
+enable
+MultiMedia1 Mixer VA_CDC_DMA_TX_0:1
+VA_CDC_DMA_TX_0 Channels:One
+VA_AIF1_CAP Mixer DEC0:1
+VA DMIC MUX0:DMIC0
+VA_DEC0 Volume:84
+
+disable
+VA_AIF1_CAP Mixer DEC0:0
+VA DMIC MUX0:ZERO
+MultiMedia1 Mixer VA_CDC_DMA_TX_0:0
+
+tc 17
+#DMIC2
+!Capture
+
+enable
+MultiMedia1 Mixer VA_CDC_DMA_TX_0:1
+VA_CDC_DMA_TX_0 Channels:One
+VA_AIF1_CAP Mixer DEC0:1
+VA DMIC MUX0:DMIC1
+VA_DEC1 Volume:84
+
+disable
+VA_AIF1_CAP Mixer DEC0:0
+VA DMIC MUX0:ZERO
+MultiMedia1 Mixer VA_CDC_DMA_TX_0:0
+
+tc 18
+#DMIC3
+!Capture
+
+enable
+MultiMedia1 Mixer VA_CDC_DMA_TX_0:1
+VA_CDC_DMA_TX_0 Channels:One
+VA_AIF1_CAP Mixer DEC0:1
+VA DMIC MUX0:DMIC2
+VA_DEC2 Volume:84
+
+disable
+VA_AIF1_CAP Mixer DEC0:0
+VA DMIC MUX0:ZERO
+MultiMedia1 Mixer VA_CDC_DMA_TX_0:0
+
+tc 19
+#DMIC4
+!Capture
+
+enable
+MultiMedia1 Mixer VA_CDC_DMA_TX_0:1
+VA_CDC_DMA_TX_0 Channels:One
+VA_AIF1_CAP Mixer DEC0:1
+VA DMIC MUX0:DMIC3
+VA_DEC3 Volume:84
+
+disable
+VA_AIF1_CAP Mixer DEC0:0
+VA DMIC MUX0:ZERO
+MultiMedia1 Mixer VA_CDC_DMA_TX_0:0
+
+tc 20
+#DMIC5
+!Capture
+
+enable
+MultiMedia1 Mixer VA_CDC_DMA_TX_0:1
+VA_CDC_DMA_TX_0 Channels:One
+VA_AIF1_CAP Mixer DEC0:1
+VA DMIC MUX0:DMIC4
+VA_DEC4 Volume:84
+
+disable
+VA_AIF1_CAP Mixer DEC0:0
+VA DMIC MUX0:ZERO
+MultiMedia1 Mixer VA_CDC_DMA_TX_0:0
+
+tc 21
+#DMIC6
+!Capture
+
+enable
+MultiMedia1 Mixer VA_CDC_DMA_TX_0:1
+VA_CDC_DMA_TX_0 Channels:One
+VA_AIF1_CAP Mixer DEC0:1
+VA DMIC MUX0:DMIC5
+VA_DEC5 Volume:84
+
+disable
+VA_AIF1_CAP Mixer DEC0:0
+VA DMIC MUX0:ZERO
+MultiMedia1 Mixer VA_CDC_DMA_TX_0:0
+
+tc 22
+#DMIC7
+!Capture
+
+enable
+MultiMedia1 Mixer VA_CDC_DMA_TX_0:1
+VA_CDC_DMA_TX_0 Channels:One
+VA_AIF1_CAP Mixer DEC0:1
+VA DMIC MUX0:DMIC6
+VA_DEC6 Volume:84
+
+disable
+VA_AIF1_CAP Mixer DEC0:0
+VA DMIC MUX0:ZERO
+MultiMedia1 Mixer VA_CDC_DMA_TX_0:0
+
+tc 23
+#DMIC8
+!Capture
+
+enable
+MultiMedia1 Mixer VA_CDC_DMA_TX_0:1
+VA_CDC_DMA_TX_0 Channels:One
+VA_AIF1_CAP Mixer DEC0:1
+VA DMIC MUX0:DMIC7
+VA_DEC7 Volume:84
+
+disable
+VA_AIF1_CAP Mixer DEC0:0
+VA DMIC MUX0:ZERO
+MultiMedia1 Mixer VA_CDC_DMA_TX_0:0
+
+tc 51
+#Handset
+!Playback
+Rxdevice:0
+
+enable
+WSA_CDC_DMA_RX_0 Audio Mixer MultiMedia1:1
+WSA_CDC_DMA_RX_0 Channels:One
+WSA RX0 MUX:AIF1_PB
+WSA_RX0 INP0:RX0
+WSA_RX0 Digital Volume:84
+WSA_COMP1 Switch:1
+SpkrLeft COMP Switch:1
+SpkrLeft BOOST Switch:1
+SpkrLeft VISENSE Switch:1
+SpkrLeft SWR DAC_Port Switch:1
+
+disable
+WSA_CDC_DMA_RX_0 Audio Mixer MultiMedia1:0
+SpkrLeft BOOST Switch:0
+SpkrLeft VISENSE Switch:0
+WSA RX0 MUX:ZERO
+WSA_RX0 INP0:ZERO
+WSA_COMP1 Switch:0
+SpkrLeft COMP Switch:0
+SpkrLeft SWR DAC_Port Switch:0
+
+tc 52
+#Speaker
+!Playback
+Rxdevice:0
+
+enable
+WSA_CDC_DMA_RX_0 Audio Mixer MultiMedia1:1
+WSA_CDC_DMA_RX_0 Channels:Two
+WSA RX0 MUX:AIF1_PB
+WSA RX1 MUX:AIF1_PB
+WSA_RX0 INP0:RX0
+WSA_RX1 INP0:RX1
+WSA_COMP1 Switch:1
+WSA_COMP2 Switch:1
+SpkrLeft COMP Switch:1
+SpkrLeft BOOST Switch:1
+SpkrLeft VISENSE Switch:1
+SpkrLeft SWR DAC_Port Switch:1
+SpkrRight COMP Switch:1
+SpkrRight BOOST Switch:1
+SpkrRight VISENSE Switch:1
+SpkrRight SWR DAC_Port Switch:1
+
+disable
+WSA_CDC_DMA_RX_0 Audio Mixer MultiMedia1:0
+SpkrLeft BOOST Switch:0
+SpkrLeft VISENSE Switch:0
+SpkRight BOOST Switch:0
+SpkrRight VISENSE Switch:0
+WSA_CDC_DMA_RX_0 Channels:One
+WSA RX0 MUX:ZERO
+WSA RX1 MUX:ZERO
+WSA_RX0 INP0:ZERO
+WSA_RX1 INP0:ZERO
+WSA_COMP1 Switch:0
+WSA_COMP2 Switch:0
+SpkrLeft COMP Switch:0
+SpkrLeft SWR DAC_Port Switch:0
+SpkrRight COMP Switch:0
+SpkrRight SWR DAC_Port Switch:0
+
+tc 101
+#Handset MIC
+!Capture
+Txdevice:0
+
+enable
+MultiMedia1 Mixer VA_CDC_DMA_TX_0:1
+VA_CDC_DMA_TX_0 Channels:One
+VA_AIF1_CAP Mixer DEC0:1
+VA DMIC MUX0:DMIC2
+VA_DEC2 Volume:84
+
+disable
+VA_AIF1_CAP Mixer DEC0:0
+VA DMIC MUX0:ZERO
+MultiMedia1 Mixer VA_CDC_DMA_TX_0:0
+
+tc 110
+#Speaker MIC
+!Capture
+Txdevice:0
+
+enable
+MultiMedia1 Mixer VA_CDC_DMA_TX_0:1
+VA_CDC_DMA_TX_0 Channels:One
+VA_AIF1_CAP Mixer DEC0:1
+VA DMIC MUX0:DMIC1
+VA_DEC1 Volume:84
+
+disable
+VA_AIF1_CAP Mixer DEC0:0
+VA DMIC MUX0:ZERO
+MultiMedia1 Mixer VA_CDC_DMA_TX_0:0
+
+tc 114
+#Speaker Dual-MIC
+!Capture
+Txdevice:0
+
+enable
+MultiMedia1 Mixer VA_CDC_DMA_TX_0:1
+VA_CDC_DMA_TX_0 Channels:Two
+VA_AIF1_CAP Mixer DEC0:1
+VA_AIF1_CAP Mixer DEC1:1
+VA DMIC MUX0:DMIC1
+VA DMIC MUX1:DMIC2
+
+disable
+VA_AIF1_CAP Mixer DEC0:0
+VA_AIF1_CAP Mixer DEC1:0
+VA DMIC MUX0:ZERO
+VA DMIC MUX1:ZERO
+VA_CDC_DMA_TX_0 Channels:One
+MultiMedia1 Mixer VA_CDC_DMA_TX_0:0
+
+tc 142
+#Quad MIC
+!Capture
+Txdevice:0
+
+enable
+MultiMedia1 Mixer VA_CDC_DMA_TX_0:1
+VA_CDC_DMA_TX_0 Channels:Four
+VA_AIF1_CAP Mixer DEC0:1
+VA_AIF1_CAP Mixer DEC1:1
+VA_AIF1_CAP Mixer DEC2:1
+VA_AIF1_CAP Mixer DEC3:1
+VA DMIC MUX0:DMIC0
+VA DMIC MUX1:DMIC1
+VA DMIC MUX2:DMIC2
+VA DMIC MUX3:DMIC3
+
+disable
+MultiMedia1 Mixer VA_CDC_DMA_TX_0:0
+VA_AIF1_CAP Mixer DEC0:0
+VA_AIF1_CAP Mixer DEC1:0
+VA_AIF1_CAP Mixer DEC2:0
+VA_AIF1_CAP Mixer DEC3:0
+VA DMIC MUX0:ZERO
+VA DMIC MUX1:ZERO
+VA DMIC MUX2:ZERO
+VA DMIC MUX3:ZERO
+
+tc 223
+#DMIC1 to SPKL AFE loopback
+!AfeLoop
+Txdevice:35
+Rxdevice:35
+
+enable
+VA_AIF1_CAP Mixer DEC0:1
+VA DMIC MUX0:DMIC0
+VA_DEC0 Volume:84
+WSA_CDC_DMA_RX_0 Port Mixer VA_CDC_DMA_TX_0:1
+WSA_CDC_DMA_RX_0_DL_HL Switch:1
+WSA RX0 MUX:AIF1_PB
+WSA_RX0 INP0:RX0
+WSA_COMP1 Switch:1
+SpkrLeft COMP Switch:1
+SpkrLeft BOOST Switch:1
+SpkrLeft VISENSE Switch:1
+SpkrLeft SWR DAC_Port Switch:1
+
+disable
+WSA_CDC_DMA_RX_0 Port Mixer VA_CDC_DMA_TX_0:0
+WSA_CDC_DMA_RX_0_DL_HL Switch:0
+VA_AIF1_CAP Mixer DEC0:0
+VA DMIC MUX0:ZERO
+WSA RX0 MUX:ZERO
+WSA_RX0 INP0:ZERO
+WSA_COMP1 Switch:0
+SpkrLeft COMP Switch:0
+SpkrLeft BOOST Switch:0
+SpkrLeft VISENSE Switch:0
+SpkrLeft SWR DAC_Port Switch:0
+
+tc 243
+#Speaker to Primary Mic External loopback
+!ExternalLoop
+Txdevice:0
+Rxdevice:0
+
+enable
+MultiMedia1 Mixer VA_CDC_DMA_TX_0:1
+VA_AIF1_CAP Mixer DEC0:1
+VA DMIC MUX0:DMIC2
+VA_DEC2 Volume:84
+WSA_CDC_DMA_RX_0 Audio Mixer MultiMedia1:1
+WSA_CDC_DMA_RX_0 Channels:Two
+WSA RX0 MUX:AIF1_PB
+WSA RX1 MUX:AIF1_PB
+WSA_RX0 INP0:RX0
+WSA_RX1 INP0:RX1
+WSA_COMP1 Switch:1
+WSA_COMP2 Switch:1
+SpkrLeft COMP Switch:1
+SpkrLeft BOOST Switch:1
+SpkrLeft VISENSE Switch:1
+SpkrLeft SWR DAC_Port Switch:1
+SpkrRight COMP Switch:1
+SpkrRight BOOST Switch:1
+SpkrRight VISENSE Switch:1
+SpkrRight SWR DAC_Port Switch:1
+
+disable
+VA_AIF1_CAP Mixer DEC0:0
+VA DMIC MUX0:ZERO
+MultiMedia1 Mixer VA_CDC_DMA_TX_0:0
+SpkrLeft BOOST Switch:0
+SpkrLeft VISENSE Switch:0
+SpkRight BOOST Switch:0
+SpkrRight VISENSE Switch:0
+WSA_CDC_DMA_RX_0 Channels:One
+WSA RX0 MUX:ZERO
+WSA RX1 MUX:ZERO
+WSA_RX0 INP0:ZERO
+WSA_RX1 INP0:ZERO
+WSA_COMP1 Switch:0
+WSA_COMP2 Switch:0
+SpkrLeft COMP Switch:0
+SpkrLeft SWR DAC_Port Switch:0
+SpkrRight COMP Switch:0
+SpkrRight SWR DAC_Port Switch:0
+
+

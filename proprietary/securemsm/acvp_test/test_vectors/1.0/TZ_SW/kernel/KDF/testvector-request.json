@@ -1,0 +1,57 @@
+[ {
+  "acvVersion" : "1.0"
+}, {
+  "vsId" : 19203,
+  "algorithm" : "KDF",
+  "revision" : "1.0",
+  "isSample" : false,
+  "testGroups" : [ {
+    "tgId" : 1,
+    "keyOutLength" : 512,
+    "kdfMode" : "counter",
+    "macMode" : "CMAC-AES128",
+    "counterLength" : 32,
+    "counterLocation" : "before fixed data",
+    "testType" : "AFT",
+    "tests" : [ {
+      "tcId" : 1,
+      "keyIn" : "EB013ED1048B2B1B8154C07F5EA073B4"
+    }, {
+      "tcId" : 2,
+      "keyIn" : "7D0020FA2873E1193262EE924B43C620"
+    }, {
+      "tcId" : 3,
+      "keyIn" : "2BBCF621E2BA814AB904C42F019217CE"
+    }, {
+      "tcId" : 4,
+      "keyIn" : "067334CE483ECC3A86E1EAE569797902"
+    }, {
+      "tcId" : 5,
+      "keyIn" : "2656139AB3DA6F2F83A64B968F1A03F3"
+    } ]
+  }, {
+    "tgId" : 2,
+    "keyOutLength" : 500,
+    "kdfMode" : "counter",
+    "macMode" : "CMAC-AES128",
+    "counterLength" : 32,
+    "counterLocation" : "before fixed data",
+    "testType" : "AFT",
+    "tests" : [ {
+      "tcId" : 6,
+      "keyIn" : "F8BE0FC1B7460C32F7FAC63547B969E7"
+    }, {
+      "tcId" : 7,
+      "keyIn" : "9A23F6F73660D23429636736E0DF65C1"
+    }, {
+      "tcId" : 8,
+      "keyIn" : "6882679A844AE56FBE1283CAA6779427"
+    }, {
+      "tcId" : 9,
+      "keyIn" : "CC8EF167E0AD3A1127AA7CF8C7C23525"
+    }, {
+      "tcId" : 10,
+      "keyIn" : "4DBED857B040343659FD576363122272"
+    } ]
+  } ]
+} ]

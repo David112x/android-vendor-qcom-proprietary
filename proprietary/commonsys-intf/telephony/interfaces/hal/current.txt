@@ -1,0 +1,108 @@
+# Hashes for vendor.qti.hardware.radio.*@1.0, @1.1, and @1.2 packages appropriately.
+0cc508124bb8276e9a3f4fb0d563064a3963faed84e40f91e6910cd3dbeff6b2 vendor.qti.hardware.radio.am@1.0::types
+6e225fbab3930040d8c200725bff114cc15086fe49472e094c629372ca730d04 vendor.qti.hardware.radio.am@1.0::IQcRilAudio
+a8e9933038aa765b8d5788c01e8d5ec7ac1963aa1e4b1cd7561914f7d4a0968f vendor.qti.hardware.radio.am@1.0::IQcRilAudioCallback
+
+3afdd6fa62c0a9f521a225db623ca402ccf628a0b55bfc3ca8d17c60a88fc912 vendor.qti.hardware.radio.atcmdfwd@1.0::types
+f75214b628442b1cfd9f5ba7bf2bee4e4db42077231f2bc9fc2ad936748e5b03 vendor.qti.hardware.radio.atcmdfwd@1.0::IAtCmdFwd
+
+04d229eefa05c05bf6745311a25da82bcdb36262412cdef4800b6659a4a15e95 vendor.qti.hardware.radio.ims@1.0::types
+4e41f65ec3e25e255b25da5d7b3cb117ea4be7dd60745f6ddb97a7475a567e70 vendor.qti.hardware.radio.ims@1.0::IImsRadio
+2b2339ece1f4b26bfd4be345a8004ee1e1aab1ff8ce501a4b41e7aa6fa9818ad vendor.qti.hardware.radio.ims@1.0::IImsRadioIndication
+0cd5ff78c3efaa902a9ba538fc0e1c86c294b2f193dc61f07860833999bdfa95 vendor.qti.hardware.radio.ims@1.0::IImsRadioResponse
+
+58b618a38bf5e169e98328f909f10a7c784901986aecd860b132c8872cc3cf9e vendor.qti.hardware.radio.ims@1.1::types
+2f49a931131eed53265fe59a6861c2bd476bef50403449f556af0883573d7ff1 vendor.qti.hardware.radio.ims@1.1::IImsRadio
+fb32f50037dd0dac15d738bd5b2e443760c8a0e041abae8c6a83e6fcf50a2384 vendor.qti.hardware.radio.ims@1.1::IImsRadioIndication
+
+69eb92f6bad51548dc5e5f3c8c97d43f072ce836d3e34a73877f83d82446431f vendor.qti.hardware.radio.ims@1.2::types
+9444cb5adba21fe0c8adec268d97a34edfe2fe9e0189bd3f5b5f9040830adfbb vendor.qti.hardware.radio.ims@1.2::IImsRadio
+50f558c273ef7f78eeebc5ef9fe4d8a118746505b1ff5d747cd4b5d2e4837720 vendor.qti.hardware.radio.ims@1.2::IImsRadioIndication
+b63c397fc5216518e8155393c8a8040d214ea005af49ba00a39fe9cb67276222 vendor.qti.hardware.radio.ims@1.2::IImsRadioResponse
+
+89e2d9d9bad5e9dc8628f09bcf9b70f4c2aa191c7c8396c9186f462517576094 vendor.qti.hardware.radio.ims@1.3::types
+04f1fddba8cae9a25c994ffadb91dee0a81d3b254917754e3c1405d66fc4f34c vendor.qti.hardware.radio.ims@1.3::IImsRadio
+94e31ea0bb0be42b121ae85494a3c0987222297dc45ba1bd27f2387dc98420ea vendor.qti.hardware.radio.ims@1.3::IImsRadioIndication
+26426179738e562b6336c21fa87dd63a61f339f39f54ddb21b6b8fab3bb48a92 vendor.qti.hardware.radio.ims@1.3::IImsRadioResponse
+
+05b24616dc6bb492a48986532565c4687c5a4fb238a724e1acaedc22d7f076c0 vendor.qti.hardware.radio.ims@1.4::types
+b9b02ede09ac3c9991f94222b79ff5fd8cb1aa84624df8fba96133a63be6a00e vendor.qti.hardware.radio.ims@1.4::IImsRadio
+201e57ae6816c3cd6dbf6edd79074465c17180fcf6cc02c9965b2326dc02b11d vendor.qti.hardware.radio.ims@1.4::IImsRadioIndication
+d4db28d578617430fd13fdd44b99da664da311423dcd77ba6e132506422f64e0 vendor.qti.hardware.radio.ims@1.4::IImsRadioResponse
+
+3d8ffae40534ae6a32e84089199304f791d915bc6bc22382166803f11c737b9a vendor.qti.hardware.radio.ims@1.5::types
+87db1b3bde578791de613a3581a01f5d98a4453cfad374541676c6531126f9ea vendor.qti.hardware.radio.ims@1.5::IImsRadio
+92e09097eeed1837ddf15468a6eb3ad415bb7e9c6bd1008f49348e2524daf70e vendor.qti.hardware.radio.ims@1.5::IImsRadioIndication
+e559577a3e9489009e675b9713c5fc4d6f9ddbc8525ecafb75e93872e7172e63 vendor.qti.hardware.radio.ims@1.5::IImsRadioResponse
+
+c83d543d82498a6b318c5241d261e678d2f77200f2df2c5496e5fbe8ec596ae3 vendor.qti.hardware.radio.qcrilhook@1.0::types
+8f2796b4219f2626240af114846c2a5b42516562fa14f5d07626259e9b6e6037 vendor.qti.hardware.radio.qcrilhook@1.0::IQtiOemHook
+ffba60be414275127f3255979eed8d86d0c564f2fd1191b99863b172723b2b2d vendor.qti.hardware.radio.qcrilhook@1.0::IQtiOemHookIndication
+1b949e5844c692b0d2ddf55e856e03fbd0220d349767a6b6e264fdf2ac7ef44e vendor.qti.hardware.radio.qcrilhook@1.0::IQtiOemHookResponse
+
+db199685f337ae32fade1ad41d23238edafe3a352ae3a0b3c3bd120b77ed6119 vendor.qti.hardware.radio.qtiradio@1.0::types
+680577a061548f1d8755c7fc52af526238287c9f1827b120109cf70fbdc56ddc vendor.qti.hardware.radio.qtiradio@1.0::IQtiRadio
+475e9144b8404dea34516a436a02bc79d3e40c990c41d65ba34e7cb72ec2496a vendor.qti.hardware.radio.qtiradio@1.0::IQtiRadioIndication
+5b61dd9acb74654dd5203eddfab38e5bc2d7a7ae6478945401f147e56f8274b9 vendor.qti.hardware.radio.qtiradio@1.0::IQtiRadioResponse
+
+be51dfb17c6c805270409f02a8feaac820e8a15a2efa44ff53abcfae007837fa vendor.qti.hardware.radio.qtiradio@2.0::types
+d8a1ae07366d9c140ef6f0c24aba46d6e4c844d434c4201ae3c74342cb798f9e vendor.qti.hardware.radio.qtiradio@2.0::IQtiRadio
+00962c1ed449d31f5f4917354d9711142b6713103d9f282adc4a2541d201fbeb vendor.qti.hardware.radio.qtiradio@2.0::IQtiRadioIndication
+846e558f5c7769652131a85ebc4e58ff5af59b51e7e8908aa7b4036475808199 vendor.qti.hardware.radio.qtiradio@2.0::IQtiRadioResponse
+
+0e3d0e80faab4826c951d7f47e56634a2f99ba51fdfc7d1d087c18a2ee3cbc80 vendor.qti.hardware.radio.qtiradio@2.1::types
+8b6667f5508926aa21c6086ce5832fd5291c1f0f07945a66b2bf6774053195fb vendor.qti.hardware.radio.qtiradio@2.1::IQtiRadio
+4ea2599c8e895156463397e79aa6c0e3c82bca09ed927f45a71052416ca98f5f vendor.qti.hardware.radio.qtiradio@2.1::IQtiRadioIndication
+22afff9cee655cdfa02ec528dfd5e6306f7d53bf0661c8d064309c5e2b4304a3 vendor.qti.hardware.radio.qtiradio@2.1::IQtiRadioResponse
+
+a8dacfbcf3087d18bf0336897029ed259cfc8d8edc941ff13d36b9e48cc7e06e vendor.qti.hardware.radio.qtiradio@2.2::types
+dd8c48320b8f3eba92195b69230229cd541398322c18fad3e97041b4d41edadd vendor.qti.hardware.radio.qtiradio@2.2::IQtiRadio
+c035c9495f024dda86b86b9f0e8bb26bcc8730c25457a759ade5ff0aa474ff6a vendor.qti.hardware.radio.qtiradio@2.2::IQtiRadioIndication
+f4f379ce04a9347b943057b4c93cf059fe4e350ca6fe82a9670e19f211a758cd vendor.qti.hardware.radio.qtiradio@2.2::IQtiRadioResponse
+
+29a45d2c9171ba5de880e8be6f333e7e1684e52238d0de88580eec5023c4e049 vendor.qti.hardware.radio.qtiradio@2.3::types
+e314b0175da1de0059cee9b827a757b77db59a1808842b831d6f0dfe6ce5fab6 vendor.qti.hardware.radio.qtiradio@2.3::IQtiRadio
+2d70155a4a2d01acbc8f026167adfa14739447d367a11940005338f1367289a9 vendor.qti.hardware.radio.qtiradio@2.3::IQtiRadioResponse
+
+0acf8a10a37f6f67c847482213b5370383c16f9de8f9a02d049f449ff726d9fb vendor.qti.hardware.radio.qtiradio@2.4::types
+6592f4c0dea2204f499e29e240679189abe5491a7173d36bf58a96b45ba28395 vendor.qti.hardware.radio.qtiradio@2.4::IQtiRadio
+d775765583dc7054105778574e60412a34f456b162eacdf99d502168881c1274 vendor.qti.hardware.radio.qtiradio@2.4::IQtiRadioResponse
+
+f2b7857130c5a322522684ca5825f00edaa775952d2699e536dc8adc423ab96c vendor.qti.hardware.radio.uim_remote_client@1.0::types
+351ae1ef09917f4be9f7640ff1d844780fdcb37969053ab33dcd3a558f29fc12 vendor.qti.hardware.radio.uim_remote_client@1.0::IUimRemoteServiceClient
+3aa1c1fb4a48419344f390b08067f4811d1f3f4af3afd4b00b25cffd36b642f9 vendor.qti.hardware.radio.uim_remote_client@1.0::IUimRemoteServiceClientIndication
+88bcb9fd218c99a7e7fff09516576fc96cbf1b4dc6f446b91aebee4fd0f58a0d vendor.qti.hardware.radio.uim_remote_client@1.0::IUimRemoteServiceClientResponse
+
+f77773b335bd6306ea17b65488cdac70637b41a7275d5a6e1cf11e38a345b70e vendor.qti.hardware.radio.uim_remote_client@1.1::IUimRemoteServiceClientIndication
+
+e6ffb2c809e567f00d2d08573a75107064796114c0bb8753d0cd0ecc6ebfbef6 vendor.qti.hardware.radio.uim_remote_server@1.0::types
+80677632035f4f9ccbe6bdf3bfa459b444850e0cf91ae5578ca1616cf31e9130 vendor.qti.hardware.radio.uim_remote_server@1.0::IUimRemoteServiceServer
+1c8b23ca8d355e617215d389a4d7ebd633a8498c12b8721fbecc0c3af7330cbb vendor.qti.hardware.radio.uim_remote_server@1.0::IUimRemoteServiceServerIndication
+85d5b0500e04ca314f15ac819333a06f3fac39aa32f8a1a31b942dba178be3eb vendor.qti.hardware.radio.uim_remote_server@1.0::IUimRemoteServiceServerResponse
+
+bf93f59c2cb335ee0423b5c31cd82a70c5572e3194737576d8a3261b2fd25453 vendor.qti.hardware.radio.lpa@1.0::types
+4ce1496dcb6daad3b615965d95b3fb2c4de218db37c94dacb9c37a5b2629182c vendor.qti.hardware.radio.lpa@1.0::IUimLpa
+fed9e9bfb38dfb18f0dc564d71dfd72fa43351c77226fa0ca01abeaac55ed47a vendor.qti.hardware.radio.lpa@1.0::IUimLpaIndication
+b67c7a1b4cee5a3bee7d9ef402354ca3f55c6a4da8219a33d35bd5293f8491cc vendor.qti.hardware.radio.lpa@1.0::IUimLpaResponse
+
+b3aebba455db21d2a35a963bb99ea28c299d0f52e08dca619181dd299c2edd55 vendor.qti.hardware.radio.uim@1.0::types
+2389c961196fece571c5ded43426c4f71bdc5a5b825ecb0e9c6d22bbb17ef788 vendor.qti.hardware.radio.uim@1.0::IUim
+0516cce5ab876444bf35be86d67ee24dd6fcafbc9e0a3e2ba9802e60ea3ee0b5 vendor.qti.hardware.radio.uim@1.0::IUimIndication
+20129f1d46c5e94131aa585ab0e938f58fabd9dfdf88630e7d6371dacd41545d vendor.qti.hardware.radio.uim@1.0::IUimResponse
+
+20c0bfbb133d3b6258d800b290dd811e1450d681e8727efcc9e4717bae50fc30 vendor.qti.hardware.radio.uim@1.1::types
+ea999ed832d6300ab3d0926ced5f642001f6aa5f6e0e0d75aaea64c4c524d59e vendor.qti.hardware.radio.uim@1.1::IUim
+a6e57d51d1f6a06db88954e96fde3f64420eb16e40da2894a4543eb1dc145bf2 vendor.qti.hardware.radio.uim@1.1::IUimResponse
+
+51db49b49354cd35204eaff35dc4597414db40f956e33b6bfcdfeb2dba7262d7 vendor.qti.hardware.radio.uim@1.2::types
+2250063b97d2d0ac04622fe9cb4296dc6385dba4292bb0414bf4d9e4159cc4ed vendor.qti.hardware.radio.uim@1.2::IUim
+5444cfad3ca7c13be7d550bfc3a196f544cb60b437710ef779156a624fdfea7e vendor.qti.hardware.radio.uim@1.2::IUimResponse
+
+# Hashes for vendor.qti.hardware.radio.internal.deviceinfo@1.0 packages.
+bf06c8ff9cf4015e6ea21cb137295deb2c04e944339eeb351917a273994d0847 vendor.qti.hardware.radio.internal.deviceinfo@1.0::types
+368153e0b947ff0703644801b93800fc7b91807607591b4be733195945dbbdef vendor.qti.hardware.radio.internal.deviceinfo@1.0::IDeviceInfo
+3727ca90f8735d3d534c08fd842a6c210e522a12ab21f23314f30a4715362e5f vendor.qti.hardware.radio.internal.deviceinfo@1.0::IDeviceInfoIndication
+e9def320c0e435ccd256cc1b004cb71a1faec08a944b4a9a24f8fb7fc51c317e vendor.qti.hardware.radio.internal.deviceinfo@1.0::IDeviceInfoResponse
+
+7cbbc3812496fce9ad755de49d86246d90a4fad892104163f6623d62c73eece9 vendor.qti.hardware.radio.uim_remote_client@1.2::types
+0384a67e9bf87caadd7dbfb4b153c1d82b532028d47e7cd81bff9a535f1c0977 vendor.qti.hardware.radio.uim_remote_client@1.2::IUimRemoteServiceClientIndication

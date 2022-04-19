@@ -1,0 +1,1 @@
+../../../proprietary/ims-ship/ims_vendor_product_noship.mk

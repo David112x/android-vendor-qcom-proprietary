@@ -1,0 +1,1 @@
+../../../proprietary/qdssagent/qdssagent-ship-vendor-product.mk

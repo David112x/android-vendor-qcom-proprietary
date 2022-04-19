@@ -1,0 +1,202 @@
+tc 1
+#Handset Capture
+!Capture
+Txdevice:0
+
+enable
+AIF1_CAP Mixer I2S TX6:1
+CDC_IF TX6 MUX:DEC6
+MI2S_TX Channels:One
+ADC MUX6:DMIC
+DMIC MUX6:DMIC2
+DEC6 Volume:84
+MultiMedia1 Mixer PRI_MI2S_TX:1
+
+disable
+AIF1_CAP Mixer I2S TX6:0
+CDC_IF TX6 MUX:ZERO
+ADC MUX6:ZERO
+DMIC MUX6:ZERO
+MultiMedia1 Mixer PRI_MI2S_TX:0
+
+tc 2
+#Headset capture (headset mic enable and volume)
+!Capture
+Txdevice:0
+
+enable
+AIF1_CAP Mixer I2S TX6:1
+CDC_IF TX6 MUX:DEC6
+MI2S_TX Channels:One
+ADC MUX6:AMIC
+AMIC MUX6:ADC2
+DEC6 Volume:84
+MultiMedia1 Mixer PRI_MI2S_TX:1
+
+disable
+AIF1_CAP Mixer I2S TX6:0
+CDC_IF TX6 MUX:ZERO
+ADC MUX6:ZERO
+AMIC MUX6:ZERO
+MultiMedia1 Mixer PRI_MI2S_TX:0
+
+tc 3
+#Headset mono (headset speaker mono)
+!Playback
+Rxdevice:0
+
+enable
+I2S RX0 MUX:AIF1_PB
+CDC_IF RX0 MUX:I2S RX0
+MI2S_RX Channels:One
+RX INT1_2 MUX:RX0
+MI2S SampleRate:rate_48000
+PRI_MI2S_RX Audio Mixer MultiMedia1:1
+RX INT1 DEM MUX:CLSH_DSM_OUT
+COMP1 Switch:1
+COMP2 Switch:1
+
+disable
+I2S RX0 MUX:ZERO
+CDC_IF RX0 MUX:ZERO
+MI2S_RX Channels:One
+RX INT1_2 MUX:ZERO
+MI2S SampleRate:rate_48000
+PRI_MI2S_RX Audio Mixer MultiMedia1:0
+RX INT1 DEM MUX:CLSH_DSM_OUT
+COMP1 Switch:0
+COMP2 Switch:0
+
+tc 4
+#Headset stereo (headset speaker stereo)
+!Playback
+Rxdevice:0
+
+enable
+I2S RX0 MUX:AIF1_PB
+I2S RX1 MUX:AIF1_PB
+CDC_IF RX0 MUX:I2S RX0
+CDC_IF RX1 MUX:I2S RX1
+MI2S_RX Channels:Two
+RX INT1_2 MUX:RX0
+RX INT2_2 MUX:RX1
+MI2S SampleRate:rate_48000
+PRI_MI2S_RX Audio Mixer MultiMedia1:1
+RX INT1 DEM MUX:CLSH_DSM_OUT
+RX INT2 DEM MUX:CLSH_DSM_OUT
+COMP1 Switch:1
+COMP2 Switch:1
+
+disable
+I2S RX0 MUX:ZERO
+I2S RX1 MUX:ZERO
+CDC_IF RX0 MUX:ZERO
+CDC_IF RX1 MUX:ZERO
+MI2S_RX Channels:Two
+RX INT1_2 MUX:ZERO
+RX INT2_2 MUX:ZERO
+MI2S SampleRate:rate_48000
+PRI_MI2S_RX Audio Mixer MultiMedia1:0
+RX INT1 DEM MUX:CLSH_DSM_OUT
+RX INT2 DEM MUX:CLSH_DSM_OUT
+COMP1 Switch:0
+COMP2 Switch:0
+
+tc 5
+#Headset left (headset speaker left)
+!Playback
+Rxdevice:0
+
+enable
+I2S RX0 MUX:AIF1_PB
+CDC_IF RX0 MUX:I2S RX0
+MI2S_RX Channels:One
+RX INT1_2 MUX:RX0
+MI2S SampleRate:rate_48000
+PRI_MI2S_RX Audio Mixer MultiMedia1:1
+RX INT1 DEM MUX:CLSH_DSM_OUT
+COMP1 Switch:1
+COMP2 Switch:1
+
+disable
+I2S RX0 MUX:ZERO
+CDC_IF RX0 MUX:ZERO
+MI2S_RX Channels:One
+RX INT1_2 MUX:ZERO
+MI2S SampleRate:rate_48000
+PRI_MI2S_RX Audio Mixer MultiMedia1:0
+RX INT1 DEM MUX:CLSH_DSM_OUT
+COMP1 Switch:0
+COMP2 Switch:0
+
+tc 6
+#Headset right (headset speaker right)
+!Playback
+Rxdevice:0
+
+enable
+I2S RX1 MUX:AIF1_PB
+CDC_IF RX1 MUX:I2S RX1
+MI2S_RX Channels:One
+RX INT2_2 MUX:RX1
+MI2S SampleRate:rate_48000
+PRI_MI2S_RX Audio Mixer MultiMedia1:1
+RX INT2 DEM MUX:CLSH_DSM_OUT
+COMP1 Switch:1
+COMP2 Switch:1
+
+disable
+I2S RX1 MUX:ZERO
+CDC_IF RX1 MUX:ZERO
+MI2S_RX Channels:One
+RX INT2_2 MUX:ZERO
+MI2S SampleRate:rate_48000
+PRI_MI2S_RX Audio Mixer MultiMedia1:0
+RX INT2 DEM MUX:CLSH_DSM_OUT
+COMP1 Switch:0
+COMP2 Switch:0
+
+tc 7
+#Speaker (Class D speaker)
+!Playback
+Rxdevice:0
+
+enable
+RX8 Digital Volume:75
+I2S RX0 MUX:AIF1_PB
+CDC_IF RX0 MUX:I2S RX0
+MI2S_RX Channels:One
+RX INT8_1 MIX1 INP0:RX0
+COMP8 Switch:1
+SpkrRight COMP Switch:1
+SpkrRight BOOST Switch:1
+SpkrRight VISENSE Switch:1
+SpkrRight SWR DAC_Port Switch:1
+PRI_MI2S_RX Audio Mixer MultiMedia1:1
+
+disable
+I2S RX0 MUX:ZERO
+CDC_IF RX0 MUX:ZERO
+RX INT8_1 MIX1 INP0:ZERO
+COMP8 Switch:0
+SpkrRight COMP Switch:0
+SpkrRight BOOST Switch:0
+SpkrRight VISENSE Switch:0
+SpkrRight SWR DAC_Port Switch:0
+PRI_MI2S_RX Audio Mixer MultiMedia1:0
+
+tc 8
+#ADIE loopback (Headset mic and headset left)
+!CodecLoop
+
+enable
+ADC MUX0:AMIC
+AMIC MUX0:ADC2
+IIR0 INP0 MUX:DEC0
+IIR0 INP0 Volume:75
+ADC2 Volume:20
+RX INT1 DEM MUX:CLSH_DSM_OUT
+RX INT2 DEM MUX:CLSH_DSM_OUT
+RX INT1_1 MIX1 INP0:IIR0
+RX INT2_1 MIX1 INP0:IIR0
+

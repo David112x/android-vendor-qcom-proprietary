@@ -1,0 +1,1 @@
+../../../proprietary/commonsys/qrdplus/Extension/app_extension_system_product.mk

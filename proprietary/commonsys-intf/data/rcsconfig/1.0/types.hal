@@ -1,0 +1,33 @@
+/*********************************************************************
+Copyright (c) 2018 Qualcomm Technologies, Inc.
+All Rights Reserved.
+Confidential and Proprietary - Qualcomm Technologies, Inc.
+**********************************************************************/
+
+package vendor.qti.ims.rcsconfig@1.0;
+
+/**
+ * Status code for client commands and APIs
+ */
+enum RequestStatus : uint32_t {
+    /** Client command succeeded */
+    OK              = 0,
+    /** Decompression of config failed */
+    DECODING_ERROR  = 1,
+    /** Configuration XML format Invalid */
+    INVALID_CONTENT = 2,
+    /** Client command Failed */
+    FAIL            = 3
+};
+
+/**
+ * The RCS configuration data should be an xml file
+ * taken from the <RCSConfig> section of the device/carrier config xml.
+ * It may be passed as a uint8_t buffer.
+ * isCompressed Flag is required to be True if data is compressed.
+ * Only gzip compression is supported.
+ */
+struct Container {
+    bool isCompressed;
+    vec<uint8_t> config;
+};

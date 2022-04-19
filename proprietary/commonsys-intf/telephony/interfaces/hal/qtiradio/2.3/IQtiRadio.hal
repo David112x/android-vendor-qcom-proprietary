@@ -1,0 +1,60 @@
+/*
+ * Copyright (c) 2019 Qualcomm Technologies, Inc.
+ * All Rights Reserved.
+ * Confidential and Proprietary - Qualcomm Technologies, Inc.
+ *
+ */
+
+package vendor.qti.hardware.radio.qtiradio@2.3;
+
+import @2.2::IQtiRadio;
+
+interface IQtiRadio extends @2.2::IQtiRadio {
+
+    /**
+     * QTIRADIO_REQUEST_ENABLE_ENDC
+     *
+     * @param serial to match request/response. Responses must include the same token as requests.
+     * @param enable set to true/false
+     *
+     * Response callback is IQtiRadioResponse.onEnableEndcResponse()
+     */
+    oneway enableEndc(int32_t serial, bool enable);
+
+    /**
+     * QTIRADIO_REQUEST_QUERY_ENDC_STATUS
+     *
+     * @param serial to match request/response. Responses must include the same token as requests.
+     *
+     * Response callback is IQtiRadioResponse.onEndcStatusResponse()
+     */
+    oneway queryEndcStatus(int32_t serial);
+
+    /**
+     *
+     * @param property name to get value
+     *
+     * @return int value of property
+     *
+     */
+    getPropertyValueInt(string prop, int32_t def) generates (int32_t val);
+
+    /**
+     *
+     * @param property name to get value
+     *
+     * @return boolean value of property
+     *
+     */
+    getPropertyValueBool(string prop, bool def) generates (bool val);
+
+    /**
+     *
+     * @param property name to get value
+     *
+     * @return string value of property
+     *
+     */
+    getPropertyValueString(string prop, string def) generates (string val);
+
+};

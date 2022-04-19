@@ -1,0 +1,1 @@
+BOARD_USES_QCNE := true

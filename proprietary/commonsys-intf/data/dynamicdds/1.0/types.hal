@@ -1,0 +1,37 @@
+/*
+ * Copyright (c) 2018 Qualcomm Technologies, Inc.
+ * All Rights Reserved.
+ * Confidential and Proprietary - Qualcomm Technologies, Inc.
+ */
+
+package vendor.qti.hardware.data.dynamicdds@1.0;
+
+/** Replied status. */
+enum StatusCode : uint32_t {
+    OK = 0,
+    INVALID_ARGUMENTS = 1,
+    NOT_SUPPORTED = 2,
+    FAILED = 3,
+};
+
+struct Carrier {
+    string iin;
+
+    /** preference for specified carrier, range from 1 to 10
+     *  with 1 being the higest preference
+     */
+    uint8_t preference;
+};
+
+struct SubscriptionConfig {
+
+    /** package name of application */
+    string appName;
+
+    vec<Carrier> carriers;
+
+    /** priority of the application, range from 1 to 10
+     *  with 1 being the highest priority
+     */
+    uint8_t priority;
+};

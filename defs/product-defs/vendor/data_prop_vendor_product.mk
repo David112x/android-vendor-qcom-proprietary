@@ -1,0 +1,1 @@
+../../../proprietary/data/data_prop_vendor_product.mk

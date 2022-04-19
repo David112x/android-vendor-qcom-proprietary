@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    Copyright (c) 2019 Qualcomm Technologies, Inc.
+    All Rights Reserved.
+    Confidential and Proprietary - Qualcomm Technologies, Inc.
+-->
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/primary_color</item>
+        <item name="colorPrimaryDark">@color/primary_color_dark</item>
+        <item name="colorAccent">@color/primary_color</item>
+    </style>
+
+    <style name="ToolbarTheme" parent="AppTheme">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+        <item name="actionOverflowButtonStyle">@style/ContactsActionBarOverflowQP</item>
+    </style>
+
+    <!--######################################################################################-->
+    <!-- When this style was added, android:toolbarStyle was private. Therefore, this style must be directly applied to every toolbar -->
+    <style name="ContactsToolbarStyle" parent="@style/Widget.AppCompat.Toolbar">
+        <!-- Styles that require AppCompat compatibility, remember to update both sets -->
+        <item name="android:titleTextAppearance">@style/ContactsActionBarTitleTextAppCompat</item>
+        <item name="titleTextAppearance">@style/ContactsActionBarTitleTextAppCompat</item>
+    </style>
+
+    <style name="default_toolbar_theme" parent="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+        <item name="android:colorControlNormal">@android:color/white</item>
+        <item name="colorControlNormal">@android:color/white</item>
+    </style>
+
+    <style name="ContactsActionBarTitleTextBlack" parent="@style/ContactsActionBarTitleTextAppCompat">
+        <item name="android:textColor">@color/actionbar_text_color_black</item>
+    </style>
+
+    <style name="ContactsActionBarTitleTextAppCompat" parent="TextAppearance.Widget.AppCompat.Toolbar.Title">
+        <item name="android:textSize">20dp</item>
+        <item name="android:textColor">@color/actionbar_text_color</item>
+    </style>
+
+    <style name="SectionHeaderStyle" parent="@android:style/TextAppearance.Large">
+        <item name="android:textSize">16sp</item>
+        <item name="android:textAllCaps">true</item>
+        <item name="android:textColor">@color/section_header_text_color</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <!-- Action bar overflow menu icon. -->
+    <style name="ContactsActionBarOverflowQP"
+        parent="Widget.AppCompat.Light.ActionButton.Overflow">
+        <item name="android:src">@drawable/quantum_ic_more_vert_vd_theme_24</item>
+        <item name="android:tint">@color/action_bar_button_text_color</item>
+    </style>
+
+    <style name="LightToolbarNavigationButtonStyle" parent="@style/Widget.AppCompat.Toolbar.Button.Navigation">
+        <item name="android:tint">?android:textColorSecondary</item>
+    </style>
+
+    <style name="EditSelectorIconStyle">
+        <item name="android:layout_width">24dp</item>
+        <item name="android:layout_height">24dp</item>
+        <item name="android:layout_marginStart">16dp</item>
+        <!-- We want 32dp of padding between these icon's and EditText's. Since EditText's have
+            4dp of starting padding built in, we set this as 28dp. -->
+        <item name="android:layout_marginEnd">28dp</item>
+        <item name="android:layout_marginTop">@dimen/editor_kind_icon_top_margin</item>
+    </style>
+
+    <style name="ExpandingEntryCardStyle">
+        <item name="android:elevation">@dimen/entry_card_elevation</item>
+        <item name="android:background">@color/entry_card_background_color</item>
+        <item name="android:layout_marginBottom">@dimen/entry_card_marginBottom</item>
+        <item name="android:layout_marginEnd">@dimen/entry_card_marginStartEnd</item>
+        <item name="android:layout_marginStart">@dimen/entry_card_marginStartEnd</item>
+        <item name="android:orientation">vertical</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+
+    <style name="SelectableItem" parent="@android:style/Theme.Material.Light">
+        <item name="android:background">?android:attr/selectableItemBackground</item>
+    </style>
+
+    <style name="OverflowMenuStyle" parent="@style/Widget.AppCompat.PopupMenu.Overflow">
+        <item name="android:popupBackground">@android:color/white</item>
+        <item name="android:popupTheme">@android:color/black</item>
+    </style>
+
+</resources>

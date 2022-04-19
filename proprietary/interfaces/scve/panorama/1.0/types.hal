@@ -1,0 +1,535 @@
+/*!
+ *
+ * Copyright (c) 2018 Qualcomm Technologies, Inc.
+ * All Rights Reserved.
+ * Confidential and Proprietary - Qualcomm Technologies, Inc.
+ *
+ */
+
+package vendor.qti.hardware.scve.panorama@1.0;
+
+//------------------------------------------------------------------------------
+/// @brief
+///    Definition of Status type used in SCVE. Wherever appropriate, functions
+///    in SCVE APIs return the Status of function execution. This the common
+///    Status type used in all SCVE features.
+///
+/// @ingroup scveTypes
+//------------------------------------------------------------------------------
+typedef int32_t Status;
+
+//------------------------------------------------------------------------------
+/// @brief
+///    OperationMode enum defines modes which could be optionally assigned
+///    to every Context object during it's initialization.
+///
+/// @see Context::newInstance()
+///
+/// @ingroup scveContext
+//------------------------------------------------------------------------------
+enum OperationMode : uint32_t
+{
+   /// Default mode in which a Context will be initialized.
+   SCVE_MODE_DEFAULT            = 0,
+   /// Performance mode, where the fastest implementation is selected for all
+   /// SCVE features initialized under the context.
+   SCVE_MODE_PERFORMANCE        = 1,
+   /// CPU Offload mode, where preference is given to offload the implementation
+   /// to any available hardware / dsp.
+   SCVE_MODE_CPU_OFFLOAD        = 2,
+   /// Power Save mode, where preference is given to an implementation that
+   /// draws least power.
+   SCVE_MODE_LOW_POWER          = 3,
+};
+
+//------------------------------------------------------------------------------
+/// @brief
+///    Enumeration of Base Error codes of all SCVE features. For specific error
+///    codes, please refer the specific header file of the feature.
+///
+/// @ingroup scveTypes
+//------------------------------------------------------------------------------
+enum StatusCodes : uint32_t
+{
+   /// Universal success status for all SCVE features
+   SCVE_SUCCESS                                         = 0x00000000,
+   /// Represents a state when a feature is expecting more input from the user
+   /// or if waiting for an internal state to change.
+   SCVE_PENDING                                         = 0x00000001,
+
+   //Generic error codes
+   /// Unspecified internal error occurred
+   SCVE_ERROR_INTERNAL                                  = 0xF0000001,
+   /// Internal memory allocation failed
+   SCVE_ERROR_OUT_OF_MEMORY                             = 0xF0000002,
+   /// Invalid input/output parameter supplied
+   SCVE_ERROR_INVALID_PARAM                             = 0xF0000003,
+   /// Color Format used is not supported
+   SCVE_ERROR_UNSUPPORTED_FORMAT                        = 0xF0000004,
+   /// Async function called without callback being registed
+   SCVE_ERROR_CALLBACK_NOT_REGISTERED                   = 0xF0000005,
+   /// File operation failure
+   SCVE_ERROR_FILE_OPERATION_FAILURE                    = 0xF0000006,
+
+   //Base error codes for different features
+   /// Base error code for Object-Tracker
+   SCVE_OBJECTTRACKER_ERROR                             = 0xF0000100,
+   /// Base error code for Face Detection
+   SCVE_FACEDETECT_ERROR                                = 0xF0000200,
+   /// Base error code for Image Cloning
+   SCVE_IMAGECLONING_ERROR                              = 0xF0002000,
+   /// Base error code for Image Removal
+   SCVE_IMAGEREMOVAL_ERROR                              = 0xF0004000,
+   /// Base error code for Blob Descriptor
+   SCVE_BLOBDESCRIPTOR_ERROR                            = 0xF0008000,
+   /// Base error code for Panorama
+   SCVE_PANORAMA_ERROR                                  = 0xF0010000,
+   /// Base error code for Object Segmentation
+   SCVE_OBJECTSEGMENTATION_ERROR                        = 0xF0020000,
+   /// Base error code for Object Matting
+   SCVE_OBJECT_MATTING_ERROR                            = 0xF0080000,
+   /// Base error code for Text Recognition
+   SCVE_TEXT_RECO_ERROR                                 = 0xF0100000,
+   /// Base error code for Face Recognition
+   SCVE_FACERECOGNITION_ERROR                           = 0xF0200000,
+   /// Base error code for Image Correction
+   SCVE_IMAGE_CORRECTION_ERROR            = 0xF0400000,
+   /// Base error code for Face Landmarks
+   SCVE_FACELANDMARKS_ERROR                             = 0xF0800000,
+   /// Base error code for Video Summary
+   SCVE_VIDEO_SUMMARY_ERROR                             = 0xF0000400,
+   /// Base error code for Scan3D
+   SCVE_SCAN3D_ERROR                                    = 0xF0000800,
+   /// Base error code for Scan3D
+   SCVE_MOTION_TRACKER_ERROR                            = 0xF0001000
+};
+
+
+//------------------------------------------------------------------------------
+/// @brief
+///    Enumeration representing several Color Formats supported throughout SCVE.
+///
+/// @ingroup scveTypes
+//------------------------------------------------------------------------------
+enum ColorFormat : uint32_t
+{
+   /// 8-bit Greyscale format, with 8 bits-per-pixel
+   SCVE_COLORFORMAT_GREY_8BIT                  = 0,
+   /// NV21 YUV format, with 12 bits-per-pixel
+   SCVE_COLORFORMAT_YUV_NV21                   = 1,
+   /// NV12 YUV format, with 12 bits-per-pixel
+   SCVE_COLORFORMAT_YUV_NV12                   = 2,
+   /// RGB-565 format, with 16 bits-per-pixel
+   SCVE_COLORFORMAT_RGB_565                    = 3,
+   /// RGB-888 format, with 24 bits-per-pixel
+   SCVE_COLORFORMAT_RGB_888                    = 4,
+   /// RGBA-8888 format, with 32 bits-per-pixel
+   SCVE_COLORFORMAT_RGBA_8888                  = 5,
+   /// YUV format with 12 bits-per-pixel. Contains three planes - 8-bit
+   /// Y plane followed by 2x2 sub-sampled V plane and then 2x2 sub-sampled
+   /// U plane.
+   SCVE_COLORFORMAT_YVU_420_PLANAR             = 6,
+   /// YUV format with 12 bits-per-pixel. Contains three planes - 8-bit
+   /// Y plane followed by 2x2 sub-sampled U plane and then 2x2 sub-sampled
+   /// V plane.
+   SCVE_COLORFORMAT_YUV_420_PLANAR             = 7,
+};
+
+//------------------------------------------------------------------------------
+/// @brief
+///    Structure representing dimension of an image.
+///
+/// @param nWidth
+///    Width of the Image
+///
+/// @param nHeight
+///    Height of the Image
+///
+/// @deprecated nStride
+///    Stride length of the image in bytes. Number of bytes from beginning of
+///    one line of the image to the next.
+///
+/// @param nStrides
+///    Array of stride values. Represent strides of each planes in the order
+///    that they appear in the respective formats.
+///
+/// @param nPadLength
+///    Array of padding lengths, each representing number of padding bytes
+///    between two planes. Example - nPadLength[0] = padding between Plane0 and
+///    Plane1, nPadLength[1] = padding between Plane1 and Plane2.
+///
+/// @ingroup scveTypes
+//------------------------------------------------------------------------------
+struct ImageDimension_hal {
+   uint32_t   nWidth;
+   uint32_t   nHeight;
+   uint32_t   nStride;
+   uint32_t[3]   nStrides;
+   uint32_t[2]   nPadLength;
+};
+
+//------------------------------------------------------------------------------
+/// @brief
+///    Structure representing an image.
+///
+/// @param pPtr
+///    Pointer to the memory location with contains the raw image data.
+///
+/// @param sDim
+///    Structure representing the dimension of the image.
+///
+/// @param sFormat
+///    Enum representing the color format of the image.
+///
+/// @ingroup scveTypes
+//------------------------------------------------------------------------------
+struct Image_hal {
+   handle         pPtr;
+   uint32_t       nBytes;
+   ImageDimension_hal   sDim;
+   ColorFormat      sFormat;
+   uint32_t         nChannels;
+};
+
+//------------------------------------------------------------------------------
+/// @brief
+///    Structure representing a Point.
+///
+/// @param nLocX
+///    X co-ordinate
+///
+/// @param nLocY
+///    Y co-ordinate
+///
+/// @ingroup scveTypes
+//------------------------------------------------------------------------------
+struct Point_hal {
+   int32_t nLocX;
+   int32_t nLocY;
+};
+
+//------------------------------------------------------------------------------
+/// @brief
+///    Structure representing a Rectangle.
+///
+/// @param nLocX
+///    X co-ordinates of the top-left corner of the Rectangle
+///
+/// @param nLocY
+///    Y co-ordinates of the top-left corner of the Rectangle
+///
+/// @param nWidth
+///    Width of the Rectangle
+///
+/// @param nHeight
+///    Height of the Rectangle
+///
+/// @ingroup scveTypes
+//------------------------------------------------------------------------------
+struct Rect_hal {
+   int32_t  nLocX;
+   int32_t  nLocY;
+   uint32_t nWidth;
+   uint32_t nHeight;
+};
+
+
+//------------------------------------------------------------------------------
+/// @brief
+///    Structure representing a Bounding Box.
+///
+/// @param topLeft
+///    co-ordinates of the top-left corner of the Bounding Box
+///
+/// @param topRight
+///    co-ordinates of the top-right corner of the Bounding Box
+///
+/// @param botLeft
+///    co-ordinates of the bottom-left corner of the Bounding Box
+///
+/// @param botRight
+///    co-ordinates of the bottom-right corner of the Bounding Box
+///
+/// @ingroup scveTypes
+//------------------------------------------------------------------------------
+struct BoundingBox_hal {
+   Point_hal topLeft;
+   Point_hal topRight;
+   Point_hal botLeft;
+   Point_hal botRight;
+};
+
+//------------------------------------------------------------------------------
+/// @brief
+///    Status codes specific to Panorama
+///
+/// @ingroup scvePanorama
+//------------------------------------------------------------------------------
+enum StatusCodes_Panorama : uint32_t
+{
+   /// Returned by Run functions if the session's 'Init' is not called
+   /// Major error: algorithm initialization failed. NEED BREAK
+   SCVE_PANORAMA_ERROR_SESSION_NOT_INITED        = 0xF0010000 + 1,
+
+   /// Returned by Run_Async function if there are too many Run_Async calls
+   /// that are still pending. NEED BREAK
+   SCVE_PANORAMA_ERROR_QUEUE_FULL                = 0xF0010000 + 2,
+
+   /// Returned by panorama due to maximum frame reached
+   /// ASSISTANT INFO, GO TO NEXT STEP (PANORAMA RESULT IS READY)
+   SCVE_PANORAMA_ERROR_MAXIMUM_FRAMES_REACHED    = 0xF0010000 + 3,
+
+   /// Returned by panorama due to frame not overlapped, it might be caused by
+   /// moving too fast.
+   /// ASSISTANT INFO, GO TO NEXT STEP (PANORAMA RESULT IS READY)
+   SCVE_PANORAMA_ERROR_FRAME_NO_OVERLAP          = 0xF0010000 + 4,
+
+   /// Returned by panorama due to moving direction not consitent
+   /// ASSISTANT INFO, CONTINUE
+   SCVE_PANORAMA_ERROR_DIRECTION_NOT_CONSITENT   = 0xF0010000 + 5,
+
+   /// Returned by get result block due to result not ready
+   /// ASSISTANT INFO, CONTINUE
+   SCVE_PANORAMA_ERROR_RESULT_NOT_READY          = 0xF0010000 + 6,
+
+   /// Returned by panorama due to no feature found in frame
+   /// ASSISTANT INFO, CONTINUE
+   SCVE_PANORAMA_ERROR_FRAME_NO_FEATURE          = 0xF0010000 + 7,
+
+};
+
+//------------------------------------------------------------------------------
+/// @brief
+///    Used for Panorama additional information along with frame data for
+///    stitching (both through Sync and Async varieties)
+///
+/// @ingroup scvePanorama
+//------------------------------------------------------------------------------
+enum FlagCodes_Panorama : uint32_t
+{
+   /// It would cancel current session and reset internal state.
+   SCVE_PANORAMA_TASK_CANCEL                     = 0x0001,
+   /// It would trigger panorama stitching process and panorama result would be
+   /// generated after receving this flag through feedKeyFrame interface.
+   SCVE_PANORAMA_FRAME_ENDOFSEQUENCE             = 0x0002,
+};
+
+//------------------------------------------------------------------------------
+/// @brief
+///    Panorama tracking detects motion direction and used for stitching
+///
+/// @ingroup scvePanorama
+//------------------------------------------------------------------------------
+enum MotionDirections_Panorama : uint32_t
+{
+    SCVE_PANORAMA_MOTION_HORIZONTAL             = 0,
+    SCVE_PANORAMA_MOTION_VERTICAL               = 1,
+    SCVE_PANORAMA_MOTION_UNKNOWN                = -1,
+};
+
+//------------------------------------------------------------------------------
+/// @brief
+///    Panorama tracking configuration structure
+///
+/// @param iViewFinderDim
+///    PanoramaTracking input frame Dimension for view finder
+/// @param cFormat
+///    PanoramaTracking input frame color format
+/// @param fCameraFOV
+///    Camera Field Of View. When 0, would use default value in algorithm.
+///
+/// @ingroup scvePanorama
+//------------------------------------------------------------------------------
+struct TrackingConfiguration_hal {
+    ImageDimension_hal  iViewFinderDim;
+    ColorFormat     cFormat;
+    float           fCameraFOV;
+};
+
+//------------------------------------------------------------------------------
+/// @brief
+///    Panorama tracking input structure
+///
+/// @param pImage
+///    source frame for Panorama.
+/// @param rotation
+///    The rotation angle in degrees. Rotation can only be 0, 90, 180 or 270.
+/// @param flags
+///    addtional information combined with source frame.
+///    if SCVE_PANORAMA_TASK_CANCEL is set, it would cancel the task;
+///    if SCVE_PANORAMA_FRAME_ENDOFSEQUENCE is set, the input source frame is
+///        the last one. PanoramaTracking would not accept any input frame
+///        more.
+///
+/// @ingroup scvePanorama
+//------------------------------------------------------------------------------
+struct TrackingInput_hal {
+    Image_hal      pFrame;
+    int32_t        rotation;
+    int32_t        flags;
+};
+
+//------------------------------------------------------------------------------
+/// @brief
+///    Panorama tracking output structure
+///
+/// @param isKeyFrame
+///    Represents current frame is key frame or not
+/// @param X
+///    Horizontal movement distance of the frame, compared with first frame.
+///    It is 0 for first frame.
+/// @param Y
+///    Vertical movement distance of the frame, compared with first frame.
+///    It is 0 for first frame.
+/// @param speed
+///    Movement speed calculated by panorama tracking.
+/// @param direction
+///    The phone motion direction detected by panorama tracking.
+///    It is -1 for unknown direction.
+///
+/// @ingroup scvePanorama
+//------------------------------------------------------------------------------
+struct TrackingOutput_hal {
+   int32_t          isKeyFrame;
+   int32_t          X;
+   int32_t          Y;
+   int32_t          speed;
+   int32_t          direction;
+};
+
+
+//------------------------------------------------------------------------------
+/// @brief
+///    Used for Panorama KeyFrame type information along with key frame data for
+///    stitching (both through Sync and Async varieties)
+///
+/// @ingroup scvePanorama
+//------------------------------------------------------------------------------
+enum KeyFrameType_Panorama : uint32_t
+{
+   SCVE_PANORAMASTITCHING_KEYFRAME_RAW           = 0,
+   SCVE_PANORAMASTITCHING_KEYFRAME_JPEG          = 1,
+};
+
+//------------------------------------------------------------------------------
+/// @brief
+///    Panorama Stitching Key Frame JPEG type data structure.
+///
+/// @ingroup scvePanorama
+//------------------------------------------------------------------------------
+struct FrameJPEG_hal
+{
+   handle pData;
+   uint32_t size;
+};
+
+//------------------------------------------------------------------------------
+/// @brief
+///    Panorama Stitching Key Frame data structure used in Panorama Stitching
+///    interface. Supporting JPEG compressed bit stream type and NV21 raw data
+///    type.
+///
+/// @param rotation
+///    rotation is valid for both RAW type and JPEG type KeyFrame. For JPEG type
+///    KeyFrame, Panorama would not read the orientation information from JPEG header.
+///
+/// @ingroup scvePanorama
+//------------------------------------------------------------------------------
+
+struct KeyFrameRaw_hal
+{
+   Image_hal pKeyFrameRaw;
+   int32_t type;
+   int32_t rotation;
+};
+
+struct KeyFrameJPEG_hal
+{
+   FrameJPEG_hal pKeyFrameJPEG;
+   int32_t type;
+   int32_t rotation;
+};
+
+//------------------------------------------------------------------------------
+/// @brief
+///    Projection type information for stitching
+///
+/// @ingroup scvePanorama
+//------------------------------------------------------------------------------
+enum ProjectionType_Panorama : uint32_t
+{
+   SCVE_PANORAMASTITCHING_PROJECTION_SPHERICAL           = 0,
+   SCVE_PANORAMASTITCHING_PROJECTION_CYLINDRICAL         = 1,
+};
+
+//------------------------------------------------------------------------------
+/// @brief
+///    Panorama stitching input structure
+///
+/// @param iViewFinderDim
+///    The dimension used by view finder. For stitching input image
+///    dimension, it uses the first image dimension feeding by run_sync or
+///    run_async interface.
+/// @param fCameraFocalLength
+///    The camera focal length. When 0, would use default value in algorithm.
+/// @param fCameraPixelSize
+///    The camera pixel size (micrometer). When 0, would use default value
+///    in algorithm.
+/// @param iProjectionType
+///    Projection type used for Panorama Stitching.
+///
+/// @ingroup scvePanorama
+//------------------------------------------------------------------------------
+struct StitchingConfiguration_hal {
+    ImageDimension_hal        iViewFinderDim;
+    float                     fCameraFocalLength;
+    float                     fCameraPixelSize;
+    int32_t                   iProjectionType;
+};
+
+//------------------------------------------------------------------------------
+/// @brief
+///    Panorama stitching input structure
+///
+/// @param KeyFrame_t
+///    Keyframe data.
+/// @param X
+///    The key frame X information which is got from tracking module.
+/// @param Y
+///    The key frame Y information which is got from tracking module.
+/// @param flags
+///    addtional information combined with source frame.
+///    if SCVE_PANORAMA_TASK_CANCEL is set, it would cancel the task;
+///    if SCVE_PANORAMA_FRAME_ENDOFSEQUENCE is set, the input source
+///    frame is the last one
+/// @param direction
+///    The phone motion direction which is got from tracking module.
+///    It is -1 for unknown direction.
+///
+/// @ingroup scvePanorama
+//------------------------------------------------------------------------------
+struct StitchingRawInput_hal {
+    KeyFrameRaw_hal         pKeyFrame;
+    int32_t              X;
+    int32_t              Y;
+    int32_t              flags;
+    int32_t              direction;
+};
+
+struct StitchingJPEGInput_hal {
+    KeyFrameJPEG_hal         pKeyFrame;
+    int32_t              X;
+    int32_t              Y;
+    int32_t              flags;
+    int32_t              direction;
+};
+
+//------------------------------------------------------------------------------
+/// @brief
+///    Panorama stitching output structure
+///
+/// @ingroup scvePanorama
+//------------------------------------------------------------------------------
+struct StitchingOutput_hal {
+
+};

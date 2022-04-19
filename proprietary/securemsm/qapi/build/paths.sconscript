@@ -1,0 +1,50 @@
+#===============================================================================
+#
+# HWENGINES Paths
+#
+# GENERAL DESCRIPTION
+#    build script
+#
+# Copyright (c) 2009-2012, 2019 Qualcomm Technologies, Inc.
+# All Rights Reserved.
+# Confidential and Proprietary - Qualcomm Technologies, Inc.
+# 
+#
+#-------------------------------------------------------------------------------
+#                      EDIT HISTORY FOR FILE
+#
+#  This section contains comments describing changes made to the module.
+#  Notice that changes are listed in reverse chronological order.
+#
+# when       who     what, where, why
+# --------   ---     ---------------------------------------------------------
+# 09/13/12   gps     Updated for 9x25
+#===============================================================================
+Import('env')
+
+env.PublishPublicApi('QTEE_INVOKE_QAPI', [
+    "${INC_ROOT}/core/securemsm/ship/qapi/QTEEInvoke/inc",
+])
+
+env.PublishPublicApi('USEFULBUF_QAPI', [
+    "${INC_ROOT}/core/securemsm/ship/qapi/UsefulBuf/inc",
+])
+
+env.PublishPublicApi('QCBOR_QAPI', [
+    "${INC_ROOT}/core/securemsm/ship/qapi/QCBOR/inc",
+])
+
+env.PublishPublicApi('QWES_QAPI', [
+    "${INC_ROOT}/core/securemsm/ship/qapi/qwes/inc",
+])
+
+env.PublishPublicApi('QSEECOM_API', [
+    "${INC_ROOT}/core/securemsm/ship/qapi/qseecom/inc",
+])
+
+# Remove Non-ThreadX files from common QWES code
+NON_TX_QWES_FILES = env.FindFiles(
+  ['*'],
+  '../qwes/inc/LE/')
+
+env.CleanPack(['CORE', 'CORE_APPS'], NON_TX_QWES_FILES)

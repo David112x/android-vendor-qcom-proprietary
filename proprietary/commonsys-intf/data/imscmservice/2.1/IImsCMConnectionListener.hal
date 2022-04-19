@@ -1,0 +1,14 @@
+/*
+ * Copyright (c) 2018 Qualcomm Technologies, Inc.
+ * All Rights Reserved.
+ * Confidential and Proprietary - Qualcomm Technologies, Inc.
+ *
+ */
+
+package com.qualcomm.qti.imscmservice@2.1;
+
+import @2.0::IImsCMConnectionListener;
+
+interface IImsCMConnectionListener extends @2.0::IImsCMConnectionListener{
+
+};

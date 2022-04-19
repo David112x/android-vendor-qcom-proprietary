@@ -1,0 +1,10 @@
+# Copyright (c) 2019 Qualcomm Technologies, Inc.
+# All Rights Reserved.
+# Confidential and Proprietary - Qualcomm Technologies, Inc.
+#
+
+service vendor.loopback /system/vendor/bin/Loopback_native
+    class main
+    user system
+    group system inet radio net_admin
+    disabled

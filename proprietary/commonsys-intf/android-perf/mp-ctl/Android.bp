@@ -1,0 +1,76 @@
+cc_library_shared {
+
+    srcs: [
+        "client.cpp",
+    ],
+
+    header_libs: [
+        "libcutils_headers",
+    ],
+
+    include_dirs: [
+        "vendor/qcom/proprietary/android-perf/mp-ctl",
+    ],
+
+    shared_libs: [
+        "libcutils",
+        "libutils",
+        "liblog",
+        "vendor.qti.hardware.perf@2.0",
+        "libhidlbase",
+        "libhidltransport",
+    ],
+
+    cflags: [
+        "-DCLIENT",
+        "-g0",
+        "-Wall",
+        "-Wno-unused-variable",
+        "-Wno-unused-parameter",
+        "-Wno-unused-function",
+        "-DQC_DEBUG=0",
+    ],
+
+    name: "libqti-perfd-client",
+    owner: "qti",
+    proprietary: true,
+
+}
+
+cc_library_shared {
+
+    srcs: [
+        "client.cpp",
+    ],
+
+    header_libs: [
+        "libcutils_headers",
+    ],
+
+    include_dirs: [
+        "vendor/qcom/proprietary/android-perf/mp-ctl",
+    ],
+
+    shared_libs: [
+        "libcutils",
+        "libutils",
+        "liblog",
+        "vendor.qti.hardware.perf@2.0",
+        "libhidlbase",
+        "libhidltransport",
+    ],
+
+    cflags: [
+        "-DCLIENT",
+        "-g0",
+        "-Wall",
+        "-Wno-unused-variable",
+        "-Wno-unused-parameter",
+        "-Wno-unused-function",
+        "-DQC_DEBUG=0",
+    ],
+
+    name: "libqti-perfd-client_system",
+    owner: "qti",
+
+}

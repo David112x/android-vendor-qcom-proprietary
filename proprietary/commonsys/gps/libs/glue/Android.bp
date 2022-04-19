@@ -1,0 +1,39 @@
+///******************************************************************************
+//*@file Android.mk
+//* brief Rules to create an package which exposes the location api
+//*******************************************************************************/
+
+java_library_static {
+
+    name: "izat.lib.glue",
+
+    srcs: ["java/**/*.java"] + [
+        "java/com/qti/izat/IIzatService.aidl",
+        "java/com/qti/flp/ILocationCallback.aidl",
+        "java/com/qti/flp/IMaxPowerAllocatedCallback.aidl",
+        "java/com/qti/flp/IFlpService.aidl",
+        "java/com/qti/flp/ISessionStatusCallback.aidl",
+        "java/com/qti/flp/ITestService.aidl",
+        "java/com/qti/geofence/IGeofenceService.aidl",
+        "java/com/qti/geofence/IGeofenceCallback.aidl",
+        "java/com/qti/debugreport/IDebugReportService.aidl",
+        "java/com/qti/debugreport/IDebugReportCallback.aidl",
+        "java/com/qti/wifidbreceiver/IWiFiDBReceiver.aidl",
+        "java/com/qti/wifidbreceiver/IWiFiDBReceiverResponseListener.aidl",
+        "java/com/qti/wwandbreceiver/IWWANDBReceiver.aidl",
+        "java/com/qti/wwandbreceiver/IWWANDBReceiverResponseListener.aidl",
+        "java/com/qti/gnssconfig/IGnssConfigService.aidl",
+        "java/com/qti/gnssconfig/IGnssConfigCallback.aidl",
+        "java/com/qti/wifidbprovider/IWiFiDBProvider.aidl",
+        "java/com/qti/wifidbprovider/IWiFiDBProviderResponseListener.aidl",
+        "java/com/qti/wwandbprovider/IWWANDBProvider.aidl",
+        "java/com/qti/wwandbprovider/IWWANDBProviderResponseListener.aidl",
+    ],
+
+    optimize: {
+        proguard_flags_files: ["proguard.flags"],
+    },
+
+    owner: "qti",
+
+}

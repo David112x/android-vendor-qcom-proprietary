@@ -1,0 +1,28 @@
+/*
+ * Copyright (c) 2019 Qualcomm Technologies, Inc.
+ * All Rights Reserved.
+ * Confidential and Proprietary - Qualcomm Technologies, Inc.
+ */
+
+package vendor.qti.hardware.trustedui@1.0;
+
+/**
+ * TrustedInputCallback
+ *
+ * Callback interface for asynchronous input event notifications.
+ */
+interface ITrustedInputCallback {
+    /**
+     * This method notifies the caller of secure input event from the TrustedInput device with an
+     * optional event payload.
+     *
+     * @param  inputData optional input payload
+     **/
+    oneway notifyInput(vec<uint8_t> inputData);
+
+    /**
+     * This method notifies the caller of timeout error on input, in case a timeout has been set by
+     * the caller in @getInput method @ITrustedInput.hal.
+     **/
+    oneway notifyTimeout();
+};

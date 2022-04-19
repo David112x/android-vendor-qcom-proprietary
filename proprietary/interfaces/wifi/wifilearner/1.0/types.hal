@@ -1,0 +1,74 @@
+/*
+ * Copyright (c) 2018 Qualcomm Technologies, Inc.
+ * All Rights Reserved.
+ * Confidential and Proprietary - Qualcomm Technologies, Inc.
+ */
+
+package vendor.qti.hardware.wifi.wifilearner@1.0;
+
+typedef uint8_t[6] MacAddress;
+
+enum WifiLearnerStatusCode : uint32_t {
+  /** No errors. */
+  SUCCESS,
+  /** Unknown failure occured. */
+  FAILURE_UNKNOWN,
+  /** One of the incoming args is invalid. */
+  FAILURE_ARGS_INVALID,
+};
+
+struct WifiLearnerStatus {
+  WifiLearnerStatusCode code;
+  string debugMessage;
+};
+
+enum IfaceStatsFilledEnum : uint64_t {
+  HIDL_STATS_HAS_RX_RATE = 1 << 0,
+  HIDL_STATS_HAS_TX_RATE = 1 << 1,
+};
+
+struct IfaceStats {
+  uint64_t filled;
+  uint64_t rxRate;
+  uint64_t txRate;
+};
+
+enum ChannelSurveyInfoFilledEnum : uint32_t {
+  HIDL_SURVEY_HAS_NOISE = 1 << 0,
+  HIDL_SURVEY_HAS_CHAN_TIME = 1 << 1,
+  HIDL_SURVEY_HAS_CHAN_TIME_BUSY = 1 << 2,
+  HIDL_SURVEY_HAS_CHAN_TIME_EXT_BUSY = 1 << 3,
+  HIDL_SURVEY_HAS_CHAN_TIME_RX = 1 << 4,
+  HIDL_SURVEY_HAS_CHAN_TIME_TX = 1 << 5,
+  HIDL_SURVEY_HAS_CHAN_TIME_SCAN = 1 << 6,
+};
+
+/**
+ * struct ChannelSurveyInfo - Channel survey info
+ *
+ * @filled: bitmask indicating which fields have been reported, see
+ *     SURVEY_RESULT_HAS* defines.
+ * @freq: Center of frequency of the surveyed channel
+ * @noise: Channel noise floor in dBm
+ * @isChannelInUse: channel is currently being used
+ * @channelTime: Amount of time in ms the radio spent on the channel
+ * @channelTimeBusy: Amount of time in ms the radio detected some signal
+ *     that indicated to the radio the channel was not clear
+ * @channelTimeExtBusy: amount of time the extension channel was sensed busy
+ * @channelTimeRx: Amount of time the radio spent receiving data
+ * @channelTimeTx: Amount of time the radio spent transmitting data
+ * @channelTimeScan: Amount of time the raido spent for scan
+ */
+struct ChannelSurveyInfo {
+  uint32_t filled;
+  uint32_t freq;
+  int8_t noise;
+  bool inUse;
+  uint64_t channelTime;
+  uint64_t channelTimeBusy;
+  uint64_t channelTimeExtBusy;
+  uint64_t channelTimeRx;
+  uint64_t channelTimeTx;
+  uint64_t channelTimeScan;
+};
+

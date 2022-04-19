@@ -1,0 +1,96 @@
+/*
+  * Copyright (c) 2018-2019 Qualcomm Technologies, Inc.
+  * All Rights Reserved.
+  * Confidential and Proprietary - Qualcomm Technologies, Inc.
+  *
+  * Not a Contribution.
+  * Copyright (C) 2016 The Android Open Source Project
+  *
+  * Licensed under the Apache License, Version 2.0 (the "License");
+  * you may not use this file except in compliance with the License.
+  * You may obtain a copy of the License at
+  *
+  * http://www.apache.org/licenses/LICENSE-2.0
+  *
+  * Unless required by applicable law or agreed to in writing, software
+  * distributed under the License is distributed on an "AS IS" BASIS,
+  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied
+  * See the License for the specific language governing permissions and
+  * limitations under the License.
+*/
+
+package vendor.qti.hardware.radio.ims@1.5;
+
+import @1.4::IImsRadio;
+import @1.4::DialRequest;
+
+interface IImsRadio extends @1.4::IImsRadio {
+
+    /**
+     * MessageId.REQUEST_SET_IMS_CONFIG
+     *
+     * @param token Id to match request/response. Response must include same token.
+     * @param config Config to be set. Contains item and value.
+     *
+     */
+    oneway setConfig_1_5(int32_t token, ConfigInfo config);
+
+    /**
+     * MessageId.REQUEST_EMERGENCY_DIAL
+     *
+     * Initiate emergency voice call, with zero or more emergency service category(s), zero or
+     * more emergency Uniform Resource Names (URN), and routing information for handling the call.
+     * IMS uses this request to make its emergency call instead of using @1.4::IImsRadio.dial_1_4
+     * if the 'address' in the 'dialRequest' field is identified as an emergency number by Android.
+     *
+     * Some countries or carriers require some emergency numbers that must be handled with normal
+     * call routing or emergency routing. If the 'routing' field is specified as
+     * @1.5::EmergencyCallRoute#NORMAL, the implementation must use normal call routing to
+     * handle the call; if it is specified as @1.5::EmergencyNumberRoute#EMERGENCY, the
+     * implementation must use emergency routing to handle the call; if it is
+     * @1.5::EmergencyNumberRoute#UNKNOWN, Android does not know how to handle the call.
+     *
+     * If the dialed emergency number does not have a specified emergency service category, the
+     * 'categories' field is set to @1.5::EmergencyServiceCategory#UNSPECIFIED; if the dialed
+     * emergency number does not have specified emergency Uniform Resource Names, the 'urns' field
+     * is set to an empty list. If the underlying technology used to request emergency services
+     * does not support the emergency service category or emergency uniform resource names, the
+     * field 'categories' or 'urns' may be ignored.
+     *
+     * If 'isTesting' is true, this request is for testing purpose, and must not be sent to a real
+     * emergency service; otherwise it's for a real emergency call request.
+     *
+     * Reference: 3gpp 22.101, Section 10 - Emergency Calls;
+     *            3gpp 23.167, Section 6 - Functional description;
+     *            3gpp 24.503, Section 5.1.6.8.1 - General;
+     *            RFC 5031
+     *
+     * @param token to match request/response. Responses must include the same token as requests.
+     * @param dialRequest - the struct containing the dial request params like address, clir
+     *     call details, etc.
+     * @param categories - the Emergency Service Category(s) of the call.
+     * @param urns - the emergency Uniform Resource Names (URN)
+     * @param route - the emergency call routing information.
+     * @param hasKnownUserIntentEmergency - indicate if user's intent for the emergency call
+     *     is known.
+     * @param isTesting - to represent real or test emergency call.
+     *
+     * Response function is IImsRadioResponse.dialResponse()
+     *
+     */
+    oneway emergencyDial(int32_t token, DialRequest dialRequest,
+        bitfield<EmergencyServiceCategory> categories,  vec<string> urns,
+        EmergencyCallRoute route, bool hasKnownUserIntentEmergency, bool isTesting);
+
+     /**
+     * MessageId.REQUEST_ACKNOWLEDGE_IMS_SMS
+     *
+     * @param token Id to match request/response. Response must include same token.
+     * @messageRef the message reference or -1 of unavailable.
+     * @smsResult result of delivering the message. Valid values are defined in types.hal.
+     *
+     */
+    oneway acknowledgeSms_1_5(int32_t token, uint32_t messageRef,
+            ImsSmsDeliverStatusResult smsResult);
+
+};

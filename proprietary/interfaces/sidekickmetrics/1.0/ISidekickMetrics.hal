@@ -1,0 +1,344 @@
+/*
+ * Copyright (c) 2018-2019 Qualcomm Technologies, Inc.
+ * All Rights Reserved.
+ * Confidential and Proprietary - Qualcomm Technologies, Inc.
+ *
+ */
+
+
+package vendor.qti.hardware.sidekickmetrics@1.0;
+import ISidekickMetricsCallbacks;
+
+/***************************************************************************
+
+The ISidekickMetrics HAL exports functions that allows ambiactive
+fitness applications to define fitness and workout related metrics
+which are then displayed by the Sidekick chip while the AP is suspended
+(aka Sports Offload, Ambiactive Offload).
+
+The HAL supports metrics defined in the MetricType enumeration. It
+allows applications to create new instances of metrics and to define
+a number format which is then used to display the metrics.
+
+The format is given with a formt spec. The format spec is a string
+template containing one or more placeholders enclosed in curly braces.
+
+The syntax is described below using a simplified form of EBNF.
+
+Placeholder = “{“ Number | Condition “}”
+Number = unit-name  [ “:” NumberFormat ]
+NumberFormat =  width [ ( “.” | “,” )  precision ] [ Alignment ]
+Alignment = "R" | "Z"
+Condition = condition-name “:” charcode
+
+A number placeholder consists of a unit followed by an optional
+number format. The number format specifies the maximum number of
+digits, the maximum precision, and alignment of digits.
+
+Unit: a number format starts with the name of the unit, for example
+km for Kilometer or kmPerHr for Kilometer per hour. The raw metric
+is converted into this unit. Distance, for example, can be converted
+into km, mi, m.
+
+Width and precision: the unit name can optionally be followed by a
+format that describes the maximum number of digits to be used, and
+the number of digits used after the decimal point. The width specifies
+the desired number of digits. If a precision p is given, the value is
+formatted with at most p digits after the decimal point. The separator
+between width and precision can be a period or a comma. The formatter
+will use the given symbol to separate whole and fractional digits
+(1.5 or 1,5).
+
+Alignment:
+R: right-aligned in ‘width’ digits characters, the unused digit
+   positions on the left are filled with spaces.
+Z: right-aligned in ‘width’ digits,  the unused digit positions on the
+   left are filled with zeroes.
+
+Table 1 defines the default formats used if no number format is given.
+
+The condition is followed by a colon and a decimal number in the range
+of 1 to 255. The decimal number is the character code that the formatter
+will put into the string if the condition is true. If the condition is
+false, the formatter will not insert the character.
+
+
+Table 1: Value Range and Default Format of Units
+
+MetricType         Unit        Range      Default Format
+-----------------------------------------------------------
+TIME               hr          0-23       2
+                   hr12        1-12       2
+                   min         0-59       2Z
+                   sec         0-59       2Z
+DURATION           hr          0-
+                   min         0-59       2Z
+                   sec         0-59       2Z
+HEART_RATE         bpm         0-
+STEP_COUNT         steps       0-
+DISTANCE           km          0-         5.3
+                   mi          0-         5.3
+                   m           0-
+SPEED, AVG_SPEED   mPerSec     0-
+                   kmPerHr     0-
+                   miPerHr     0-
+PACE, AVG_PACE     minPerKm    0-
+                   minPerMi    0-
+-----------------------------------------------------------
+
+Example 1: Time in 12 hour format
+
+Assuming the ambiactive app uses a Font resource that contains a glyph
+for “AM” at character code  0xB0 (decimal 176) and a glyph for “PM” at
+character code 0xB1 (decimal 177), the format spec
+“{hr12}:{min}:{sec} {am?:176}{pm?:177}” will show time in 12 hour format,
+followed by a space and a glyph for am or pm depending on time.
+
+Example 2: Distance in km
+
+The format spec “{km:5.3}” results in a string that will have 2 digits
+before the decimal point and 3 digits after the decimal point, for a total
+of 5 digits. If the number is bigger or equal to 100, the decimal point
+shifts, so there will be 3 digits before the decimal point and 2 after.
+
+   The value 1 is formatted as “1.000”
+   The value 13.099 is formatted as “13.099”
+   The value 101.455 is formatted as “101.45”
+
+***************************************************************************/
+
+interface ISidekickMetrics {
+
+    /**
+     * Starts or resumes a metric instance/session.
+     * Starting the TIME metric type does not affect the value.
+     *
+     * @param metricId             A metric instance id to start/resume.
+     *
+     * @param MetricSensorEvent    Applicable for resume.
+     *                             Latest sensor event recevied by client
+     *                             for a given metric id before pause/stop.
+     *                             This event data may be referred by formatter sensor.
+     *
+     * @return status               OK - success case
+     *                              BAD_VALUE - if id is not valid
+     *                              UNKNOWN_ERROR - if start of metric instance fails
+     */
+    start(MetricId metricId, MetricSensorEvent eventData) generates (Status s);
+
+
+    /**
+     * Pauses or stops a metric instance.
+     * Stopping the TIME metric type does not affect the value.
+     *
+     * @param metricIds   A metric instance id to pause/stop.
+     *
+     * @return status               OK - success case
+     *                              BAD_VALUE if - id is not valid
+     *                              UNKNOWN_ERROR - stop of metric instance fails
+     */
+    stop(MetricId metricIds) generates (Status s);
+
+    /**
+     *
+     * Sends a buffer of data specific to metric id
+     *
+     * @param metricId   A metric instance id to send event data.
+     *
+     * @dataBuffer       A buffer of data
+     *
+     * @return status    OK - success case
+     *                   BAD_VALUE if - id is not valid
+     */
+     sendMetricData(MetricId metricId, vec<uint8_t> dataBuffer) generates (Status s);
+
+    /**
+     * Resets a metric instance.
+     * Resetting the TIME metric type does not affect the value.
+     *
+     * @param metricIds   An array of metric instance ids to start.
+     *
+     * @return status               OK - success case
+     *                              BAD_VALUE - if id is not valid
+     *                              UNKNOWN_ERROR - if reset of metric instance fails
+     */
+    reset(MetricId metricId) generates (Status s);
+
+
+    /**
+     * Creates a new instance of a metric with given id & sensor handle. This id is then
+     * used in the SidekickGraphics HAL to identify the value to be
+     * displayed when the Sidekick controls the display.
+     *
+     * If two metric instances of the same metric type are created,
+     * they maintain independent values. For example, an app might create
+     * two instances of the DURATION metric type, one to measure overall
+     * duration, the other one to measure lap times. When the lap time
+     * instance is reset to 0, the instance measuring overall duration
+     * is not reset.
+     *
+     * @param metricRequest Metric request info
+     *
+     * @return status    OK, or UNKNOWN_ERROR. BAD_VALUE if a format
+     *                   spec contains an error, or an incompatible
+     *                   sensor is used for the given format spec.
+     */
+    createMetricInstance(MetricSensorRequest metricRequest)
+        generates (Status status);
+
+    /**
+     * When an application no longer needs a previously defined
+     * metric instance, it must call destroyMetricInstance() so that
+     * the HAL can release the resources for that instance.
+     *
+     * @param metricId   The metric instance id to be destroyed.
+     *
+     * @return status    OK, or BAD_VALUE if the id does not refer to
+     *                   a valid metric instance.
+     */
+    destroyMetricInstance(MetricId metricId)
+        generates (Status status);
+
+    /**
+     * A sensor/algorithm, may need configuration data which is input
+     * to run sensor/algorithm. Ex: For calories algorithm, input can be height, weight etc.
+     * This API supposed to be called before start of a session and if config data update is required.
+     * A configuration group is created/updated for a given type & name of a sensor.
+     * Sensor algorithm can retireve the group data using group name.
+     * A group name must be unique.
+     *
+     * @param formatterSensorHandle  Handle returned by getMetricSensorsList() for a formatter sensor.
+     *
+     * @param sensorHandle   Sensor handle of a sensor returned at getMetricSensorsList()
+     *                       Can be 0, if valid metric name is provided.
+     *
+     * @param MetricName     Unique MetricName provided by application.
+     *                       Can be "UNUSED" if valid sensor handle is provided.
+     *
+     * @param groupName      Unique group name for a given sensor/metric name
+     *                       Ex: "offload_calories_group_0"
+     *
+     * @param configData     Sensor configuration data in key value pairs.
+     *                       Ex: "Height:5.5,weight:80, Gender:male"
+     *
+     * @return status        OK  - success case
+     *                       BAD_VALUE  - if sensor handle is invalid
+     *                       UNKNOWN_ERROR  - if set operation fails
+     *
+     */
+    setSensorConfigData(int32_t formatterSensorHandle, int32_t sensorHandle, string MetricName, string groupName, string configData)
+        generates (Status status);
+
+    /**
+     * A sensor/algorithm, may need configuration data which is input
+     * to run algorithm. Ex: For calories algorithm, input can be height, weight etc.
+     *
+     * @param formatterSensorHandle  Handle returned by getMetricSensorsList() for a formatter sensor.
+     *
+     * @param sensorHandle   Sensor handle of a sensor returned at getMetricSensorsList()
+     *
+     * @param MetricName     Unique MetricName provided by application
+     *                       Can be "UNUSED" if valid sensor handle is provided.
+     *
+     * @param groupName      Unique group name for a given sensor which was used at setSensorConfigData()
+     *                       Ex: "offload_calories_group_0"
+     * @return status        OK  - success case
+     *                       BAD_VALUE  - if sensor handle is invalid
+     *                       UNKNOWN_ERROR  - if get operation fails
+     *
+     * Note: Configuration data is returned asynchronously at notifyMetricSensorEvent()
+     */
+
+     getSensorConfigData(int32_t formatterSensorHandle, int32_t sensorHandle, string MetricName, string group_name)
+         generates (Status status);
+
+    /**
+     * Returns offloadble Metric sensors list
+	 *
+     * @return values    An array of metric sensors lists. The list consists of
+	 *                   sensors info of types "offload", "heart_rate", "pedo_wrist" etc
+	 *                   MetricSensorInfo has sensorHandle & name, which is used
+	 *                   to create metric instance.
+     *
+     */
+    getMetricSensorsList()
+        generates (Status status, vec<MetricSensorInfo> list);
+
+    /**
+     * Register callbacks
+     *
+     * This method should be used by client/application to register callbacks.
+     * Callbacks are invoked when the stream of events are notified
+     * from the metrics hal or to notify an error.
+     *
+     * @param callback   Implements ISidekickMetricsCallbacks which will
+     *                   receive callbacks when metrics hal wants to notify events
+     */
+    register_callbacks(ISidekickMetricsCallbacks callback);
+
+   /**
+     * Sets maximum report latency to a metric sensor.
+	 * This function can be called to receive events of MetricSensorEvent in
+     * reporting mode.
+     * If latency is 0, batching is disabled which is default state.
+     * This API in general called before start/resume of a session.
+     * Change of latency while a session in progress is allowed.
+     *
+     * @param metridBatchGroup  Metric batch group Id
+     *                          Valid ids are: METRIC_BATCH_GROUP_0 to 5
+     *
+     * @param  maxReportLatencyNs Allowed delay time in nano seconds before an
+     *                            event is sampled to time of report.
+     * @return result OK on success, BAD_VALUE if any parameters are invalid.
+     */
+    batch(MetricBatchGroup metridBatchGroup, int64_t maxReportLatencyNs)
+       generates (Status status);
+
+    /**
+     * Trigger a flush of internal FIFO.
+     *
+     * Flush delivers all events in FIFO through notifyMetricSensorEvent.
+     * If the FIFO is empty no events are delivered.
+     *
+     * @param metridBatchGroup  Metric batch group id
+     *                          Valid ids are: METRIC_BATCH_GROUP_0 to 5
+     *                          If 0 is passed, all metric batch groups are flushed.
+     *
+     * @return  result OK on success and BAD_VALUE if sensorHandle is invalid.
+     */
+    flush(MetricBatchGroup metridBatchGroup) generates (Status status);
+
+    /**
+     * Configures HAL
+     * @param featureFlag  Bitwise OR of HAL_Features to be enabled/disabled
+     *                     Valid flags are: METRIC_HAL_SSR_DISABLE
+     *
+     * @return  result OK on success and BAD_VALUE if featureFlag is invalid
+     */
+     configHAL(HAL_Features featureFlag) generates (Status status);
+
+    /**
+     * For testing purposes. Given a metric type, an input value and
+     * a format spec, returns the formatted value as a string.
+     *
+     * @param mt         The metric type of the input value.
+     * @param intVal     Input value of type integer. Used for TIME and
+     *                   DURATION metric type. Represents the number of
+     *                   milliseconds since midnight (TIME), or the
+     *                   duration of a time interval in milliseconds.
+     * @param floatVal   Input value of type float. Used for all other
+     *                   metric types.
+     * @param fmt        The format spec to be used to format the input
+     *                   value. See format spec syntax and examples above.
+     *
+     * @return status    OK, or BAD_VALUE if an id does not refer to
+     *                   a valid metric instance.
+     * @return ret       If status is OK, the formatted input value.
+     *                   If status is not OK, may contain an error message.
+     */
+   formatValue(MetricId metricId, uint32_t intVal, float floatVal, string fmt)
+        generates (Status status, string ret);
+
+};
+
+

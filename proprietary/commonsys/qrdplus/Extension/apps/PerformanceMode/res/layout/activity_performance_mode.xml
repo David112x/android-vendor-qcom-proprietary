@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    Copyright (c) 2019 Qualcomm Technologies, Inc.
+    All Rights Reserved.
+    Confidential and Proprietary - Qualcomm Technologies, Inc.
+-->
+
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <Button
+        android:id="@+id/button_on"
+        style="@style/TurnOnNowButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/button_margin_top"
+        android:layout_marginBottom="@dimen/button_margin_bottom"
+        android:layout_marginStart="@dimen/button_margin_start"
+        android:layout_gravity="start"
+        android:text="@string/turn_on_now"/>
+
+    <Button
+        android:id="@+id/button_off"
+        style="@style/TurnOffNowButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/button_margin_top"
+        android:layout_marginBottom="@dimen/button_margin_bottom"
+        android:layout_marginStart="@dimen/button_margin_start"
+        android:layout_gravity="start"
+        android:text="@string/turn_off_now"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/divider_height"
+        android:background="?android:attr/dividerHorizontal"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:minHeight="?android:attr/listPreferredItemHeight"
+        android:paddingStart="?android:attr/listPreferredItemPaddingStart"
+        android:paddingEnd="?android:attr/listPreferredItemPaddingEnd"
+        android:background="?android:attr/selectableItemBackground"
+        android:clipToPadding="false">
+
+        <ImageView
+            android:paddingTop="@dimen/icon_padding_top"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_info_outline_24"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingBottom="@dimen/text_view_padding_bottom"
+            android:paddingTop="@dimen/text_view_padding_top"
+            android:paddingStart="@dimen/text_view_padding_start"
+            android:paddingEnd="@dimen/text_view_padding_end"
+            android:maxLines="10"
+            android:textColor="?android:attr/textColorSecondary"
+            android:ellipsize="marquee"
+            android:text="@string/help_resource"/>
+    </LinearLayout>
+</LinearLayout>

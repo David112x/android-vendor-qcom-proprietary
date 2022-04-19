@@ -1,0 +1,1 @@
+../../../../codeaurora/commonsys/packages/apps/SnapdragonMusic/app_snapMusic_system_product.mk

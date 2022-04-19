@@ -1,0 +1,68 @@
+/*
+ * Copyright (c) 2019 Qualcomm Technologies, Inc.
+ * All Rights Reserved.
+ * Confidential and Proprietary - Qualcomm Technologies, Inc.
+ *
+ */
+
+package vendor.qti.hardware.radio.uim@1.2;
+
+import @1.1::IUim;
+import IUimResponse;
+
+interface IUim extends @1.1::IUim {
+    /**
+     * setGbaCallback to set the callbacks for handling
+     * responses related to GBA requests
+     */
+    setGbaCallback(IUimResponse responseCallback);
+
+    /**
+     * UIM_GBA_INIT to perform bootstrapping procedures(GBA)
+     * and generate generate keys
+     *
+     * @param token
+     *   It is to match req-resp.
+     *   Response must include same token.
+     *
+     * @param securityProtocol
+     *   Security protocol identifier NULL terminated string of 5 octets.
+     *   See 3GPP TS 33.220 Annex H.
+     *
+     * @param nafFullyQualifiedDomainName
+     *   NAF fully qualified domain name with maximum size of 255 bytes.
+     *
+     * @param appType
+     *   Card Application type
+     *
+     * @forceBootStrapping
+     *   true=force bootstrapping, false=do not force bootstrapping
+     *
+     * @apn
+     *   Access Point name required for BootStrapping procedure.
+     *   This is optional i.e. If empty string is passed, then
+     *   APN is selected based on NV configuration or other policies
+     *   in the modem.
+     */
+    oneway uimGbaInit(uint32_t token, vec<uint8_t> securityProtocol,
+                      string nafFullyQualifiedDomainName,
+                      UimApplicationType appType, bool forceBootStrapping,
+                      string apn);
+
+    /**
+     * UIM_GET_IMPI to obtain IMPI value
+     *
+     * @param token
+     *   It is used to match a request-resp
+     *   Response will include the same token
+     *
+     * @param appType
+     *   Card Application type
+     *
+     * @param secure
+     *   If true, encrypted IMPI value is returned
+     *   If false, plain text IMPI value is returned
+     */
+    oneway uimGetImpi(uint32_t token, UimApplicationType appType,
+                      bool secure);
+};

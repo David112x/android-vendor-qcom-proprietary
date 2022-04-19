@@ -1,0 +1,14 @@
+/*!
+ *
+ * Copyright (c) 2018 Qualcomm Technologies, Inc.
+ * All Rights Reserved.
+ * Confidential and Proprietary - Qualcomm Technologies, Inc.
+ *
+ */
+
+package vendor.qti.hardware.scve.panorama@1.0;
+
+interface IPanoramaStitching_Callbacks{
+
+    oneway PanoramaStitchingCB(Status status, StitchingOutput_hal op, handle fd_pTaskUserData, int64_t len_pTaskUserData, handle fd_pSessionUserData, int64_t size_pSessionUserData);
+};

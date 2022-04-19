@@ -1,0 +1,20 @@
+/*
+ * Copyright (c) 2019 Qualcomm Technologies, Inc.
+ * All Rights Reserved.
+ * Confidential and Proprietary - Qualcomm Technologies, Inc.
+ *
+ */
+
+package vendor.qti.hardware.radio.uim_remote_client@1.2;
+
+import @1.1::IUimRemoteServiceClientIndication;
+
+interface IUimRemoteServiceClientIndication extends @1.1::IUimRemoteServiceClientIndication {
+  /**
+  * Uim remote client card initialization status indication
+  *
+  * @param cardInitStatusInd of type UimRemoteClientCardInitStatusType
+  */
+  oneway UimRemoteServiceClientCardInitStatusInd(
+                 UimRemoteClientCardInitStatusType cardInitStatusInd);
+};

@@ -1,0 +1,1 @@
+../../../../codeaurora/commonsys/packages/apps/Mms/app_mms_system_product.mk

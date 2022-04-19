@@ -1,0 +1,9 @@
+cc_library_headers {
+    name: "qcrilDataModule_headers",
+    sanitize:{
+	integer_overflow: true,
+    },
+    vendor: true,
+    export_include_dirs: ["include","include/event","include/legacy","include/local",
+                          "include/module","include/request","include/sync","include/UnSolMessages"],
+}

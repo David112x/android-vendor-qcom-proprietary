@@ -1,0 +1,25 @@
+/*
+ * Copyright (c) 2017-18 Qualcomm Technologies, Inc.
+ * All Rights Reserved.
+ * Confidential and Proprietary - Qualcomm Technologies, Inc.
+ */
+
+package vendor.qti.gnss@2.1;
+
+import @1.1::ILocHidlWiFiDBReceiverCallback;
+import @1.0::ILocHidlWiFiDBReceiverCallback;
+import @2.1::types;
+import @1.0::types;
+
+interface ILocHidlWiFiDBReceiverCallback extends @1.1::ILocHidlWiFiDBReceiverCallback {
+
+    struct LocHidlApInfoExt {
+        LocHidlApInfo base_apinfo_1_0;
+        uint64_t utc_time;
+        uint8_t  fdal_status;
+    };
+
+    apListUpdateCallback_2_1(vec<LocHidlApInfoExt> apInfoList, int32_t apListSize,
+            LocHidlWifiDBListStatus apListStatus, LocHidlUlpLocation ulpLocation,
+            bool ulpLocValid);
+};

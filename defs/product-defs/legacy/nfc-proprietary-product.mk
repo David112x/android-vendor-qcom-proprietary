@@ -1,0 +1,1 @@
+../../../proprietary/nqnfc-firmware/nfc_proprietary_product.mk

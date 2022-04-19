@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    Copyright (c) 2019 Qualcomm Technologies, Inc.
+    All Rights Reserved.
+    Confidential and Proprietary - Qualcomm Technologies, Inc.
+-->
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/menu_edit"
+        android:icon="@drawable/quantum_ic_create_vd_theme_24"
+        android:title="@string/menu_editContact"
+        app:showAsAction="always" />
+
+    <item
+        android:id="@+id/menu_delete"
+        android:title="@string/menu_deleteContact" />
+
+    <item
+        android:id="@+id/menu_copy_to_phone"
+        android:title="@string/copy_to_phone" />
+
+    <item
+        android:id="@+id/menu_copy_to_sim"
+        android:title="@string/copy_to_sim" />
+</menu>

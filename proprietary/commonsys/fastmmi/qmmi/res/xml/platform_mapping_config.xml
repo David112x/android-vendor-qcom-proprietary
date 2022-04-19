@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+    Copyright (c) 2018 Qualcomm Technologies, Inc.
+    All Rights Reserved.
+    Confidential and Proprietary - Qualcomm Technologies, Inc.
+-->
+<PlatformMap>
+    <platform
+        name="sdm845"
+        listfile="sdm845_case_list_config"
+        casefile="sdm845_test_case_config">
+    </platform>
+
+    <platform
+        name="msmnile"
+        listfile="msmnile_case_list_config"
+        casefile="msmnile_test_case_config">
+    </platform>
+
+    <platform
+        name="sdm660"
+        listfile="sdm660_case_list_config"
+        casefile="sdm660_test_case_config">
+    </platform>
+
+    <platform
+        name="sdm710"
+        listfile="sdm710_case_list_config"
+        casefile="sdm710_test_case_config">
+    </platform>
+</PlatformMap>

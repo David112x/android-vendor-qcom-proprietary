@@ -1,0 +1,145 @@
+/*
+ * Copyright (c) 2020 Qualcomm Technologies, Inc.
+ * All Rights Reserved.
+ * Confidential and Proprietary - Qualcomm Technologies, Inc.
+ */
+
+package vendor.qti.hardware.sidekickutility@1.0;
+
+import ISidekickUtilityCallbacks;
+
+/**
+ * ISidekickUtility is an interface that tells a Sidekick chip (small
+ * compute resource) how to control and configure the sidekick
+ */
+
+interface ISidekickUtility {
+
+    /**
+     * Set alarm to Sidekick
+     *
+     * @param alarm set alarm during Sidekick.
+     * @return status OK, FAIL, or BAD_VALUE
+     */
+    setAlarm(AlarmInfo alarm) generates (Status status);
+
+    /**
+     * Update alarm to Sidekick
+     *
+     * @param alarm update alarm during Sidekick.
+     * @return status OK, FAIL, or BAD_VALUE
+     */
+    updateAlarm(AlarmInfo alarm) generates (Status status);
+
+    /**
+     * delete current alarm
+     * @param alarmId alarmId need to deleted
+     * @return status OK, FAIL, or BAD_VALUE
+     */
+    deleteAlarm(uint32_t alarmId) generates (Status status);
+
+    /**
+     * configure vibrator to Sidekick
+     * @param vibratorPattern List of sidekick vibrator Pattern
+     * @return status OK, FAIL, or BAD_VALUE
+     */
+    configureVibrator(vec<VibratorPattern> vibratorPattern) generates (Status status);
+
+    /**
+     * delete Vibrator configured in Sidekick
+     *
+     * @param id   The sidekick Vibrator id to be destroyed.
+     * @return status OK, FAIL, or BAD_VALUE
+     */
+    deleteVibrator(uint32_t id) generates (Status status);
+
+    /**
+     * configure RingTone on Sidekick
+     * @param ringToneInfo How to play this ringTone
+     * @return status OK, FAIL, or BAD_VALUE
+     */
+    configureRingTone(RingToneInfo ringToneInfo) generates (Status status);
+
+    /**
+     * delete RingTone configured in Sidekick
+     *
+     * @return status OK, FAIL, or BAD_VALUE
+     */
+    deleteRingTone() generates (Status status);
+
+    /**
+     * Clears all data configured in Sidekick.
+     *
+     * @return status OK, FAIL, or BAD_VALUE
+     */
+    reset() generates (Status status);
+
+    /**
+     * enterTwm help to SidekickUtility HAL understand all required information
+     * configured for TWM.
+     *
+     * @return status OK, FAIL, or BAD_VALUE
+     */
+    enterTwm() generates (Status status);
+
+    /**
+     * enableTestMode help to validate the feature efficiently
+     *
+     *@param msInADay   milliseconds in a day. If 1000*60*60 is set, 1 day = 1 Hr.
+     * @return status OK, FAIL, or BAD_VALUE
+     */
+    enableTestMode(int64_t msInADay) generates (Status status);
+
+    /**
+     * Creates a new instance of a Sidekick Sensor with given id
+     *
+     * @param sidekickSensorInfo Info to set Sensor on Sidekick.
+     * @return status OK, FAIL, or BAD_VALUE
+     */
+    createSidekickSensorInstance(SidekickSensorInfo sidekickSensorInfo) generates (Status status);
+
+    /**
+     * Destroy Sidekick Sensor Instance with given id if no longer required.
+     *
+     * @param id   The sidekick sensor instance id to be destroyed.
+     * @return status OK, FAIL, or BAD_VALUE
+     */
+    destroySidekickSensorInstance(SidekickSensorID id) generates (Status status);
+
+    /**
+     * Starts a Sidekick sensor with given id.
+     *
+     * @param id   The sidekick sensor instance id which need to start.
+     * @param dataBuffer       A buffer of data
+     * @return status OK, FAIL, or BAD_VALUE
+     */
+    start(SidekickSensorID id, vec<uint8_t> dataBuffer) generates (Status status);
+
+    /**
+     * Stops a Sidekick Sensor with given id.
+     *
+     * @param id   The sidekick sensor instance id which need to stop.
+     * @return status OK, FAIL, or BAD_VALUE
+     */
+    stop(SidekickSensorID id) generates (Status status);
+
+    /**
+     * Gets Sidekick Sensor data from Sidekick.
+     *
+     * @return status OK, FAIL, or BAD_VALUE
+     * @return sensorData Sidekick Sensor data from Sidekick.
+     */
+    getSidekickSensorData() generates (Status status, SidekickSensorData sensorData);
+
+    /**
+     * Register callbacks
+     *
+     * This method should be used by client/application to register callbacks.
+     * Callbacks are invoked when the TWM entry initiated
+     * from the SidekickUtility hal.
+     *
+     * @param callback   Implements ISidekickUtilityCallbacks which will
+     *                   receive callbacks when SidekickUtility hal wants to notify TWM Entry
+     */
+    register_callbacks(ISidekickUtilityCallbacks callback);
+};

@@ -1,0 +1,1 @@
+../../../proprietary/coretech-config-vendor/thermal-hal/thermal-hal_product.mk

@@ -1,0 +1,66 @@
+/*********************************************************************
+ Copyright (c) 2019 Qualcomm Technologies, Inc.
+ All Rights Reserved.
+ Confidential and Proprietary - Qualcomm Technologies, Inc.
+**********************************************************************/
+
+package com.qualcomm.qti.uceservice@2.1;
+
+import @2.0::IOptionsService;
+import IOptionsListener;
+import @2.0::UceStatus;
+
+interface IOptionsService extends @2.0::IOptionsService {
+  /**
+   * Adds a listener to the Options service.
+   *
+   * @param serviceHandle          received in IOptionsListener.OnOptionsCreated() callback.
+   * @param listener               @2.1::IOptionsListener object.
+   * @param clientHandle           token from the client.
+   * @return status                status of the request placed.
+   *
+   */
+  addListener_2_1(int64_t serviceHandle, IOptionsListener listener,
+      int64_t clientHandle) generates (UceStatus status);
+
+  /**
+   * Sets the capabilities information of the self device.
+   * The final status of the call is received in IOptionsListener.cmdStatus() callback.
+   * If status of API is returned as NOT_SUPPORTED then additional capabilities
+   * introduced as part of @2.1::CapabilityInfo are not supported by the server.
+   * In this case please fallback to @2.0::setCapabilityInfo API.
+   *
+   * @param serviceHandle     received in IOptionsListener.OnOptionsCreated() callback.
+   * @param capinfo           @2.1::CapabilityInfo to store.
+   * @param userData          client token for the request
+   * @return status           status of the request placed.
+   */
+  setCapabilityInfo_2_1(int64_t serviceHandle, CapabilityInfo capinfo,
+      int64_t userData) generates (UceStatus status);
+
+  /**
+   * Generates a Network response with the capabilites to share with remote contact
+   * The incoming Options request is received in IOptionsListener.incomingOptions() callback.
+   * the client needs to share device capabilites currently supported using this network respose request.
+   * If status of API is returned as NOT_SUPPORTED then additional capabilities
+   * introduced as part of @2.1::OptionsCapabilityInfo are not supported by the server.
+   * In this case, please fallback to the @2.0::responseIncomingOptions API.
+   *
+   * @param serviceHandle         received in IOptionsListener.OnOptionsCreated() callback.
+   * @param tId                   transaction ID received in IOptionsListener.incomingOptions() callback.
+   * @param sipResonseCode        SIP response code the UE needs to share to network.
+   *                              The response code compliant to RFC-3261
+   * @param reasonPhrase          response phrase corresponding to the response code.
+   *                              The response phrase compliant to RFC-3261
+   * @param capInfo               @2.1::OptionsCapabilityInfo to share in the resonse to network.
+   * @param isContactinBlackList  1 if the contact is blacklisted, else 0.
+   * @return status               status of the request placed.
+   */
+  responseIncomingOptions_2_1(int64_t serviceHandle,
+                              int32_t tId,
+                              int16_t sipResonseCode,
+                              string reasonPhrase,
+                              OptionsCapabilityInfo capInfo,
+                              int8_t isContactinBlackList)
+                   generates (UceStatus status);
+};

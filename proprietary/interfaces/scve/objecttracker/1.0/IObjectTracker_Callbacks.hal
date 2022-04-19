@@ -1,0 +1,15 @@
+/*!
+ *
+ * Copyright (c) 2018 Qualcomm Technologies, Inc.
+ * All Rights Reserved.
+ * Confidential and Proprietary - Qualcomm Technologies, Inc.
+ *
+ */
+package vendor.qti.hardware.scve.objecttracker@1.0;
+
+interface IObjectTracker_Callbacks{
+
+    ObjectTracker_Track(Status status,handle fd_pResult, int64_t size_pResult, uint32_t nResultSize, handle fd_pTaskUserData, int64_t len_pTaskUserData, handle fd_pSessionUserData, int64_t size_pSessionUserData);
+
+    ObjectTracker_Reg(Status status, uint32_t nIndex, handle fd_pTaskUserData, int64_t len_pTaskUserData, handle fd_pSessionUserData, int64_t size_pSessionUserData);
+};
