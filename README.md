@@ -1,2 +1,2 @@
-# QTI Proprietary Vendor blobs
-These are the proprietary vendor blobs that have been used in a device's vendor tree precompiled for a long time but now, developers can take these and have the ability to build these blobs instead of using precompiled ones.
+# QTI Proprietary & OSS Vendor blobs
+This repository contains some OSS vendor blobs from Qualcomm and some proprietary ones, some of which, may be very useful to developers.
